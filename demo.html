@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hear Aria Answer a Real Patient Call — Live Demo</title>
+<meta name="description" content="Listen to a real phone call where Aria's AI voice agent answers, handles patient questions, and books an appointment at a dental practice.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="canonical" href="https://www.ariadental.ai/demo">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* Demo Page Specific */
+.demo-hero{padding:140px 0 60px;background:linear-gradient(180deg,var(--amber-50) 0%,var(--cream) 100%);text-align:center}
+
+/* Player Container */
+.player-section{padding:0 0 100px}
+.player-wrapper{max-width:900px;margin:-40px auto 0;position:relative;z-index:2}
+
+.player-card{background:var(--charcoal);border-radius:24px;overflow:hidden;box-shadow:0 24px 80px rgba(26,26,46,0.25)}
+
+/* Player Header */
+.player-header{padding:32px 40px 24px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.06)}
+.player-header-left{display:flex;align-items:center;gap:16px}
+.player-avatar{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--amber),var(--amber-light));display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:22px;font-weight:600;color:#fff;box-shadow:0 4px 16px rgba(212,149,42,0.4)}
+.player-header-info h3{font-family:'Fraunces',serif;font-size:20px;font-weight:600;color:#fff;margin-bottom:2px}
+.player-header-info p{font-size:13px;color:rgba(255,255,255,0.5)}
+.live-dot{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--amber-light);text-transform:uppercase;letter-spacing:.08em}
+.live-dot::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--amber-light)}
+.live-dot.playing::before{animation:pulse 1.5s infinite}
+
+/* Waveform Area */
+.player-visual{padding:40px;min-height:280px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+
+.waveform-container{position:relative;height:80px;display:flex;align-items:center;justify-content:center;gap:2px;margin-bottom:32px}
+.wave-bar{width:3px;border-radius:2px;background:rgba(255,255,255,0.12);transition:height 0.15s ease,background 0.3s;min-height:4px}
+.wave-bar.active{background:var(--amber)}
+.wave-bar.past{background:rgba(212,149,42,0.4)}
+
+/* Data Tags */
+.data-tags{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:24px;min-height:36px}
+.data-tag{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:50px;font-size:12px;font-weight:600;opacity:0;transform:translateY(8px);transition:all 0.4s ease}
+.data-tag.visible{opacity:1;transform:translateY(0)}
+.data-tag.name{background:rgba(212,149,42,0.15);color:var(--amber-light);border:1px solid rgba(212,149,42,0.3)}
+.data-tag.service{background:rgba(74,124,89,0.15);color:#7BC88F;border:1px solid rgba(74,124,89,0.3)}
+.data-tag.time{background:rgba(100,140,220,0.15);color:#8BB4F0;border:1px solid rgba(100,140,220,0.3)}
+.data-tag.phone{background:rgba(200,120,150,0.15);color:#E8A0B8;border:1px solid rgba(200,120,150,0.3)}
+.data-tag.insurance{background:rgba(180,160,100,0.15);color:#D4C878;border:1px solid rgba(180,160,100,0.3)}
+.data-tag .tag-icon{font-size:14px}
+
+/* Transcript */
+.transcript-area{max-height:200px;overflow-y:auto;display:flex;flex-direction:column;gap:12px;padding:0 20px;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,0.1) transparent}
+.transcript-area::-webkit-scrollbar{width:4px}
+.transcript-area::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.15);border-radius:2px}
+
+.transcript-msg{padding:10px 16px;border-radius:14px;font-size:13px;line-height:1.5;max-width:80%;opacity:0;transform:translateY(12px);transition:all 0.5s ease}
+.transcript-msg.visible{opacity:1;transform:translateY(0)}
+.transcript-msg.aria{background:rgba(212,149,42,0.12);color:var(--amber-light);border-bottom-left-radius:4px;align-self:flex-start}
+.transcript-msg.patient{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.8);border-bottom-right-radius:4px;align-self:flex-end}
+.transcript-msg .speaker{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;display:block}
+.aria .speaker{color:var(--amber)}
+.patient .speaker{color:rgba(255,255,255,0.4)}
+
+/* Controls */
+.player-controls{padding:24px 40px 32px;display:flex;align-items:center;gap:20px;border-top:1px solid rgba(255,255,255,0.06)}
+
+.play-pause{width:56px;height:56px;border-radius:50%;background:var(--amber);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s;box-shadow:0 4px 20px rgba(212,149,42,0.4);flex-shrink:0}
+.play-pause:hover{background:var(--amber-light);transform:scale(1.05)}
+.play-pause svg{width:22px;height:22px;fill:#fff}
+.play-pause .pause-icon{display:none}
+.play-pause.playing .play-icon{display:none}
+.play-pause.playing .pause-icon{display:block}
+
+.progress-wrapper{flex:1;display:flex;flex-direction:column;gap:8px}
+.progress-bar{width:100%;height:6px;border-radius:3px;background:rgba(255,255,255,0.1);cursor:pointer;position:relative;overflow:hidden}
+.progress-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--amber),var(--amber-light));width:0%;transition:width 0.1s linear}
+.progress-times{display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,0.4);font-variant-numeric:tabular-nums}
+
+.volume-btn{background:none;border:none;cursor:pointer;padding:4px}
+.volume-btn svg{width:20px;height:20px;fill:rgba(255,255,255,0.5)}
+
+/* Status Section */
+.status-bar{padding:20px 40px;background:rgba(255,255,255,0.02);display:flex;justify-content:center;gap:32px;border-top:1px solid rgba(255,255,255,0.04)}
+.status-item{display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,0.4)}
+.status-item .status-dot{width:6px;height:6px;border-radius:50%}
+.status-dot.green{background:#7BC88F}
+.status-dot.amber{background:var(--amber-light)}
+.status-dot.blue{background:#8BB4F0}
+
+/* CTA below player */
+.demo-cta{text-align:center;margin-top:48px}
+.demo-cta p{font-size:15px;color:var(--charcoal-50);margin-bottom:20px}
+
+@media(max-width:768px){
+  .player-header{padding:24px 20px 16px;flex-direction:column;gap:12px;align-items:flex-start}
+  .player-visual{padding:24px 16px}
+  .player-controls{padding:16px 20px 24px;gap:12px}
+  .play-pause{width:48px;height:48px}
+  .status-bar{padding:16px 20px;gap:16px;flex-wrap:wrap}
+  .data-tags{gap:6px}
+  .data-tag{font-size:11px;padding:4px 10px}
+}
+</style>
+</head>
+<body>
+<nav id="nav"><div class="nav-inner"><a href="index.html" class="nav-logo">aria</a><ul class="nav-links" id="navLinks"><li><a href="platform.html">Platform</a></li><li><a href="how-it-works.html">How It Works</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="aria-vs-weave.html">Aria vs Weave</a></li><li><a href="security.html">Security</a></li><li><a href="contact.html" class="btn btn-primary">Book a Demo</a></li></ul><button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button></div></nav>
+
+<section class="demo-hero">
+  <div class="container">
+    <div class="section-label">Live Demo</div>
+    <div class="section-title">Hear Aria <span>answer a real call.</span></div>
+    <p class="section-desc" style="margin:0 auto">This is an actual phone call handled by Aria's AI voice agent at a dental practice. Not scripted. Not edited. Real patient interaction.</p>
+  </div>
+</section>
+
+<section class="player-section">
+  <div class="container">
+    <div class="player-wrapper">
+      <div class="player-card">
+
+        <!-- Header -->
+        <div class="player-header">
+          <div class="player-header-left">
+            <div class="player-avatar">A</div>
+            <div class="player-header-info">
+              <h3>Aria Voice Agent</h3>
+              <p>Newport Institute for Dentistry</p>
+            </div>
+          </div>
+          <div class="live-dot" id="liveDot">Real Call</div>
+        </div>
+
+        <!-- Visual Area -->
+        <div class="player-visual">
+          <!-- Data Tags -->
+          <div class="data-tags" id="dataTags">
+            <span class="data-tag service" id="tagService"><span class="tag-icon">🦷</span> Dental Inquiry</span>
+            <span class="data-tag name" id="tagName"><span class="tag-icon">👤</span> Patient Name</span>
+            <span class="data-tag time" id="tagTime"><span class="tag-icon">📅</span> Appointment</span>
+            <span class="data-tag phone" id="tagPhone"><span class="tag-icon">📱</span> Contact Info</span>
+            <span class="data-tag insurance" id="tagInsurance"><span class="tag-icon">🛡️</span> Insurance</span>
+          </div>
+
+          <!-- Waveform -->
+          <div class="waveform-container" id="waveform"></div>
+
+          <!-- Transcript -->
+          <div class="transcript-area" id="transcript"></div>
+        </div>
+
+        <!-- Controls -->
+        <div class="player-controls">
+          <button class="play-pause" id="playBtn" aria-label="Play">
+            <svg class="play-icon" viewBox="0 0 24 24"><polygon points="8,5 20,12 8,19"/></svg>
+            <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>
+          </button>
+          <div class="progress-wrapper">
+            <div class="progress-bar" id="progressBar">
+              <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-times">
+              <span id="currentTime">0:00</span>
+              <span id="totalTime">2:17</span>
+            </div>
+          </div>
+          <button class="volume-btn" id="volumeBtn" aria-label="Volume">
+            <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+          </button>
+        </div>
+
+        <!-- Status -->
+        <div class="status-bar">
+          <div class="status-item"><span class="status-dot green"></span> HIPAA Compliant</div>
+          <div class="status-item"><span class="status-dot amber"></span> AI Voice Agent</div>
+          <div class="status-item"><span class="status-dot blue"></span> Real-Time Booking</div>
+          <div class="status-item"><span class="status-dot green"></span> CRM Sync</div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="demo-cta">
+        <p>This is what your patients experience — instant, professional, 24/7.</p>
+        <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+          <a href="contact.html" class="btn btn-primary btn-lg">Book Your Demo →</a>
+          <a href="portfolio.html" class="btn btn-outline btn-lg">See More Examples</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section"><div class="container cta-content">
+<div class="section-label">Ready?</div>
+<h2>Your front desk should be AI.<br>Let's make it <em>happen.</em></h2>
+<p>30-minute demo. See Aria on your website. No commitment.</p>
+<div class="cta-buttons"><a href="contact.html" class="btn btn-white btn-lg">Book Your Demo →</a></div>
+</div></section>
+
+<footer><div class="container"><div class="footer-top"><div class="footer-brand"><a href="index.html" class="footer-logo">aria</a><p>Autonomous practice infrastructure for dental. Built by Velzyx AI Inc.</p><a href="mailto:varinder@velzyx.ai" style="color:var(--amber-light);text-decoration:none;font-size:14px">varinder@velzyx.ai</a><div class="footer-address">5000 Birch St, Suite 3000, Newport Beach, CA 92660</div></div><div class="footer-col"><h5>Platform</h5><a href="platform.html">Features</a><a href="roi-calculator.html">ROI Calculator</a><a href="aria-vs-weave.html">Aria vs Weave</a></div><div class="footer-col"><h5>Company</h5><a href="how-it-works.html">How It Works</a><a href="portfolio.html">Portfolio</a><a href="security.html">Security</a><a href="https://velzyx.ai" target="_blank">Velzyx AI</a></div><div class="footer-col"><h5>Get Started</h5><a href="contact.html">Book a Demo</a><a href="mailto:varinder@velzyx.ai">Email Us</a></div></div><div class="footer-bottom"><span>© 2026 Velzyx AI Inc. All rights reserved.</span><span>HIPAA · SOC 2 · <a href="https://velzyx.ai" target="_blank">velzyx.ai</a></span></div></div></footer>
+
+<audio id="audio" preload="auto"><source src="aria-call-demo.mp3" type="audio/mpeg"></audio>
+
+<script>
+const nav=document.getElementById('nav');window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>20));
+const nt=document.getElementById('navToggle'),nl=document.getElementById('navLinks');nt.addEventListener('click',()=>nl.classList.toggle('open'));nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nl.classList.remove('open')));
+
+// Audio Player
+const audio=document.getElementById('audio');
+const playBtn=document.getElementById('playBtn');
+const progressFill=document.getElementById('progressFill');
+const progressBar=document.getElementById('progressBar');
+const currentTimeEl=document.getElementById('currentTime');
+const totalTimeEl=document.getElementById('totalTime');
+const liveDot=document.getElementById('liveDot');
+const waveformEl=document.getElementById('waveform');
+const transcriptEl=document.getElementById('transcript');
+
+// Generate waveform bars
+const barCount=120;
+for(let i=0;i<barCount;i++){
+  const bar=document.createElement('div');
+  bar.className='wave-bar';
+  bar.style.height=Math.random()*40+8+'px';
+  waveformEl.appendChild(bar);
+}
+const bars=waveformEl.querySelectorAll('.wave-bar');
+
+// Transcript messages (timed to appear during playback)
+const messages=[
+  {time:2,speaker:'aria',text:"Hi, thank you for calling. This is Aria from Dr. Vartanian's office. How can I help you today?"},
+  {time:12,speaker:'patient',text:"Hi, I've been having some jaw pain and headaches lately."},
+  {time:22,speaker:'aria',text:"I'm sorry to hear that. TMJ disorders are one of Dr. Vartanian's core specialties. We can get you in for a comprehensive evaluation."},
+  {time:38,speaker:'patient',text:"That sounds good. What does the evaluation involve?"},
+  {time:48,speaker:'aria',text:"Dr. Vartanian will assess your jaw function, check for clicking or locking, and identify the root cause. It's non-invasive and typically takes about 30 minutes."},
+  {time:65,speaker:'patient',text:"Okay, I'd like to schedule something."},
+  {time:72,speaker:'aria',text:"I'd be happy to help. Can I get your name?"},
+  {time:82,speaker:'patient',text:"Sure, it's Sarah."},
+  {time:88,speaker:'aria',text:"Great, Sarah. And what's the best phone number to reach you?"},
+  {time:100,speaker:'aria',text:"Let me check availability for you. We have openings this week. Would a morning or afternoon work better?"},
+  {time:115,speaker:'patient',text:"Morning works best for me."},
+  {time:122,speaker:'aria',text:"I have you down for a TMJ consultation. You'll receive a confirmation text shortly. Is there anything else I can help with?"},
+  {time:132,speaker:'patient',text:"No, that's perfect. Thank you!"},
+];
+
+// Data tags timing
+const tagTimings=[
+  {time:8,id:'tagService'},
+  {time:72,id:'tagName'},
+  {time:88,id:'tagPhone'},
+  {time:100,id:'tagTime'},
+];
+
+let shownMessages=new Set();
+let shownTags=new Set();
+
+// Format time
+function fmt(s){const m=Math.floor(s/60);const sec=Math.floor(s%60);return m+':'+(sec<10?'0':'')+sec}
+
+// Play/Pause
+playBtn.addEventListener('click',()=>{
+  if(audio.paused){audio.play();playBtn.classList.add('playing');liveDot.classList.add('playing');liveDot.textContent='Playing'}
+  else{audio.pause();playBtn.classList.remove('playing');liveDot.classList.remove('playing');liveDot.textContent='Paused'}
+});
+
+// Progress
+audio.addEventListener('timeupdate',()=>{
+  const pct=(audio.currentTime/audio.duration)*100;
+  progressFill.style.width=pct+'%';
+  currentTimeEl.textContent=fmt(audio.currentTime);
+
+  // Update waveform
+  const activeIdx=Math.floor((audio.currentTime/audio.duration)*barCount);
+  bars.forEach((b,i)=>{
+    if(i<activeIdx-2)b.className='wave-bar past';
+    else if(i>=activeIdx-2&&i<=activeIdx+2){
+      b.className='wave-bar active';
+      b.style.height=Math.random()*50+15+'px';
+    } else b.className='wave-bar';
+  });
+
+  // Show transcript messages
+  messages.forEach((msg,idx)=>{
+    if(audio.currentTime>=msg.time&&!shownMessages.has(idx)){
+      shownMessages.add(idx);
+      const div=document.createElement('div');
+      div.className='transcript-msg '+msg.speaker;
+      div.innerHTML='<span class="speaker">'+(msg.speaker==='aria'?'Aria':'Patient')+'</span>'+msg.text;
+      transcriptEl.appendChild(div);
+      requestAnimationFrame(()=>requestAnimationFrame(()=>div.classList.add('visible')));
+      transcriptEl.scrollTop=transcriptEl.scrollHeight;
+    }
+  });
+
+  // Show data tags
+  tagTimings.forEach((tag,idx)=>{
+    if(audio.currentTime>=tag.time&&!shownTags.has(idx)){
+      shownTags.add(idx);
+      document.getElementById(tag.id).classList.add('visible');
+    }
+  });
+});
+
+// Seek
+progressBar.addEventListener('click',(e)=>{
+  const rect=progressBar.getBoundingClientRect();
+  const pct=(e.clientX-rect.left)/rect.width;
+  audio.currentTime=pct*audio.duration;
+});
+
+// Duration loaded
+audio.addEventListener('loadedmetadata',()=>{totalTimeEl.textContent=fmt(audio.duration)});
+
+// Ended
+audio.addEventListener('ended',()=>{
+  playBtn.classList.remove('playing');
+  liveDot.classList.remove('playing');
+  liveDot.textContent='Ended';
+});
+
+// Volume toggle
+const volumeBtn=document.getElementById('volumeBtn');
+let muted=false;
+volumeBtn.addEventListener('click',()=>{muted=!muted;audio.muted=muted;volumeBtn.style.opacity=muted?'0.3':'1'});
+</script>
+</body>
+</html>
