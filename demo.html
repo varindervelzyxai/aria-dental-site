@@ -135,11 +135,11 @@
         <div class="player-visual">
           <!-- Data Tags -->
           <div class="data-tags" id="dataTags">
-            <span class="data-tag service" id="tagService"><span class="tag-icon">🦷</span> Dental Inquiry</span>
-            <span class="data-tag name" id="tagName"><span class="tag-icon">👤</span> Patient Name</span>
-            <span class="data-tag time" id="tagTime"><span class="tag-icon">📅</span> Appointment</span>
-            <span class="data-tag phone" id="tagPhone"><span class="tag-icon">📱</span> Contact Info</span>
-            <span class="data-tag insurance" id="tagInsurance"><span class="tag-icon">🛡️</span> Insurance</span>
+            <span class="data-tag service" id="tagService"><span class="tag-icon">🦷</span> Crown Repair</span>
+            <span class="data-tag name" id="tagName"><span class="tag-icon">👤</span> Michael</span>
+            <span class="data-tag time" id="tagTime"><span class="tag-icon">📅</span> Thu Mar 12, 4:00 PM</span>
+            <span class="data-tag phone" id="tagPhone"><span class="tag-icon">📱</span> 562-418-0998</span>
+            <span class="data-tag insurance" id="tagInsurance"><span class="tag-icon">✉️</span> Email Captured</span>
           </div>
 
           <!-- Waveform -->
@@ -228,27 +228,34 @@ const bars=waveformEl.querySelectorAll('.wave-bar');
 
 // Transcript messages (timed to appear during playback)
 const messages=[
-  {time:2,speaker:'aria',text:"Hi, thank you for calling. This is Aria from Dr. Vartanian's office. How can I help you today?"},
-  {time:12,speaker:'patient',text:"Hi, I've been having some jaw pain and headaches lately."},
-  {time:22,speaker:'aria',text:"I'm sorry to hear that. TMJ disorders are one of Dr. Vartanian's core specialties. We can get you in for a comprehensive evaluation."},
-  {time:38,speaker:'patient',text:"That sounds good. What does the evaluation involve?"},
-  {time:48,speaker:'aria',text:"Dr. Vartanian will assess your jaw function, check for clicking or locking, and identify the root cause. It's non-invasive and typically takes about 30 minutes."},
-  {time:65,speaker:'patient',text:"Okay, I'd like to schedule something."},
-  {time:72,speaker:'aria',text:"I'd be happy to help. Can I get your name?"},
-  {time:82,speaker:'patient',text:"Sure, it's Sarah."},
-  {time:88,speaker:'aria',text:"Great, Sarah. And what's the best phone number to reach you?"},
-  {time:100,speaker:'aria',text:"Let me check availability for you. We have openings this week. Would a morning or afternoon work better?"},
-  {time:115,speaker:'patient',text:"Morning works best for me."},
-  {time:122,speaker:'aria',text:"I have you down for a TMJ consultation. You'll receive a confirmation text shortly. Is there anything else I can help with?"},
-  {time:132,speaker:'patient',text:"No, that's perfect. Thank you!"},
+  {time:1,speaker:'aria',text:"Thank you for calling Dr. Vartanian's dental office, this is Aria, how may I help you?"},
+  {time:8,speaker:'patient',text:"Yeah, hi. My crown fell off my tooth. I needed to come in."},
+  {time:14,speaker:'aria',text:"Oh no, that's not fun at all — let's get you in right away. Can I get your name?"},
+  {time:21,speaker:'patient',text:"Yes. Michael."},
+  {time:25,speaker:'aria',text:"Thanks Michael, let's get you in ASAP. Do you have a preference for which doctor — Dr. Vartanian or Dr. Sara?"},
+  {time:33,speaker:'patient',text:"Can we do Dr. Sara?"},
+  {time:37,speaker:'aria',text:"Perfect! What day works best for you — are you thinking today, tomorrow, or later this week?"},
+  {time:44,speaker:'patient',text:"Can we do tomorrow, like, at 2 PM?"},
+  {time:50,speaker:'aria',text:"Let me check what Dr. Sara has available tomorrow afternoon... I'm not seeing 2:00 PM, but she has 3:00, 3:30, 4:00, or 4:30 — would any of those work?"},
+  {time:64,speaker:'patient',text:"Can we do 4 PM?"},
+  {time:68,speaker:'aria',text:"Perfect! What's the best number to reach you?"},
+  {time:73,speaker:'patient',text:"562-418-0998."},
+  {time:80,speaker:'aria',text:"Got it — 562-418-0998. And what's a good email for your confirmation?"},
+  {time:90,speaker:'patient',text:"You can send it to dholideepak26 at gmail dot com."},
+  {time:98,speaker:'aria',text:"Let me read that back — d-h-o-l-i-d-e-e-p-a-k-26 at gmail.com — is that right?"},
+  {time:108,speaker:'patient',text:"Yes. Yes."},
+  {time:112,speaker:'aria',text:"You're all set, Michael! Your appointment with Dr. Sara is tomorrow, Thursday, March 12th at 4:00 PM. You'll get a confirmation email shortly, and we'll take care of that crown for you!"},
+  {time:127,speaker:'patient',text:"Great. Thank you very much."},
+  {time:131,speaker:'aria',text:"You're welcome, Michael! Feel free to call if you need anything before then — take care!"},
 ];
 
 // Data tags timing
 const tagTimings=[
   {time:8,id:'tagService'},
-  {time:72,id:'tagName'},
-  {time:88,id:'tagPhone'},
-  {time:100,id:'tagTime'},
+  {time:21,id:'tagName'},
+  {time:73,id:'tagPhone'},
+  {time:50,id:'tagTime'},
+  {time:80,id:'tagInsurance'},
 ];
 
 let shownMessages=new Set();

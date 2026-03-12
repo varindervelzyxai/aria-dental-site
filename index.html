@@ -265,13 +265,26 @@ for(let i=0;i<80;i++){const b=document.createElement('div');b.style.cssText='wid
 const homeBars=homeWaveform.children;
 
 const homeMessages=[
-{time:2,speaker:'aria',text:"Hi, this is Aria from Dr. Vartanian's office. How can I help you?"},
-{time:12,speaker:'patient',text:"I've been having jaw pain and headaches lately."},
-{time:22,speaker:'aria',text:"TMJ disorders are one of our specialties. We can get you in for a comprehensive evaluation."},
-{time:65,speaker:'patient',text:"I'd like to schedule something."},
-{time:72,speaker:'aria',text:"I'd be happy to help. Can I get your name?"},
-{time:100,speaker:'aria',text:"Let me check availability. We have openings this week."},
-{time:122,speaker:'aria',text:"You're all set. You'll receive a confirmation text shortly."},
+{time:1,speaker:'aria',text:"Thank you for calling Dr. Vartanian's dental office, this is Aria, how may I help you?"},
+{time:8,speaker:'patient',text:"Yeah, hi. My crown fell off my tooth. I needed to come in."},
+{time:14,speaker:'aria',text:"Oh no, that's not fun at all — let's get you in right away. Can I get your name?"},
+{time:21,speaker:'patient',text:"Yes. Michael."},
+{time:24,speaker:'aria',text:"Thanks Michael, let's get you in ASAP. Do you have a preference for which doctor — Dr. Vartanian or Dr. Sara?"},
+{time:33,speaker:'patient',text:"Can we do Doctor Sara?"},
+{time:37,speaker:'aria',text:"Perfect! What day works best for you — are you thinking today, tomorrow, or later this week?"},
+{time:44,speaker:'patient',text:"Can we do tomorrow, like, at 2 PM?"},
+{time:49,speaker:'aria',text:"Let me check what Dr. Sara has available tomorrow afternoon..."},
+{time:55,speaker:'aria',text:"I'm not seeing 2:00 PM, but Dr. Sara has 3:00, 3:30, 4:00, or 4:30 — would any of those work?"},
+{time:65,speaker:'patient',text:"Can we do 4 PM?"},
+{time:69,speaker:'aria',text:"Perfect! What's the best number to reach you?"},
+{time:74,speaker:'patient',text:"562-418-0998."},
+{time:80,speaker:'aria',text:"Got it — 562-418-0998. And what's a good email for your confirmation?"},
+{time:90,speaker:'patient',text:"You can send it to dholideepak26@gmail.com."},
+{time:98,speaker:'aria',text:"Let me read that back — d-h-o-l-i-d-e-e-p-a-k-2-6 at gmail.com — is that right?"},
+{time:108,speaker:'patient',text:"Yes. Yes."},
+{time:112,speaker:'aria',text:"You're all set, Michael! Your appointment with Dr. Sara is tomorrow, Thursday, March 12th at 4:00 PM. You'll get a confirmation email shortly!"},
+{time:125,speaker:'patient',text:"Great. Thank you very much."},
+{time:130,speaker:'aria',text:"You're welcome, Michael! Feel free to call if you need anything before then — take care!"},
 ];
 let homeShown=new Set();
 
