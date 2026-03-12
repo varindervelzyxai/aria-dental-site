@@ -70,7 +70,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Aria","description":"Autonomous AI front office platform for dental practices — handles calls, scheduling, insurance verification, payments, and patient communication across voice, chat, and SMS simultaneously.","brand":{"@type":"Brand","name":"Velzyx AI"},"offers":{"@type":"Offer","priceCurrency":"USD","availability":"https://schema.org/InStock"},"category":"Dental Practice Management Software"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"We already have a receptionist. Why do we need Aria?","acceptedAnswer":{"@type":"Answer","text":"Aria works alongside your team — handling overflow, after-hours, and repetitive tasks so your staff can focus on case acceptance, treatment planning, and patient relationships. It never calls in sick and handles unlimited calls simultaneously."}},{"@type":"Question","name":"Is Aria worth the investment at $7,500 per month?","acceptedAnswer":{"@type":"Answer","text":"A receptionist costs $70K+ per year in salary and benefits and still misses calls, takes PTO, and handles one patient at a time. Aria handles unlimited interactions 24/7. Most practices see ROI with just 1-2 extra patients per month."}},{"@type":"Question","name":"Will patients know they are talking to AI?","acceptedAnswer":{"@type":"Answer","text":"Aria is fully white-labeled to your practice — your name, your voice personality, your brand. The voice agent sounds natural. Patients get instant, personal help instead of hold music."}},{"@type":"Question","name":"Does Aria integrate with dental practice management software?","acceptedAnswer":{"@type":"Answer","text":"Aria currently integrates with Google Calendar, Stripe, and CRM systems via webhooks. Direct PMS integrations with Dentrix, Eaglesoft, and OpenDental are on our active roadmap."}}]}</script>
 </head><body>
-<nav id="nav"><div class="nav-inner"><a href="index.html" class="nav-logo">aria</a><ul class="nav-links" id="navLinks"><li><a href="platform.html">Platform</a></li><li><a href="how-it-works.html">How It Works</a></li><li><a href="demo.html">Demo</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="aria-vs-weave.html">Aria vs Weave</a></li><li><a href="security.html">Security</a></li><li><a href="contact.html" class="btn btn-primary">Book a Demo</a></li></ul><button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button></div></nav>
+<nav id="nav"><div class="nav-inner"><a href="index.html" class="nav-logo">aria</a><ul class="nav-links" id="navLinks"><li><a href="platform.html">Platform</a></li><li><a href="how-it-works.html">How It Works</a></li><li><a href="#live-demo">Demo</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="aria-vs-weave.html">Aria vs Weave</a></li><li><a href="security.html">Security</a></li><li><a href="contact.html" class="btn btn-primary">Book a Demo</a></li></ul><button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button></div></nav>
 
 <!-- HERO -->
 <section class="hero"><div class="container-wide"><div class="two-col"><div>
@@ -101,6 +101,48 @@
 <div class="stat-item reveal reveal-delay-3"><div class="stat-number">$250K+</div><div class="stat-label">lost per practice annually</div></div>
 </div>
 </div></section>
+
+<!-- LIVE DEMO -->
+<a id="live-demo"></a>
+<section class="dark-section" id="live-demo"><div class="container">
+<div class="text-center" style="margin-bottom:48px">
+<div class="section-label">Live Demo</div>
+<div class="section-title">Hear Aria <span style="color:var(--amber-light);font-style:italic">answer a real call.</span></div>
+<p class="section-desc">This is an actual phone call handled by Aria at a dental practice. Not scripted. Not edited.</p>
+</div>
+<div style="max-width:700px;margin:0 auto">
+<div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:32px;overflow:hidden">
+<div style="display:flex;align-items:center;gap:16px;margin-bottom:24px">
+<div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--amber),var(--amber-light));display:flex;align-items:center;justify-content:center;font-family:Fraunces,serif;font-size:20px;font-weight:600;color:#fff;flex-shrink:0">A</div>
+<div><div style="font-family:Fraunces,serif;font-size:17px;font-weight:600;color:#fff">Aria Voice Agent</div><div style="font-size:12px;color:rgba(255,255,255,0.5)">Newport Institute for Dentistry</div></div>
+<div id="homeLiveDot" style="margin-left:auto;font-size:11px;font-weight:600;color:var(--amber-light);text-transform:uppercase;letter-spacing:.08em;display:flex;align-items:center;gap:6px"><span style="width:6px;height:6px;border-radius:50%;background:var(--amber-light)"></span>Real Call</div>
+</div>
+<div id="homeWaveform" style="display:flex;align-items:center;justify-content:center;gap:2px;height:60px;margin-bottom:20px"></div>
+<div id="homeTranscript" style="min-height:60px;margin-bottom:20px"></div>
+<div style="display:flex;align-items:center;gap:16px">
+<button id="homePlayBtn" onclick="toggleHomeAudio()" style="width:48px;height:48px;border-radius:50%;background:var(--amber);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(212,149,42,0.4);flex-shrink:0;transition:all .3s">
+<svg id="homePlayIcon" width="20" height="20" viewBox="0 0 24 24" fill="#fff"><polygon points="8,5 20,12 8,19"/></svg>
+<svg id="homePauseIcon" width="20" height="20" viewBox="0 0 24 24" fill="#fff" style="display:none"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>
+</button>
+<div style="flex:1">
+<div id="homeProgressBar" style="width:100%;height:5px;border-radius:3px;background:rgba(255,255,255,0.1);cursor:pointer;position:relative;overflow:hidden" onclick="seekHomeAudio(event)">
+<div id="homeProgressFill" style="height:100%;border-radius:3px;background:linear-gradient(90deg,var(--amber),var(--amber-light));width:0%;transition:width .1s linear"></div>
+</div>
+<div style="display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,0.4);margin-top:6px;font-variant-numeric:tabular-nums"><span id="homeCurrentTime">0:00</span><span id="homeTotalTime">2:17</span></div>
+</div>
+</div>
+<div style="display:flex;justify-content:center;gap:20px;margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.06)">
+<span style="font-size:11px;color:rgba(255,255,255,0.35);display:flex;align-items:center;gap:4px"><span style="width:5px;height:5px;border-radius:50%;background:#7BC88F"></span>HIPAA Compliant</span>
+<span style="font-size:11px;color:rgba(255,255,255,0.35);display:flex;align-items:center;gap:4px"><span style="width:5px;height:5px;border-radius:50%;background:var(--amber-light)"></span>AI Voice</span>
+<span style="font-size:11px;color:rgba(255,255,255,0.35);display:flex;align-items:center;gap:4px"><span style="width:5px;height:5px;border-radius:50%;background:#8BB4F0"></span>Real-Time Booking</span>
+</div>
+</div>
+
+</div>
+</div></section>
+<audio id="homeAudio" preload="auto"><source src="aria-call-demo.mp3" type="audio/mpeg"></audio>
+
+
 
 <!-- THE $70K PROBLEM -->
 <section class="section"><div class="container">
@@ -157,44 +199,7 @@
 </div></section>
 
 
-<!-- LIVE DEMO -->
-<section class="dark-section"><div class="container">
-<div class="text-center" style="margin-bottom:48px">
-<div class="section-label">Live Demo</div>
-<div class="section-title">Hear Aria <span style="color:var(--amber-light);font-style:italic">answer a real call.</span></div>
-<p class="section-desc">This is an actual phone call handled by Aria at a dental practice. Not scripted. Not edited.</p>
-</div>
-<div style="max-width:700px;margin:0 auto">
-<div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:32px;overflow:hidden">
-<div style="display:flex;align-items:center;gap:16px;margin-bottom:24px">
-<div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--amber),var(--amber-light));display:flex;align-items:center;justify-content:center;font-family:Fraunces,serif;font-size:20px;font-weight:600;color:#fff;flex-shrink:0">A</div>
-<div><div style="font-family:Fraunces,serif;font-size:17px;font-weight:600;color:#fff">Aria Voice Agent</div><div style="font-size:12px;color:rgba(255,255,255,0.5)">Newport Institute for Dentistry</div></div>
-<div id="homeLiveDot" style="margin-left:auto;font-size:11px;font-weight:600;color:var(--amber-light);text-transform:uppercase;letter-spacing:.08em;display:flex;align-items:center;gap:6px"><span style="width:6px;height:6px;border-radius:50%;background:var(--amber-light)"></span>Real Call</div>
-</div>
-<div id="homeWaveform" style="display:flex;align-items:center;justify-content:center;gap:2px;height:60px;margin-bottom:20px"></div>
-<div id="homeTranscript" style="min-height:60px;margin-bottom:20px"></div>
-<div style="display:flex;align-items:center;gap:16px">
-<button id="homePlayBtn" onclick="toggleHomeAudio()" style="width:48px;height:48px;border-radius:50%;background:var(--amber);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(212,149,42,0.4);flex-shrink:0;transition:all .3s">
-<svg id="homePlayIcon" width="20" height="20" viewBox="0 0 24 24" fill="#fff"><polygon points="8,5 20,12 8,19"/></svg>
-<svg id="homePauseIcon" width="20" height="20" viewBox="0 0 24 24" fill="#fff" style="display:none"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>
-</button>
-<div style="flex:1">
-<div id="homeProgressBar" style="width:100%;height:5px;border-radius:3px;background:rgba(255,255,255,0.1);cursor:pointer;position:relative;overflow:hidden" onclick="seekHomeAudio(event)">
-<div id="homeProgressFill" style="height:100%;border-radius:3px;background:linear-gradient(90deg,var(--amber),var(--amber-light));width:0%;transition:width .1s linear"></div>
-</div>
-<div style="display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,0.4);margin-top:6px;font-variant-numeric:tabular-nums"><span id="homeCurrentTime">0:00</span><span id="homeTotalTime">2:17</span></div>
-</div>
-</div>
-<div style="display:flex;justify-content:center;gap:20px;margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.06)">
-<span style="font-size:11px;color:rgba(255,255,255,0.35);display:flex;align-items:center;gap:4px"><span style="width:5px;height:5px;border-radius:50%;background:#7BC88F"></span>HIPAA Compliant</span>
-<span style="font-size:11px;color:rgba(255,255,255,0.35);display:flex;align-items:center;gap:4px"><span style="width:5px;height:5px;border-radius:50%;background:var(--amber-light)"></span>AI Voice</span>
-<span style="font-size:11px;color:rgba(255,255,255,0.35);display:flex;align-items:center;gap:4px"><span style="width:5px;height:5px;border-radius:50%;background:#8BB4F0"></span>Real-Time Booking</span>
-</div>
-</div>
-<div class="text-center" style="margin-top:24px"><a href="demo.html" class="btn btn-lg" style="background:rgba(255,255,255,0.1);color:#fff;border:1.5px solid rgba(255,255,255,0.2)">See Full Demo Experience →</a></div>
-</div>
-</div></section>
-<audio id="homeAudio" preload="auto"><source src="aria-call-demo.mp3" type="audio/mpeg"></audio>
+
 
 <!-- QUICK COMPARE -->
 <section class="section-alt"><div class="container">
