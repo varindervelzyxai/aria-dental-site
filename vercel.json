@@ -1,4 +1,7 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/aria-vs-weave", "destination": "/compare", "permanent": true }
+  ]
 }
