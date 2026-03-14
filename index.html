@@ -315,3 +315,6 @@ homeTranscript.innerHTML='<div style="padding:8px 14px;border-radius:12px;font-s
 });
 homeAudio.addEventListener('loadedmetadata',()=>{document.getElementById('homeTotalTime').textContent=fmt(homeAudio.duration)});
 homeAudio.addEventListener('ended',()=>{homeIsPlaying=false;document.getElementById('home
+PlayIcon').style.display='block';document.getElementById('homePauseIcon').style.display='none';document.getElementById('homeLiveDot').innerHTML='<span style="width:6px;height:6px;border-radius:50%;background:var(--amber-light)"></span>Ended'});
+</script>
+</body></html>
