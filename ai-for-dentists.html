@@ -1,0 +1,315 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI for Dentists — How Smart Practices Recover Revenue With AI | Aria</title>
+<meta name="description" content="Learn how dental practices use AI to answer every call, verify insurance in real time, collect payment, and reduce no-shows. See how Aria works.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="canonical" href="https://www.ariadental.ai/ai-for-dentists">
+<meta property="og:title" content="AI for Dentists — How Smart Practices Recover Revenue With AI | Aria">
+<meta property="og:description" content="Learn how dental practices use AI to answer every call, verify insurance in real time, collect payment, and reduce no-shows.">
+<meta property="og:url" content="https://www.ariadental.ai/ai-for-dentists">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://www.ariadental.ai/images/aria-hero-1.png">
+<link rel="stylesheet" href="styles.css">
+<style>
+.pillar-prose{max-width:800px;margin:0 auto}
+.pillar-prose p{font-size:16px;line-height:1.8;color:var(--charcoal-70);margin-bottom:20px}
+.pillar-prose p strong{color:var(--charcoal);font-weight:600}
+.pillar-prose h2{font-family:'Fraunces',serif;font-size:clamp(26px,3vw,36px);font-weight:600;color:var(--charcoal);line-height:1.2;letter-spacing:-.02em;margin-bottom:20px;margin-top:0}
+.pillar-prose h2 span{color:var(--amber);font-style:italic}
+.pillar-prose .inline-link{color:var(--amber);font-weight:500;text-decoration:none;border-bottom:1px solid rgba(212,149,42,0.3);transition:border-color .2s}
+.pillar-prose .inline-link:hover{border-color:var(--amber)}
+.pillar-callout{background:var(--amber-glow);border-left:4px solid var(--amber);padding:24px 28px;border-radius:0 var(--radius) var(--radius) 0;margin:32px 0}
+.pillar-callout p{margin-bottom:0;font-size:15px;color:var(--charcoal-70)}
+.pillar-callout .callout-big{font-family:'Fraunces',serif;font-size:clamp(22px,2.5vw,30px);font-weight:700;color:var(--amber);line-height:1.3;margin-bottom:8px}
+.pillar-stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:40px 0}
+.pillar-stat{background:var(--charcoal);border-radius:var(--radius);padding:28px;text-align:center}
+.pillar-stat .num{font-family:'Fraunces',serif;font-size:clamp(28px,3vw,40px);font-weight:700;color:var(--amber-light);line-height:1;margin-bottom:6px}
+.pillar-stat .lbl{font-size:13px;color:rgba(255,255,255,0.55);line-height:1.4}
+.pillar-channels{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:40px 0}
+.pillar-channel{background:var(--warm-white);border:1px solid var(--border);border-radius:var(--radius);padding:28px;text-align:center;transition:all .3s}
+.pillar-channel:hover{box-shadow:var(--shadow-md);border-color:rgba(212,149,42,0.2);transform:translateY(-2px)}
+.pillar-channel .ch-icon{font-size:32px;margin-bottom:12px}
+.pillar-channel h4{font-size:16px;font-weight:600;margin-bottom:8px}
+.pillar-channel p{font-size:13px;color:var(--charcoal-50);line-height:1.6}
+.pillar-proof{background:var(--warm-white);border:1px solid var(--border);border-left:4px solid var(--amber);border-radius:0 var(--radius) var(--radius) 0;padding:32px 36px;margin:40px 0}
+.pillar-proof .proof-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--amber);margin-bottom:12px}
+.pillar-proof h4{font-family:'Fraunces',serif;font-size:18px;font-weight:600;margin-bottom:12px}
+.pillar-proof p{font-size:14px;color:var(--charcoal-50);line-height:1.7;margin-bottom:8px}
+.pillar-proof p:last-child{margin-bottom:0}
+.pillar-proof .proof-note{font-size:12px;color:var(--charcoal-50);font-style:italic;margin-top:12px}
+.pillar-steps{display:flex;flex-direction:column;gap:24px;margin:40px 0}
+.pillar-step{display:flex;gap:20px;align-items:flex-start}
+.pillar-step-num{width:44px;height:44px;border-radius:50%;background:var(--amber-glow);border:2px solid var(--amber);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:17px;font-weight:600;color:var(--amber);flex-shrink:0}
+.pillar-step-content h4{font-size:16px;font-weight:600;margin-bottom:4px}
+.pillar-step-content p{font-size:14px;color:var(--charcoal-50);line-height:1.6}
+.dso-features{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:32px 0}
+.dso-feat{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--charcoal-70);line-height:1.5}
+.dso-feat .check{color:var(--amber);font-weight:700;flex-shrink:0;font-size:16px}
+.cta-card{background:linear-gradient(135deg,var(--amber-50),#FFF8EC);border:2px solid var(--amber);border-radius:var(--radius-lg);padding:48px;text-align:center;margin:48px 0;box-shadow:0 8px 40px rgba(212,149,42,0.12)}
+.cta-card h3{font-family:'Fraunces',serif;font-size:clamp(24px,3vw,32px);font-weight:600;margin-bottom:12px}
+.cta-card p{font-size:15px;color:var(--charcoal-50);margin-bottom:24px;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.6}
+.cta-card .cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+@media(max-width:768px){.pillar-stat-row,.pillar-channels,.dso-features{grid-template-columns:1fr}.cta-card{padding:32px 24px}.cta-card .cta-btns{flex-direction:column;align-items:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Aria by Velzyx AI","url":"https://www.ariadental.ai","logo":"https://www.ariadental.ai/images/aria-hero-1.png","address":{"@type":"PostalAddress","streetAddress":"5000 Birch St, Suite 3000","addressLocality":"Newport Beach","addressRegion":"CA","postalCode":"92660","addressCountry":"US"},"contactPoint":{"@type":"ContactPoint","email":"info@velzyx.ai","contactType":"sales","url":"https://www.ariadental.ai/contact"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is AI safe for handling patient data in a dental practice?","acceptedAnswer":{"@type":"Answer","text":"Yes. Aria is fully HIPAA compliant. All data is encrypted with AES-256-GCM, access is role-controlled, and all infrastructure providers operate under signed Business Associate Agreements. Patient data is never sold or used for training."}},{"@type":"Question","name":"Does AI replace my front desk staff?","acceptedAnswer":{"@type":"Answer","text":"No. Aria handles overflow, after-hours, and multi-channel inquiries your team can't get to. Your front desk stays focused on in-office patients while Aria catches the calls, chats, and texts they physically cannot handle."}},{"@type":"Question","name":"How does AI insurance verification work during a call?","acceptedAnswer":{"@type":"Answer","text":"When a patient provides their insurance information, Aria runs a real-time 270/271 eligibility check against 3,400+ payers. Coverage, deductibles, copays, and estimated patient cost are returned in seconds — while the patient is still on the line."}},{"@type":"Question","name":"How long does AI implementation take for a dental practice?","acceptedAnswer":{"@type":"Answer","text":"Most practices are live within one to two weeks. Onboarding includes configuring your schedule, provider routing, insurance preferences, and voice personality. No hardware, no software installs, no changes to your existing phone system."}},{"@type":"Question","name":"Can AI handle dental emergencies?","acceptedAnswer":{"@type":"Answer","text":"Aria detects urgency in the caller's language and routes emergencies to your team or on-call number immediately. Aria never provides clinical advice — it ensures the patient reaches the right person fast."}},{"@type":"Question","name":"Can AI work for multi-location dental groups?","acceptedAnswer":{"@type":"Answer","text":"Yes. Aria supports per-location configuration with centralized management, provider routing across offices, white-label branding per practice, and data isolation between locations for HIPAA compliance."}}]}</script>
+</head><body>
+<nav id="nav"><div class="nav-inner"><a href="index.html" class="nav-logo">aria</a><ul class="nav-links" id="navLinks"><li><a href="platform.html">Platform</a></li><li><a href="how-it-works.html">How It Works</a></li><li><a href="demo.html">Demos</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="aria-vs-weave.html">Compare</a></li><li><a href="security.html">Security</a></li><li><a href="contact.html" class="btn btn-primary">Book a Demo</a></li></ul><button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button></div></nav>
+
+<!-- HERO -->
+<section class="page-hero"><div class="container">
+<div class="section-label">The Definitive Guide</div>
+<h1 class="section-title" style="max-width:800px">AI for Dentists: How the Best Practices Are <span>Recovering Revenue</span> They Never Knew They Were Losing</h1>
+<p class="section-desc" style="font-size:18px;margin-bottom:0">The highest-impact use of AI in dentistry today isn't imaging or diagnostics — it's at the front desk. This is the complete guide to AI-powered front office operations for dental practices.</p>
+<div class="page-hero-cta">
+<a href="contact.html" class="btn btn-primary btn-lg">Book a Demo →</a>
+<a href="demo.html" class="btn btn-outline btn-lg">Hear a Real Call</a>
+</div>
+</div></section>
+
+
+<!-- SECTION 1: THE PROBLEM -->
+<section class="section"><div class="container pillar-prose">
+<h2>Most Revenue Loss Happens <span>Before the Patient Sits Down</span></h2>
+<p>Your hygienist isn't losing you money. Your front desk is.</p>
+<p>Not because they're bad at their jobs — because there aren't enough of them, and there never will be.</p>
+<p>The average dental practice misses <strong>30–40% of inbound calls during peak hours.</strong> Every one of those calls is a patient ready to book. A patient with insurance. A patient with a toothache who will call the next practice in Google within 90 seconds.</p>
+<p>That's not a staffing problem you can hire your way out of. It's a structural problem — and it's the reason the most forward-thinking practices in the country are deploying AI at the front desk.</p>
+<p>Not AI for diagnostics. Not AI for imaging. AI for the part of your practice that actually controls whether patients show up and pay.</p>
+
+<div class="pillar-stat-row">
+<div class="pillar-stat reveal"><div class="num">62%</div><div class="lbl">of dental calls go<br>unanswered</div></div>
+<div class="pillar-stat reveal reveal-delay-1"><div class="num">$250K+</div><div class="lbl">lost per practice<br>annually</div></div>
+<div class="pillar-stat reveal reveal-delay-2"><div class="num">&lt;30%</div><div class="lbl">of voicemail patients<br>call back and book</div></div>
+</div>
+
+<p style="text-align:center;margin-top:8px"><a href="roi-calculator.html" class="inline-link">See how much your practice is losing → ROI Calculator</a></p>
+</div></section>
+
+
+<!-- SECTION 2: WHAT AI DOES -->
+<section class="section-alt"><div class="container pillar-prose">
+<h2>What AI Actually Does in a Dental Practice <span>(and What It Doesn't)</span></h2>
+<p>There's a lot of noise about AI in dentistry right now. Most of it is about imaging, diagnostics, and treatment planning.</p>
+<p>That matters — but it doesn't solve the problem that's costing you the most money today.</p>
+<p>The highest-impact use of AI in a dental practice right now is at the <strong>front office layer:</strong></p>
+
+<div style="display:grid;grid-template-columns:1fr;gap:16px;margin:32px 0">
+<div style="display:flex;gap:16px;align-items:flex-start;padding:20px 24px;background:var(--warm-white);border:1px solid var(--border);border-radius:var(--radius)">
+<span style="font-size:24px;flex-shrink:0">📞</span>
+<div><strong style="display:block;margin-bottom:4px">Answering and routing patient communication</strong><span style="font-size:14px;color:var(--charcoal-50);line-height:1.6">Every call, every chat, every SMS — answered instantly, 24 hours a day, in 100+ languages. No hold times. No voicemail. No missed opportunities.</span></div>
+</div>
+<div style="display:flex;gap:16px;align-items:flex-start;padding:20px 24px;background:var(--warm-white);border:1px solid var(--border);border-radius:var(--radius)">
+<span style="font-size:24px;flex-shrink:0">🛡️</span>
+<div><strong style="display:block;margin-bottom:4px">Real-time insurance and cost intelligence</strong><span style="font-size:14px;color:var(--charcoal-50);line-height:1.6">When a patient asks "how much will this cost me?" — AI verifies their coverage live, checks deductibles and copays across 3,400+ payers, and gives them a cost estimate before they hang up.</span></div>
+</div>
+<div style="display:flex;gap:16px;align-items:flex-start;padding:20px 24px;background:var(--warm-white);border:1px solid var(--border);border-radius:var(--radius)">
+<span style="font-size:24px;flex-shrink:0">⚡</span>
+<div><strong style="display:block;margin-bottom:4px">Booking and post-booking automation</strong><span style="font-size:14px;color:var(--charcoal-50);line-height:1.6">Scheduling directly to provider calendars, collecting payment during the call, sending SMS confirmations, intake forms, reminders, and post-visit review requests — all without your team touching anything.</span></div>
+</div>
+</div>
+
+<p>This is what <a href="index.html" class="inline-link">Aria</a> does. It's an AI dental receptionist — not a chatbot, not a message-taker, not a call-routing tree. A full front-office intelligence layer that handles the revenue-critical work your team can't keep up with.</p>
+<p><a href="how-it-works.html" class="inline-link">Learn how Aria works →</a></p>
+</div></section>
+
+
+<!-- SECTION 3: AI RECEPTIONIST -->
+<section class="section"><div class="container pillar-prose">
+<h2>The AI Dental Receptionist — <span>Answering Calls Your Team Can't</span></h2>
+<p>Your front desk handles walk-ins, checks in patients, answers the phone, confirms appointments, runs insurance, takes payments, and manages the schedule — simultaneously.</p>
+<p>When two calls come in at once during a hygiene check, one goes to voicemail. That patient doesn't leave a message. They call someone else.</p>
+<p>Aria answers every call. Not with a phone tree. Not with "press 1 for scheduling." With a natural, conversational AI voice that sounds like the best version of your front desk — empathetic, knowledgeable, and fast.</p>
+
+<div class="pillar-channels">
+<div class="pillar-channel reveal">
+<div class="ch-icon">📞</div>
+<h4>Voice</h4>
+<p>Handles inbound calls with full scheduling, insurance verification, and payment collection capability.</p>
+</div>
+<div class="pillar-channel reveal reveal-delay-1">
+<div class="ch-icon">💬</div>
+<h4>Chat</h4>
+<p>Website widget that lets patients ask questions, check availability, and book — without picking up the phone.</p>
+</div>
+<div class="pillar-channel reveal reveal-delay-2">
+<div class="ch-icon">📱</div>
+<h4>SMS</h4>
+<p>Text-based conversations for confirmations, rescheduling, intake, recalls, and balance collection.</p>
+</div>
+</div>
+
+<div class="pillar-callout">
+<p><strong>Not every patient wants to pick up the phone.</strong> Some want to ask about cost privately. Some want to check availability at midnight. Some are sitting in their car outside your office, texting because they're nervous about calling. Aria meets them wherever they are — with the same intelligence across every channel.</p>
+</div>
+
+<p>Three channels. One brain. Every patient interaction handled with the same intelligence.</p>
+<p><a href="demo.html" class="inline-link">Hear Aria handle a real patient call →</a></p>
+</div></section>
+
+
+<!-- SECTION 4: INSURANCE VERIFICATION — THE MOAT -->
+<section class="dark-section"><div class="container pillar-prose" style="color:rgba(255,255,255,0.8)">
+<div class="section-label" style="margin-bottom:24px">Aria's Biggest Differentiator</div>
+<h2 style="color:#fff">Real-Time Insurance Verification — <span style="color:var(--amber-light)">The Moment That Closes the Patient</span></h2>
+<p style="color:rgba(255,255,255,0.7)">This is the part that changes everything.</p>
+<p style="color:rgba(255,255,255,0.7)">A patient calls your office. They have a toothache. They have insurance. They want to come in tomorrow.</p>
+<p style="color:rgba(255,255,255,0.7)">They ask the question every dental practice dreads: <strong style="color:#fff;font-size:18px">"How much will this cost me?"</strong></p>
+<p style="color:rgba(255,255,255,0.7)">Your front desk puts them on hold. Pulls up the portal. Waits. Calls back later. Maybe.</p>
+<p style="color:rgba(255,255,255,0.7)">By then, the patient has already booked somewhere else. Or they've convinced themselves it's too expensive. Or they just never pick up when you call back.</p>
+<p style="color:rgba(255,255,255,0.7)"><strong style="color:#fff">Aria doesn't do any of that.</strong></p>
+<p style="color:rgba(255,255,255,0.7)">During the live call — while the patient is still on the line — Aria runs a real-time 270/271 eligibility check against 3,400+ insurance payers. Deductibles, remaining maximums, copays, coverage percentages — verified in seconds.</p>
+
+<div style="background:rgba(212,149,42,0.12);border-left:4px solid var(--amber-light);padding:24px 28px;border-radius:0 16px 16px 0;margin:32px 0">
+<p style="font-family:'Fraunces',serif;font-size:clamp(17px,2vw,22px);font-weight:600;color:var(--amber-light);font-style:italic;line-height:1.5;margin-bottom:0">"Your Delta Dental PPO is active. For a crown, your estimated out-of-pocket cost is $475. Would you like to book an appointment?"</p>
+</div>
+
+<p style="color:rgba(255,255,255,0.7)">That's not a quote from a brochure. That's a real patient interaction. And it converts at a rate that no callback workflow can touch.</p>
+<p><a href="dental-insurance-verification-ai.html" style="color:var(--amber-light);font-weight:500;border-bottom:1px solid rgba(245,197,99,0.3)">See the full insurance verification deep-dive →</a></p>
+</div></section>
+
+
+<!-- SECTION 5: REVENUE MATH -->
+<section class="section"><div class="container pillar-prose">
+<h2>The Revenue Math — <span>What One Missed Call Actually Costs</span></h2>
+<p>This isn't theoretical. Run your own numbers:</p>
+
+<div class="pillar-stat-row">
+<div class="pillar-stat reveal"><div class="num">$800–$1.2K</div><div class="lbl">average production<br>per patient visit</div></div>
+<div class="pillar-stat reveal reveal-delay-1"><div class="num">15–25</div><div class="lbl">calls missed per week<br>during peak hours</div></div>
+<div class="pillar-stat reveal reveal-delay-2"><div class="num">&lt;30%</div><div class="lbl">of voicemail patients<br>who actually book</div></div>
+</div>
+
+<div class="pillar-callout">
+<p class="callout-big">$50,000+ per month</p>
+<p>That's what a single-provider practice losing 20 calls per week at $900 average production is leaving on the table — conservatively.</p>
+</div>
+
+<p>Aria doesn't eliminate your front desk. It catches what they physically cannot. The calls that come in when they're checking in a patient. The after-hours calls. The overflow during lunch. The patient who texts instead of calling.</p>
+<p>Every one of those is revenue that was already coming to you — and walking away.</p>
+<p style="text-align:center;margin-top:32px"><a href="roi-calculator.html" class="btn btn-primary btn-lg">Calculate Your Practice's Numbers →</a></p>
+</div></section>
+
+
+<!-- SECTION 6: IMPLEMENTATION -->
+<section class="section-alt"><div class="container pillar-prose">
+<h2>How Dental Practices Deploy AI — <span>Without Disrupting Operations</span></h2>
+<p>The number one concern we hear from practice owners: <em>"This sounds great, but I don't have time for a complicated implementation."</em></p>
+<p>Here's how it actually works:</p>
+
+<div class="pillar-steps">
+<div class="pillar-step reveal">
+<div class="pillar-step-num">1</div>
+<div class="pillar-step-content">
+<h4>Week 1 — We scope your practice</h4>
+<p>Provider schedules, appointment types, insurance preferences, call handling rules, voice personality. You provide the information. We configure everything.</p>
+</div>
+</div>
+<div class="pillar-step reveal reveal-delay-1">
+<div class="pillar-step-num">2</div>
+<div class="pillar-step-content">
+<h4>Week 2 — Aria goes live</h4>
+<p>Calls start being answered. Your team keeps doing what they're doing — Aria handles the rest.</p>
+</div>
+</div>
+</div>
+
+<p>There's no software to install. No hardware. No changes to your existing phone system. Aria works alongside your current setup, not instead of it.</p>
+<p>For multi-location practices, each location gets its own configuration — different providers, different hours, different insurance rules — managed from a single dashboard.</p>
+<p><a href="how-it-works.html" class="inline-link">See the full setup process →</a></p>
+</div></section>
+
+
+<!-- SECTION 7: DSO / GROUPS -->
+<section class="section"><div class="container pillar-prose">
+<h2>AI for Dental Groups <span>and DSOs</span></h2>
+<p>If you run multiple locations, you already know the math: hiring and training a front desk for every office doesn't scale. Turnover is constant. Quality is inconsistent. Reporting is fragmented.</p>
+<p>Aria gives every location the same front-office intelligence — same call quality, same insurance verification, same booking capability — without hiring per office.</p>
+
+<div class="dso-features">
+<div class="dso-feat"><span class="check">✓</span><span><strong>Centralized dashboard</strong> with per-location views</span></div>
+<div class="dso-feat"><span class="check">✓</span><span><strong>Provider routing</strong> across multiple providers and locations</span></div>
+<div class="dso-feat"><span class="check">✓</span><span><strong>White-label per practice</strong> — patients never know it's shared</span></div>
+<div class="dso-feat"><span class="check">✓</span><span><strong>Data isolation</strong> between practices for HIPAA compliance</span></div>
+<div class="dso-feat"><span class="check">✓</span><span><strong>Unified analytics</strong> — every location's performance in one view</span></div>
+<div class="dso-feat"><span class="check">✓</span><span><strong>Instant scale</strong> — 3 locations or 30, no additional headcount</span></div>
+</div>
+
+<p><a href="ai-for-dental-groups.html" class="inline-link">See the full DSO and group practice breakdown →</a></p>
+</div></section>
+
+
+<!-- SECTION 8: PROOF -->
+<section class="section-alt"><div class="container pillar-prose">
+<h2>What Practices Are <span>Seeing With Aria</span></h2>
+
+<div class="pillar-proof reveal">
+<div class="proof-label">Live Practice — Southern California</div>
+<h4>Single-provider practice</h4>
+<p><strong>Before Aria:</strong> 35% of calls during peak hours going to voicemail. Average 12 missed booking opportunities per week. Patients frequently citing "I didn't know what my insurance covered" as the reason for not booking.</p>
+<p><strong>After Aria:</strong> Every call answered. Patients given real-time cost estimates on the call. Front desk freed to focus on in-office patient experience.</p>
+<p class="proof-note">Results vary by practice. Metrics reflect observed patterns from live Aria deployments.</p>
+</div>
+
+<p style="text-align:center"><a href="portfolio.html" class="inline-link">See more live deployments →</a></p>
+</div></section>
+
+
+<!-- SECTION 9: SECURITY -->
+<section class="section"><div class="container pillar-prose">
+<h2>Security, HIPAA, and <span>Patient Trust</span></h2>
+<p>Every piece of patient data Aria touches is encrypted — <strong>AES-256-GCM at rest, TLS in transit.</strong> Access is role-controlled. All infrastructure providers operate under signed Business Associate Agreements.</p>
+<p>Aria does not store credit card numbers. Payment processing runs through Stripe's PCI-compliant infrastructure.</p>
+<p>Emergency calls are detected by language pattern analysis and routed immediately to your team or on-call number. Aria never provides clinical advice.</p>
+<p><a href="security.html" class="inline-link">Read the full security and compliance breakdown →</a></p>
+</div></section>
+
+
+<!-- SECTION 10: CTA -->
+<section class="section-alt"><div class="container">
+<div class="cta-card">
+<h3>See How Much Revenue Your Practice Is <span style="color:var(--amber);font-style:italic">Missing</span></h3>
+<p>Two ways to take the next step — see Aria in action, or run your own revenue numbers.</p>
+<div class="cta-btns">
+<a href="contact.html" class="btn btn-primary btn-lg">Book a Demo →</a>
+<a href="roi-calculator.html" class="btn btn-outline btn-lg">Try the ROI Calculator</a>
+<a href="demo.html" class="btn btn-outline btn-lg">Hear a Real Call</a>
+</div>
+</div>
+</div></section>
+
+
+<!-- FAQ -->
+<section class="section"><div class="container">
+<div class="text-center">
+<div class="section-label">Frequently Asked Questions</div>
+<div class="section-title">What dental practice owners <span>ask about AI.</span></div>
+</div>
+<div class="objection-grid mt-48">
+<div class="objection-card reveal"><div class="q">"Is AI safe for handling patient data?"</div><div class="a">Yes. Aria is fully HIPAA compliant. All data is encrypted with AES-256-GCM, access is role-controlled, and all infrastructure providers operate under signed Business Associate Agreements. Patient data is never sold or used for training. <a href="security.html" style="color:var(--amber);font-weight:500">Read more about security →</a></div></div>
+<div class="objection-card reveal reveal-delay-1"><div class="q">"Does AI replace my front desk?"</div><div class="a">No. Aria handles overflow, after-hours, and multi-channel inquiries your team can't get to. Your front desk stays focused on in-office patients while Aria catches the calls, chats, and texts they physically cannot handle.</div></div>
+<div class="objection-card reveal reveal-delay-2"><div class="q">"How does AI insurance verification work during a call?"</div><div class="a">When a patient provides their insurance information, Aria runs a real-time 270/271 eligibility check against 3,400+ payers. Coverage, deductibles, copays, and estimated patient cost are returned in seconds — while the patient is still on the line. <a href="dental-insurance-verification-ai.html" style="color:var(--amber);font-weight:500">See the full breakdown →</a></div></div>
+<div class="objection-card reveal reveal-delay-3"><div class="q">"How long does implementation take?"</div><div class="a">Most practices are live within one to two weeks. No hardware, no software installs, no changes to your phone system. <a href="how-it-works.html" style="color:var(--amber);font-weight:500">See the onboarding process →</a></div></div>
+<div class="objection-card reveal reveal-delay-4"><div class="q">"Can AI handle dental emergencies?"</div><div class="a">Aria detects urgency in the caller's language and routes emergencies to your team or on-call number immediately. Aria never provides clinical advice — it ensures the patient reaches the right person fast.</div></div>
+<div class="objection-card reveal reveal-delay-5"><div class="q">"Can AI work for multi-location dental groups?"</div><div class="a">Yes. Aria supports per-location configuration with centralized management, provider routing across offices, white-label branding per practice, and data isolation between locations for HIPAA compliance. <a href="ai-for-dental-groups.html" style="color:var(--amber);font-weight:500">Learn more →</a></div></div>
+</div>
+</div></section>
+
+
+<!-- FINAL CTA -->
+<section class="cta-section"><div class="container cta-content">
+<div class="section-label">Ready?</div>
+<h2>Stop losing patients to voicemail.<br>Let Aria <em>close them.</em></h2>
+<p>30-minute demo. Watch Aria convert a real patient. No commitment.</p>
+<div class="cta-buttons"><a href="contact.html" class="btn btn-white btn-lg">Book a Demo →</a><a href="roi-calculator.html" class="btn btn-lg" style="background:rgba(255,255,255,0.15);color:#fff;border:1.5px solid rgba(255,255,255,0.3)">Calculate Your ROI</a></div>
+</div></section>
+
+<footer><div class="container"><div class="footer-top">
+<div class="footer-brand"><a href="index.html" class="footer-logo">aria</a><p>AI front office that closes more dental patients. Built by Velzyx AI Inc.</p><a href="mailto:info@velzyx.ai" style="color:var(--amber-light);text-decoration:none;font-size:14px">info@velzyx.ai</a><div class="footer-address">5000 Birch St, Suite 3000, Newport Beach, CA 92660</div></div>
+<div class="footer-col"><h5>Platform</h5><a href="platform.html">Features</a><a href="dental-insurance-verification-ai.html">Insurance Verification</a><a href="roi-calculator.html">ROI Calculator</a><a href="aria-vs-weave.html">Compare</a></div>
+<div class="footer-col"><h5>Company</h5><a href="how-it-works.html">How It Works</a><a href="portfolio.html">Portfolio</a><a href="security.html">Security</a><a href="https://velzyx.ai" target="_blank">Velzyx AI</a></div>
+<div class="footer-col"><h5>Get Started</h5><a href="contact.html">Book a Demo</a><a href="demo.html">Watch Demos</a><a href="after-hours-dental-answering-service.html">After-Hours AI</a><a href="ai-for-dental-groups.html">Dental Groups</a></div>
+</div><div class="footer-bottom"><span>© 2026 Velzyx AI Inc. All rights reserved.</span><span>HIPAA · AES-256 · <a href="https://velzyx.ai" target="_blank">velzyx.ai</a></span></div></div></footer>
+
+<script>const nav=document.getElementById('nav');window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>20));const t=document.getElementById('navToggle'),l=document.getElementById('navLinks');t.addEventListener('click',()=>l.classList.toggle('open'));l.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>l.classList.remove('open')));const r=document.querySelectorAll('.reveal');const o=new IntersectionObserver(e=>e.forEach(en=>{if(en.isIntersecting)en.target.classList.add('visible')}),{threshold:0.1,rootMargin:'0px 0px -40px 0px'});r.forEach(el=>o.observe(el));</script>
+</body></html>
