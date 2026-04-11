@@ -3,6 +3,7 @@
   "trailingSlash": false,
   "redirects": [
     { "source": "/demos", "destination": "/demo", "permanent": true },
-    { "source": "/aria-vs-others", "destination": "/aria-vs-weave", "permanent": true }
+    { "source": "/aria-vs-others", "destination": "/compare", "permanent": true },
+    { "source": "/aria-vs-weave", "destination": "/compare", "permanent": true }
   ]
 }
