@@ -79,7 +79,7 @@
 }
 
 /* DEMO CARDS FIX */
-a.demo-card{background-color:#ffffff !important;color:#1f2937 !important;text-decoration:none !important;border-radius:16px !important;overflow:hidden !important;border:1px solid #e5e7eb !important;box-shadow:0 4px 20px rgba(0,0,0,0.06) !important;display:flex !important;flex-direction:column !important;transition:transform 0.3s,box-shadow 0.3s}
+a.demo-card{background-color:#ffffff !important;color:#1f2937 !important;text-decoration:none !important;border-radius:16px !important;overflow:hidden !important;border:1px solid #e5e7eb !important;box-shadow:0 4px 20px rgba(0,0,0,0.06) !important;display:flex !important;flex-direction:column !important;transition:transform 0.3s,box-shadow 0.3s;opacity:1 !important;visibility:visible !important;transform:none !important}
 a.demo-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.12) !important}
 a.demo-card .dc-header{background-color:#1a1a2e !important;padding:28px 20px !important;text-align:center !important}
 a.demo-card .dc-header .dc-title{font-size:16px !important;font-weight:700 !important;color:#ffffff !important;font-family:'Fraunces',Georgia,serif !important}
@@ -171,12 +171,12 @@ a.demo-card .dc-body .dc-btn{background-color:#d4952a !important;color:#ffffff !
 </section>
 
 <!-- INTERACTIVE DEMOS -->
-<section style="padding:80px 20px;background:#fefcf8;text-align:center;position:relative;z-index:3">
-  <div style="max-width:1100px;margin:0 auto">
+<section style="padding:80px 20px;background:#fefcf8;text-align:center;position:relative;z-index:3;opacity:1 !important;transform:none !important;visibility:visible !important;display:block !important;overflow:visible !important">
+  <div style="max-width:1100px;margin:0 auto;opacity:1 !important;visibility:visible !important">
     <p style="display:inline-flex;align-items:center;gap:8px;background:#1a1a2e;color:#d4952a;font-size:12px;font-weight:600;padding:6px 16px;border-radius:100px;margin-bottom:24px;letter-spacing:1px;text-transform:uppercase;font-family:inherit">Interactive Demos</p>
     <h2 style="font-family:'Fraunces',Georgia,serif;font-size:clamp(24px,4vw,40px);font-weight:700;color:#1a1a2e;margin-bottom:12px;line-height:1.2">See exactly how Aria <span style="color:#d4952a">closes patients.</span></h2>
     <p style="font-size:16px;color:#6b7280;max-width:560px;margin:0 auto 48px;line-height:1.6">Three interactive walkthroughs — watch AI handle calls, verify insurance, collect payment, and sync your calendar.</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;text-align:left">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;text-align:left;opacity:1 !important;visibility:visible !important">
       <a href="demo-booking.html" class="demo-card">
         <div class="dc-header"><div style="font-size:40px;margin-bottom:8px">📞</div><div class="dc-title">Full Patient Journey</div><div class="dc-sub">Call → Insurance → Payment → Booked</div></div>
         <div class="dc-body"><div class="dc-time">⏱ ~60 seconds</div><p>Watch Aria handle a new patient call — from answering the phone to verifying insurance, quoting cost, collecting payment, and confirming.</p><div class="dc-btn">Watch Full Demo →</div></div>
