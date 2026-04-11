@@ -2,6 +2,7 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/demos", "destination": "/demo", "permanent": true }
+    { "source": "/demos", "destination": "/demo", "permanent": true },
+    { "source": "/aria-vs-others", "destination": "/aria-vs-weave", "permanent": true }
   ]
 }
