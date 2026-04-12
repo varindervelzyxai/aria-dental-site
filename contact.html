@@ -101,9 +101,9 @@ form.addEventListener('submit', function(e) {
         event_label: formData.practice_name || 'unknown',
         value: 1
       });
-      form.reset();
-      form.style.display = 'none';
-      successDiv.style.display = 'block';
+     form.reset();
+submitBtn.style.display = 'none';
+successDiv.style.display = 'block';
     } else {
       throw new Error('Submission failed');
     }
