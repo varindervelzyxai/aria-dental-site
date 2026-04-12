@@ -5,7 +5,7 @@
    ============================================== */
 
 // 1. Nav scroll effect
-const nav = document.getElementById('nav');
+var nav = document.getElementById('nav');
 if (nav) {
   window.addEventListener('scroll', function () {
     nav.classList.toggle('scrolled', window.scrollY > 20);
@@ -13,8 +13,8 @@ if (nav) {
 }
 
 // 2. Hamburger menu toggle
-const navToggle = document.getElementById('navToggle');
-const navLinks = document.getElementById('navLinks');
+var navToggle = document.getElementById('navToggle');
+var navLinks = document.getElementById('navLinks');
 if (navToggle && navLinks) {
   navToggle.addEventListener('click', function () {
     navLinks.classList.toggle('open');
@@ -27,20 +27,35 @@ if (navToggle && navLinks) {
 }
 
 // 3. Scroll reveal animations
-const reveals = document.querySelectorAll('.reveal');
-if (reveals.length > 0) {
-  const revealObserver = new IntersectionObserver(
-    function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
-  );
-  reveals.forEach(function (el) {
-    revealObserver.observe(el);
-  });
+function initReveals() {
+  var reveals = document.querySelectorAll('.reveal');
+  if (reveals.length === 0) return;
+
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.05, rootMargin: '0px 0px -20px 0px' }
+    );
+    reveals.forEach(function (el) {
+      observer.observe(el);
+    });
+  } else {
+    reveals.forEach(function (el) {
+      el.classList.add('visible');
+    });
+  }
+}
+
+// Run when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initReveals);
+} else {
+  initReveals();
 }
