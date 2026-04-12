@@ -1,7 +1,6 @@
 /* ==============================================
    ARIADENTAL.AI — Shared JS (main.js)
    Nav scroll, hamburger toggle, reveal animations
-   Include on ALL pages: <script src="main.js"></script>
    ============================================== */
 
 // 1. Nav scroll effect
@@ -27,6 +26,13 @@ if (navToggle && navLinks) {
 }
 
 // 3. Scroll reveal animations
+function revealElement(el) {
+  el.classList.add('visible');
+  el.style.opacity = '1';
+  el.style.transform = 'none';
+  el.style.visibility = 'visible';
+}
+
 function initReveals() {
   var reveals = document.querySelectorAll('.reveal');
   if (reveals.length === 0) return;
@@ -36,19 +42,26 @@ function initReveals() {
       function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
+            revealElement(entry.target);
             observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.05, rootMargin: '0px 0px -20px 0px' }
+      { threshold: 0, rootMargin: '50px 0px 50px 0px' }
     );
     reveals.forEach(function (el) {
       observer.observe(el);
     });
+
+    // Safety net: force-reveal anything still hidden after 3 seconds
+    setTimeout(function () {
+      document.querySelectorAll('.reveal:not(.visible)').forEach(function (el) {
+        revealElement(el);
+      });
+    }, 3000);
   } else {
     reveals.forEach(function (el) {
-      el.classList.add('visible');
+      revealElement(el);
     });
   }
 }
