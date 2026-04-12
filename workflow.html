@@ -65,6 +65,7 @@
 @media(max-width:1024px){.panel-grid{grid-template-columns:1fr}}
 @media(max-width:768px){.conf-row{flex-direction:column;align-items:center}}
 </style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Velzyx AI Inc.","url":"https://velzyx.ai","logo":"https://www.ariadental.ai/images/aria-hero-1.png","contactPoint":{"@type":"ContactPoint","telephone":"+1-562-418-0998","contactType":"sales","email":"info@velzyx.ai"},"address":{"@type":"PostalAddress","streetAddress":"5000 Birch St, Suite 3000","addressLocality":"Newport Beach","addressRegion":"CA","postalCode":"92660","addressCountry":"US"}}</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KQS3692C4Q"></script>
 <script>
@@ -170,4 +171,6 @@ function goTo(panelsWrap,stepsRow,n){
   function stopAuto(){if(autoInterval){clearInterval(autoInterval);autoInterval=null;autoBtn.textContent='▶ Auto Play'}}
   autoBtn.addEventListener('click',function(){if(autoInterval){stopAuto();return}autoBtn.textContent='Pause';goTo(wrap,steps,1);autoInterval=setInterval(function(){var c=parseInt(wrap.getAttribute('data-current'));var t=parseInt(wrap.getAttribute('data-total'));if(c<t)goTo(wrap,steps,c+1);else stopAuto()},4000)});
 });
-var reveals=document.querySelectorAll('.reveal');var obs=new IntersectionO
+var reveals=document.querySelectorAll('.reveal');var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0.1});reveals.forEach(function(el){obs.observe(el)});
+</script>
+</body></html>

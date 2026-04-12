@@ -37,416 +37,133 @@ body {
 
 h1, h2, h3 { font-family: 'Fraunces', serif; }
 
-/* === PROGRESS BAR === */
-.progress-bar-container {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-  background: var(--navy);
-  padding: 0;
-  display: none;
-}
+.progress-bar-container { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: var(--navy); padding: 0; display: none; }
 .progress-bar-container.active { display: block; }
-.progress-steps {
-  display: flex; height: 4px; background: rgba(255,255,255,0.1);
-}
-.progress-step {
-  flex: 1; height: 100%; background: transparent;
-  transition: background 0.6s ease;
-}
+.progress-steps { display: flex; height: 4px; background: rgba(255,255,255,0.1); }
+.progress-step { flex: 1; height: 100%; background: transparent; transition: background 0.6s ease; }
 .progress-step.completed { background: var(--gold); }
-.progress-step.current {
-  background: linear-gradient(90deg, var(--gold), rgba(212,149,42,0.4));
-  animation: progressPulse 1.5s ease-in-out infinite;
-}
-@keyframes progressPulse {
-  0%, 100% { opacity: 1; } 50% { opacity: 0.7; }
-}
-
-.step-labels {
-  display: flex; padding: 8px 16px; gap: 4px;
-}
-.step-label {
-  flex: 1; text-align: center; font-size: 10px; font-weight: 500;
-  color: rgba(255,255,255,0.3); transition: color 0.4s;
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-}
+.progress-step.current { background: linear-gradient(90deg, var(--gold), rgba(212,149,42,0.4)); animation: progressPulse 1.5s ease-in-out infinite; }
+@keyframes progressPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+.step-labels { display: flex; padding: 8px 16px; gap: 4px; }
+.step-label { flex: 1; text-align: center; font-size: 10px; font-weight: 500; color: rgba(255,255,255,0.3); transition: color 0.4s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .step-label.completed { color: var(--gold); }
 .step-label.current { color: #fff; }
 
-/* === HERO / START SCREEN === */
-.hero {
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  min-height: 100vh; text-align: center; padding: 40px 20px;
-  transition: opacity 0.6s, transform 0.6s;
-}
+.hero { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; text-align: center; padding: 40px 20px; transition: opacity 0.6s, transform 0.6s; }
 .hero.hidden { opacity: 0; transform: translateY(-30px); pointer-events: none; position: absolute; }
-
-.hero-badge {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: var(--navy); color: var(--gold); font-size: 12px; font-weight: 600;
-  padding: 6px 16px; border-radius: 100px; margin-bottom: 24px;
-  letter-spacing: 1px; text-transform: uppercase;
-}
+.hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--navy); color: var(--gold); font-size: 12px; font-weight: 600; padding: 6px 16px; border-radius: 100px; margin-bottom: 24px; letter-spacing: 1px; text-transform: uppercase; }
 .hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); animation: blink 1.5s infinite; }
 @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
-
-.hero h1 {
-  font-size: clamp(28px, 5vw, 52px); font-weight: 700; line-height: 1.15;
-  color: var(--navy); margin-bottom: 16px;
-}
+.hero h1 { font-size: clamp(28px, 5vw, 52px); font-weight: 700; line-height: 1.15; color: var(--navy); margin-bottom: 16px; }
 .hero h1 span { color: var(--gold); }
 .hero p { font-size: clamp(14px, 2vw, 18px); color: var(--gray-600); max-width: 560px; margin-bottom: 40px; line-height: 1.6; }
-
-.start-btn {
-  display: inline-flex; align-items: center; gap: 12px;
-  background: var(--gold); color: #fff; border: none; cursor: pointer;
-  font-family: 'Sora', sans-serif; font-size: 18px; font-weight: 600;
-  padding: 18px 40px; border-radius: 60px;
-  box-shadow: 0 8px 30px rgba(212,149,42,0.35);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
+.start-btn { display: inline-flex; align-items: center; gap: 12px; background: var(--gold); color: #fff; border: none; cursor: pointer; font-family: 'Sora', sans-serif; font-size: 18px; font-weight: 600; padding: 18px 40px; border-radius: 60px; box-shadow: 0 8px 30px rgba(212,149,42,0.35); transition: transform 0.2s, box-shadow 0.2s; }
 .start-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(212,149,42,0.45); }
-.start-btn .play-icon {
-  width: 28px; height: 28px; border-radius: 50%;
-  background: rgba(255,255,255,0.25); display: flex; align-items: center; justify-content: center;
-}
-.start-btn .play-icon::after {
-  content: ''; width: 0; height: 0;
-  border-top: 6px solid transparent; border-bottom: 6px solid transparent;
-  border-left: 10px solid #fff; margin-left: 2px;
-}
+.start-btn .play-icon { width: 28px; height: 28px; border-radius: 50%; background: rgba(255,255,255,0.25); display: flex; align-items: center; justify-content: center; }
+.start-btn .play-icon::after { content: ''; width: 0; height: 0; border-top: 6px solid transparent; border-bottom: 6px solid transparent; border-left: 10px solid #fff; margin-left: 2px; }
 
-/* === DEMO CONTAINER === */
-.demo-container {
-  max-width: 800px; margin: 0 auto; padding: 60px 20px 40px;
-  display: none; opacity: 0; transition: opacity 0.5s;
-}
+.demo-container { max-width: 800px; margin: 0 auto; padding: 60px 20px 40px; display: none; opacity: 0; transition: opacity 0.5s; }
 .demo-container.active { display: block; opacity: 1; }
-
-/* === STEP SECTIONS === */
-.demo-step {
-  display: none; animation: fadeInUp 0.5s ease forwards;
-}
+.demo-step { display: none; animation: fadeInUp 0.5s ease forwards; }
 .demo-step.active { display: block; }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* === PHONE RINGING (STEP 1) === */
-.phone-card {
-  background: var(--navy); border-radius: 24px; padding: 48px 32px;
-  text-align: center; color: #fff; position: relative; overflow: hidden;
-  box-shadow: 0 20px 60px rgba(26,26,46,0.3);
-}
-.phone-card::before {
-  content: ''; position: absolute; inset: 0;
-  background: radial-gradient(circle at 50% 30%, rgba(212,149,42,0.1) 0%, transparent 70%);
-}
-
-.phone-icon-wrap {
-  width: 80px; height: 80px; border-radius: 50%;
-  background: rgba(212,149,42,0.15); display: flex; align-items: center; justify-content: center;
-  margin: 0 auto 24px; position: relative;
-}
+.phone-card { background: var(--navy); border-radius: 24px; padding: 48px 32px; text-align: center; color: #fff; position: relative; overflow: hidden; box-shadow: 0 20px 60px rgba(26,26,46,0.3); }
+.phone-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 30%, rgba(212,149,42,0.1) 0%, transparent 70%); }
+.phone-icon-wrap { width: 80px; height: 80px; border-radius: 50%; background: rgba(212,149,42,0.15); display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; position: relative; }
 .phone-icon-wrap.ringing { animation: phoneRing 0.5s ease-in-out infinite alternate; }
 @keyframes phoneRing { 0%{transform:rotate(-8deg)} 100%{transform:rotate(8deg)} }
-
-.phone-icon-wrap::before, .phone-icon-wrap::after {
-  content: ''; position: absolute; border-radius: 50%;
-  border: 2px solid rgba(212,149,42,0.3);
-}
-.phone-icon-wrap.ringing::before {
-  width: 110px; height: 110px; animation: ringWave 1.5s ease-out infinite;
-}
-.phone-icon-wrap.ringing::after {
-  width: 140px; height: 140px; animation: ringWave 1.5s ease-out 0.3s infinite;
-}
+.phone-icon-wrap::before, .phone-icon-wrap::after { content: ''; position: absolute; border-radius: 50%; border: 2px solid rgba(212,149,42,0.3); }
+.phone-icon-wrap.ringing::before { width: 110px; height: 110px; animation: ringWave 1.5s ease-out infinite; }
+.phone-icon-wrap.ringing::after { width: 140px; height: 140px; animation: ringWave 1.5s ease-out 0.3s infinite; }
 @keyframes ringWave { 0%{transform:scale(0.8);opacity:1} 100%{transform:scale(1.3);opacity:0} }
-
-.phone-icon {
-  font-size: 36px; filter: drop-shadow(0 0 8px rgba(212,149,42,0.5));
-}
+.phone-icon { font-size: 36px; filter: drop-shadow(0 0 8px rgba(212,149,42,0.5)); }
 .caller-id { font-family: 'Fraunces',serif; font-size: 22px; font-weight: 600; margin-bottom: 4px; }
 .caller-number { color: var(--gray-400); font-size: 14px; margin-bottom: 20px; }
-.call-status {
-  display: inline-flex; align-items: center; gap: 8px;
-  color: var(--gold); font-size: 14px; font-weight: 500;
-}
-.call-status .pulse {
-  width: 8px; height: 8px; border-radius: 50%; background: var(--gold);
-}
+.call-status { display: inline-flex; align-items: center; gap: 8px; color: var(--gold); font-size: 14px; font-weight: 500; }
+.call-status .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); }
 .call-status .pulse.animate { animation: blink 1s infinite; }
-
-.aria-pickup {
-  margin-top: 24px; display: none;
-  background: rgba(34,197,94,0.15); border: 1px solid rgba(34,197,94,0.3);
-  border-radius: 12px; padding: 12px 20px; color: var(--green);
-  font-weight: 500; font-size: 14px;
-  animation: fadeInUp 0.4s ease;
-}
+.aria-pickup { margin-top: 24px; display: none; background: rgba(34,197,94,0.15); border: 1px solid rgba(34,197,94,0.3); border-radius: 12px; padding: 12px 20px; color: var(--green); font-weight: 500; font-size: 14px; animation: fadeInUp 0.4s ease; }
 .aria-pickup.show { display: inline-block; }
 
-/* === CHAT (STEPS 2, 4, 5) === */
-.chat-window {
-  background: #fff; border-radius: 20px; overflow: hidden;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.08);
-  border: 1px solid var(--gray-200);
-}
-.chat-header {
-  background: var(--navy); color: #fff; padding: 16px 20px;
-  display: flex; align-items: center; gap: 12px;
-}
-.chat-avatar {
-  width: 36px; height: 36px; border-radius: 50%;
-  background: linear-gradient(135deg, var(--gold), #e8b44f);
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Fraunces',serif; font-weight: 700; font-size: 16px; color: #fff;
-}
+.chat-window { background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.08); border: 1px solid var(--gray-200); }
+.chat-header { background: var(--navy); color: #fff; padding: 16px 20px; display: flex; align-items: center; gap: 12px; }
+.chat-avatar { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), #e8b44f); display: flex; align-items: center; justify-content: center; font-family: 'Fraunces',serif; font-weight: 700; font-size: 16px; color: #fff; }
 .chat-header-info .chat-name { font-weight: 600; font-size: 14px; }
 .chat-header-info .chat-sub { font-size: 11px; color: rgba(255,255,255,0.5); }
-.chat-live-dot {
-  margin-left: auto; display: flex; align-items: center; gap: 6px;
-  font-size: 11px; color: var(--green); font-weight: 500;
-}
-.chat-live-dot::before {
-  content: ''; width: 6px; height: 6px; border-radius: 50%;
-  background: var(--green); animation: blink 1.2s infinite;
-}
-
+.chat-live-dot { margin-left: auto; display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--green); font-weight: 500; }
+.chat-live-dot::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: blink 1.2s infinite; }
 .chat-body { padding: 20px; min-height: 200px; }
-
-.chat-bubble {
-  max-width: 85%; padding: 12px 16px; border-radius: 18px;
-  font-size: 14px; line-height: 1.5; margin-bottom: 12px;
-  animation: bubbleIn 0.35s ease;
-  word-wrap: break-word;
-}
-@keyframes bubbleIn {
-  from { opacity:0; transform:translateY(10px) scale(0.95); }
-  to { opacity:1; transform:translateY(0) scale(1); }
-}
-.chat-bubble.aria {
-  background: linear-gradient(135deg, #fef9f0, #fdf3e0);
-  border: 1px solid rgba(212,149,42,0.15);
-  border-bottom-left-radius: 4px; margin-right: auto;
-  color: var(--gray-800);
-}
-.chat-bubble.patient {
-  background: var(--gray-100); border: 1px solid var(--gray-200);
-  border-bottom-right-radius: 4px; margin-left: auto;
-  color: var(--gray-800);
-}
-
-.typing-indicator {
-  display: inline-flex; gap: 4px; padding: 12px 18px; border-radius: 18px;
-  background: linear-gradient(135deg, #fef9f0, #fdf3e0);
-  border: 1px solid rgba(212,149,42,0.15);
-  border-bottom-left-radius: 4px; margin-bottom: 12px;
-}
-.typing-indicator.patient-typing {
-  background: var(--gray-100); border-color: var(--gray-200);
-  border-bottom-left-radius: 18px; border-bottom-right-radius: 4px;
-  margin-left: auto; width: fit-content;
-}
-.typing-dot {
-  width: 7px; height: 7px; border-radius: 50%; background: var(--gray-400);
-  animation: typingBounce 1.2s ease-in-out infinite;
-}
+.chat-bubble { max-width: 85%; padding: 12px 16px; border-radius: 18px; font-size: 14px; line-height: 1.5; margin-bottom: 12px; animation: bubbleIn 0.35s ease; word-wrap: break-word; }
+@keyframes bubbleIn { from { opacity:0; transform:translateY(10px) scale(0.95); } to { opacity:1; transform:translateY(0) scale(1); } }
+.chat-bubble.aria { background: linear-gradient(135deg, #fef9f0, #fdf3e0); border: 1px solid rgba(212,149,42,0.15); border-bottom-left-radius: 4px; margin-right: auto; color: var(--gray-800); }
+.chat-bubble.patient { background: var(--gray-100); border: 1px solid var(--gray-200); border-bottom-right-radius: 4px; margin-left: auto; color: var(--gray-800); }
+.typing-indicator { display: inline-flex; gap: 4px; padding: 12px 18px; border-radius: 18px; background: linear-gradient(135deg, #fef9f0, #fdf3e0); border: 1px solid rgba(212,149,42,0.15); border-bottom-left-radius: 4px; margin-bottom: 12px; }
+.typing-indicator.patient-typing { background: var(--gray-100); border-color: var(--gray-200); border-bottom-left-radius: 18px; border-bottom-right-radius: 4px; margin-left: auto; width: fit-content; }
+.typing-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gray-400); animation: typingBounce 1.2s ease-in-out infinite; }
 .typing-dot:nth-child(2) { animation-delay: 0.15s; }
 .typing-dot:nth-child(3) { animation-delay: 0.3s; }
 @keyframes typingBounce { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-5px)} }
 
-/* === INSURANCE VERIFICATION (STEP 3) === */
-.verification-card {
-  background: #fff; border-radius: 20px; overflow: hidden;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.08); border: 1px solid var(--gray-200);
-}
-.verification-header {
-  background: linear-gradient(135deg, var(--navy), var(--navy-light));
-  color: #fff; padding: 20px 24px;
-  display: flex; align-items: center; gap: 12px;
-}
-.verification-header .v-icon {
-  width: 40px; height: 40px; border-radius: 10px;
-  background: rgba(212,149,42,0.2); display: flex; align-items: center; justify-content: center;
-  font-size: 20px;
-}
+.verification-card { background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.08); border: 1px solid var(--gray-200); }
+.verification-header { background: linear-gradient(135deg, var(--navy), var(--navy-light)); color: #fff; padding: 20px 24px; display: flex; align-items: center; gap: 12px; }
+.verification-header .v-icon { width: 40px; height: 40px; border-radius: 10px; background: rgba(212,149,42,0.2); display: flex; align-items: center; justify-content: center; font-size: 20px; }
 .verification-header h3 { font-size: 16px; font-weight: 600; }
 .verification-header p { font-size: 12px; color: rgba(255,255,255,0.5); }
-
-.verification-spinner {
-  padding: 48px; text-align: center;
-}
-.spinner {
-  width: 48px; height: 48px; border: 3px solid var(--gray-200);
-  border-top-color: var(--gold); border-radius: 50%;
-  animation: spin 0.8s linear infinite; margin: 0 auto 16px;
-}
+.verification-spinner { padding: 48px; text-align: center; }
+.spinner { width: 48px; height: 48px; border: 3px solid var(--gray-200); border-top-color: var(--gold); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 16px; }
 @keyframes spin { to { transform: rotate(360deg); } }
 .spinner-text { color: var(--gray-600); font-size: 14px; }
-
-.verification-results {
-  padding: 24px; display: none;
-}
+.verification-results { padding: 24px; display: none; }
 .verification-results.show { display: block; animation: fadeInUp 0.5s ease; }
-.v-result-row {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 12px 0; border-bottom: 1px solid var(--gray-100);
-  font-size: 14px;
-}
+.v-result-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--gray-100); font-size: 14px; }
 .v-result-row:last-child { border-bottom: none; }
 .v-label { color: var(--gray-600); }
 .v-value { font-weight: 600; color: var(--navy); }
-.v-value.status-active {
-  color: var(--green); display: flex; align-items: center; gap: 6px;
-}
-.v-value.status-active::before {
-  content: '✓'; width: 18px; height: 18px; border-radius: 50%;
-  background: rgba(34,197,94,0.1); display: flex; align-items: center; justify-content: center;
-  font-size: 11px;
-}
+.v-value.status-active { color: var(--green); display: flex; align-items: center; gap: 6px; }
+.v-value.status-active::before { content: '✓'; width: 18px; height: 18px; border-radius: 50%; background: rgba(34,197,94,0.1); display: flex; align-items: center; justify-content: center; font-size: 11px; }
 .v-value.highlight { color: var(--gold); font-size: 18px; }
 
-/* === PAYMENT (STEP 5) === */
-.payment-card {
-  background: #fff; border-radius: 16px; padding: 24px;
-  border: 1px solid var(--gray-200); margin: 16px 0;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.05);
-  animation: fadeInUp 0.4s ease;
-}
-.payment-processing {
-  display: flex; align-items: center; gap: 16px;
-  padding: 16px; background: var(--cream); border-radius: 12px;
-}
+.payment-card { background: #fff; border-radius: 16px; padding: 24px; border: 1px solid var(--gray-200); margin: 16px 0; box-shadow: 0 4px 16px rgba(0,0,0,0.05); animation: fadeInUp 0.4s ease; }
+.payment-processing { display: flex; align-items: center; gap: 16px; padding: 16px; background: var(--cream); border-radius: 12px; }
 .payment-processing .spinner { width: 32px; height: 32px; margin: 0; }
-.payment-success {
-  display: none; text-align: center; padding: 16px;
-  background: rgba(34,197,94,0.05); border-radius: 12px;
-  border: 1px solid rgba(34,197,94,0.15);
-}
+.payment-success { display: none; text-align: center; padding: 16px; background: rgba(34,197,94,0.05); border-radius: 12px; border: 1px solid rgba(34,197,94,0.15); }
 .payment-success.show { display: block; animation: fadeInUp 0.4s ease; }
-.payment-check {
-  width: 48px; height: 48px; border-radius: 50%;
-  background: var(--green); color: #fff; font-size: 24px;
-  display: flex; align-items: center; justify-content: center;
-  margin: 0 auto 12px;
-  animation: scaleIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
+.payment-check { width: 48px; height: 48px; border-radius: 50%; background: var(--green); color: #fff; font-size: 24px; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; animation: scaleIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
 @keyframes scaleIn { from{transform:scale(0)} to{transform:scale(1)} }
 .payment-amount { font-family: 'Fraunces',serif; font-size: 28px; font-weight: 700; color: var(--navy); }
 .payment-label { color: var(--gray-600); font-size: 13px; margin-top: 4px; }
 
-/* === SCHEDULE (STEP 6) === */
-.schedule-card {
-  background: #fff; border-radius: 20px; overflow: hidden;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.08); border: 1px solid var(--gray-200);
-}
-.schedule-header {
-  background: var(--navy); color: #fff; padding: 20px 24px;
-  display: flex; align-items: center; justify-content: space-between;
-}
+.schedule-card { background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.08); border: 1px solid var(--gray-200); }
+.schedule-header { background: var(--navy); color: #fff; padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; }
 .schedule-header h3 { font-size: 16px; }
 .schedule-date { font-size: 13px; color: rgba(255,255,255,0.5); }
 .schedule-body { padding: 16px; }
-
-.appt-row {
-  display: flex; align-items: center; gap: 12px;
-  padding: 12px; border-radius: 12px; margin-bottom: 8px;
-  background: var(--gray-100); font-size: 13px;
-}
-.appt-time {
-  font-weight: 600; color: var(--navy); min-width: 64px; font-size: 12px;
-  white-space: nowrap;
-}
+.appt-row { display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 12px; margin-bottom: 8px; background: var(--gray-100); font-size: 13px; }
+.appt-time { font-weight: 600; color: var(--navy); min-width: 64px; font-size: 12px; white-space: nowrap; }
 .appt-name { font-weight: 500; flex: 1; color: var(--gray-800); }
 .appt-type { color: var(--gray-600); font-size: 12px; }
-
-.appt-row.new-appt {
-  background: linear-gradient(135deg, rgba(212,149,42,0.08), rgba(212,149,42,0.15));
-  border: 2px solid var(--gold);
-  animation: glowIn 1s ease forwards;
-  display: none;
-}
-.appt-row.new-appt.show {
-  display: flex;
-  animation: glowIn 1.5s ease forwards;
-}
-@keyframes glowIn {
-  0% { transform: scaleY(0); opacity: 0; box-shadow: 0 0 0 rgba(212,149,42,0); }
-  50% { transform: scaleY(1); opacity: 1; box-shadow: 0 0 30px rgba(212,149,42,0.4); }
-  100% { transform: scaleY(1); opacity: 1; box-shadow: 0 0 0 rgba(212,149,42,0); }
-}
-.appt-paid {
-  background: rgba(34,197,94,0.1); color: var(--green); font-size: 11px;
-  font-weight: 600; padding: 3px 8px; border-radius: 6px; white-space: nowrap;
-}
-.appt-new-badge {
-  background: var(--gold); color: #fff; font-size: 10px; font-weight: 700;
-  padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px;
-}
-
-/* Automated actions */
-.auto-actions {
-  margin-top: 24px; padding: 0 8px;
-}
-.auto-actions h4 {
-  font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 600;
-  color: var(--gray-600); text-transform: uppercase; letter-spacing: 1px;
-  margin-bottom: 12px;
-}
-.auto-action {
-  display: flex; align-items: center; gap: 10px;
-  padding: 8px 0; font-size: 13px; color: var(--gray-600);
-  opacity: 0; transform: translateX(-10px);
-  transition: opacity 0.4s, transform 0.4s;
-}
+.appt-row.new-appt { background: linear-gradient(135deg, rgba(212,149,42,0.08), rgba(212,149,42,0.15)); border: 2px solid var(--gold); animation: glowIn 1s ease forwards; display: none; }
+.appt-row.new-appt.show { display: flex; animation: glowIn 1.5s ease forwards; }
+@keyframes glowIn { 0% { transform: scaleY(0); opacity: 0; box-shadow: 0 0 0 rgba(212,149,42,0); } 50% { transform: scaleY(1); opacity: 1; box-shadow: 0 0 30px rgba(212,149,42,0.4); } 100% { transform: scaleY(1); opacity: 1; box-shadow: 0 0 0 rgba(212,149,42,0); } }
+.appt-paid { background: rgba(34,197,94,0.1); color: var(--green); font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 6px; white-space: nowrap; }
+.appt-new-badge { background: var(--gold); color: #fff; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+.auto-actions { margin-top: 24px; padding: 0 8px; }
+.auto-actions h4 { font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 600; color: var(--gray-600); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+.auto-action { display: flex; align-items: center; gap: 10px; padding: 8px 0; font-size: 13px; color: var(--gray-600); opacity: 0; transform: translateX(-10px); transition: opacity 0.4s, transform 0.4s; }
 .auto-action.show { opacity: 1; transform: translateX(0); }
-.auto-action .aa-check {
-  width: 20px; height: 20px; border-radius: 50%;
-  background: var(--green); color: #fff; font-size: 11px;
-  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-}
-
-/* === CTA === */
-.cta-section {
-  display: none; text-align: center; padding: 48px 20px;
-  animation: fadeInUp 0.6s ease;
-}
+.auto-action .aa-check { width: 20px; height: 20px; border-radius: 50%; background: var(--green); color: #fff; font-size: 11px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.cta-section { display: none; text-align: center; padding: 48px 20px; animation: fadeInUp 0.6s ease; }
 .cta-section.show { display: block; }
-.cta-section h2 {
-  font-size: clamp(22px, 4vw, 32px); color: var(--navy); margin-bottom: 12px;
-}
+.cta-section h2 { font-size: clamp(22px, 4vw, 32px); color: var(--navy); margin-bottom: 12px; }
 .cta-section p { color: var(--gray-600); margin-bottom: 32px; font-size: 15px; }
-.cta-btn {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: var(--gold); color: #fff; font-family: 'Sora',sans-serif;
-  font-size: 16px; font-weight: 600; padding: 16px 36px;
-  border-radius: 60px; border: none; cursor: pointer; text-decoration: none;
-  box-shadow: 0 8px 30px rgba(212,149,42,0.35);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
+.cta-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: #fff; font-family: 'Sora',sans-serif; font-size: 16px; font-weight: 600; padding: 16px 36px; border-radius: 60px; border: none; cursor: pointer; text-decoration: none; box-shadow: 0 8px 30px rgba(212,149,42,0.35); transition: transform 0.2s, box-shadow 0.2s; }
 .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(212,149,42,0.45); }
-.replay-btn {
-  display: inline-flex; align-items: center; gap: 8px; margin-top: 16px;
-  background: transparent; color: var(--navy); font-family: 'Sora',sans-serif;
-  font-size: 14px; font-weight: 500; padding: 12px 24px;
-  border-radius: 60px; border: 2px solid var(--gray-200); cursor: pointer;
-  transition: border-color 0.2s;
-}
+.replay-btn { display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; background: transparent; color: var(--navy); font-family: 'Sora',sans-serif; font-size: 14px; font-weight: 500; padding: 12px 24px; border-radius: 60px; border: 2px solid var(--gray-200); cursor: pointer; transition: border-color 0.2s; }
 .replay-btn:hover { border-color: var(--gold); }
+.section-label { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; font-size: 12px; font-weight: 600; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; }
+.section-label::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, var(--gold-light), transparent); }
 
-/* === SECTION LABEL === */
-.section-label {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 16px; font-size: 12px; font-weight: 600;
-  color: var(--gold); text-transform: uppercase; letter-spacing: 1px;
-}
-.section-label::after {
-  content: ''; flex: 1; height: 1px; background: linear-gradient(to right, var(--gold-light), transparent);
-}
-
-/* === RESPONSIVE === */
 @media (max-width: 600px) {
   .demo-container { padding: 50px 12px 30px; }
   .phone-card { padding: 32px 20px; border-radius: 16px; }
@@ -457,10 +174,17 @@ h1, h2, h3 { font-family: 'Fraunces', serif; }
   .schedule-header { flex-direction: column; align-items: flex-start; gap: 4px; }
 }
 </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KQS3692C4Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-KQS3692C4Q');
+</script>
 </head>
 <body>
 
-<!-- PROGRESS BAR -->
 <div class="progress-bar-container" id="progressBar">
   <div class="progress-steps">
     <div class="progress-step" data-step="1"></div>
@@ -480,7 +204,6 @@ h1, h2, h3 { font-family: 'Fraunces', serif; }
   </div>
 </div>
 
-<!-- HERO -->
 <div class="hero" id="hero">
   <div class="hero-badge"><span class="dot"></span> Live Demo</div>
   <h1>Watch how <span>Aria</span> books<br>a real patient</h1>
@@ -491,179 +214,78 @@ h1, h2, h3 { font-family: 'Fraunces', serif; }
   </button>
 </div>
 
-<!-- DEMO -->
 <div class="demo-container" id="demoContainer">
-
-  <!-- STEP 1: INCOMING CALL -->
   <div class="demo-step" id="step1">
     <div class="section-label">Step 1 — Incoming Call</div>
     <div class="phone-card">
-      <div class="phone-icon-wrap ringing" id="phoneIcon">
-        <span class="phone-icon">📞</span>
-      </div>
+      <div class="phone-icon-wrap ringing" id="phoneIcon"><span class="phone-icon">📞</span></div>
       <div class="caller-id">Michael Chen</div>
       <div class="caller-number">(714) 555-0192</div>
-      <div class="call-status">
-        <span class="pulse animate"></span>
-        <span id="callStatusText">Incoming call...</span>
-      </div>
+      <div class="call-status"><span class="pulse animate"></span><span id="callStatusText">Incoming call...</span></div>
       <div class="aria-pickup" id="ariaPickup">✨ Aria answered the call</div>
     </div>
   </div>
 
-  <!-- STEP 2: INITIAL CONVERSATION -->
   <div class="demo-step" id="step2">
     <div class="section-label">Step 2 — Live Conversation</div>
     <div class="chat-window">
-      <div class="chat-header">
-        <div class="chat-avatar">A</div>
-        <div class="chat-header-info">
-          <div class="chat-name">Aria — AI Receptionist</div>
-          <div class="chat-sub">Dr. Vartanian's Office</div>
-        </div>
-        <div class="chat-live-dot">Live</div>
-      </div>
+      <div class="chat-header"><div class="chat-avatar">A</div><div class="chat-header-info"><div class="chat-name">Aria — AI Receptionist</div><div class="chat-sub">Dr. Vartanian's Office</div></div><div class="chat-live-dot">Live</div></div>
       <div class="chat-body" id="chat2Body"></div>
     </div>
   </div>
 
-  <!-- STEP 3: INSURANCE VERIFICATION -->
   <div class="demo-step" id="step3">
     <div class="section-label">Step 3 — Insurance Verification</div>
     <div class="verification-card">
-      <div class="verification-header">
-        <div class="v-icon">🛡️</div>
-        <div>
-          <h3>Insurance Verification</h3>
-          <p>Delta Dental — Member DD-9988-77654</p>
-        </div>
-      </div>
-      <div class="verification-spinner" id="verifySpinner">
-        <div class="spinner"></div>
-        <div class="spinner-text">Verifying insurance with Delta Dental...</div>
-      </div>
+      <div class="verification-header"><div class="v-icon">🛡️</div><div><h3>Insurance Verification</h3><p>Delta Dental — Member DD-9988-77654</p></div></div>
+      <div class="verification-spinner" id="verifySpinner"><div class="spinner"></div><div class="spinner-text">Verifying insurance with Delta Dental...</div></div>
       <div class="verification-results" id="verifyResults">
-        <div class="v-result-row">
-          <span class="v-label">Plan</span>
-          <span class="v-value">Delta Dental PPO</span>
-        </div>
-        <div class="v-result-row">
-          <span class="v-label">Status</span>
-          <span class="v-value status-active">Active</span>
-        </div>
-        <div class="v-result-row">
-          <span class="v-label">Deductible Remaining</span>
-          <span class="v-value">$50</span>
-        </div>
-        <div class="v-result-row">
-          <span class="v-label">Crown Coverage</span>
-          <span class="v-value">50% after deductible</span>
-        </div>
-        <div class="v-result-row">
-          <span class="v-label">Est. Patient Cost</span>
-          <span class="v-value highlight">$475</span>
-        </div>
+        <div class="v-result-row"><span class="v-label">Plan</span><span class="v-value">Delta Dental PPO</span></div>
+        <div class="v-result-row"><span class="v-label">Status</span><span class="v-value status-active">Active</span></div>
+        <div class="v-result-row"><span class="v-label">Deductible Remaining</span><span class="v-value">$50</span></div>
+        <div class="v-result-row"><span class="v-label">Crown Coverage</span><span class="v-value">50% after deductible</span></div>
+        <div class="v-result-row"><span class="v-label">Est. Patient Cost</span><span class="v-value highlight">$475</span></div>
       </div>
     </div>
-    <!-- Aria message after verification -->
     <div style="margin-top:20px;">
       <div class="chat-window">
-        <div class="chat-header">
-          <div class="chat-avatar">A</div>
-          <div class="chat-header-info">
-            <div class="chat-name">Aria — AI Receptionist</div>
-            <div class="chat-sub">Dr. Vartanian's Office</div>
-          </div>
-          <div class="chat-live-dot">Live</div>
-        </div>
+        <div class="chat-header"><div class="chat-avatar">A</div><div class="chat-header-info"><div class="chat-name">Aria — AI Receptionist</div><div class="chat-sub">Dr. Vartanian's Office</div></div><div class="chat-live-dot">Live</div></div>
         <div class="chat-body" id="chat3Body"></div>
       </div>
     </div>
   </div>
 
-  <!-- STEP 4: BOOKING -->
   <div class="demo-step" id="step4">
     <div class="section-label">Step 4 — Appointment Booking</div>
     <div class="chat-window">
-      <div class="chat-header">
-        <div class="chat-avatar">A</div>
-        <div class="chat-header-info">
-          <div class="chat-name">Aria — AI Receptionist</div>
-          <div class="chat-sub">Dr. Vartanian's Office</div>
-        </div>
-        <div class="chat-live-dot">Live</div>
-      </div>
+      <div class="chat-header"><div class="chat-avatar">A</div><div class="chat-header-info"><div class="chat-name">Aria — AI Receptionist</div><div class="chat-sub">Dr. Vartanian's Office</div></div><div class="chat-live-dot">Live</div></div>
       <div class="chat-body" id="chat4Body"></div>
     </div>
   </div>
 
-  <!-- STEP 5: PAYMENT -->
   <div class="demo-step" id="step5">
     <div class="section-label">Step 5 — Payment Collection</div>
     <div class="chat-window">
-      <div class="chat-header">
-        <div class="chat-avatar">A</div>
-        <div class="chat-header-info">
-          <div class="chat-name">Aria — AI Receptionist</div>
-          <div class="chat-sub">Dr. Vartanian's Office</div>
-        </div>
-        <div class="chat-live-dot">Live</div>
-      </div>
+      <div class="chat-header"><div class="chat-avatar">A</div><div class="chat-header-info"><div class="chat-name">Aria — AI Receptionist</div><div class="chat-sub">Dr. Vartanian's Office</div></div><div class="chat-live-dot">Live</div></div>
       <div class="chat-body" id="chat5Body"></div>
     </div>
     <div id="paymentArea"></div>
   </div>
 
-  <!-- STEP 6: SCHEDULE -->
   <div class="demo-step" id="step6">
     <div class="section-label">Step 6 — Schedule Updated</div>
     <div class="schedule-card">
-      <div class="schedule-header">
-        <h3>📅 Dr. Vartanian's Schedule</h3>
-        <span class="schedule-date" id="scheduleDate"></span>
-      </div>
+      <div class="schedule-header"><h3>📅 Dr. Vartanian's Schedule</h3><span class="schedule-date" id="scheduleDate"></span></div>
       <div class="schedule-body">
-        <div class="appt-row">
-          <span class="appt-time">9:00 AM</span>
-          <span class="appt-name">Sarah Johnson</span>
-          <span class="appt-type">Cleaning</span>
-        </div>
-        <div class="appt-row">
-          <span class="appt-time">10:30 AM</span>
-          <span class="appt-name">David Park</span>
-          <span class="appt-type">Root Canal</span>
-        </div>
-        <div class="appt-row">
-          <span class="appt-time">12:00 PM</span>
-          <span class="appt-name">Emily Rodriguez</span>
-          <span class="appt-type">Filling</span>
-        </div>
-        <div class="appt-row">
-          <span class="appt-time">1:30 PM</span>
-          <span class="appt-name">James Wilson</span>
-          <span class="appt-type">Consultation</span>
-        </div>
-        <div class="appt-row">
-          <span class="appt-time">2:00 PM</span>
-          <span class="appt-name">Lisa Thompson</span>
-          <span class="appt-type">Whitening</span>
-        </div>
-        <div class="appt-row">
-          <span class="appt-time">3:30 PM</span>
-          <span class="appt-name">Robert Kim</span>
-          <span class="appt-type">Crown Check</span>
-        </div>
-        <!-- NEW APPOINTMENT -->
-        <div class="appt-row new-appt" id="newAppt">
-          <span class="appt-time">4:00 PM</span>
-          <span class="appt-name" style="font-weight:700;color:var(--navy)">Michael Chen</span>
-          <span class="appt-type" style="color:var(--gold);font-weight:600">Crown</span>
-          <span class="appt-paid">$475 Paid ✓</span>
-          <span class="appt-new-badge">New</span>
-        </div>
+        <div class="appt-row"><span class="appt-time">9:00 AM</span><span class="appt-name">Sarah Johnson</span><span class="appt-type">Cleaning</span></div>
+        <div class="appt-row"><span class="appt-time">10:30 AM</span><span class="appt-name">David Park</span><span class="appt-type">Root Canal</span></div>
+        <div class="appt-row"><span class="appt-time">12:00 PM</span><span class="appt-name">Emily Rodriguez</span><span class="appt-type">Filling</span></div>
+        <div class="appt-row"><span class="appt-time">1:30 PM</span><span class="appt-name">James Wilson</span><span class="appt-type">Consultation</span></div>
+        <div class="appt-row"><span class="appt-time">2:00 PM</span><span class="appt-name">Lisa Thompson</span><span class="appt-type">Whitening</span></div>
+        <div class="appt-row"><span class="appt-time">3:30 PM</span><span class="appt-name">Robert Kim</span><span class="appt-type">Crown Check</span></div>
+        <div class="appt-row new-appt" id="newAppt"><span class="appt-time">4:00 PM</span><span class="appt-name" style="font-weight:700;color:var(--navy)">Michael Chen</span><span class="appt-type" style="color:var(--gold);font-weight:600">Crown</span><span class="appt-paid">$475 Paid ✓</span><span class="appt-new-badge">New</span></div>
       </div>
     </div>
-
     <div class="auto-actions" id="autoActions">
       <h4>Automated Actions</h4>
       <div class="auto-action" data-idx="0"><span class="aa-check">✓</span> SMS confirmation sent to (714) 555-0192</div>
@@ -675,7 +297,6 @@ h1, h2, h3 { font-family: 'Fraunces', serif; }
     </div>
   </div>
 
-  <!-- CTA -->
   <div class="cta-section" id="ctaSection">
     <h2>That took Aria 47 seconds.</h2>
     <p>No hold times. No missed calls. No insurance headaches.<br>Every call answered, every patient booked.</p>
@@ -812,20 +433,7 @@ async function startDemo() {
   await typeMessage(c5, "Would you like to pay the $475 now to secure your appointment? I can take a card over the phone.", 'aria', 1600);
   await typeMessage(c5, "Sure, my card is...", 'patient', 1000);
 
-  pa.innerHTML = `<div class="payment-card">
-    <div class="payment-processing" id="payProcessing">
-      <div class="spinner"></div>
-      <div>
-        <div style="font-weight:600;font-size:14px;color:var(--navy)">Processing payment...</div>
-        <div style="font-size:12px;color:var(--gray-600);margin-top:2px">Visa •••• 4821 — $475.00</div>
-      </div>
-    </div>
-    <div class="payment-success" id="paySuccess">
-      <div class="payment-check">✓</div>
-      <div class="payment-amount">$475.00</div>
-      <div class="payment-label">Payment processed successfully</div>
-    </div>
-  </div>`;
+  pa.innerHTML = '<div class="payment-card"><div class="payment-processing" id="payProcessing"><div class="spinner"></div><div><div style="font-weight:600;font-size:14px;color:var(--navy)">Processing payment...</div><div style="font-size:12px;color:var(--gray-600);margin-top:2px">Visa •••• 4821 — $475.00</div></div></div><div class="payment-success" id="paySuccess"><div class="payment-check">✓</div><div class="payment-amount">$475.00</div><div class="payment-label">Payment processed successfully</div></div></div>';
 
   await wait(2200);
   document.getElementById('payProcessing').style.display = 'none';
