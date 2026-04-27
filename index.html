@@ -275,5 +275,6 @@ homeAudio.addEventListener('timeupdate',function(){
 homeAudio.addEventListener('loadedmetadata',function(){document.getElementById('homeTotalTime').textContent=fmt(homeAudio.duration)});
 homeAudio.addEventListener('ended',function(){homeIsPlaying=false;document.getElementById('homePlayIcon').style.display='block';document.getElementById('homePauseIcon').style.display='none';document.getElementById('homeLiveDot').innerHTML='<span style="width:6px;height:6px;border-radius:50%;background:var(--amber-light)"></span>Ended'});
 </script>
-<script src="https://aria-backend-production-8458.up.railway.app/aria-widget.js" data-client="aria-demo"></script>
+<!-- TEMP: Widget removed pending aria-demo configuration -->
+<!-- <script src="https://aria-backend-production-8458.up.railway.app/aria-widget.js" data-client="aria-demo"></script> -->
 </body></html>
