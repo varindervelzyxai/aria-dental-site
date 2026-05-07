@@ -245,6 +245,49 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="objection-card reveal reveal-delay-10"><div class="q">"What happens during outages?"</div><div class="a">Calls failover to your existing voicemail or forward number, so you never lose a patient to dead air. Status page is public. Practices on Aria today see 99.95%+ uptime; our infra runs on the same cloud your bank does.</div></div>
 <div class="objection-card reveal reveal-delay-11"><div class="q">"How do we see what Aria is doing?"</div><div class="a">Your admin dashboard shows every appointment, conversation, lead, insurance check, and payment in real time. Weekly email reports show exactly how much revenue Aria generated. Full visibility, full control.</div></div>
 </div></div></section>
+
+<!-- LEAD MAGNET — buyers guide (Batch 3) -->
+<style>
+.lead-magnet-section{padding:80px 0;background:var(--cream)}
+.lead-magnet-card{max-width:780px;margin:0 auto;background:linear-gradient(135deg,rgba(212,149,42,0.08),rgba(212,149,42,0.02));border:1px solid rgba(212,149,42,0.25);border-radius:var(--radius-lg);padding:44px 48px;display:grid;grid-template-columns:1.1fr 1fr;gap:36px;align-items:center}
+.lead-magnet-card .lm-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:var(--amber);margin-bottom:10px}
+.lead-magnet-card h3{font-family:'Fraunces',serif;font-size:26px;font-weight:600;line-height:1.2;color:var(--charcoal);margin-bottom:10px}
+.lead-magnet-card p{font-size:14px;color:var(--charcoal-50);line-height:1.6;margin-bottom:0}
+.lead-magnet-form{display:flex;flex-direction:column;gap:10px}
+.lead-magnet-form label{font-size:11px;font-weight:600;color:var(--charcoal-70);letter-spacing:.04em;text-transform:uppercase}
+.lead-magnet-form input{padding:12px 14px;border:1px solid var(--border);border-radius:var(--radius-sm);font-family:'Sora',sans-serif;font-size:14px;background:#fff;outline:none;transition:border-color .2s}
+.lead-magnet-form input:focus{border-color:var(--amber)}
+.lead-magnet-form button{padding:13px 18px;background:var(--amber);color:#fff;border:none;border-radius:var(--radius-sm);font-family:'Sora',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:background .2s}
+.lead-magnet-form button:hover{background:var(--amber-dark)}
+.lead-magnet-form .lm-priv{font-size:11px;color:var(--charcoal-50);font-style:italic;line-height:1.45;margin-top:4px}
+.lead-magnet-form .lm-microcopy{font-size:11px;color:var(--charcoal-50);margin-top:-4px}
+.lead-magnet-form .lm-error{display:none;color:var(--red);font-size:12px;margin-top:4px}
+.lead-magnet-form .lm-success{display:none;font-size:13px;color:var(--sage-deep);font-weight:500;padding:12px;background:rgba(74,124,89,0.08);border-radius:var(--radius-sm);text-align:center}
+@media(max-width:720px){.lead-magnet-card{grid-template-columns:1fr;padding:32px 28px;gap:24px}}
+</style>
+<section class="lead-magnet-section">
+<div class="container">
+<div class="lead-magnet-card reveal">
+<div>
+<div class="lm-label">Free resource · PDF</div>
+<h3>AI Receptionist Buyer's Guide for Dental Practices</h3>
+<p>17 pages. What to ask vendors, the 6 ways AI receptionists fail in dental, and a side-by-side scoring sheet you can use in your demo calls. Written for owners and office managers — no fluff.</p>
+</div>
+<form class="lead-magnet-form" data-asset="buyers-guide" novalidate>
+<label for="lm-email-bg">Work email</label>
+<input id="lm-email-bg" type="email" name="email" placeholder="you@yourpractice.com" required aria-describedby="lm-microcopy-bg">
+<p class="lm-microcopy" id="lm-microcopy-bg">We respond within 24 hours. No marketing spam.</p>
+<button type="submit">Email me the guide →</button>
+<p class="lm-priv">We email it once. No nurture spam unless you opt in.</p>
+<p class="lm-error" role="alert">That email doesn't look right — try again?</p>
+<div class="lm-success" role="status">✓ On its way. Check your inbox in a few minutes.</div>
+</form>
+</div>
+</div>
+</section>
+<!-- TODO: PDF asset for buyers-guide -->
+<!-- /LEAD MAGNET -->
+
 <section class="cta-section"><div class="container cta-content"><div class="section-label">Ready?</div><h2>Stop losing patients to voicemail.<br>Let Aria <em>close them.</em></h2><p>30-minute demo on your website. We respond within 24 hours. No commitment.</p><div class="cta-buttons"><a href="/contact" class="btn btn-white btn-lg">Book a Demo →</a><a href="/roi-calculator" class="btn btn-lg" style="background:rgba(255,255,255,0.15);color:#fff;border:1.5px solid rgba(255,255,255,0.3)">Calculate Your ROI</a></div></div></section>
 <!-- FIX 3: Blog link added to Company column -->
 <footer><div class="container"><div class="footer-top">
@@ -325,7 +368,45 @@ homeAudio.addEventListener('timeupdate',function(){
 /* FIX 4: Complete loadedmetadata + ended listeners */
 homeAudio.addEventListener('loadedmetadata',function(){document.getElementById('homeTotalTime').textContent=fmt(homeAudio.duration)});
 homeAudio.addEventListener('ended',function(){homeIsPlaying=false;document.getElementById('homePlayIcon').style.display='block';document.getElementById('homePauseIcon').style.display='none';document.getElementById('homeLiveDot').innerHTML='<span style="width:6px;height:6px;border-radius:50%;background:var(--amber-light)"></span>Ended'});
+/* LEAD MAGNET FORM HANDLER (Batch 3) */
+document.querySelectorAll('.lead-magnet-form').forEach(function(form){
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var input = form.querySelector('input[type=email]');
+    var err = form.querySelector('.lm-error');
+    var ok = form.querySelector('.lm-success');
+    var btn = form.querySelector('button');
+    var asset = form.getAttribute('data-asset') || '';
+    var email = (input.value || '').trim();
+    var valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    if (!valid){ err.style.display='block'; input.focus(); return; }
+    err.style.display='none';
+    btn.textContent = 'Sending…'; btn.disabled = true;
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({event:'lead_magnet_capture', asset:asset, email_domain: email.split('@')[1] || ''});
+    /* TODO: wire to /api/lead-magnet?asset=<slug> — using web3forms as interim transport */
+    fetch('https://api.web3forms.com/submit', {
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body: JSON.stringify({
+        access_key:'c4d6ea77-d9c8-44a7-b3df-8de035aa3da9',
+        subject:'Lead magnet request — '+asset,
+        from_name:'Aria Lead Magnet',
+        email: email,
+        message:'Lead magnet asset requested: '+asset+'\nEmail: '+email
+      })
+    }).then(function(r){return r.json()}).then(function(d){
+      form.querySelectorAll('input,button,.lm-microcopy,.lm-priv').forEach(function(el){el.style.display='none'});
+      ok.style.display='block';
+    }).catch(function(){
+      btn.textContent='Email me the guide →'; btn.disabled=false;
+      err.textContent='Something went wrong. Email hello@ariadental.ai and we\'ll send it directly.';
+      err.style.display='block';
+    });
+  });
+});
 </script>
+<script src="/exit-intent.js" defer></script>
 <!-- TEMP: Widget removed pending aria-demo configuration -->
 <!-- <script src="https://aria-backend-production-8458.up.railway.app/aria-widget.js" data-client="aria-demo"></script> -->
 </body></html>

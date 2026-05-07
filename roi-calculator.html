@@ -77,6 +77,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .email-capture-form button{padding:12px 20px;background:var(--amber);color:#fff;border:none;border-radius:var(--radius-sm);font-family:'Sora',sans-serif;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;transition:background .2s}
 .email-capture-form button:hover{background:var(--amber-light)}
 .email-sent{display:none;color:var(--amber-light);font-size:13px;font-weight:500;margin-top:8px}
+.privacy-note{font-size:11px;color:rgba(255,255,255,0.4);margin-top:10px;line-height:1.45;font-style:italic}
+/* HEADLINE NUMBERS — visceral, the first thing someone sees */
+.headline-numbers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 28px}
+.headline-num{background:rgba(212,149,42,0.12);border:1px solid rgba(212,149,42,0.28);border-radius:var(--radius-sm);padding:18px 14px;text-align:center}
+.headline-num .big{font-family:'Fraunces',serif;font-size:clamp(20px,2.6vw,28px);font-weight:700;color:var(--amber-light);line-height:1.05;display:block;letter-spacing:-.01em}
+.headline-num .lbl{font-size:11px;color:rgba(255,255,255,0.65);font-weight:500;letter-spacing:.04em;text-transform:uppercase;margin-top:6px;display:block;line-height:1.3}
+@media(max-width:520px){.headline-numbers{grid-template-columns:1fr;gap:10px}}
+/* TOOLTIP HINTS for labels */
+.label-hint{display:inline-block;width:14px;height:14px;border-radius:50%;background:var(--charcoal-50);color:#fff;font-size:9px;font-weight:700;text-align:center;line-height:14px;margin-left:6px;cursor:help;font-family:'Sora',sans-serif;vertical-align:middle}
+.slider-group label{position:relative}
+.slider-group .hint-text{display:none;position:absolute;left:0;top:100%;margin-top:6px;padding:10px 12px;background:var(--charcoal);color:#fff;font-size:11px;font-weight:400;line-height:1.5;border-radius:var(--radius-sm);max-width:280px;z-index:10;box-shadow:var(--shadow-md);text-transform:none;letter-spacing:0}
+.slider-group label:hover .hint-text,.slider-group label:focus-within .hint-text{display:block}
+/* SOCIAL SHARE STRIP */
+.share-strip{margin-top:16px;padding:18px 20px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius-sm);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.share-strip .share-label{font-size:12px;color:rgba(255,255,255,0.55);font-weight:500;letter-spacing:.04em;text-transform:uppercase;flex:1 1 100%;margin-bottom:4px}
+.share-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:50px;color:#fff;font-family:'Sora',sans-serif;font-size:12px;font-weight:500;text-decoration:none;transition:background .2s,border-color .2s}
+.share-btn:hover{background:rgba(212,149,42,0.18);border-color:rgba(212,149,42,0.45);color:var(--amber-light)}
 /* METHODOLOGY */
 .methodology{max-width:800px;margin:0 auto}
 .methodology h3{font-family:'Fraunces',serif;font-size:clamp(22px,2.5vw,30px);font-weight:600;margin-bottom:20px}
@@ -132,16 +149,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="calc-grid">
 <div class="calc-inputs">
 <h3>Your practice numbers</h3>
-<div class="slider-group"><label>Receptionist annual salary <span id="salaryDisplay">$45,000</span></label><input type="range" class="slider" id="salary" min="30000" max="80000" step="1000" value="45000"></div>
-<div class="slider-group"><label>Inbound calls per day <span id="callsDisplay">30</span></label><input type="range" class="slider" id="calls" min="10" max="80" step="5" value="30"></div>
-<div class="slider-group"><label>% of calls that go unanswered <span id="missedDisplay">35%</span></label><input type="range" class="slider" id="missed" min="10" max="70" step="5" value="35"></div>
-<div class="slider-group"><label>Lifetime value per new patient <span id="patientValueDisplay">$1,200</span></label><input type="range" class="slider" id="patientValue" min="500" max="3000" step="100" value="1200"></div>
-<div class="slider-group"><label>% of answered calls that book <span id="conversionDisplay">25%</span></label><input type="range" class="slider" id="conversion" min="10" max="50" step="5" value="25"></div>
-<div class="slider-group"><label>Working days per year <span id="daysDisplay">250</span></label><input type="range" class="slider" id="days" min="200" max="300" step="10" value="250"></div>
+<div class="slider-group"><label><span>Receptionist annual salary<span class="label-hint" tabindex="0" role="img" aria-label="Hint">i</span><span class="hint-text">Base wage before benefits. We multiply by 1.3 to account for taxes, PTO, and health benefits — the real loaded cost.</span></span> <span id="salaryDisplay">$45,000</span></label><input type="range" class="slider" id="salary" min="30000" max="80000" step="1000" value="45000"></div>
+<div class="slider-group"><label><span>Inbound calls per day<span class="label-hint" tabindex="0" role="img" aria-label="Hint">i</span><span class="hint-text">Total inbound — new patients, existing patients, insurance questions, after-hours overflow.</span></span> <span id="callsDisplay">30</span></label><input type="range" class="slider" id="calls" min="10" max="80" step="5" value="30"></div>
+<div class="slider-group"><label><span>% of calls that go unanswered<span class="label-hint" tabindex="0" role="img" aria-label="Hint">i</span><span class="hint-text">Industry average is 25–40% during business hours, climbs higher after-hours and at lunch. Default 35%.</span></span> <span id="missedDisplay">35%</span></label><input type="range" class="slider" id="missed" min="10" max="70" step="5" value="35"></div>
+<div class="slider-group"><label><span>Lifetime value per new patient<span class="label-hint" tabindex="0" role="img" aria-label="Hint">i</span><span class="hint-text">First treatment plus retention. Typical GP: $1,200–$1,800. Specialty (perio, ortho, implants): $3k+.</span></span> <span id="patientValueDisplay">$1,200</span></label><input type="range" class="slider" id="patientValue" min="500" max="3000" step="100" value="1200"></div>
+<div class="slider-group"><label><span>% of answered calls that book<span class="label-hint" tabindex="0" role="img" aria-label="Hint">i</span><span class="hint-text">Of the calls your team does answer, what percent end with a booked appointment? Most practices land 20–35%.</span></span> <span id="conversionDisplay">25%</span></label><input type="range" class="slider" id="conversion" min="10" max="50" step="5" value="25"></div>
+<div class="slider-group"><label><span>Working days per year<span class="label-hint" tabindex="0" role="img" aria-label="Hint">i</span><span class="hint-text">Standard practice runs 240–260 days. Adjust for holidays and CE days off.</span></span> <span id="daysDisplay">250</span></label><input type="range" class="slider" id="days" min="200" max="300" step="10" value="250"></div>
 </div>
 <div class="calc-results">
 <div class="results-card">
-<h3>Your annual front desk cost</h3>
+<h3>What Aria recovers for you</h3>
+<div class="headline-numbers" aria-label="Headline ROI numbers">
+<div class="headline-num"><span class="big" id="headlineMonthly">$6,562</span><span class="lbl">/month recovered</span></div>
+<div class="headline-num"><span class="big" id="headlinePatients">66</span><span class="lbl">new patients/year</span></div>
+<div class="headline-num"><span class="big" id="headlineHours">11</span><span class="lbl">hrs/week freed</span></div>
+</div>
+<h3 style="margin-top:8px;font-size:18px;color:rgba(255,255,255,0.85)">Your current annual cost</h3>
 <div class="result-row"><span class="result-label">Receptionist salary + benefits</span><span class="result-value negative" id="costSalary">$58,500</span></div>
 <div class="result-row"><span class="result-label">Revenue lost from missed calls</span><span class="result-value negative" id="costMissed">$78,750</span></div>
 <div class="result-row"><span class="result-label">No-shows & scheduling gaps</span><span class="result-value negative" id="costNoShows">$36,000</span></div>
@@ -149,19 +172,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div style="margin-top:24px;padding:20px;background:rgba(212,149,42,0.12);border-radius:var(--radius-sm);border:1px solid rgba(212,149,42,0.25)"><div class="result-row" style="border:none;padding:0"><span class="result-label" style="color:var(--amber-light)">Patients lost per year</span><span class="result-value" style="font-size:28px" id="patientsLost">66</span></div></div>
 <p class="result-note">* Salary includes ~30% for benefits, taxes, PTO. No-show estimate based on industry average of 12% with $300 average visit value.</p>
 <div class="results-cta">
-<a href="/contact" class="btn btn-primary btn-lg">Book a Demo →</a>
+<a href="/contact" class="btn btn-primary btn-lg" id="roiBookDemoBtn">Book a demo to recover this →</a>
 <p style="font-size:13px;color:var(--charcoal-50);margin-top:12px">Aria pays for itself with 1–2 extra patients per month. Everything after is upside.</p>
 </div>
 
-<!-- EMAIL CAPTURE -->
+<!-- EMAIL GATE — printable scorecard -->
+<!-- TODO: wire to email tool — currently posts via web3forms; ideally /api/roi-report once that endpoint exists -->
 <div class="email-capture" id="emailCapture">
-<h4>📧 Email my results</h4>
-<p>Get your personalized ROI report. Share with your partners or review later. No newsletter spam.</p>
+<h4>📄 Want this as a printable scorecard?</h4>
+<p>We'll email a one-page PDF you can share with partners or sit on overnight.</p>
 <div class="email-capture-form" id="emailForm">
-<input type="email" id="roiEmail" placeholder="you@yourpractice.com" required>
-<button type="button" id="sendResultsBtn">Email My Report →</button>
+<input type="email" id="roiEmail" name="email" placeholder="you@yourpractice.com" aria-label="Work email" required>
+<button type="button" id="sendResultsBtn">Send my report →</button>
 </div>
+<p class="privacy-note">We email it once. No nurture spam unless you opt in.</p>
 <div class="email-sent" id="emailSent">✓ Sent. Check your inbox in the next few minutes.</div>
+</div>
+
+<!-- SOCIAL SHARE STRIP — one-click intent, no auto-fire -->
+<div class="share-strip" id="shareStrip" aria-label="Share your ROI">
+<span class="share-label">Share this scorecard</span>
+<a href="#" class="share-btn" id="shareTwitter" target="_blank" rel="noopener" aria-label="Share on X (Twitter)">𝕏 Tweet this</a>
+<a href="#" class="share-btn" id="shareLinkedIn" target="_blank" rel="noopener" aria-label="Share on LinkedIn">in Share to LinkedIn</a>
 </div>
 
 </div>
@@ -281,6 +313,28 @@ function calc(){
   document.getElementById('totalCost').textContent='$'+total.toLocaleString();
   document.getElementById('patientsLost').textContent=patientsLostPerYear.toLocaleString();
 
+  // Headline numbers — visceral output (no math change to existing model)
+  // Monthly recovered = revenue lost from missed calls / 12 (Aria captures these calls)
+  // Patients/year = patients lost (Aria books them)
+  // Hours/week freed = (calls/day × answered share × ~4 min/call) × 5 days / 60
+  // Front desk currently spends time on inbound triage — Aria handles that wholly.
+  var monthlyRecovered = Math.round(revenueLost/12);
+  var answeredCallsPerDay = calls * (1 - missed);
+  var hoursFreedPerWeek = Math.round((answeredCallsPerDay * 4 * 5) / 60);
+  document.getElementById('headlineMonthly').textContent='$'+monthlyRecovered.toLocaleString();
+  document.getElementById('headlinePatients').textContent=patientsLostPerYear.toLocaleString();
+  document.getElementById('headlineHours').textContent=hoursFreedPerWeek;
+
+  // Update social share intents with current numbers
+  var shareTxt = "Our practice is leaving $" + revenueLost.toLocaleString() + "/year on the table from missed calls. @ariadentalai";
+  var shareUrl = "https://www.ariadental.ai/roi-calculator";
+  var twHref = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(shareTxt) + "&url=" + encodeURIComponent(shareUrl);
+  var liHref = "https://www.linkedin.com/sharing/share-offsite/?url=" + encodeURIComponent(shareUrl);
+  var twEl = document.getElementById('shareTwitter');
+  var liEl = document.getElementById('shareLinkedIn');
+  if (twEl) twEl.href = twHref;
+  if (liEl) liEl.href = liHref;
+
   // GA4: fire roi_calculator_used once per session
   if (!roiFired) {
     roiFired = true;
@@ -324,6 +378,20 @@ document.getElementById('sendResultsBtn').addEventListener('click', function() {
       'Working days: ' + document.getElementById('daysDisplay').textContent
   };
 
+  // Fire dataLayer event with calculator inputs as event params (Batch 3)
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: 'roi_email_capture',
+    salary: +document.getElementById('salary').value,
+    calls_per_day: +document.getElementById('calls').value,
+    missed_pct: +document.getElementById('missed').value,
+    patient_value: +document.getElementById('patientValue').value,
+    conversion_pct: +document.getElementById('conversion').value,
+    working_days: +document.getElementById('days').value,
+    total_cost: document.getElementById('totalCost').textContent,
+    revenue_lost: document.getElementById('costMissed').textContent
+  });
+
   fetch('https://api.web3forms.com/submit', {
     method: 'POST',
     headers: {'Content-Type':'application/json','Accept':'application/json'},
@@ -336,13 +404,23 @@ document.getElementById('sendResultsBtn').addEventListener('click', function() {
       document.getElementById('emailSent').style.display = 'block';
       gtag('event', 'roi_results_emailed', { event_category: 'conversion', event_label: email });
     } else {
-      btn.textContent = 'Send Results →';
+      btn.textContent = 'Send my report →';
       btn.disabled = false;
     }
   })
   .catch(function(){
-    btn.textContent = 'Send Results →';
+    btn.textContent = 'Send my report →';
     btn.disabled = false;
+  });
+});
+
+// Track share-strip clicks (no auto-fire — clicks are user intent)
+['shareTwitter','shareLinkedIn'].forEach(function(id){
+  var el = document.getElementById(id);
+  if (!el) return;
+  el.addEventListener('click', function(){
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({event:'roi_share_click', network: id === 'shareTwitter' ? 'twitter' : 'linkedin'});
   });
 });
 </script>

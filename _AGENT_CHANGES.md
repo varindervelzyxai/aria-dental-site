@@ -319,3 +319,227 @@ For every modified file:
 `~/Downloads/aria-batch2-copy/` — 15 modified `.html` files plus this
 changelog (latest version copied at the end of the run).
 
+
+## 2026-05-07 — Batch 3: Conversion Infrastructure
+
+Goal of this batch: make the funnel actually work. Every visitor either
+converts, leaves an email, or self-segments. Built on top of the Batch 2
+copy. **No CSS file changes, no JSON-LD changes, no analytics ID changes,
+no `vercel.json` changes, no new HTML pages.** Inline `<style>` blocks
+were added per-page for the new patterns (lead-magnet card, headline
+numbers, share strip) since the brief disallows touching `styles.css`.
+
+### Files modified (5)
+
+| File | What changed |
+|---|---|
+| `roi-calculator.html` | Added 3 visceral headline output numbers ($/mo recovered, new patients/yr, hrs/wk freed) above the cost breakdown. Added inline tooltip hints on every input label (i icons, hover/focus reveal). Refactored existing email gate into a "printable scorecard" framing with new privacy microcopy ("We email it once. No nurture spam unless you opt in."). Wired `dataLayer.push({event:'roi_email_capture', ...})` with all 6 calculator inputs as event params. Added a social share strip (Tweet/LinkedIn) below results — uses `twitter.com/intent` and `linkedin.com/sharing/share-offsite`, prefilled with the user's revenue-lost number, no auto-fire. Inline post-result CTA text now reads "Book a demo to recover this →". Existing math + slider IDs untouched. TODO comment added: `<!-- TODO: wire to email tool -->`. |
+| `index.html` | Added a tinted lead-magnet card above the final CTA section ("AI Receptionist Buyer's Guide for Dental Practices (PDF)"), with email-capture form, privacy microcopy, error/success states. Form posts via web3forms as interim transport with `<!-- TODO: PDF asset for buyers-guide -->` and `<!-- TODO: wire to /api/lead-magnet?asset=<slug> -->` markers. Form fires `dataLayer.push({event:'lead_magnet_capture', asset:'buyers-guide', email_domain:...})`. Added `<script src="/exit-intent.js" defer>` reference before the (commented-out) widget loader. |
+| `dental-missed-calls-ai.html` | Same lead-magnet card pattern, asset slug `missed-call-worksheet`, headline "Missed Call Cost Worksheet". Added inline `<script>` handler for the form (page had no shared inline script previously). |
+| `dental-insurance-verification-ai.html` | Same lead-magnet card pattern, asset slug `verification-audit`, headline "Insurance Verification Time Audit". Added inline `<script>` handler. |
+| `contact.html` | Microcopy pass: "Email *" label → "Work email *". Added inline microcopy under email field: "We respond within 24 hours. No marketing spam." (Submit button + bottom trust line were already tightened in Batch 2.) |
+| `compare.html` | Added `<script src="/exit-intent.js" defer>` reference. No copy changes. |
+| `platform.html` | Added `<script src="/exit-intent.js" defer>` reference. No copy changes. |
+
+### Files created (4)
+
+| File | Purpose |
+|---|---|
+| `exit-intent.js` | Vanilla JS exit-intent modal. Self-contained styles (Fraunces headline, Sora body, cream bg, charcoal text, amber CTA — matches site palette). Fires once per session via `sessionStorage`. Cooldown: 4s after page load. Mouse-leave-to-top trigger + scroll-back-to-top safety net. Skips touch-primary devices (`hover: none` media query). Accessible: `role="dialog"`, `aria-modal="true"`, focus trap on Tab, Esc-dismiss, click-outside dismiss, X close button, "No thanks" dismiss link. Fires `dataLayer.push({event:'exit_intent_shown'})` on display and `event:'exit_intent_clicked'` when CTA clicked. CTA links to `/roi-calculator`. |
+| `email-sequences/welcome-post-demo.md` | 5-email pre-demo sequence (confirmation → expectations → social proof → 2hr reminder → no-show recovery). Voice from Batch 2 brand work — warm, direct, plain language, signs as a person. |
+| `email-sequences/nurture-educational.md` | 7-email educational drip over 10 days (Day 0/1/2/4/6/8/10) for lead-magnet downloaders who haven't booked. Topics: delivery + segmenting question, the missed-call audit method, "what AI receptionist actually means," HIPAA-in-60-seconds, what Aria does NOT do, one specific scenario, where-are-you. |
+| `email-sequences/reengagement-cold.md` | 4-email re-engagement sequence (Day 0/4/9/14) for 60-day-cold leads. Tonally honest; gets progressively more direct. Final email is a clean break with unsubscribe link. |
+
+### Lead magnet form pattern (shared across 3 pages)
+
+All three blocks share the same markup, styles, and JS handler:
+
+- Tinted gradient card (`linear-gradient(135deg,rgba(212,149,42,0.08),rgba(212,149,42,0.02))` on cream).
+- Two-column layout (description / form), collapses to one column under 720px.
+- "Work email" label with placeholder `you@yourpractice.com`.
+- Inline microcopy: *"We respond within 24 hours. No marketing spam."*
+- Privacy line: *"We email it once. No nurture spam unless you opt in."*
+- Error state: *"That email doesn't look right — try again?"* (inline `<p class="lm-error">`, hidden until invalid submit).
+- Success state: *"✓ On its way. Check your inbox in a few minutes."*
+- Form posts through web3forms (interim transport, same access key as the existing demo form) with subject "Lead magnet request — `<asset>`".
+- `dataLayer.push({event:'lead_magnet_capture', asset:'<slug>', email_domain:'<domain>'})` on submit.
+- `<!-- TODO: PDF asset for <slug> -->` and `<!-- TODO: wire to /api/lead-magnet?asset=<slug> -->` comments left for the human to replace.
+
+### ROI calculator — before/after on the visible result block
+
+**Before** — opened with a generic title and a list of negative costs:
+
+```
+Your annual front desk cost
+  Receptionist salary + benefits        $58,500
+  Revenue lost from missed calls        $78,750
+  No-shows & scheduling gaps            $36,000
+  ────────────────────────────────
+  Total annual cost                    $173,250
+  Patients lost per year                    66
+[Book a Demo →]
+[Email my results — Send Results →]
+```
+
+**After** — opens with three visceral, positively-framed headline numbers
+(what Aria recovers), then drops into the cost breakdown for context:
+
+```
+What Aria recovers for you
+  ┌─────────────┬─────────────┬─────────────┐
+  │  $6,562     │     66      │     11      │
+  │ /MONTH      │ NEW         │ HRS/WEEK    │
+  │ RECOVERED   │ PATIENTS/YR │ FREED       │
+  └─────────────┴─────────────┴─────────────┘
+
+Your current annual cost
+  Receptionist salary + benefits        $58,500
+  Revenue lost from missed calls        $78,750
+  No-shows & scheduling gaps            $36,000
+  Total annual cost                    $173,250
+  Patients lost per year                    66
+
+[Book a demo to recover this →]
+
+📄 Want this as a printable scorecard?
+   We'll email a one-page PDF you can share with partners or sit on overnight.
+   [you@yourpractice.com] [Send my report →]
+   We email it once. No nurture spam unless you opt in.
+
+Share this scorecard
+   [𝕏 Tweet this]   [in Share to LinkedIn]
+```
+
+### Microcopy pass — what changed and what didn't
+
+The contact form was already heavily tightened in Batch 2 (submit button
+"Book My Demo →", trust microcopy under it, success state copy warmer).
+The remaining edits in this batch:
+
+- `contact.html`: "Email *" → "Work email *", added inline microcopy
+  *"We respond within 24 hours. No marketing spam."* under the email field.
+- All 3 new lead-magnet forms: ship with "Work email" label and the same
+  inline microcopy + privacy line, by construction.
+- ROI calculator email-gate button: "Send Results →" → "Send my report →"
+  (matches the new "scorecard" framing).
+- Demo utility pages (`demo-booking`, `demo-gcal`, `demo-reschedule`)
+  have no email forms — nothing to change there.
+- `demo.html` is a content/transcript page, no form.
+
+### Success-state copy spec (for the human to wire)
+
+For each form, when a successful submit returns:
+
+- **Contact form (`contact.html`)** — already wired.
+  - On success: "Got it. Talk soon." + "We'll be in touch within 24 hours to find a demo time. Check your inbox for confirmation."
+- **Lead-magnet forms** — wired (success div appears in place of the form).
+  - On success: "✓ On its way. Check your inbox in a few minutes."
+- **ROI scorecard email gate** — wired.
+  - On success: "✓ Sent. Check your inbox in the next few minutes."
+
+### Error-state copy spec (for the human to wire)
+
+- **Invalid email format** (all forms): *"That email doesn't look right — try again?"*
+- **Network/transport failure** (all forms): *"Something went wrong. Email hello@ariadental.ai and we'll send it directly."*
+- **Required field missing** (contact form): rely on browser-native validation; no custom copy needed.
+
+### Exit-intent modal — structure
+
+```html
+<div class="aei-overlay" role="dialog" aria-modal="true"
+     aria-labelledby="aei-headline" aria-describedby="aei-sub">
+  <div class="aei-modal" tabindex="-1">
+    <button class="aei-close" aria-label="Close">×</button>
+    <div class="aei-label">Before you go</div>
+    <h2 id="aei-headline" class="aei-headline">
+      Wait — see what your practice is losing
+    </h2>
+    <p id="aei-sub" class="aei-sub">
+      Plug in your call volume and case value. The 30-second calculator
+      shows exactly how much revenue is walking past your front desk
+      every week.
+    </p>
+    <a href="/roi-calculator" class="aei-cta" id="aei-cta">
+      Run the 30-second calculator →
+    </a>
+    <button class="aei-dismiss">No thanks, I'll keep losing patients</button>
+  </div>
+</div>
+```
+
+Visual style: cream `#FEFCF8` modal bg, `#1A1A2E` text, `#D4952A` CTA,
+Fraunces 30px headline, Sora 15px sub. 24px radius. Backdrop blur on
+`rgba(26,26,46,0.6)`. Slides in with a fade + 8px-pop keyframe.
+
+### What was NOT touched
+
+- `styles.css` — every new pattern is an inline `<style>` block per page.
+- `main.js` — ROI math is inside `roi-calculator.html`; the headline
+  numbers calc was added there, not in `main.js`.
+- `analytics-events.js` — new events (`lead_magnet_capture`, `roi_email_capture`,
+  `exit_intent_shown`, `exit_intent_clicked`, `roi_share_click`) are pushed
+  directly to `dataLayer` from inline scripts so the file stays a clean
+  9-event spec for GTM tag setup.
+- `vercel.json`, `sitemap.xml`, `robots.txt`, `site.webmanifest` — no changes.
+- All `<head>` content (titles, descriptions, OG/Twitter, canonical,
+  favicons, JSON-LD, GTM/Clarity) — no changes.
+- Existing slider IDs, form `name` attributes, web3forms access keys —
+  preserved.
+
+### TODOs left for the human
+
+1. **Create the 3 lead-magnet PDF/XLSX assets** referenced by the new forms.
+   Filenames: `buyers-guide.pdf`, `missed-call-worksheet.xlsx` (or PDF),
+   `verification-audit.pdf`. Marked with `<!-- TODO: PDF asset for <slug> -->`.
+2. **Wire the lead-magnet form endpoint.** Currently posts to web3forms;
+   ideal: a real `/api/lead-magnet?asset=<slug>` endpoint that emails the
+   asset back to the lead. Marked with `<!-- TODO: wire to /api/lead-magnet?asset=<slug> -->`.
+3. **Wire the ROI scorecard endpoint** (`/api/roi-report`). Same pattern.
+   Marked with `<!-- TODO: wire to email tool -->`.
+4. **Set up GTM event triggers** for the 5 new dataLayer events:
+   `lead_magnet_capture`, `roi_email_capture`, `roi_share_click`,
+   `exit_intent_shown`, `exit_intent_clicked`. Mark
+   `lead_magnet_capture` and `roi_email_capture` as conversions in GA4.
+5. **Paste the email sequences** from `email-sequences/*.md` into the ESP
+   you pick (Mailchimp, Klaviyo, Customer.io, etc.). Send delays and merge
+   tags are noted in each file.
+
+### Delivery (in-repo only — staging deferred per user)
+
+All Batch 3 changes were made in-place inside the repo at
+`~/Downloads/aria-dental-site-main 4/`. External drag-and-drop staging
+folders were not created; the user will run a separate staging pass with
+the appropriate mounts. The full Batch 3 surface lives at:
+
+- 7 modified `.html` files (listed in the table above) — in repo root.
+- `exit-intent.js` — in repo root.
+- `email-sequences/welcome-post-demo.md`,
+  `email-sequences/nurture-educational.md`,
+  `email-sequences/reengagement-cold.md` — new folder in repo root.
+  These are user-facing reference material for the ESP — not intended
+  to be served by Vercel. Add `email-sequences/` to `.vercelignore`
+  (or move them out of the repo) before deploying.
+- This `_AGENT_CHANGES.md` — updated.
+
+> **Note:** Two now-orphaned folders may exist at
+> `~/Downloads/aria-batch3-conversion/` and `~/Downloads/aria-batch3-emails/`
+> from an earlier (then-rescinded) staging step. The agent attempted to
+> remove them but the host filesystem refused; the user can delete them
+> manually, or use them as the post-task drag-and-drop bundle if convenient.
+
+### Verification
+
+For every modified file:
+1. `</head>` and `</body>` open/close intact (grep verified).
+2. New blocks were appended via `Edit`, which would error on stale state.
+3. ROI calculator: existing slider IDs (`salary`, `calls`, `missed`,
+   `patientValue`, `conversion`, `days`) and the `calc()` math preserved.
+   New headline numbers reuse the same computed values; only one new
+   derived metric (`hoursFreedPerWeek`) was added, computed from existing
+   `calls` and `missed` inputs.
+4. Lead-magnet forms: 3 instances, all share the same handler block.
+   Inline `<script>` blocks added on the 2 service pages (homepage already
+   had a closing `<script>` block).
+5. Exit-intent: only referenced from `index.html`, `compare.html`,
+   `platform.html` — verified by grep.
+
