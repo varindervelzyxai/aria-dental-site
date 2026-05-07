@@ -543,3 +543,144 @@ For every modified file:
 5. Exit-intent: only referenced from `index.html`, `compare.html`,
    `platform.html` — verified by grep.
 
+
+## 2026-05-07 — Batch 4: Content Engine
+
+Goal of this batch: build the editorial machine that drives organic traffic
+and ranks for buyer-intent keywords. **No CSS file changes, no JSON-LD
+schema-format changes on existing pages, no `vercel.json` changes, no
+existing blog post modifications, no homepage / service page changes.**
+All new pages use the same head pattern and inline `<style>` blocks as
+the existing blog posts (Batch 1's GTM/Clarity/GA4/OG/JSON-LD spec).
+
+### Files created (14)
+
+**12 new blog posts at repo root**, each ~1170-1590 visible words, full
+head pattern (GTM, Clarity, inline GA4, OG/Twitter, JSON-LD `Article` +
+`BreadcrumbList` + `Organization`, canonical, favicon refs, manifest,
+viewport, `analytics-events.js`), `datePublished: 2026-05-07`, author
+"Aria Dental Team", placeholder `og:image` at `/images/blog/<slug>.png`
+with `<!-- TODO: blog hero image -->` comment.
+
+| File | Topic | Visible words |
+|---|---|---|
+| `ai-receptionist-vs-front-desk-cost.html` | TLV, fully-loaded employee cost vs. AI receptionist | 1367 |
+| `hipaa-compliance-ai-dental-tools.html` | BAA, encryption, audit, vendor checklist | 1463 |
+| `reduce-dental-no-shows.html` | 9 tactics to cut no-shows under 5% | 1393 |
+| `dental-insurance-verification-faster.html` | 10 ways to compress verification | 1409 |
+| `front-desk-burnout-dental-practice.html` | Symptoms, costs, structural fixes | 1450 |
+| `after-hours-dental-call-coverage.html` | Voicemail vs. answering vs. AI matrix | 1176 |
+| `voice-ai-dental-buyers-guide.html` | Features, integration, contract terms | 1366 |
+| `aria-vs-arini-dentina-comparison.html` | Honest 4-way vendor comparison | 1280 |
+| `pms-integration-dental-ai.html` | Open Dental, Dentrix, Eaglesoft depth | 1589 |
+| `setup-ai-dental-receptionist-7-days.html` | Day-by-day rollout checklist | 1361 |
+| `dental-practice-marketing-roi-tracking.html` | UTM, GA4, call tracking, attribution | 1441 |
+| `recovering-revenue-missed-dental-appointments.html` | 5-stage recovery playbook | 1388 |
+
+**Plus 2 new evergreen pages:**
+
+| File | Purpose |
+|---|---|
+| `glossary.html` | 30 alphabetized dental + AI receptionist + PMS terms with `DefinedTermSet` JSON-LD; A-Z quick-jump nav, plain-language definitions, links to deeper reading. 1302 visible words. |
+| `who-we-help.html` | 5 persona blocks (Solo Owner, Office Manager, DSO Operations Lead, Specialty Owner, Startup Dentist) — each ~250-320 words covering daily reality, top 3 pains, success state, how Aria specifically helps, "If this is you →" CTA. `Audience` × 5 + `WebPage` JSON-LD. 1249 visible words. |
+
+**Total visible word count across 14 new pages: ~19,200 words.**
+
+### Files modified (2)
+
+| File | What changed |
+|---|---|
+| `blog.html` | Added 12 new blog cards inserted at the top of `.blog-grid` (matching the existing card pattern — `.blog-card`, `card-category`, `card-icon`, `card-date`, `read-more`), each dated "May 2026". Pre-existing 9 cards (April 2026) left in place below. Also added a "Related resources" tile block above the subscribe section linking to `/glossary`, `/who-we-help`, and `/roi-calculator`. No CSS file changes; the new card markup uses the existing classes. |
+| `email-sequences/content-calendar-2026.md` | New 12-month editorial calendar (May 2026 - April 2027) with monthly themes, 2-4 posts per month, distribution channel notes (LinkedIn, dental Facebook groups, Reddit r/Dentistry, Dentaltown, X, YouTube), email cadence, and standard repurposing template (each post → 1 LinkedIn carousel + 3 X posts + 1 YT short). Lives alongside the other email-sequence reference docs (`welcome-post-demo.md`, `nurture-educational.md`, `reengagement-cold.md`). Already covered by `.vercelignore` per Batch 3 instructions — not served by Vercel. |
+
+### Internal link graph
+
+- Every new blog post links to **at least 2 other new posts** (cross-linking rule satisfied; range 2-4 cross-post links per post).
+- Every new blog post links to **at least 2 service/funnel pages** (range 12-13 service-page links per post — well above the rule's floor).
+- Total internal links across the 14 new pages: **271** (link audit confirms all route-based links resolve to a real `.html` file on disk; the 4 unresolved targets are favicon assets that are referenced in the head pattern and tracked by Batch 1's separate FAVICONS_TODO).
+- The "Related reading" block at the bottom of each post drives ≥3 internal links per post.
+
+### URLs to add to `sitemap.xml`
+
+The 14 new public URLs, all with `lastmod 2026-05-07`. (We did not modify
+`sitemap.xml` per the brief — flagging here for the human to add.)
+
+```
+https://www.ariadental.ai/ai-receptionist-vs-front-desk-cost
+https://www.ariadental.ai/hipaa-compliance-ai-dental-tools
+https://www.ariadental.ai/reduce-dental-no-shows
+https://www.ariadental.ai/dental-insurance-verification-faster
+https://www.ariadental.ai/front-desk-burnout-dental-practice
+https://www.ariadental.ai/after-hours-dental-call-coverage
+https://www.ariadental.ai/voice-ai-dental-buyers-guide
+https://www.ariadental.ai/aria-vs-arini-dentina-comparison
+https://www.ariadental.ai/pms-integration-dental-ai
+https://www.ariadental.ai/setup-ai-dental-receptionist-7-days
+https://www.ariadental.ai/dental-practice-marketing-roi-tracking
+https://www.ariadental.ai/recovering-revenue-missed-dental-appointments
+https://www.ariadental.ai/glossary
+https://www.ariadental.ai/who-we-help
+```
+
+### TODO markers left for the human
+
+- **`<!-- TODO: blog hero image -->`** — 14 markers, one per new page, pointing at `/images/blog/<slug>.png`. Generate or commission these (1200×630 PNG to match Batch 1's OG image dimensions).
+- **`<!-- TODO: cite -->`** — 3 markers across the 12 posts (in `ai-receptionist-vs-front-desk-cost.html`, `front-desk-burnout-dental-practice.html`, `after-hours-dental-call-coverage.html`). These flag specific stat ranges where we cited general "industry surveys" / "operator estimates" rather than a named primary source. Either substitute a named source or leave as-is (the surrounding language is already qualified with "operator surveys" / "industry estimates put...").
+- **Sitemap update** — append the 14 URLs above to `sitemap.xml` with `lastmod 2026-05-07`.
+
+### What the batch deliberately did NOT change
+
+- No existing blog post (`why-dental-practices-miss-calls`,
+  `do-automated-reminders-reduce-dental-no-shows`,
+  `how-much-do-missed-calls-cost-dental-practice`) — all preserved per spec.
+- No homepage / service / funnel page copy or DOM.
+- No `styles.css`, `main.js`, `analytics-events.js`, `exit-intent.js`,
+  `vercel.json`, `sitemap.xml`, `robots.txt`, `site.webmanifest`.
+- No JSON-LD schema-format changes on existing pages (the new pages have
+  their own `Article` / `DefinedTermSet` / `Audience` JSON-LD; they don't
+  consolidate the pre-existing `<!-- TODO: consolidate JSON-LD blocks -->`
+  markers from Batch 1).
+- No new analytics events. The new pages inherit the existing 9-event
+  GA4 spec via `/analytics-events.js`.
+- Footer links unchanged across the new pages (no Glossary / Who We Help
+  link added to the global footer; that's a future homepage edit).
+
+### Voice and content guardrails
+
+- No fabricated specific stats. Numbers used cite ranges with general
+  attribution ("industry estimates", "operator surveys", "industry
+  call-tracking surveys"). Specific public-domain numbers (e.g., the 35%
+  missed-call rate already cited in `why-dental-practices-miss-calls`)
+  are reused with consistent attribution.
+- No fabricated customer quotes. The pull-quotes in the posts are
+  framed as our editorial voice, not attributed to a named customer.
+- The vendor comparison post (`aria-vs-arini-dentina-comparison`) opens
+  with a bias disclosure callout and explicitly notes where Aria isn't
+  the best fit (large 50+-location DSOs, Curve Dental practices,
+  practices wanting all-in-one marketing + AI).
+- Brand palette honored throughout: amber `#D4952A` for CTAs and links,
+  charcoal `#1A1A2E` for headings, cream `#FEFCF8` for backgrounds,
+  Fraunces for display, Sora for body. New patterns (`.blog-callout`,
+  `.blog-toc`, `.compare-table`) added inline per page; no `styles.css`
+  changes.
+
+### Verification (post-write)
+
+For each of the 14 new files:
+1. `<!DOCTYPE html>`, `<html>`, `<head>` / `</head>`, `<body>` /
+   `</body>`, `</html>` open/close intact (grep verified).
+2. GTM container `GTM-5H6LQ8RL`, GA4 ID `G-KQS3692C4Q`, Clarity ID
+   `wn8w0677vz` present in head — matching the spec from Batches 1-3.
+3. `analytics-events.js` script reference present.
+4. Canonical URL present and matches the slug.
+5. JSON-LD blocks parse as valid JSON (`json.dumps` round-trip used during
+   generation).
+6. Article JSON-LD `datePublished` and `dateModified` set to
+   `2026-05-07`; author `"Aria Dental Team"` (matches the brief);
+   `image` placeholder at `/images/blog/<slug>.png`.
+7. Internal link audit: 271 internal links across 14 pages, all
+   route-based links resolve to a real `.html` file (4 unresolved targets
+   are the favicon refs from Batch 1's separate TODO).
+8. Cross-link rule: every post links to ≥2 other new posts AND
+   ≥2 service/funnel pages.
+
