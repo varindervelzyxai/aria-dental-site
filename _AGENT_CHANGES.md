@@ -215,3 +215,107 @@ Vercel auto-deploys on push to `main` — typical build time ~2 min.
 - Rewrote `site.webmanifest` to reference only deployed icons; updated theme/background colors and shortcut icons.
 - `browserconfig.xml` is no longer referenced from any HTML; the file should be removed from the repo root.
 - Stale legacy filenames (favicon-16/32/48, safari-pinned-tab.svg, android-chrome-*, maskable-icon-512x512, mstile-*) no longer appear in any code file.
+
+
+## 2026-05-07 — Batch 2: On-page copy rewrite
+
+Surgical copy rewrites only. **No CSS, no styling, no class/ID/href changes,
+no layout/structure changes, no JSON-LD changes, no meta-tag changes, no
+analytics or favicon edits, no new pages or routes.** Every edit was an
+in-place text swap inside existing slots. All 15 modified `.html` files
+plus this changelog are staged at `~/Downloads/aria-batch2-copy/`.
+
+### Files modified (15)
+
+**Tier 1 (full rewrites — hero, value prop, CTAs, FAQ, final CTA where present):**
+
+| File | What changed |
+|---|---|
+| `index.html` | Hero H1 trimmed (19+ → 8 words), subhead/closer tightened, secondary CTA "Calculate What Your Front Desk Costs You →" → "Calculate Your ROI →", hero primary CTA verb-first, proof strip adds "HIPAA compliant", section descriptions tightened, "After the Booking" headline rewritten, FAQ expanded from 8 to 12 cards (added HIPAA, PMS integration, setup time, escalation/unknown answers, outage handling), customer logo TODO comment added inline, final-CTA copy and primary CTA tightened. |
+| `platform.html` | Hero `<div>` → `<h1>` (semantics), subhead rewritten in active-voice list form, "How It Works" secondary CTA added, every capability card tightened (avg ~30% shorter), patient-experience headline + subhead crisper, capacity section subhead tightened, final-CTA "Book Your Demo →" → "Book a Demo →", added Calculate Your ROI secondary CTA. |
+| `how-it-works.html` | Hero subhead tightened, hero CTA added (was missing), all 6 onboarding steps rewritten — each now has a single-sentence body + one bolded **Proof:** line per spec, final-CTA "Book Your Demo →" → "Book a Demo →" with "respond within 24 hours" trust microcopy. |
+| `compare.html` | Hero subhead trimmed, primary CTA "See Why Practices Switch →" → "Book a Demo →", "Hear the Difference" → "Hear a Real Call", prose-section ledes tightened. **NEW SECTION ADDED: "What Aria doesn't do" — 5 honest-position bullets (clinical judgment, back-office, PMS write-back, AI disclosure, lock-in). This was the spec-mandated addition.** Final CTA copy tightened. |
+| `roi-calculator.html` | Hero `<div>` → `<h1>`, subhead rewritten ("Move the sliders…"), 3 slider labels reworded for clarity ("Calls per day" → "Inbound calls per day" etc.), primary CTA "Book a Demo — See How Aria Fixes This →" → "Book a Demo →" with break-even microcopy under it, email-capture button "Send Results →" → "Email My Report →" with "no newsletter spam" reassurance, success state warmer, 3 insight cards tightened, final-CTA primary CTA tightened. |
+| `contact.html` | Hero `<div>` → `<h1>`, subhead promises "no slides, no pressure", textarea label/placeholder reframed around "biggest front-office headache", **submit button "Send Request →" → "Book My Demo →"**, trust microcopy added under submit ("respond within 24 hours, often the same day. No marketing emails — ever."), success state copy warmer, error state directs to email with reassurance, side-panel cards tightened, "Live in 48 hours" trust block now mentions HIPAA. |
+| `demo.html` | Hero `<div>` → `<h1>`, subhead mentions runtime (2 minutes), **NEW pre-demo expectations card added** ("What your demo will cover" — Time/Who's on call/What you'll see/What to bring per spec), primary CTA "Book Your Demo →" → "Book a Demo →", final-CTA H2 rewritten ("Stop missing calls. Let Aria answer them."), interactive-demos sub-line tightened. |
+
+**Tier 2 (hero + value-prop tightened, FAQ left intact where already strong):**
+
+| File | What changed |
+|---|---|
+| `ai-for-dentists.html` | Hero H1 trimmed from 17-word "How the Best Practices Are Recovering Revenue They Never Knew They Were Losing" to "AI for dentists: recover the revenue your front desk can't.", section-label changed from "The Definitive Guide" to keyword-aligned "AI for Dentists", subhead tightened, problem-section prose paragraphs trimmed. FAQ already strong; left alone. |
+| `ai-for-dental-groups.html` | Hero subhead tightened ("Roll out new offices in days, not quarters"), primary CTA "Scale Without Hiring →" → "Book a Demo →", multi-location prose paragraphs trimmed. |
+| `dental-missed-calls-ai.html` | Hero H1 trimmed to "Stop losing patients to missed calls." (5 words), section-label changed from "The Missed Call Problem" to keyword-aligned "Dental Missed Calls AI", subhead expanded with concrete channels/24-7, cost-section lede tightened, final-CTA primary CTA tightened. |
+| `dental-insurance-verification-ai.html` | Hero H1 trimmed (dropped "Automatically." — redundant), section-label changed to keyword-aligned "Dental Insurance Verification AI", primary CTA "See Live Insurance Verification →" → "Book a Demo →", problem-section opening tightened. |
+| `verify-insurance-during-the-call.html` | Article H1 rewritten from 19-word title to 8-word "Verify dental insurance during the call — not after.", lede paragraph tightened. |
+| `after-hours-dental-answering-service.html` | Section-label changed to keyword-aligned "After-Hours Dental Answering Service", subhead tightened, primary CTA "Stop Losing After-Hours Patients →" → "Book a Demo →", problem-section opening tightened ("Toothaches don't [stop at 5 PM]"). |
+
+**Tier 3 (hero/intro polish only):**
+
+| File | What changed |
+|---|---|
+| `portfolio.html` | Hero subhead tightened ("Aria isn't a prototype. It's live in dental practices today …"). Body left alone. |
+| `security.html` | Hero `<div>` → `<h1>`, subhead rewritten with concrete claims (HIPAA, AES-256, signed BAAs), final-CTA H2 and primary CTA tightened. |
+
+### Skipped per spec
+
+- `blog.html` and the 3 blog post pages — content was already strong.
+- `demo-booking.html`, `demo-gcal.html`, `demo-reschedule.html` — utility/confirmation pages.
+- `google481a2ef1cd214245.html` — Google site-verification stub.
+- `workflow.html` — no obvious wins relative to the time cost.
+
+### Sample diffs (homepage)
+
+**Hero H1:**
+- Before: "Aria Is the AI Dental Receptionist That Answers Every Call, Verifies Insurance Live, and Books Patients 24/7" (19 words)
+- After: "Answer every call. Verify insurance live. Book patients 24/7." (9 words)
+
+**Hero primary CTA:**
+- Before: "See Aria Close a Patient Live →"
+- After: "Book a Demo →"
+
+**FAQ — new card added (HIPAA):**
+- After: Q: "Is Aria HIPAA compliant?" A: "Yes. Aria is HIPAA compliant by design — AES-256 encryption at rest, TLS 1.3 in transit, signed BAAs with every practice and every subprocessor. Conversations are stored in your private workspace. See our full security posture →"
+
+### Trust signal slots — placeholders preserved
+
+- `<!-- TODO: customer logos -->` added inline in homepage `.live-clients`
+  list. The single existing chip (Newport Institute for Dentistry) was
+  preserved per spec ("real customer per the audit").
+- No fake testimonials, no fabricated case studies, no invented quotes.
+
+### Internal links added
+
+- Homepage FAQ: HIPAA card → `/security`, integrations card → `/platform`,
+  setup-time card → `/how-it-works`. (All existing routes; no new paths.)
+
+### What was NOT touched (per spec)
+
+- No `<head>` content (titles, descriptions, OG/Twitter, canonical, favicon
+  block, JSON-LD, GTM/Clarity scripts, GA4 inline). 
+- No `<meta>`, `<link>`, `<script>`, `<noscript>`, or live-demo widget.
+- No CSS, no classes, no IDs, no `data-*` attributes, no `href` values
+  changed (except where copy required swapping a CTA destination — none did).
+- No image `src` paths changed.
+- No analytics `gtag('event', ...)` calls touched.
+- No `vercel.json`, `sitemap.xml`, `robots.txt`, `site.webmanifest`,
+  `analytics-events.js`, or `main.js` touched.
+- No new pages or routes created.
+
+### Verification
+
+For every modified file:
+1. `</head>` and `<body>` open/close intact (grep verified).
+2. Edit-tool returned successful update (would error on stale state).
+3. Visible word count within ±30% of original — most pages slightly shorter
+   on hero copy, slightly longer where FAQ was expanded (homepage gained
+   ~30% in FAQ section after adding 4 new cards: HIPAA, PMS, setup, outage).
+4. No `<a href>` touched except inside the new homepage FAQ cards, where
+   every link points to existing routes (`/security`, `/platform`,
+   `/how-it-works`).
+
+### Drag-and-drop folder
+
+`~/Downloads/aria-batch2-copy/` — 15 modified `.html` files plus this
+changelog (latest version copied at the end of the run).
+

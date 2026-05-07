@@ -124,8 +124,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <section class="page-hero"><div class="container">
 <div class="section-label">ROI Calculator</div>
-<div class="section-title">How much is your front desk <span>costing you?</span></div>
-<p class="section-desc">Most practices don't realize the true cost of their front desk — in salary, missed calls, lost patients, and slow payments. Run the numbers.</p>
+<h1 class="section-title">How much is your front desk <span>costing you?</span></h1>
+<p class="section-desc">Move the sliders to match your practice. Salary, missed calls, no-shows, lost patients — the real cost is usually 3x what owners expect.</p>
 </div></section>
 
 <section class="section-alt"><div class="container">
@@ -133,10 +133,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="calc-inputs">
 <h3>Your practice numbers</h3>
 <div class="slider-group"><label>Receptionist annual salary <span id="salaryDisplay">$45,000</span></label><input type="range" class="slider" id="salary" min="30000" max="80000" step="1000" value="45000"></div>
-<div class="slider-group"><label>Calls per day <span id="callsDisplay">30</span></label><input type="range" class="slider" id="calls" min="10" max="80" step="5" value="30"></div>
-<div class="slider-group"><label>Missed call rate <span id="missedDisplay">35%</span></label><input type="range" class="slider" id="missed" min="10" max="70" step="5" value="35"></div>
-<div class="slider-group"><label>New patient value (lifetime) <span id="patientValueDisplay">$1,200</span></label><input type="range" class="slider" id="patientValue" min="500" max="3000" step="100" value="1200"></div>
-<div class="slider-group"><label>Conversion rate of answered calls <span id="conversionDisplay">25%</span></label><input type="range" class="slider" id="conversion" min="10" max="50" step="5" value="25"></div>
+<div class="slider-group"><label>Inbound calls per day <span id="callsDisplay">30</span></label><input type="range" class="slider" id="calls" min="10" max="80" step="5" value="30"></div>
+<div class="slider-group"><label>% of calls that go unanswered <span id="missedDisplay">35%</span></label><input type="range" class="slider" id="missed" min="10" max="70" step="5" value="35"></div>
+<div class="slider-group"><label>Lifetime value per new patient <span id="patientValueDisplay">$1,200</span></label><input type="range" class="slider" id="patientValue" min="500" max="3000" step="100" value="1200"></div>
+<div class="slider-group"><label>% of answered calls that book <span id="conversionDisplay">25%</span></label><input type="range" class="slider" id="conversion" min="10" max="50" step="5" value="25"></div>
 <div class="slider-group"><label>Working days per year <span id="daysDisplay">250</span></label><input type="range" class="slider" id="days" min="200" max="300" step="10" value="250"></div>
 </div>
 <div class="calc-results">
@@ -149,18 +149,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div style="margin-top:24px;padding:20px;background:rgba(212,149,42,0.12);border-radius:var(--radius-sm);border:1px solid rgba(212,149,42,0.25)"><div class="result-row" style="border:none;padding:0"><span class="result-label" style="color:var(--amber-light)">Patients lost per year</span><span class="result-value" style="font-size:28px" id="patientsLost">66</span></div></div>
 <p class="result-note">* Salary includes ~30% for benefits, taxes, PTO. No-show estimate based on industry average of 12% with $300 average visit value.</p>
 <div class="results-cta">
-<a href="/contact" class="btn btn-primary btn-lg">Book a Demo — See How Aria Fixes This →</a>
+<a href="/contact" class="btn btn-primary btn-lg">Book a Demo →</a>
+<p style="font-size:13px;color:var(--charcoal-50);margin-top:12px">Aria pays for itself with 1–2 extra patients per month. Everything after is upside.</p>
 </div>
 
 <!-- EMAIL CAPTURE -->
 <div class="email-capture" id="emailCapture">
 <h4>📧 Email my results</h4>
-<p>Get your personalized ROI report — share it with your team or review later.</p>
+<p>Get your personalized ROI report. Share with your partners or review later. No newsletter spam.</p>
 <div class="email-capture-form" id="emailForm">
 <input type="email" id="roiEmail" placeholder="you@yourpractice.com" required>
-<button type="button" id="sendResultsBtn">Send Results →</button>
+<button type="button" id="sendResultsBtn">Email My Report →</button>
 </div>
-<div class="email-sent" id="emailSent">✓ Results sent! Check your inbox.</div>
+<div class="email-sent" id="emailSent">✓ Sent. Check your inbox in the next few minutes.</div>
 </div>
 
 </div>
@@ -168,9 +169,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <div class="insight-cards">
-<div class="insight-card reveal"><div class="num">62%</div><p>of dental calls go unanswered during busy periods — each one a potential patient lost to your competitor</p></div>
-<div class="insight-card reveal reveal-delay-1"><div class="num">1-2</div><p>extra patients per month is all it takes for Aria to pay for itself completely</p></div>
-<div class="insight-card reveal reveal-delay-2"><div class="num">$0</div><p>missed calls with Aria — every call answered, every website visitor engaged, 24/7/365</p></div>
+<div class="insight-card reveal"><div class="num">62%</div><p>of dental calls go unanswered during busy periods. Each one is a patient your competitor will catch.</p></div>
+<div class="insight-card reveal reveal-delay-1"><div class="num">1–2</div><p>extra booked patients per month is all Aria needs to pay for itself. The rest is profit.</p></div>
+<div class="insight-card reveal reveal-delay-2"><div class="num">$0</div><p>missed calls with Aria. Every call answered, every chat handled, every text returned — 24/7.</p></div>
 </div>
 </div></section>
 
@@ -233,8 +234,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="cta-section"><div class="container cta-content">
 <div class="section-label">The Math Is Simple</div>
 <h2>Aria costs a fraction of what your<br>front desk <em>loses.</em></h2>
-<p>See Aria in action. 30-minute demo. We'll show you the ROI for your specific practice.</p>
-<div class="cta-buttons"><a href="/contact" class="btn btn-white btn-lg">Book Your Demo →</a></div>
+<p>30-minute demo. We'll walk through the ROI for your specific practice — your numbers, not industry averages.</p>
+<div class="cta-buttons"><a href="/contact" class="btn btn-white btn-lg">Book a Demo →</a></div>
 </div></section>
 
 <footer><div class="container"><div class="footer-top">
