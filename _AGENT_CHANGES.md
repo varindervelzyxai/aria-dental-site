@@ -78,12 +78,15 @@ Every page received the same surgical head-block changes:
   `apple-touch-icon`, `mask-icon`, `manifest`, dark+light
   `theme-color`, `msapplication-TileColor/-config`,
   `apple-mobile-web-app-title`, `application-name`.
-- **Google Tag Manager** head snippet (placeholder ID `GTM-XXXXXXX`,
-  with `<!-- TODO: replace with real GTM container ID -->` marker)
-  injected immediately after `<head>` opens. Matching `<noscript>`
-  iframe injected immediately after `<body>` opens.
-- **Microsoft Clarity** snippet (placeholder ID `clarity_xxxxxxxxxx`,
-  with TODO marker) injected in `<head>` just before `</head>`.
+- **Google Tag Manager** head snippet (real container ID `GTM-5H6LQ8RL`,
+  substituted in 2026-05-06 over the original `GTM-XXXXXXX` placeholder
+  in 23 .html files / 46 occurrences) injected immediately after
+  `<head>` opens. Matching `<noscript>` iframe injected immediately
+  after `<body>` opens.
+- **Microsoft Clarity** snippet (real project ID `wn8w0677vz`,
+  substituted in 2026-05-06 over the original `clarity_xxxxxxxxxx`
+  placeholder in 23 .html files / 23 occurrences) injected in `<head>`
+  just before `</head>`.
 - `<script src="/analytics-events.js" defer></script>` reference added
   just before `</head>`.
 - The existing inline GA4 (`G-KQS3692C4Q`) was **left in place** — it
@@ -113,44 +116,43 @@ untouched.
 
 ## TODOs that need you (the human)
 
-1. **Replace `GTM-XXXXXXX`** in every `.html` file with the real
-   GTM container ID once you create it in
-   [tagmanager.google.com](https://tagmanager.google.com/). Find it
-   with `grep -rn 'GTM-XXXXXXX' .` (it appears once in the head and
-   once in the body noscript per page = 46 occurrences total).
-2. **Replace `clarity_xxxxxxxxxx`** in every `.html` file with the real
-   Microsoft Clarity project ID from
-   [clarity.microsoft.com](https://clarity.microsoft.com/). 23
-   occurrences (one per non-stub page).
-3. **Generate the favicon assets**. The HTML now references 10 PNG/ICO/
+> **2026-05-06 update:** the GTM container ID has been substituted —
+> `GTM-XXXXXXX` → `GTM-5H6LQ8RL` across all 23 .html files (46
+> occurrences). The Microsoft Clarity project ID has also been
+> substituted — `clarity_xxxxxxxxxx` → `wn8w0677vz` across all 23
+> .html files (23 occurrences). The original steps 1 (Replace
+> `GTM-XXXXXXX`) and 2 (Replace `clarity_xxxxxxxxxx`) are **done**
+> and removed from this list; remaining steps renumbered accordingly.
+
+1. **Generate the favicon assets**. The HTML now references 10 PNG/ICO/
    SVG files that do not yet exist. Step-by-step in `FAVICONS_TODO.md`
    — quickest path is RealFaviconGenerator from a 1024×1024 source.
-4. **Remove the inline GA4 snippet** (lines containing
+2. **Remove the inline GA4 snippet** (lines containing
    `gtag/js?id=G-KQS3692C4Q` and the matching `gtag('config','G-KQS…')`
    call) from every `.html` file **after you confirm GTM is firing
    GA4 in DebugView**. Otherwise events double-count. There are 23
    files × 2 lines each.
-5. **Generate or commission the OG images** at the URLs referenced.
+3. **Generate or commission the OG images** at the URLs referenced.
    `images/og/home.png`, `images/og/platform.png`, etc. — full list in
    `Aria_Batch1_Deploy_Package/og_twitter_meta.md`. 1200×630 PNG.
    Until they exist, social previews will show no image. Drop them in
    the existing `images/` folder.
-6. **Consolidate the JSON-LD blocks** marked with
+4. **Consolidate the JSON-LD blocks** marked with
    `<!-- TODO: consolidate JSON-LD blocks -->`. Every page that already
    had structured data now has both the old and the new blocks. Pick
    the better of each pair (typically the new ones, since they include
    stable `@id` references and the parent-organization linkage), delete
    the duplicate, and remove the comment. `grep -rn 'TODO: consolidate'
    .` — 19 occurrences.
-7. **Set up the GTM tags** described in
+5. **Set up the GTM tags** described in
    `Aria_Batch1_Deploy_Package/analytics_setup.md` (GA4 Configuration
    tag, Clarity Custom HTML tag, 9 event triggers, conversion
    marking).
-8. **Promote CSP from report-only to enforced** after 1–2 weeks of
+6. **Promote CSP from report-only to enforced** after 1–2 weeks of
    clean reports. Edit `vercel.json`: change
    `"key": "Content-Security-Policy-Report-Only"` →
    `"key": "Content-Security-Policy"`.
-9. **Optional**: implement the `/api/csp-report` endpoint that
+7. **Optional**: implement the `/api/csp-report` endpoint that
    `security_headers.md` describes (logs CSP violations).
 
 ## Push instructions
@@ -191,8 +193,9 @@ Vercel auto-deploys on push to `main` — typical build time ~2 min.
       `/platform`, one article. (Will need the OG images first.)
 - [ ] Lighthouse PWA tab on `/` — manifest installable, theme color
       detected. (Will need favicons first.)
-- [ ] `grep -rn 'GTM-XXXXXXX\|clarity_xxxxxxxxxx' .` returns 0 hits
-      after you sub in real IDs.
+- [x] Clarity placeholder `clarity_xxxxxxxxxx` has been replaced with
+      real project ID `wn8w0677vz` in all 23 .html files. (The GTM
+      placeholder has also been replaced with `GTM-5H6LQ8RL`.)
 
 ## What we deliberately did NOT change
 
