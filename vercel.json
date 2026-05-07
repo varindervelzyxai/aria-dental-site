@@ -11,28 +11,26 @@
       "source": "/:path*",
       "has": [{ "type": "host", "value": "ariadental.ai" }],
       "destination": "https://www.ariadental.ai/:path*",
-      "permanent": true,
-      "statusCode": 308
+      "permanent": true
     },
 
-    { "source": "/index.html",            "destination": "/",        "permanent": true, "statusCode": 308 },
-    { "source": "/index",                 "destination": "/",        "permanent": true, "statusCode": 308 },
-    { "source": "/home",                  "destination": "/",        "permanent": true, "statusCode": 308 },
-    { "source": "/contact-us",            "destination": "/contact", "permanent": true, "statusCode": 308 },
-    { "source": "/book-a-demo",           "destination": "/demo",    "permanent": true, "statusCode": 308 },
-    { "source": "/book-demo",             "destination": "/demo",    "permanent": true, "statusCode": 308 },
-    { "source": "/insurance-verification", "destination": "/dental-insurance-verification-ai", "permanent": true, "statusCode": 308 },
-    { "source": "/missed-calls",          "destination": "/dental-missed-calls-ai", "permanent": true, "statusCode": 308 },
-    { "source": "/after-hours",           "destination": "/after-hours-dental-answering-service", "permanent": true, "statusCode": 308 },
-    { "source": "/groups",                "destination": "/ai-for-dental-groups", "permanent": true, "statusCode": 308 },
-    { "source": "/dentists",              "destination": "/ai-for-dentists", "permanent": true, "statusCode": 308 },
-    { "source": "/case-studies/:slug*",   "destination": "/portfolio", "permanent": true, "statusCode": 308 },
+    { "source": "/index.html",            "destination": "/",        "permanent": true },
+    { "source": "/index",                 "destination": "/",        "permanent": true },
+    { "source": "/home",                  "destination": "/",        "permanent": true },
+    { "source": "/contact-us",            "destination": "/contact", "permanent": true },
+    { "source": "/book-a-demo",           "destination": "/demo",    "permanent": true },
+    { "source": "/book-demo",             "destination": "/demo",    "permanent": true },
+    { "source": "/insurance-verification", "destination": "/dental-insurance-verification-ai", "permanent": true },
+    { "source": "/missed-calls",          "destination": "/dental-missed-calls-ai", "permanent": true },
+    { "source": "/after-hours",           "destination": "/after-hours-dental-answering-service", "permanent": true },
+    { "source": "/groups",                "destination": "/ai-for-dental-groups", "permanent": true },
+    { "source": "/dentists",              "destination": "/ai-for-dentists", "permanent": true },
+    { "source": "/case-studies/:slug*",   "destination": "/portfolio", "permanent": true },
 
     {
       "source": "/pricing",
       "destination": "/platform#pricing",
-      "permanent": false,
-      "statusCode": 307
+      "permanent": false
     }
   ],
   "headers": [
