@@ -1,18 +1,33 @@
 {
   "name": "Aria Dental AI",
-  "short_name": "Aria",
-  "description": "AI receptionist for dental practices: answers calls, verifies insurance, books patients 24/7.",
+  "short_name": "Aria Dental",
+  "description": "AI dental receptionist that answers every call, verifies insurance live, and books patients 24/7.",
   "id": "/",
-  "start_url": "/?utm_source=pwa",
+  "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#FEFCF8",
-  "theme_color": "#1A1A2E",
+  "background_color": "#1A1A2E",
+  "theme_color": "#D4952A",
   "icons": [
-    { "src": "/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png" },
-    { "src": "/maskable-icon-512x512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    {
+      "src": "/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
   ],
   "shortcuts": [
     {
@@ -20,13 +35,13 @@
       "short_name": "Demo",
       "description": "Watch Aria handle a real dental call",
       "url": "/demo",
-      "icons": [{ "src": "/android-chrome-192x192.png", "sizes": "192x192" }]
+      "icons": [{ "src": "/web-app-manifest-192x192.png", "sizes": "192x192" }]
     },
     {
       "name": "Contact us",
       "short_name": "Contact",
       "url": "/contact",
-      "icons": [{ "src": "/android-chrome-192x192.png", "sizes": "192x192" }]
+      "icons": [{ "src": "/web-app-manifest-192x192.png", "sizes": "192x192" }]
     }
   ]
 }

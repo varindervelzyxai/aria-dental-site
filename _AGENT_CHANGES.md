@@ -206,3 +206,12 @@ Vercel auto-deploys on push to `main` — typical build time ~2 min.
 - Pre-existing redirects in `vercel.json` (preserved as-is).
 - The Google site-verification stub (`google481a2ef1cd214245.html`).
 - Duplicate root-level PNG/MP3 files (left in place — likely referenced).
+
+
+## 2026-05-07 — Favicon refs updated to match modern bundle
+
+- 2026-05-07: favicon refs updated to match realfavicongenerator modern bundle (favicon.ico, favicon.svg, apple-touch-icon.png, web-app-manifest-{192,512}.png).
+- Replaced legacy 11-line favicon `<link>` block with modern 6-line block in all 23 content `.html` files.
+- Rewrote `site.webmanifest` to reference only deployed icons; updated theme/background colors and shortcut icons.
+- `browserconfig.xml` is no longer referenced from any HTML; the file should be removed from the repo root.
+- Stale legacy filenames (favicon-16/32/48, safari-pinned-tab.svg, android-chrome-*, maskable-icon-512x512, mstile-*) no longer appear in any code file.
