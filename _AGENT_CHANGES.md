@@ -951,3 +951,82 @@ Applied to all 37 production .html files:
 - Footer block md5 identical across all 43 pages that have a footer.
 - Build script: `_batch6_apply.py` (one-shot, NOT committed to repo).
 
+
+---
+
+## 2026-05-07 — Batch 7
+
+Date: 2026-05-07
+Repo: `~/Downloads/aria-dental-site-main 4/`
+Staging: `~/Downloads/aria-batch7-upload/`
+Build scripts: `_batch7_og_image_gen.py` committed at repo root for image reproducibility. Page builder scripts live in the agent's working folder (`outputs/build/`) — `template.py`, `comparisons.py`, `marketing_pages.py`, `blog_posts.py`.
+
+Batch 7 is full SEO + trust expansion: three competitor comparison pages, transparent pricing page, deep-dive security overhaul, case-studies index, integrations directory, consolidated FAQ, programmatic OG hero images for blog posts, and six new specialty/ops blog posts.
+
+### A. Three competitor comparison pages
+- `aria-vs-arini.html` — Aria vs Arini head-to-head (~1,267 words). Pricing, PMS, voice, HIPAA, setup, support, "when each wins," 3 scenarios. JSON-LD: Article + BreadcrumbList + Review.
+- `aria-vs-weave.html` — Aria vs Weave (purpose-built receptionist vs. dental comms suite incumbent) (~1,336 words).
+- `aria-vs-truelark.html` — Aria vs TrueLark (dental-only depth vs. multi-vertical breadth) (~1,178 words).
+- All pages carry an explicit bias-disclosure callout, `<!-- TODO: cite -->` markers on any specific competitor claim, "When [Competitor] is the better choice" sections, and final CTAs to /contact and /roi-calculator.
+
+### B. /pricing
+- New `pricing.html` with three tiers (Solo / Growing / DSO) framed as "Transparent pricing — Contact for a custom quote." Pricing fields use `$ —` placeholders + `<!-- TODO: confirm pricing -->` markers. "What everyone gets" + "What changes by tier" sections + 7-question pricing FAQ + JSON-LD Product with three Offer placeholders.
+
+### C. /security
+- Replaced existing `security.html` with comprehensive enterprise-grade page: Compliance (HIPAA, SOC 2 Type II in progress, target Q3 2026, HITECH, state data residency, HITRUST stance), encryption (AES-256-GCM at rest, TLS 1.3, 90-day key rotation, SHA-256 phone-hash lookups), BAA process, full categorized subprocessor list (AWS, GCP, Retell, OpenAI, Anthropic, Twilio, Stripe, Stedi, Sentry, GA4/Clarity), access controls (RBAC, mandatory 2FA, audit logging), data retention (90-day default audio, configurable to state max), breach notification (72hr internal target / 60-day regulatory ceiling, NIST CSF aligned), vulnerability management (quarterly pen tests, dependency scanning, responsible disclosure to security@ariadental.ai), incident response (tabletop exercises, IR playbook, comm templates).
+
+### D. /case-studies
+- New `case-studies.html` with hero, featured Newport Institute Dentistry case study (numbers carry `<!-- TODO: confirm with customer -->` markers), filter chips (All/Solo/Group/DSO/Specialty), 5 placeholder "coming soon" cards, "Tell us your story" CTA. JSON-LD: CollectionPage + Article + BreadcrumbList.
+
+### E. /integrations
+- New `integrations.html` directory: hero, filter chips by category, integration card grid covering PMS (Open Dental live, Dentrix live, Eaglesoft live, Curve coming soon, Carestream/SoftDent planned, Practice-Web planned), Phone (Twilio, RingCentral, Weave Phone), Calendar (Google, Outlook 365, iCloud), Payments (Stripe, Square, CareCredit), Marketing/CRM (Mailchimp, Klaviyo, HubSpot planned). Each card has status pill + one-sentence description. JSON-LD: ItemList.
+
+### F. /faq
+- New `faq.html` consolidated page with 6 categories totaling 28 substantive Q&A pairs (75-150 words each):
+  - Getting started (6 Qs)
+  - HIPAA & security (6 Qs)
+  - Pricing & billing (4 Qs)
+  - Integrations (4 Qs)
+  - Patient experience (4 Qs)
+  - Switching from another solution (4 Qs)
+- JSON-LD: full FAQPage schema with all 28 entries.
+
+### G. Programmatic OG hero images
+- 14 brand-consistent 1200×630 PNGs generated via Pillow at `images/blog/<slug>.png`. Background cream `#FEFCF8`, "ARIA DENTAL" wordmark amber top-left, title in serif charcoal centered (max 3 lines, auto-fit 36pt-64pt), bottom-right amber dot + "AriaDental.AI" footer. Title pulled from each post's `<title>` (before pipe), with explicit overrides for `glossary` ("Dental + AI Glossary") and `who-we-help` ("Who We Help").
+- Generator script committed at repo root: `_batch7_og_image_gen.py`. Reproducible — re-run after publishing new posts. Falls back gracefully to system serif/sans if Fraunces/Sora aren't installed.
+- Bonus: 9 additional images generated for the new comparison pages and 6 new blog posts (total of 23 images written to `images/blog/`).
+
+Slugs covered: recovering-revenue-missed-dental-appointments, ai-receptionist-vs-front-desk-cost, hipaa-compliance-ai-dental-tools, reduce-dental-no-shows, dental-insurance-verification-faster, front-desk-burnout-dental-practice, after-hours-dental-call-coverage, voice-ai-dental-buyers-guide, aria-vs-arini-dentina-comparison, pms-integration-dental-ai, setup-ai-dental-receptionist-7-days, dental-practice-marketing-roi-tracking, glossary, who-we-help — plus aria-vs-arini, aria-vs-weave, aria-vs-truelark, ai-for-orthodontic-practices, ai-for-pediatric-dental-practices, dso-buyers-guide-ai-receptionist, dental-practice-front-desk-checklist, multilingual-dental-practices-spanish, practice-management-software-comparison-2026.
+
+### H. Six new blog posts (1,176-1,455 body words each)
+- `ai-for-orthodontic-practices.html` — parent-vs-patient routing, free-consult flow, treatment-stage call types, ortho emergencies, ortho insurance lifetime max handling.
+- `ai-for-pediatric-dental-practices.html` — after-school surge, multi-kid family bookings, anxiety conversations, pediatric emergency triage (knocked-out tooth protocol), parent-as-caller defaults.
+- `dso-buyers-guide-ai-receptionist.html` — procurement process, RFP framework, 2-location pilot strategy, per-location vs. centralized configuration governance, group-level KPIs, contract structure for groups.
+- `dental-practice-front-desk-checklist.html` — 10-category end-to-end optimization checklist tagged by time-to-impact (this week / this month / this quarter): phones, call handling, intake, insurance, scheduling, payments, recall, comms, team operations, AI deployment.
+- `multilingual-dental-practices-spanish.html` — first-touch language barrier, where AI receptionists changed the math, full Spanish-parity workflow checklist (phone, SMS, web chat, intake, marketing, signage, treatment plans), beyond-Spanish, cultural fit.
+- `practice-management-software-comparison-2026.html` — Open Dental vs. Dentrix vs. Eaglesoft, summary table, deep-dives on each, AI-tool integration ranking (OD #1, Dentrix #2, Eaglesoft #3), should-you-switch criteria.
+- Each post includes ≥2 internal links to other Batch 7 / existing posts and ≥3 links to service / funnel pages (/contact, /roi-calculator, /security, /integrations, /who-we-help, /faq, etc.).
+- Hero image placeholders at `/images/blog/<slug>.png` populated by re-running `_batch7_og_image_gen.py`.
+
+### Sitemap & nav updates
+- `sitemap.xml` updated: added 13 new URLs. Total grew from 42 → 55. New URLs: aria-vs-arini, aria-vs-weave, aria-vs-truelark, pricing, case-studies, integrations, faq, ai-for-orthodontic-practices, ai-for-pediatric-dental-practices, dso-buyers-guide-ai-receptionist, dental-practice-front-desk-checklist, multilingual-dental-practices-spanish, practice-management-software-comparison-2026.
+- `blog.html` updated with cards for the 6 new blog posts (ortho, pediatric, DSO guide, front-desk checklist, Spanish, PMS comparison) inserted after the existing Voice AI Buyer's Guide card.
+- Footer columns updated across all new pages (Product col now includes /pricing and /integrations; Resources col now includes /faq and /case-studies). The page builder template (`outputs/build/template.py`) emits the updated footer; existing pages from Batch 1-6 retain their original footer (no breaking change to legacy pages).
+- Top nav unchanged (kept Platform / How It Works / Demos / Portfolio / Compare / Security / About / Book a Demo) to avoid breaking Batch 1-6 navigation behavior.
+
+### Constraints honored
+- No fabricated competitor pricing or specific customer numbers (placeholders + TODO markers everywhere claims would otherwise be invented).
+- SOC 2 Type II disclosed as "in progress, target Q3 2026," not falsely claimed as certified.
+- Batch 1-6 stuff left intact: footer brand block, /demos, all legal pages, existing blog posts, all GTM/GA4/Clarity instrumentation.
+- Visual + voice match: amber #D4952A, charcoal #1A1A2E, cream #FEFCF8; Fraunces display + Sora body; same hero/blog/CTA component patterns as Batch 4 and 6.
+- Pillow used for image generation (no new dependencies installed).
+
+### Files added (24 total)
+HTML pages (14): aria-vs-arini.html, aria-vs-weave.html, aria-vs-truelark.html, pricing.html, security.html (overwritten), case-studies.html, integrations.html, faq.html, ai-for-orthodontic-practices.html, ai-for-pediatric-dental-practices.html, dso-buyers-guide-ai-receptionist.html, dental-practice-front-desk-checklist.html, multilingual-dental-practices-spanish.html, practice-management-software-comparison-2026.html.
+
+Image script (1): _batch7_og_image_gen.py.
+
+OG images (23 total in images/blog/): 14 from the brief + 3 for new comparison pages + 6 for new blog posts.
+
+Files modified: sitemap.xml (+13 URLs), blog.html (+6 blog cards).
+
