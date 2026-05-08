@@ -299,3 +299,15 @@ footer{padding:64px 0 32px;background:var(--charcoal);color:rgba(255,255,255,0.6
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
 }
+
+/* ===========================================================
+   NAV BUTTON PADDING FIX (2026-05-07)
+   The nav-level .btn-primary inherits zero horizontal padding,
+   making the "Book a Demo" pill look cramped. This rule adds
+   proper breathing room without affecting other button variants
+   (hero `.btn-lg` instances already have their own padding).
+   =========================================================== */
+header .btn.btn-primary,
+nav .btn.btn-primary {
+  padding: 10px 24px;
+}
