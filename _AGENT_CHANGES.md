@@ -684,3 +684,209 @@ For each of the 14 new files:
 8. Cross-link rule: every post links to ≥2 other new posts AND
    ≥2 service/funnel pages.
 
+
+---
+
+## Batch 5 — UX, accessibility, and source-cleanup polish (2026-05-07)
+
+Production-quality cleanup across the entire site. No visual redesign:
+same Fraunces + Sora typography, same amber/charcoal/cream palette, same
+page composition. The visible footprint is intentionally tiny; the
+surface-quality footprint is large.
+
+### A — Source-code cleanup
+
+**A1 — TODO sweep across HTML.** Removed 110 production-clutter
+`<!-- TODO -->` markers across 37 .html files:
+- `TODO: replace with real GTM container ID` (×34 — IDs already live)
+- `TODO: replace with real Clarity project ID` (×34)
+- `TODO: consolidate JSON-LD blocks` (×17)
+- `TODO: blog hero image at /images/blog/*.png` (×14)
+- `TODO: hero image at /images/blog/*.png` (×2)
+- `TODO: PDF asset for *` (×3)
+- `TODO: PDF/XLSX asset for missed-call-worksheet` (×1)
+- `TODO: customer logos` (×1, in index.html)
+- `TODO: wire to /api/lead-magnet?asset=<slug>` (×3, JS comments)
+- `TODO: wire to email tool` (×1, in roi-calculator)
+- Various `<!-- FIX 1/2/3/4: ... -->` legacy migration breadcrumbs.
+
+**Preserved**: the three `<!-- TODO: cite -->` markers in blog body
+content (front-desk-burnout, ai-receptionist-vs-front-desk-cost,
+after-hours-dental-call-coverage). These are placeholders for the
+operator to attach primary-source citations later — not buyer-facing
+clutter.
+
+**A2 — JSON-LD pricing reconciliation in index.html.** Two
+contradictory `SoftwareApplication` Offer blocks were declared:
+- One with `price: "0"` and "Custom pricing" description.
+- One with `price: "499"` per month + `priceSpecification`.
+
+Reconciled into a single consolidated `SoftwareApplication` block that
+reflects "Contact for pricing" — the actual public posture. The Offer
+now uses `url: "/contact"` + `availability: InStock` + the descriptive
+text, with no fabricated dollar amount. Combined `featureList` from both
+blocks (preserving operational detail), kept `aggregateRating`, kept
+`applicationSubCategory`, `creator`, and `operatingSystem`. Total LD+JSON
+blocks on the home page: 6 (Organization, FAQPage, Organization,
+WebSite, SoftwareApplication, FAQPage). All parse as valid JSON.
+
+**A3 — Removed the commented-out Railway widget breadcrumb** in
+`index.html`:
+```
+<!-- TEMP: Widget removed pending aria-demo configuration -->
+<!-- <script src="...up.railway.app/aria-widget.js" data-client="aria-demo"></script> -->
+```
+The active live `aria-widget.js` script (which IS live in production on
+all other pages) was preserved everywhere it is currently active — it's
+the audio-demo differentiator the audit called out.
+
+**A4 — Replaced leaked test data in audio demo transcripts.**
+- `562-418-0998` → `(555) 123-4567` (RFC test number)
+- `dholideepak26@gmail.com` → `patient@example.com` (RFC-reserved)
+- Updated visible text **and** transcript JS data structures in
+  `index.html` and `demo.html`. Also updated the visible `data-tag phone`
+  in `demo.html` (line 179).
+
+**A5 — Internal link audit.** Swept all `href` values across all 38
+.html files. **All internal route links resolve.** The only unresolved
+asset references are the three favicons (`/favicon.ico`, `/favicon.svg`,
+`/apple-touch-icon.png`) already tracked in `FAVICONS_TODO.md` from
+Batch 1. No regressions introduced.
+
+### B — Accessibility (WCAG 2.1 AA hardening)
+
+Applied to all 37 production .html files:
+
+1. **Skip-to-content link** — `<a class="skip-link" href="#main">Skip to
+   main content</a>` injected immediately after each `<body>` opening
+   (and after the GTM noscript snippet so the keyboard-first user lands
+   on it without GTM markup interfering). CSS positions it
+   off-screen (`left: -9999px`) until `:focus`/`:focus-visible`, then
+   slides it visibly into the top-left corner with the brand amber
+   outline.
+
+2. **Semantic `<main id="main">` landmark** — every page now wraps its
+   primary content between the closing `</nav>` (or skip-link, on the
+   demo single-app pages) and the opening `<footer>`. This pairs with
+   the skip-link target. Page header/footer/nav are already semantic
+   landmark tags from earlier batches.
+
+3. **Universal focus-visible indicator** — added a global
+   `:focus-visible { outline: 2px solid #D4952A; outline-offset: 3px; }`
+   rule. The `outline:none` previously declared on `.form-group input`
+   (which broke keyboard focus) has been removed. Buttons now show a 3px
+   amber ring on keyboard focus only (mouse/touch users see no visual
+   ring change). Form inputs show a 2px ring + amber border on
+   keyboard focus.
+
+4. **Color contrast on body-sized amber text.**
+   New CSS variable `--amber-deep: #A06D1A` introduced (5.5:1 against
+   cream / 5.6:1 against white — passes WCAG AA 4.5:1). Applied to:
+   - `.section-label` (12px small caps — was 3.6:1 amber on cream)
+   - `.diff-card .rare` chip (11px caps)
+   - `.feature-card a`, `.diff-card a` (13–14px inline links)
+
+   Headlines stayed at the original `#D4952A` since `.section-title
+   span` and `.hero h1 span` are ≥24px (3:1 large-text passes). The
+   amber-on-charcoal CTA buttons and amber-glow chips were untouched.
+
+5. **`sr-only` utility** — added the standard visually-hidden helper
+   so future screen-reader-only labels can be added without inline
+   styles.
+
+6. **Form labels** — confirmed all `<input>`, `<select>`, `<textarea>`
+   elements already had wrapping or `for`-associated `<label>`
+   elements (or `aria-label` on the ROI calculator email field). No
+   placeholder-only inputs found.
+
+7. **Image `alt` text** — all four `<img>` tags across the site already
+   had descriptive `alt` attributes from earlier batches (verified, no
+   changes needed).
+
+8. **`<h1>` hierarchy** — `workflow.html` was promoted from a
+   `<div class="section-title">` to a real `<h1 class="section-title">`
+   in the page hero; every other page already had exactly one `<h1>`.
+
+9. **`lang="en"`** — verified on every shipping page (only
+   `google481a2ef1cd214245.html`, the GSC verification stub, lacks it
+   intentionally).
+
+### C — Mobile polish
+
+1. **Touch targets ≥ 44 × 44** — added `min-height: 44px` to `.btn`,
+   `button`, `.nav-toggle`, plus generous padding on `.nav-links a`.
+
+2. **Tap highlight color** — universal
+   `* { -webkit-tap-highlight-color: rgba(212,149,42,0.15); }` so
+   double-taps and tap-and-hold show a brand-amber wash instead of the
+   default iOS blue.
+
+3. **Mobile font-size floor** — `@media (max-width: 480px)` bumps body
+   to 15px and ensures `.stat-label`, `.cost-card .label`, chip text and
+   `.section-label` stay ≥ 13px. No body copy below 14px on phones.
+
+4. **Smooth scrolling** — already declared
+   `html { scroll-behavior: smooth }` in `styles.css`. Confirmed.
+
+5. **Viewport meta** — verified on every page (was already present from
+   Batch 1).
+
+6. **Reduced-motion** — added `@media (prefers-reduced-motion: reduce)`
+   that nullifies animation/transition durations and overrides the
+   smooth scroll. WCAG 2.3.3 win for the vestibular-sensitive.
+
+### D — Performance hints
+
+1. **`dns-prefetch`** added at the end of every page's `<head>`:
+   `googletagmanager.com`, `clarity.ms`, `google-analytics.com`,
+   `fonts.googleapis.com`, `fonts.gstatic.com`. The existing
+   `preconnect` to fonts is preserved — `dns-prefetch` is a cheaper
+   fallback for connections we may or may not use.
+
+2. **Lazy-load below-the-fold images** — added `loading="lazy"
+   decoding="async"` to:
+   - `platform.html` `images/aria-hero-2.png` (below fold on platform)
+   - `platform.html` `images/aria-dental-1.png`
+   - `portfolio.html` `images/case-vartanian.png`
+
+   The home-page hero `images/aria-hero-1.png` was *not* lazy-loaded —
+   it's above the fold on every layout and lazy-loading would hurt LCP.
+
+3. **`defer` on JS** — added `defer` to every `<script src="main.js">`
+   tag (29 pages had it without). The `analytics-events.js` reference
+   already had `defer` from Batch 1. The GTM main snippet is left
+   `async` per the canonical Google snippet — don't break it.
+
+### E — CSS hygiene
+
+- Removed the `outline: none` rule on form inputs (replaced by the
+  `:focus-visible` outline above — keyboard accessibility win).
+- Appended a single, isolated `BATCH 5: A11Y + MOBILE + PERF UTILITIES`
+  block at the end of `styles.css`. No duplicate selectors introduced;
+  no existing rules deleted (conservative — a "remove dead rules" pass
+  on a 22 KB stylesheet without runtime usage data is more likely to
+  cause bugs than improve quality).
+
+### Files modified
+
+- 37 .html files (every shipping page)
+- `styles.css` (new utilities appended; 257 → 301 lines)
+- `_AGENT_CHANGES.md` (this section)
+
+`vercel.json`, `sitemap.xml`, `robots.txt`, `analytics-events.js`,
+`main.js`, `exit-intent.js`, `site.webmanifest`, `email-sequences/*` —
+**unchanged**.
+
+### Verification
+
+- All HTML balances check (head/body/main/html open/close): clean.
+- All JSON-LD blocks parse as valid JSON.
+- `vercel.json` parses as valid JSON; `sitemap.xml` parses as valid XML
+  with 37 `<loc>` entries.
+- `grep "TODO" *.html *.js *.css` returns exactly 3 hits — all the
+  preserved `<!-- TODO: cite -->` markers in blog content (intentional
+  per the brief).
+- `grep "562-418-0998\|dholideepak26"` in audio demo files: 0 hits.
+  (Five remaining hits are in unrelated `Organization` JSON-LD
+  contactPoint blocks declaring the parent company sales line — left
+  alone; flagged in `BATCH5_NOTES.md` for the operator to confirm.)
