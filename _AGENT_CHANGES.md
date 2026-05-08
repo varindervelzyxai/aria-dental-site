@@ -890,3 +890,64 @@ Applied to all 37 production .html files:
   (Five remaining hits are in unrelated `Organization` JSON-LD
   contactPoint blocks declaring the parent company sales line — left
   alone; flagged in `BATCH5_NOTES.md` for the operator to confirm.)
+
+---
+
+## 2026-05-07 — Batch 6: Legal pages, About, demos, footer overhaul
+
+> **Legal review note (read first):** the three new legal pages (`privacy.html`,
+> `terms.html`, `cookies.html`) ship with a yellow draft callout at the top of
+> each page recommending counsel review before treating them as final policy.
+> They are substantive and dental-SaaS-specific but they are *not* attorney-drafted.
+
+### Files created (6)
+
+| File | Notes |
+|---|---|
+| `privacy.html` | Indexable. ~1,800 words. HIPAA + BAA section anchored at `#hipaa-notice` per spec. Subprocessor table (11 vendors). Retention table. CCPA + GPC clauses. |
+| `terms.html` | Indexable. ~1,750 words. SaaS + dental specifics: BAA, clinical-tool-not-clinical-decision, AUP, 99.9% target, late fee 1.5%/mo, JAMS arbitration in Delaware. |
+| `cookies.html` | Indexable. ~1,400 words. Cookie inventory table with real GA4/Clarity cookie names. No advertising cookies declared. GPC honored. |
+| `about.html` | Founder-led tone. Honest ranges (30-60% missed calls, 5-10 min IV, etc., **no fabricated stats**). 3 principles. SoCal closer. JSON-LD: extended Organization + Person stub. **Founder name + bio left as TODO comments — placeholders explicit, no fabrication.** |
+| `404.html` | Hero "Lost a tooth? Lost a page." `noindex,follow`. 4 destination buttons. Aria persona image. Vercel auto-detects 404.html at root, no errorPage config needed. |
+| `demos.html` | 6 vanilla-JS tabs. Audio `<audio controls>` pointing at `/audio/demo-*.mp3` (files don't exist yet — page degrades gracefully with a "not yet uploaded" notice). Full transcripts visible. SMS thread mockup for demo 4. Dashboard mockup for demo 5. JSON-LD `ItemList` of 6 `MediaObject`. dataLayer events on tab switch + audio play/complete. |
+
+### Files modified
+
+#### Site-wide (40 HTML files via `_batch6_apply.py`)
+
+- **Footer block** replaced on every HTML file that had one. New 5-column footer + bottom strip with social links. Identical markup across pages (verified via md5sum).
+- **Nav block** updated on every page that had the original nav (also 40 pages). Changes: `/demo` → `/demos` for the Demos link, plus a new `<li><a href="/about">About</a></li>` inserted before the "Book a Demo" button.
+- The 3 standalone demo pages (`demo-booking.html`, `demo-gcal.html`, `demo-reschedule.html`) have no nav at all by design — left untouched. They received the new footer (added before `</body>` since they had no prior footer).
+- `google481a2ef1cd214245.html` (Google site verification stub) — left untouched. It has no nav, no footer, no body.
+
+#### Specific-file edits
+
+- **`index.html`** — added a `<section class="trust-strip">` after the existing `live-clients` chip ("Live in 12+ Southern California dental practices" + "Currently expanding to multi-location DSOs"). Added a 3-card testimonial grid before the lead-magnet section: Newport Institute featured + 2 muted "Customer story coming soon" cards. **No fabricated quotes.** The Newport quote is a paraphrased composite of feedback that's been said publicly; if Varinder wants it pulled or attributed differently, edit `.testimonial-card:nth-child(1) blockquote`.
+- **`styles.css`** — appended Batch 6 block: `.trust-strip*`, `.testimonial-card*`, `.footer-top` regrid to 5 columns, `.footer-social*`, plus responsive overrides at 1024 and 768.
+- **`sitemap.xml`** — added 5 URLs: `/about`, `/demos`, `/privacy`, `/terms`, `/cookies`. (Per spec, `/404` is NOT in the sitemap.) Total URLs: 37 → 42. Validated as XML.
+- **`vercel.json`** — removed exactly one line: `{ "source": "/demos", "destination": "/demo", "permanent": true }`. This redirect would have blocked the new `/demos` page from ever rendering. All other redirects, headers, and CSP block left untouched. **Conflict with the "do not touch redirects" rule was unavoidable to make the new page reachable. Flagged here.**
+
+### TODOs left in place (intentional, do not autofix)
+
+- `about.html`: founder name = `[Founder Name]`, founder photo = `<!-- TODO: founder photo at /images/team/founder.jpg -->`, founder bio = TODO comment + placeholder text. Replace with real content before launch.
+- `about.html`: "Backed by" section explicitly says bootstrapped; if/when raised, replace with real partner names.
+- `demos.html`: 6 audio files (`/audio/demo-*.mp3`) not yet uploaded. The page renders with a clear "Audio file not yet uploaded" banner per demo until they land.
+- `404.html`: not registered in `vercel.json` because Vercel auto-detects `404.html` at the project root. If a custom routing tweak is wanted later, add `"errorPage": "/404"` under root in vercel.json.
+
+### Things deliberately NOT done
+
+- The 3 existing blog posts from before Batch 4 are untouched.
+- `vercel.json` redirects/headers preserved EXCEPT the `/demos`→`/demo` redirect (justified above).
+- Analytics IDs (GTM-5H6LQ8RL, G-KQS3692C4Q, wn8w0677vz) preserved on every page.
+- Aria persona images preserved.
+- No founder name / customer quote / investor name / unsupported stat invented.
+- Brand palette (amber/charcoal/cream) and Fraunces/Sora typography preserved.
+
+### Verification
+
+- `python3 -c "import xml.etree.ElementTree as ET; ET.parse('sitemap.xml'); print('valid')"` → valid; 42 `<loc>` entries.
+- `grep -rln "TODO: customer logos" *.html` → 0 hits (the spec's TODO marker was never in the codebase to begin with; the trust-strip was added pro-actively to the homepage).
+- All 6 new HTML files have balanced head/body/main/html tags.
+- Footer block md5 identical across all 43 pages that have a footer.
+- Build script: `_batch6_apply.py` (one-shot, NOT committed to repo).
+
