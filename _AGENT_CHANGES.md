@@ -4,6 +4,29 @@ Date: 2026-05-06
 Source spec: `~/Downloads/Aria_Batch1_Deploy_Package/`
 Repo: `~/Downloads/aria-dental-site-main 4/`
 
+
+## 2026-05-08 — /compare cleanup + /integrations nav link
+
+### compare.html — brand-neutral cleanup
+Removed all Weave / Ruby references in favor of generic "practice phone suites" / "traditional answering services" wording. Specific changes:
+- Body text (line ~142): "Phone systems like Weave route calls and send reminders." -> "Practice phone suites route calls and send reminders."
+- Table header (line ~160): "Weave / Phone Tools" -> "Practice Phone Suites"
+- HTML comment (line ~203): "ARIA VS WEAVE/RUBY" -> "ARIA VS PHONE SUITES AND FRONT OFFICE TOOLS"
+- H2 heading (line ~207): "Aria vs. Weave, Ruby, and Front Office Tools" -> "Aria vs. Phone Suites and Front Office Tools"
+- 3-paragraph intro block (lines ~209-211) rewritten in brand-neutral terms (phone suites + traditional answering services).
+- FAQ card (line ~315): rewrote the Weave-named Q/A as a generic "traditional dental phone suites" Q/A.
+- FAQPage JSON-LD (line ~93): updated the matching Weave Q/A entry to the same brand-neutral wording so structured data and visible content stay in sync.
+
+### Site-wide nav — Integrations link
+Added `<li><a href="/integrations">Integrations</a></li>` immediately before the existing Security entry in the primary nav of every .html in the repo root that contains the nav block. Pattern used: replace `</li><li><a href="/security"` with `</li><li><a href="/integrations">Integrations</a></li><li><a href="/security"`. Idempotency guard skips files where `<a href="/integrations">Integrations</a></li><li><a href="/security"` is already present. Active-state variant on /security pages is handled by matching the prefix only.
+
+### index.html — homepage integrations CTA
+Updated the "See full integrations ->" link href from `/platform` to `/integrations` so the homepage CTA points at the dedicated integrations page.
+
+### Verification
+- `grep -i "weave\|ruby" compare.html` returns 0 hits in visible content (URL slugs like `aria-vs-weave.html` may still appear as href values inside other files; those were intentionally left alone since they are external/legacy slugs).
+- `<a href="/integrations">Integrations</a>` is now present in the nav of all primary nav pages (index, platform, how-it-works, demos, portfolio, compare, security, about, integrations).
+
 ## 2026-05-07 — WizKids cleanup pass 2
 
 **Context:** First WizKids replacement pass left residual "Dr. Sara" provider references in the homepage and demo audio transcripts (these were originally a Vartanian-team member). Live site verification flagged Newport/Vartanian content still showing on homepage, /portfolio, and /workflow. This pass closes those gaps.
