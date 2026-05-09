@@ -4,6 +4,38 @@ Date: 2026-05-06
 Source spec: `~/Downloads/Aria_Batch1_Deploy_Package/`
 Repo: `~/Downloads/aria-dental-site-main 4/`
 
+## 2026-05-07 — WizKids cleanup pass 2
+
+**Context:** First WizKids replacement pass left residual "Dr. Sara" provider references in the homepage and demo audio transcripts (these were originally a Vartanian-team member). Live site verification flagged Newport/Vartanian content still showing on homepage, /portfolio, and /workflow. This pass closes those gaps.
+
+**Recon result:** After the pass-1 work, only 3 code files still contained any matching pattern (`vartanian|newport institute|dr-vartanian|drvartanian|john vartanian|ruth chen|dr\. sara|dr sara|newport dentistry`):
+
+- `index.html` — 4 hits, all "Dr. Sara" inside `homeMessages` JS transcript array
+- `demo.html` — 4 hits, all "Dr. Sara"/"Doctor Sara" inside `messages` JS transcript array
+- `portfolio.html` — 1 hit, "case-vartanian.png" inside an inline TODO comment
+
+`workflow.html` was clean (already updated in pass 1; only "Newport Beach" address line remained, which is correct). Spanish (`es/`) pages were clean. Email-sequence MDs were clean.
+
+**Files modified:**
+
+- `index.html` — Rewrote 5 transcript lines in the home call demo player (`homeMessages` array, lines ~340–353) to remove "Dr. Sara" / "Doctor Sara". Provider-specific phrasing replaced with provider-agnostic phrasing ("shall I check what we have open", "Whoever can see me first is fine", "Let me check what we have available", "we have 3:00, 3:30, 4:00, or 4:30", "Your appointment is tomorrow…"). Total: 5 replacements.
+- `demo.html` — Same rewrite applied to the `messages` transcript array (lines ~292–304). Total: 5 replacements (one combined Dr. Sara line counts as 2 hits in the same string).
+- `portfolio.html` — Updated the TODO comment near the case-study image (line 123). Was: `<!-- TODO: replace case-vartanian.png with case-wizkids.png logo/photo from WizKids -->`. Now: `<!-- TODO: confirm WizKids logo/photo at images/case-wizkids.png is the correct asset -->`. Total: 1 replacement.
+
+**Replacement count this pass:** 11 occurrences across 3 files.
+
+**Post-replacement verification:** `grep -rinE "vartanian|newport institute|dr-vartanian|drvartanian|john vartanian|ruth chen|dr\. sara|dr sara|doctor sara|newport dentistry"` across `*.html *.js *.json *.css` returns **zero hits**. The same grep across `*.md` (excluding this changelog itself, which contains historical narrative) also returns zero hits. Remaining "Newport Beach" mentions in HTML are exclusively the Velzyx office address (5000 Birch St, Suite 3000, Newport Beach, CA 92660) — kept per spec.
+
+**Still on disk but unreferenced in HTML/JS:** `images/case-vartanian.png` (299 KB). HTML now references `images/case-wizkids.png` which does not yet exist on disk. Pass-1 caveat still stands — the user needs to drop a real WizKids asset there before deploy, otherwise that `<img>` will 404.
+
+**Audio caveat (carried over from pass 1):** `aria-call-demo.mp3` is the actual recording played on `index.html` and `demo.html`. The on-screen transcripts now match WizKids language, but the audio still contains the original "Dr. Sara" / "Vartanian" voice content. To fully match, the MP3 needs to be re-recorded.
+
+**Judgment calls made this pass:**
+- Treated "Dr. Sara" as a Vartanian-team artifact per the spec's note that "these were Vartanian's team members" and replaced with provider-agnostic language rather than substituting a WizKids provider name (avoids inventing a real person who could be misread as a customer claim).
+- The TODO comment in `portfolio.html` was rewritten rather than removed — the user should still confirm the WizKids asset exists before deploy, so the marker stays useful.
+- `_AGENT_CHANGES.md` body left untouched below this section. The historical "Newport / Vartanian removal" entries are accurate logs of pass-1 work and re-writing them would erase the audit trail.
+
+
 ## Detected framework + structure
 
 Plain multi-page **static HTML** site, no framework. 24 `.html` files at the
