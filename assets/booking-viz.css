@@ -1,0 +1,130 @@
+/* ============ Booking Demo Visualization (.booking-viz) ============ */
+/* Shared component used on /demos and / (homepage). Scoped to .booking-viz
+   and .bv-* class names — no global leakage. Depends on CSS variables
+   defined in styles.css (--amber, --charcoal, --warm-white, etc.) */
+
+.booking-viz-hint{display:flex;align-items:center;gap:10px;padding:12px 16px;background:linear-gradient(90deg,var(--amber-50) 0%,rgba(255,243,214,0.4) 100%);border:1px solid rgba(212,149,42,0.18);border-radius:10px;font-size:13px;color:var(--charcoal-70);margin:0 0 16px;line-height:1.5}
+.booking-viz-hint svg{flex-shrink:0;color:var(--amber)}
+.booking-viz-hint strong{color:var(--charcoal);font-weight:600}
+.booking-viz{display:grid;grid-template-columns:1fr;gap:20px;margin:24px 0 8px;font-family:'Sora',sans-serif}
+@media(min-width:880px){.booking-viz{grid-template-columns:1.15fr 0.85fr;gap:24px;align-items:start}}
+.booking-viz-col{display:flex;flex-direction:column;gap:16px;min-width:0}
+.booking-viz-col-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--charcoal-50);padding:0 4px;display:flex;align-items:center;gap:8px}
+.booking-viz-col-label::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 4px rgba(212,149,42,0.12)}
+
+/* ----- Workspace cards ----- */
+.bv-card{background:var(--warm-white);border:1px solid var(--border);border-radius:14px;padding:18px 18px 16px;box-shadow:0 1px 2px rgba(26,26,46,0.03);transition:border-color .4s ease,box-shadow .4s ease;position:relative;overflow:hidden}
+.bv-card.is-active{border-color:rgba(212,149,42,0.45);box-shadow:0 4px 20px rgba(212,149,42,0.10)}
+.bv-card.is-complete{border-color:rgba(74,124,89,0.32)}
+.bv-card-head{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.bv-card-icon{width:30px;height:30px;border-radius:8px;background:var(--amber-50);color:var(--amber);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .4s ease,color .4s ease}
+.bv-card.is-complete .bv-card-icon{background:rgba(232,240,232,0.7);color:var(--sage-deep)}
+.bv-card-title{font-size:13px;font-weight:600;color:var(--charcoal);letter-spacing:-.005em}
+.bv-card-sub{font-size:11px;color:var(--charcoal-50);margin-top:1px;font-weight:500}
+.bv-status{margin-top:12px;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--charcoal-70);min-height:18px;line-height:1.4}
+.bv-status .bv-spinner{width:12px;height:12px;border-radius:50%;border:1.5px solid rgba(212,149,42,0.25);border-top-color:var(--amber);animation:bv-spin .8s linear infinite;flex-shrink:0}
+.bv-status .bv-check{width:14px;height:14px;border-radius:50%;background:var(--sage-deep);color:#fff;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;opacity:0;transform:scale(0.6);transition:opacity .35s ease,transform .35s cubic-bezier(.2,1.2,.4,1)}
+.bv-card.is-complete .bv-status .bv-check{opacity:1;transform:scale(1)}
+.bv-status-text-idle,.bv-status-text-active,.bv-status-text-done{display:none}
+.bv-card .bv-status-text-idle{display:inline}
+.bv-card.is-active .bv-status-text-idle,.bv-card.is-complete .bv-status-text-idle{display:none}
+.bv-card.is-active .bv-status-text-active{display:inline}
+.bv-card.is-complete .bv-status-text-done{display:inline;color:var(--sage-deep);font-weight:500}
+.bv-card .bv-spinner{display:none}
+.bv-card.is-active .bv-spinner{display:inline-block}
+@keyframes bv-spin{to{transform:rotate(360deg)}}
+
+/* ----- Calendar card ----- */
+.bv-cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-top:4px;position:relative}
+.bv-cal-day{aspect-ratio:1.05;border:1px solid var(--border);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:11px;color:var(--charcoal-70);background:var(--cream);transition:border-color .35s ease,background .35s ease,color .35s ease;position:relative;overflow:hidden}
+.bv-cal-day .bv-cal-dow{font-size:9px;color:var(--charcoal-50);text-transform:uppercase;letter-spacing:.06em;font-weight:600;margin-bottom:2px}
+.bv-cal-day .bv-cal-num{font-family:'Fraunces',serif;font-size:14px;font-weight:600;color:var(--charcoal);line-height:1}
+.bv-cal-day.is-target{border-color:rgba(212,149,42,0.4);background:var(--amber-50)}
+.bv-cal-day.is-target .bv-cal-num{color:var(--amber)}
+.bv-cal-day.is-booked{border-color:var(--amber);background:#fff;box-shadow:0 0 0 1px var(--amber),0 4px 12px rgba(212,149,42,0.18)}
+.bv-cal-day.is-booked .bv-cal-num{color:var(--amber)}
+.bv-cal-day .bv-cal-dot{position:absolute;bottom:5px;width:4px;height:4px;border-radius:50%;background:var(--amber);opacity:0;transition:opacity .3s ease}
+.bv-cal-day.is-booked .bv-cal-dot{opacity:1}
+.bv-cal-sweep{position:absolute;left:0;right:0;height:24%;top:0;background:linear-gradient(180deg,transparent 0%,rgba(212,149,42,0.18) 50%,transparent 100%);pointer-events:none;opacity:0;border-radius:8px;z-index:2}
+.bv-card.is-active .bv-cal-sweep{opacity:1;animation:bv-sweep 1.4s cubic-bezier(.4,0,.4,1) infinite}
+@keyframes bv-sweep{0%{top:-30%}100%{top:100%}}
+
+/* ----- PMS card ----- */
+.bv-pms-frame{background:linear-gradient(180deg,#FAFAFA 0%,#F5F5F2 100%);border:1px solid var(--border);border-radius:10px;padding:0;overflow:hidden;margin-top:2px}
+.bv-pms-bar{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#fff;border-bottom:1px solid var(--border);font-size:10px;color:var(--charcoal-50);font-weight:600;letter-spacing:.04em}
+.bv-pms-bar-left{display:flex;align-items:center;gap:8px}
+.bv-pms-bar-dots{display:flex;gap:4px}
+.bv-pms-bar-dots span{width:7px;height:7px;border-radius:50%;background:#E5E5E5}
+.bv-pms-bar-title{color:var(--charcoal-70);font-weight:600;text-transform:none;letter-spacing:0;font-size:11px}
+.bv-pms-bar-right{font-size:9px;color:var(--charcoal-50);text-transform:uppercase;letter-spacing:.1em}
+.bv-pms-body{padding:12px 14px}
+.bv-pms-section-title{font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--charcoal-50);font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.bv-pms-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.bv-pms-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px dashed rgba(232,228,222,0.7);min-height:30px}
+.bv-pms-row:last-child{border-bottom:none}
+.bv-pms-key{font-size:11px;color:var(--charcoal-50);font-weight:500;flex-shrink:0}
+.bv-pms-val{font-size:12px;color:var(--charcoal);font-weight:500;text-align:right;font-family:'Sora',sans-serif;opacity:0;transform:translateY(3px);transition:opacity .45s ease,transform .45s ease}
+.bv-pms-val.is-shown{opacity:1;transform:translateY(0)}
+.bv-pms-pill-wrap{display:flex;justify-content:flex-end;margin-top:4px}
+.bv-pms-pill{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:50px;font-size:11px;font-weight:600;background:var(--cream);color:var(--charcoal-50);border:1px solid var(--border);transition:all .45s ease}
+.bv-pms-pill.is-shown{background:rgba(232,240,232,0.7);color:var(--sage-deep);border-color:rgba(74,124,89,0.3)}
+.bv-pms-pill .bv-pms-pill-dot{width:6px;height:6px;border-radius:50%;background:var(--charcoal-50);transition:background .45s ease}
+.bv-pms-pill.is-shown .bv-pms-pill-dot{background:var(--sage-deep);box-shadow:0 0 0 3px rgba(74,124,89,0.15)}
+
+/* ----- SMS card ----- */
+.bv-sms-meta{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:var(--cream);border:1px solid var(--border);border-radius:10px;font-size:11px;color:var(--charcoal-70);margin-bottom:10px}
+.bv-sms-meta-to{display:flex;align-items:center;gap:8px}
+.bv-sms-meta-to .bv-sms-to-icon{width:22px;height:22px;border-radius:50%;background:var(--amber-50);color:var(--amber);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.bv-sms-meta-to-num{font-family:'Sora',sans-serif;font-weight:600;color:var(--charcoal);letter-spacing:.02em;font-variant-numeric:tabular-nums}
+.bv-sms-meta-len{font-size:10px;color:var(--charcoal-50);font-variant-numeric:tabular-nums}
+.bv-sms-body{padding:12px 14px;background:#FAFAFA;border:1px solid var(--border);border-radius:10px;font-size:12px;line-height:1.55;color:var(--charcoal-70);position:relative;min-height:90px;overflow:hidden}
+.bv-sms-body::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(105deg,transparent 30%,rgba(212,149,42,0.12) 50%,transparent 70%);background-size:220% 100%;background-position:200% 0;pointer-events:none;border-radius:10px;opacity:0;transition:opacity .3s}
+.bv-card.is-active .bv-sms-body::before{opacity:1;animation:bv-shimmer 1.6s ease-in-out infinite}
+@keyframes bv-shimmer{0%{background-position:200% 0}100%{background-position:-100% 0}}
+
+/* ----- Phone column ----- */
+.booking-viz-phone-wrap{position:sticky;top:24px}
+@media(max-width:880px){.booking-viz-phone-wrap{position:static}}
+.bv-phone{width:100%;max-width:280px;margin:0 auto;background:#1A1A1A;border-radius:38px;padding:8px;box-shadow:0 24px 60px rgba(26,26,46,0.18),0 0 0 1px rgba(255,255,255,0.04) inset;position:relative}
+.bv-phone-screen{background:linear-gradient(180deg,#16161F 0%,#0E0E18 100%);border-radius:32px;overflow:hidden;position:relative;aspect-ratio:9/19.5;display:flex;flex-direction:column}
+.bv-phone-notch{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:88px;height:22px;background:#000;border-radius:14px;z-index:30;display:flex;align-items:center;justify-content:flex-end;padding-right:14px}
+.bv-phone-notch-cam{width:6px;height:6px;border-radius:50%;background:#1F1F2A;box-shadow:inset 0 0 2px rgba(255,255,255,0.1)}
+.bv-phone-status{display:flex;align-items:center;justify-content:space-between;padding:14px 22px 0;font-size:11px;color:#fff;font-weight:600;font-family:'Sora',sans-serif;letter-spacing:.02em;font-variant-numeric:tabular-nums;z-index:5;position:relative}
+.bv-phone-status-icons{display:flex;align-items:center;gap:5px;color:rgba(255,255,255,0.85)}
+.bv-phone-status-icons svg{width:12px;height:12px}
+.bv-phone-screen-body{flex:1;display:flex;flex-direction:column;padding:30px 18px 22px;position:relative;z-index:1}
+.bv-call-label{text-align:center;font-size:11px;color:rgba(255,255,255,0.55);font-weight:500;letter-spacing:.04em;margin-bottom:18px}
+.bv-call-avatar{width:96px;height:96px;border-radius:50%;background:linear-gradient(135deg,var(--amber) 0%,#E0A340 50%,#B87D1E 100%);margin:0 auto 14px;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Fraunces',serif;font-size:36px;font-weight:500;box-shadow:0 0 0 4px rgba(212,149,42,0.18),0 0 0 8px rgba(212,149,42,0.08)}
+.bv-call-name{text-align:center;font-family:'Fraunces',serif;font-size:21px;font-weight:500;color:#fff;letter-spacing:-.01em;margin-bottom:4px}
+.bv-call-sub{text-align:center;font-size:11px;color:rgba(255,255,255,0.55);font-weight:500;margin-bottom:8px}
+.bv-call-timer{text-align:center;font-size:13px;color:rgba(255,255,255,0.85);font-weight:500;font-variant-numeric:tabular-nums;letter-spacing:.04em;margin-bottom:24px}
+.bv-call-actions{margin-top:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:0 4px 8px}
+.bv-call-btn{aspect-ratio:1;border-radius:50%;background:rgba(255,255,255,0.10);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.85)}
+.bv-call-btn.bv-call-btn-end{background:#E0413A;color:#fff;grid-column:2/3}
+.bv-call-btn svg{width:18px;height:18px}
+.bv-phone-home-bar{position:absolute;bottom:7px;left:50%;transform:translateX(-50%);width:108px;height:4px;border-radius:4px;background:rgba(255,255,255,0.45);z-index:10}
+
+/* ----- Phone notification banner ----- */
+.bv-notif{position:absolute;top:38px;left:8px;right:8px;background:rgba(40,40,52,0.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-radius:14px;padding:10px 12px;color:#fff;display:flex;align-items:flex-start;gap:10px;opacity:0;transform:translateY(-30px);transition:opacity .5s cubic-bezier(.2,.8,.4,1),transform .5s cubic-bezier(.2,.8,.4,1);z-index:20;border:1px solid rgba(255,255,255,0.06);box-shadow:0 8px 28px rgba(0,0,0,0.4)}
+.bv-notif.is-shown{opacity:1;transform:translateY(0)}
+.bv-notif-icon{width:26px;height:26px;border-radius:7px;background:#34C759;color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700}
+.bv-notif-icon svg{width:14px;height:14px}
+.bv-notif-body{flex:1;min-width:0}
+.bv-notif-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:1px}
+.bv-notif-app{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,0.7)}
+.bv-notif-time{font-size:9px;color:rgba(255,255,255,0.5);font-variant-numeric:tabular-nums}
+.bv-notif-title{font-size:11px;font-weight:600;color:#fff;line-height:1.25;margin-bottom:1px}
+.bv-notif-msg{font-size:10.5px;line-height:1.35;color:rgba(255,255,255,0.78);overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical}
+
+/* ----- Reduced motion ----- */
+@media(prefers-reduced-motion:reduce){
+  .booking-viz *,.booking-viz *::before,.booking-viz *::after{transition-duration:.001ms!important;animation-duration:.001ms!important;animation-iteration-count:1!important}
+  .bv-card.is-active .bv-cal-sweep{display:none}
+  .bv-card.is-active .bv-sms-body::before{display:none}
+}
+
+@media(max-width:680px){
+  .bv-phone{max-width:240px}
+  .booking-viz{margin:18px 0 4px}
+  .bv-card{padding:16px 14px}
+}

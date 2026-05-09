@@ -1,107 +1,160 @@
-# Booking demo visualization — agent changes
+# Homepage demo refresh — Mike Patterson booking + viz
 
-## What was added
+Replaced the old WizKids "crown fell off" homepage demo with the new Mike
+Patterson implant-consultation booking demo, including the synced viz that
+already lives on `/demos`. Extracted the visualization CSS + JS to external
+files so both pages share one component.
 
-A side-by-side, audio-synced visualization for the **"2. New Appointment — Patient Books Implant Consultation"** demo card on `/demos`. The visualization plays alongside the existing audio file (`/audio/demo-book-self.mp3`) and shows visitors *what Aria is doing* operationally while they hear the call.
+## What was removed from the homepage
 
-Two columns on desktop (≥880px), stacked on mobile:
+- The dark `<section class="dark-section">` that wrapped the player ("Hear
+  Aria close a real patient. ... 2 minutes 17 seconds").
+- The whole custom audio-player UI: avatar, "Real Call" pill (`#homeLiveDot`),
+  generated waveform (`#homeWaveform`), inline transcript window
+  (`#homeTranscript`), play/pause buttons, scrubber (`#homeProgressBar`),
+  current/total time labels.
+- The `<audio id="homeAudio" src="aria-call-demo.mp3">` element and the
+  ~70-line inline `<script>` block that drove it (homeMessages keyframes,
+  `toggleHomeAudio`, `seekHomeAudio`, timeupdate / loadedmetadata / ended
+  listeners).
 
-- **Left — Aria's workspace.** Three stacked cards:
-  1. **Calendar lookup** — mini week grid (Sun–Sat, May 10–16, 2026) with Monday May 11 highlighted as the target. Amber sweep animation while searching, then the Mon cell becomes a "booked" pill with status "Available — Mon 11:00 AM with Dr. Smith".
-  2. **Practice management** — a stylized "Smith Family Dental — Schedule" frame with five fields fading in one-by-one (Patient → Provider → Type → Date → Time). Bottom pill animates "Drafting…" → "Booked" in green. Vendor-agnostic — no PMS brand named anywhere.
-  3. **SMS dispatch** — destination phone shown masked as `(•••) •••-5555`, full SMS body rendered, status cycles "Composing… → Encrypting… → Sent". Subtle amber shimmer while in flight.
+The homepage no longer references `aria-call-demo.mp3` at all. **Note:**
+that file (`aria-call-demo.mp3`) is still used by `demo.html` (a separate
+page), so it has been left in place.
 
-- **Right — Mike's phone.** Generic dark-bezel phone (no brand labels, no carrier, no Apple/Google marks) showing the active call screen: amber gradient avatar with serif "A", "Smith Family Dental" caller name, live call timer counting up in sync with audio currentTime. At keyframe `phone.notify` (0:53), an iOS-style notification banner slides down from the top showing the SMS confirmation. Banner remains visible for the rest of the call.
+There was no homepage MediaObject JSON-LD for the old demo to remove.
+The meta description / OG description didn't reference Vartanian or the
+old call.
 
-A small affordance sits above the audio player: **"Press play and watch both sides."**
+## What's there now
 
-## Where it sits in the page
+Light-background `<section class="section">` with the same `#live-demo`
+anchor (so the hero's `Hear a Real Call ↓` button still scrolls there).
+Headline reads "Hear Aria book a real patient." Inside a single warm-white
+card:
 
-Inside `<div class="demo-panel" data-panel="book-self">` → inside `<div class="demo-card">` → directly **after** the `<div class="demo-audio">` block and **before** the `<div class="demo-transcript">` block. The hint banner is the first new element; the `.booking-viz` two-column grid follows; the existing transcript is untouched directly below.
+1. Native `<audio controls>` element (`#bookSelfAudio`) pointed at
+   `audio/demo-book-self.mp3`.
+2. `.booking-viz-hint` — "Press play and watch both sides" affordance
+   lifted verbatim from `/demos`.
+3. `.booking-viz` two-column grid (`#bookingViz`):
+   - Left column: Aria's workspace — Calendar lookup card, Practice
+     management card, SMS dispatch card.
+   - Right column: Mike's iPhone with incoming-call screen + SMS
+     notification banner.
+4. Trust strip (HIPAA Compliant / AI Voice / Real-Time Booking).
+5. "▶ Listen to the full set of demos →" link below pointing to `/demos`.
 
-The audio element gained a single attribute: `id="bookSelfAudio"`. Everything else on the page is purely additive.
+Plus a new `MediaObject` JSON-LD entry for the call audio.
 
-## Files changed
+## Extraction (external file route)
 
-- `demos.html` — modified. ~485 lines added (CSS in existing `<style>` block, HTML inside the booking demo card, JS inside the existing `<script>` block).
-- All other demo cards, the JSON-LD schema (both `Organization` and `ItemList` blocks), the GTM/GA/Clarity tags, the navigation, and the footer are untouched.
+Both `index.html` and `demos.html` reference shared assets:
 
-## Keyframes config — paste in browser console to retune
+- `assets/booking-viz.css` — all `.booking-viz` / `.bv-*` styles. Scoped
+  classes only, no global leakage. Depends on CSS variables defined in
+  `styles.css` (`--amber`, `--charcoal`, `--warm-white`, `--cream`,
+  `--border`, `--sage-deep`, `--radius-lg`, etc.) — those are loaded
+  before booking-viz.css on every page.
+- `assets/booking-viz.js` — the `initBookingViz` IIFE. It bails silently
+  if `#bookSelfAudio` or `#bookingViz` is missing, so it's safe to ship
+  on every page. Exposes `window.bookingDemoKeyframes` for live retuning.
 
-The keyframes live in the inline `<script>` block, inside `(function initBookingViz(){…})()`. Editable at the top of that IIFE. They're also exposed as `window.bookingDemoKeyframes` so you can splice/edit live in the browser console.
+`demos.html` was rewritten to the version that contains the viz markup
+(the old 376-line demos.html in the repo did not have it yet — the new
+viz markup came from `~/Downloads/aria-demos-viz1/demos.html`). I then
+stripped its inline `<style>` block for booking-viz and the inline
+`initBookingViz` IIFE, replacing both with `<link>` and `<script>`
+references to the new shared files.
 
-```js
-const bookingDemoKeyframes = [
-  { at: 28.0, action: 'calendar.start' },
-  { at: 31.5, action: 'calendar.complete' },
-  { at: 32.0, action: 'pms.start' },
-  { at: 33.2, action: 'pms.field.patient' },
-  { at: 34.0, action: 'pms.field.provider' },
-  { at: 34.8, action: 'pms.field.type' },
-  { at: 35.6, action: 'pms.field.date' },
-  { at: 36.4, action: 'pms.field.time' },
-  { at: 37.5, action: 'pms.complete' },
-  { at: 50.0, action: 'sms.start' },
-  { at: 51.0, action: 'sms.composing' },
-  { at: 51.7, action: 'sms.encrypting' },
-  { at: 52.5, action: 'sms.complete' },
-  { at: 53.0, action: 'phone.notify' }
-];
+`demos.html` uses absolute paths (`/assets/booking-viz.css`,
+`/assets/booking-viz.js`) since that page is served at `/demos` via
+Vercel rewrites. `index.html` uses relative paths
+(`assets/booking-viz.css`, `assets/booking-viz.js`) to match the
+existing pattern in that file (`href="styles.css"`,
+`src="aria-call-demo.mp3"`, `href="images/..."`).
+
+## Audio path
+
+Homepage audio tag: `src="audio/demo-book-self.mp3"` — relative path,
+matches what the rest of `index.html` uses for direct page assets.
+The mp3 was already staged at
+`aria-dental-site-main 4/audio/demo-book-self.mp3`. Not touched.
+
+## File list to deploy
+
+Mirror these into the GitHub repo `aria-dental-site` at the same paths:
+
+| Source (this folder)                  | Repo path                  |
+|---------------------------------------|----------------------------|
+| `index.html`                          | `index.html`               |
+| `demos.html`                          | `demos.html`               |
+| `assets/booking-viz.css`              | `assets/booking-viz.css`   |
+| `assets/booking-viz.js`               | `assets/booking-viz.js`    |
+
+Deploy step: commit + push to `main`. Vercel auto-deploys ariadental.ai.
+
+## Verification grep results (all clean)
+
+```
+$ rg -i "vartanian|newport" index.html
+# Only hits: "Newport Beach, CA 92660" in postal address (Velzyx AI office)
+# and the Organization JSON-LD addressLocality. No Newport Institute /
+# Newport Dentistry / Vartanian references remain.
+
+$ rg -i "vartanian" index.html
+# 0 hits
+
+$ rg "Newport Institute|Newport Dent|newport-dent" index.html -i
+# 0 hits
+
+$ rg "demo-book-self" index.html
+# 2 hits: MediaObject JSON-LD contentUrl + audio[src] tag
+
+$ rg "booking-viz|bookSelfAudio" index.html
+# 12 hits
+
+$ rg "booking-viz\.js" index.html
+# 2 hits: <script> tag + comment in placeholder script block
+
+$ rg "homeAudio|aria-call-demo" index.html
+# 0 hits — old player fully removed
 ```
 
-To retune: edit the `at` values (in seconds) in the array, save, push. Audio is 61.13 s (confirmed via `ffprobe`).
+## Things to flag (non-blocking)
 
-## Behavior
+1. **Old audio file still in repo:** `aria-call-demo.mp3` at the repo
+   root is still referenced by `demo.html` (a separate page, NOT the
+   homepage). Left in place. If `demo.html` is going away too, you can
+   delete the mp3 in a follow-up.
 
-- **Play** — animations fire as `currentTime` crosses each keyframe.
-- **Pause** — frozen in place. No CSS animations restart.
-- **Seek backward** — every keyframe past the new `currentTime` is reset; only keyframes ≤ `currentTime` are reapplied. Robust to scrubbing.
-- **Seek forward** — same logic; jumps the visualization forward.
-- **Ended** — every keyframe applied, call timer shows full duration, notification stays visible. "Final state" snapshot.
-- **Reduced motion** — `prefers-reduced-motion: reduce` kills all transitions/animations and disables the calendar amber sweep + SMS shimmer. States snap.
-- **Other audio elements** — the JS targets `#bookSelfAudio` only. Adding audio to demos 1, 3–6 won't affect this visualization.
+2. **Stale image asset:** `images/case-vartanian.png` and
+   `case-vartanian.png` (root) exist in the repo but are NOT referenced
+   from `index.html`. Safe to delete in a follow-up if you want to
+   tidy the assets folder. Did NOT delete — flagging per task.
 
-## Accessibility
+3. **No `vartanian-demo.mp3`** was found in the audio/ directory or
+   anywhere else in the repo.
 
-- Each workspace card has `aria-live="polite"` + idle/active/done text variants that swap based on state class. Screen readers announce "Standing by", "Searching availability…", "Available — Mon 11:00 AM with Dr. Smith" etc.
-- Notification banner has `aria-live="polite"` and explicit "Smith Family Dental" + body text.
-- Phone is wrapped with `aria-label="Generic smartphone showing active call screen"`.
-- Decorative SVGs marked `aria-hidden="true"`.
-- Visualization does not steal focus, does not trap focus, does not auto-play.
-- Hint above player is `role="note"`.
+4. **`demo.html` (singular) still uses old WizKids/Michael "crown fell
+   off" call** via `aria-call-demo.mp3`. That page was not in scope for
+   this task and is not the homepage demo widget — left alone. If you
+   want it updated, that's a separate cleanup.
 
-## Visual design
+5. **Spanish homepage** (`es/index.html`) — out of scope, not touched.
+   May still have old demo content if it ever did; worth checking.
 
-- Brand tokens reused: `--amber #D4952A`, `--amber-50`, `--charcoal #1A1A2E`, `--cream #FEFCF8`, `--sage-deep` (for green confirmations), `--border`.
-- Fonts already loaded by the page: Fraunces (serif, used for calendar day numbers, phone avatar, caller name) + Sora (UI/body).
-- Borders 1px, radii 8–14px, shadows soft and low. No bouncy easing. Calm fade-ins (`cubic-bezier(.2,.8,.4,1)`), linear shimmer/sweep.
-- All Lucide-style icons inline as SVG. No font icons, no external assets.
-- Phone: 9:19.5 aspect ratio, 38px outer radius, 32px inner radius, fully dark with amber accent — generic, no carrier, no brand glyphs.
+## Polish-later items
 
-## Deploy instructions
-
-1. Replace `demos.html` in the repo root (`varindervelzyxai/aria-dental-site` → `demos.html`) with the staged file at `~/Downloads/aria-demos-viz1/demos.html`.
-2. Commit: `git commit -m "demos: add synced visualization for booking demo card (audio + workspace + phone)"`
-3. Push to `main`. Vercel auto-deploys. No new asset files to upload — everything is inline (CSS, HTML, JS, SVG icons).
-
-If you also need to push the audio file, that's a separate task — `audio/demo-book-self.mp3` should already be on production for the audio player to work.
-
-## What you'll see at key timestamps
-
-- **0:00 — 0:27** — Three workspace cards in idle state (greys/cream, "Standing by"). Phone shows incoming-call screen with timer counting up. No notification.
-- **0:28 — 0:31** — Calendar card lights up amber, sweep animation runs, "Searching availability…".
-- **0:32** — Calendar shows green check + "Available — Mon 11:00 AM". PMS card lights up amber.
-- **0:33 — 0:36** — Five PMS fields fade in one-per-second.
-- **0:37+** — PMS card flips to green, "Booked" pill appears.
-- **0:50 — 0:52** — SMS card lights up. Status cycles "Composing… → Encrypting… → Sent".
-- **0:53** — Notification slides down on the phone. Stays visible.
-- **0:54 — 1:01** — Everything in final state. Timer keeps counting. Banner remains.
-
-## Polish later (non-blocking)
-
-- The phone clock (top-left) reads the visitor's current local time. Cute, but if you'd rather lock it to "11:00" so it lines up with the booking time, change the IIFE at the bottom of the JS that sets `phoneClock.textContent`.
-- The calendar's week is hard-coded to **May 10–16, 2026** (Mon = May 11) to match Mike's "Monday at 11 AM" reference at the time of the audio recording. If the audio is re-recorded in a future week, update the seven `.bv-cal-day` numbers and the PMS "Date" field text. Both are easy finds.
-- The transcript below the visualization has the patient phone as `949-657-5555`. The SMS card masks it as `(•••) •••-5555` per spec. If you'd prefer to show the full number on the SMS card too, edit the `.bv-sms-meta-to-num` span.
-- The PMS card's pill animation is a static dot, not an animated check. We could add a tiny check-stroke animation if you want more delight at "Booked" — saved for a polish pass.
-- Per-field typewriter could be added — currently it's fade-in. Typewriter would feel more like a real PMS write but adds 5 lines of JS. Saved for later.
-- The other 5 demo cards are unchanged. When the rest of the audio files land, you can extend the same pattern (workspace + phone) per demo, or let this one carry the visual weight as the hero moment.
+- The audio element on the homepage uses native `<audio controls>`
+  (matches `/demos`). Earlier the homepage had a custom-styled player
+  with waveform + transcript ticker. That UI was tightly coupled to
+  the old demo and removing it was the cleanest path. If a custom
+  styled player is desired again later, build it into `booking-viz.js`
+  so both pages stay in sync.
+- The "Hear a Real Call ↓" button in the hero still anchors to
+  `#live-demo` — copy may want to read "Watch Aria book a patient ↓"
+  to better describe the new visualization, but it works as-is.
+- The "Interactive Demos" section directly below (the 3-card grid for
+  `/demo-booking`, `/demo-gcal`, `/demo-reschedule`) is now
+  redundant-adjacent to the new live demo. Worth a copy review.
