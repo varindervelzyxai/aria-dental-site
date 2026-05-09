@@ -1,225 +1,121 @@
-# Layout fix — wider booking-viz on `/` and `/demos`
+# Aria Dental — Container Widening Pass
 
-Built on top of `~/Downloads/aria-demos-home1/` (the Mike Patterson demo
-refresh). Goal: stop the booking visualization from feeling squeezed into
-a narrow column on wide viewports, and give the other `/demos` panel
-cards more breathing room too.
+**Date:** 2026-05-09
+**Bundle:** `/Users/varinderkumar/Downloads/aria-widen-all/`
+**Goal:** Widen specific sections from 1280px → 1440px container, in place, on a list of pages — without touching skip sections.
 
-## TL;DR
+---
 
-Three things were doing the squeezing:
+## Summary
 
-1. Homepage — `<div style="max-width:980px;margin:0 auto">` inline-styled
-   wrapper around the booking-viz, parented inside a `.container` (1280px).
-2. Demos page — `.demo-card { max-width: 880px }` capping every panel
-   (insurance, book-self, book-child, sms-billing, recall, history)
-   regardless of content.
-3. Both pages — only the booking-viz lived inside `.container` (1280px);
-   it could have been in `.container-wide` (1440px) like the hero/stats-bar.
+- **Files modified:** 17 (14 EN + 3 ES)
+- **Sections widened:** 38 sections + 5 inline persona max-width bumps + 1 inline alphabet-nav bump + 1 grid template fix + 1 methodology max-width bump + 1 table max-width bump
+- **CSS modifier added:** `.section-block.is-wide .container{max-width:1440px}` (injected on 3 pages)
 
-Fix: switch both demo sections to `.container-wide`, replace the inline
-980px wrapper with class-based `.booking-viz-shell-wrap` (1320px max),
-bump `.demo-card` to 1080px and add an `.is-viz` modifier at 1320px for
-the booking-viz panel only. Bump grid gap and phone size on wider
-viewports so the visualization scales with the new real estate.
+---
 
-The global page container was **not** widened. `.container` (1280px) and
-`.container-wide` (1440px) are both already defined in `styles.css` and
-in active use across the site (hero + stats-bar already used
-`.container-wide`). The fix uses what was there.
-
-## Selectors changed — old vs new
-
-### `assets/booking-viz.css`
-
-**New rules (added):**
-
-```css
-.booking-viz-shell-wrap { max-width: 1320px; margin: 0 auto }
-.booking-viz-shell {
-  background: var(--warm-white);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: clamp(20px, 3vw, 44px);
-  box-shadow: var(--shadow-md);
-}
-@media (min-width: 1100px) { .booking-viz { gap: 36px } }
-@media (min-width: 1320px) { .booking-viz { gap: 48px } }
-@media (min-width: 1100px) { .bv-phone { max-width: 300px } }
-@media (min-width: 1320px) { .bv-phone { max-width: 320px } }
-```
-
-No existing rules were modified — only additive. Existing 880px
-breakpoint (`grid-template-columns: 1.15fr 0.85fr; gap: 24px`) and the
-mobile-stack default are unchanged.
-
-### `index.html`
-
-| Line | Old | New |
-| --- | --- | --- |
-| 157 | `<section class="section"><div class="container">` | `<section class="section"><div class="container-wide">` |
-| 159 | `<div style="max-width:980px;margin:0 auto">` | `<div class="booking-viz-shell-wrap">` |
-| 160 | `<div style="background:var(--warm-white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:clamp(20px,3vw,36px);box-shadow:var(--shadow-md)">` | `<div class="booking-viz-shell">` |
-
-The hero (`<section class="hero">`) and stats-bar (`<section class="stats-bar">`)
-already use `.container-wide` — only the live-demo `<section class="section">`
-was switched. All other homepage sections (testimonials, FAQ, after-the-booking,
-interactive-demos grid, etc.) still use their existing wrappers — none touched.
-
-### `demos.html`
-
-| Line | Old | New |
-| --- | --- | --- |
-| 57 (inline `<style>`) | `.demo-card { padding: 36px; max-width: 880px; … }` | `.demo-card { padding: clamp(24px, 3vw, 40px); max-width: 1080px; … }` |
-| 58 (inline `<style>`) | _new_ | `.demo-card.is-viz { max-width: 1320px; padding: clamp(24px, 3vw, 44px) }` |
-| 80 (inline `<style>`) | `.dash-mockup { … max-width: 520px; … }` | `.dash-mockup { … max-width: 640px; … }` |
-| 136 | `<section class="demos-section"><div class="container">` | `<section class="demos-section"><div class="container-wide">` |
-| 178 | `<div class="demo-card">` (book-self panel only) | `<div class="demo-card is-viz">` |
-
-Other panels (insurance, book-child, sms-billing, recall, history) still
-use plain `.demo-card`, so they get the new 1080px cap — wider than the
-old 880px, but capped well below the booking-viz's 1320px because they
-contain transcripts where line length matters for readability.
-
-`@media (max-width: 680px) { .demo-card { padding: 24px } }` left in
-place. The new clamp evaluates to 24px at small viewports anyway, so the
-override is harmless.
-
-## Why the global container was NOT widened
-
-`styles.css` line 5: `.container { width: 100%; max-width: 1280px; … }`
-governs testimonials, FAQ, hero proof strip, etc. — text-heavy sections
-where 1280px already gives line lengths that read comfortably. Bumping
-that globally would push line lengths past readability in the body
-content. The booking-viz is a visual block with three workspace cards
-plus a phone mock — it benefits from extra horizontal space; running
-prose does not.
-
-The site already has `.container-wide` (1440px max) for visual blocks
-like the hero. The fix uses that existing pattern.
-
-## What changed for the `/demos` other-cards grid
-
-The demos page is structured as a single column of `.demo-panel`s, each
-containing one `.demo-card`. There's no multi-card grid — only the tab
-bar lays out horizontally. The panels stack vertically (well, only one
-shows at a time via tabs).
-
-Old: every `.demo-card` capped at 880px, padded 36px solid.
-New: every `.demo-card` capped at 1080px, padded clamp(24px–40px). The
-booking-viz panel additionally gets `.is-viz` which lifts the cap to
-1320px and bumps padding max to 44px.
-
-So all six panels feel less squeezed. The book-self panel feels
-substantially wider because it has the visualization which has the most
-to gain from horizontal real estate.
-
-`.dash-mockup` (the recall demo's dark stats card) was also bumped from
-520px to 640px so it doesn't look forlorn inside the now-wider parent.
-
-## Before / after — content widths at 1440px viewport
-
-| Layer | Before | After |
-| --- | --- | --- |
-| Homepage live-demo `<section>` outer container | `.container` → 1280 - 64 = **1216px** content | `.container-wide` → 1440 - 64 = **1376px** content |
-| Homepage demo-card wrapper | inline `max-width: 980px` | `.booking-viz-shell-wrap` `max-width: 1320px` |
-| Homepage shell padding | `clamp(20px, 3vw, 36px)` | `clamp(20px, 3vw, 44px)` |
-| Homepage `.booking-viz` content area | 980 − 72 = **908px** | 1320 − 88 = **1232px** _(+36%)_ |
-| Demos `<section>` outer | `.container` → **1216px** | `.container-wide` → **1376px** |
-| Demos `.demo-card` (non-viz) | 880px | **1080px** _(+23%)_ |
-| Demos `.demo-card.is-viz` | n/a (was 880) | **1320px** _(+50% vs old)_ |
-| `.booking-viz` grid gap | 24px | **48px** at 1320+ vw _(+100%)_ |
-| `.bv-phone` max-width | 280px | **320px** at 1320+ vw _(+14%)_ |
-| `.dash-mockup` max-width | 520px | **640px** _(+23%)_ |
-
-## Mobile behavior (≤ 768px)
-
-`.booking-viz-shell-wrap`'s `max-width: 1320px` is just a cap; on mobile
-the wrapper takes 100% of its parent (the `.container-wide` minus 32px
-on each side from container padding).
-
-`.booking-viz-shell` padding is `clamp(20px, 3vw, 44px)` — at 414px
-viewport, 3vw = 12.4px, clamps to the 20px floor. Same as the previous
-`clamp(20px, 3vw, 36px)` value at small sizes.
-
-`.demo-card` uses `clamp(24px, 3vw, 40px)` — at 414px viewport, clamps
-to 24px (vs. the previous fixed 36px, so mobile actually feels slightly
-roomier inside the card). The `@media(max-width:680px)` override
-already enforced 24px below 680px in the old version; that stayed.
-
-`.booking-viz` two-column rule kicks in at ≥880px, so on phone the
-visualization still stacks with workspace on top, phone mock below.
-
-`.bv-phone` keeps the existing `@media(max-width:680px) { max-width:
-240px }` mobile rule unchanged — the wider 300/320px caps only apply at
-≥1100px.
-
-No horizontal scroll triggered at any of: 360, 414, 768, 1024, 1280,
-1440, 1920px.
-
-## Things that did NOT change
-
-- Card colors, type, animations, audio behavior, JS — untouched.
-- `.booking-viz`'s default `1.15fr 0.85fr` column ratio — kept as-is.
-  Right column still has some halo around the 320px phone at 1440px;
-  the phone is intentionally small (it's a mock), the halo reads as
-  breathing room rather than dead space.
-- `.bv-card`, `.bv-cal-grid`, `.bv-pms-frame`, `.bv-sms-meta`,
-  `.bv-sms-body` — no changes. They naturally scale to fill their
-  column, so widening the column gives the calendar bigger day cells,
-  the PMS frame more horizontal room for `.bv-pms-row` value text,
-  etc., without touching individual card rules.
-- Hero, proof strip, stats bar — already `.container-wide`. Untouched.
-- Testimonials, FAQ, "After the Booking" diff cards, footer — all use
-  their existing `.container` (1280px) wrappers. Untouched.
-- `assets/booking-viz.js` — not modified. Layout-only fix.
-- Spanish (`es/`) versions — out of scope. The repo at
-  `~/Downloads/aria-dental-site-main 4/` has them, but they aren't in
-  the staged work and weren't touched.
-
-## Files changed (vs. aria-demos-home1)
+## CSS modifier pattern (one line)
 
 ```
-assets/booking-viz.css   # additive rules: .booking-viz-shell{,-wrap},
-                         # gap + phone size at 1100px / 1320px
-index.html               # live-demo section: .container → .container-wide,
-                         # 2 inline-style divs → .booking-viz-shell-wrap +
-                         # .booking-viz-shell
-demos.html               # .demos-section: .container → .container-wide,
-                         # .demo-card max-width 880 → 1080 + clamp padding,
-                         # .demo-card.is-viz @ 1320,
-                         # .dash-mockup max-width 520 → 640,
-                         # book-self panel's .demo-card → .demo-card.is-viz
+.section-block.is-wide .container{max-width:1440px}
 ```
 
-`assets/booking-viz.js` is unchanged — included in the staged folder
-only so deploys can rsync the directory without thinking. Diff against
-`aria-demos-home1/assets/booking-viz.js` will be empty.
+Injected on `pricing.html`, `case-studies.html`, `integrations.html` immediately after the existing `.section-block .container{max-width:1080px}` rule.
 
-## Things that fought (or didn't)
+---
 
-Not much. The site already had a `.container-wide` (1440px) class
-defined in `styles.css` and in active use on the hero — so the demo
-section just needed to opt into it. No negative-margin tricks needed.
-The inline `max-width: 980px` was the cleanest target because it lived
-right on the wrapper div with nothing else to preserve.
+## Per-file changes
 
-The one thing to double-check at deploy: `styles.css` is not in this
-staged folder (it's loaded from the repo root). The new wrapper classes
-depend on `.container-wide` already existing in `styles.css` line 6 of
-the production stylesheet. Confirmed it exists at
-`~/Downloads/aria-dental-site-main 4/styles.css` line 6.
+### EN pages
 
-## Deploy checklist
+| File | Changes |
+|------|---------|
+| `index.html` | 6 sections: `.container` → `.container-wide` (After the Booking, What Makes Aria Different, Built For, At a Glance / What changes, Integrations, Common Questions). |
+| `how-aria-compares.html` | 4 sections: `.container` → `.container-wide` (Four categories, Feature by feature, Three real scenarios, When you should not pick Aria). Plus inline `max-width:1100px` → `max-width:1400px` on the comparison table wrapper. |
+| `compare.html` | 3 sections: `.container` → `.container-wide` (cp-table Feature by Feature, cp-cost-grid The Cost Difference, FAQ Comparison questions). Cost Difference also dropped `cp-prose` from the wrapper to allow widening. |
+| `roi-calculator.html` | 3 sections: `.container` → `.container-wide` (calc-grid + insight-cards, methodology / Where these numbers, Cross-links / Related). Plus `.methodology` inline rule bumped from `max-width:800px` → `max-width:1300px`. |
+| `integrations.html` | CSS modifier injected. 2 section-blocks marked `is-wide` (Practice Management Systems grid; Phone/Calendar/Payments/CRM stacked grids). |
+| `platform.html` | 2 sections: `.container` → `.container-wide` (Every touchpoint covered features-grid; Capacity cap-table). |
+| `how-it-works.html` | 2 sections: `.container` → `.container-wide` (What's Included / Everything your front office needs 9-card grid; See It In Action 3-card auto-fit). |
+| `portfolio.html` | 4 sections: `.container` → `.container-wide` (Live Client / WizKids 16-feature card; Live with OpenDental in-production card; Monday morning vs-grid; See It In Action). Also bumped `.case-features` grid-template-columns from `1fr 1fr` → `repeat(auto-fit,minmax(280px,1fr))` so the 16 case-features flow to 3-4 cols at the wider canvas. |
+| `pricing.html` | CSS modifier injected. 2 section-blocks marked `is-wide` (3-tier pricing grid; What everyone gets 6-card grid). |
+| `who-we-help.html` | 5 persona section wrappers bumped from inline `max-width:880px` → `max-width:1200px` (#solo-practice-owner, #office-manager, #dso-operations, #specialty-practice, #startup-practice). Hero (sub-jump anchor list) left at 880px. |
+| `workflow.html` | 1 section: `.container` → `.container-wide` (Patient Calls / Reschedule / SMS Booking interactive panel-grid). |
+| `case-studies.html` | CSS modifier injected. 2 section-blocks marked `is-wide` (WizKids featured 2-col case-study-feature; More stories coming soon 5-card placeholder grid). |
+| `glossary.html` | 1 inline cap bumped: alphabet-nav wrapper `max-width:880px` → `max-width:1200px`. Hero + definition list wrappers left untouched. |
+| `blog.html` | 1 section: `.container` → `.container-wide` (the section-alt holding featured card + all 25+ blog cards). |
 
-Mirror these into the GitHub repo `aria-dental-site` at the same paths:
+### ES pages
 
-| Source                     | Repo path                |
-| -------------------------- | ------------------------ |
-| `index.html`               | `index.html`             |
-| `demos.html`               | `demos.html`             |
-| `assets/booking-viz.css`   | `assets/booking-viz.css` |
+| File | Changes |
+|------|---------|
+| `es/index.html` | 1 section: `.container` → `.container-wide` (Por qué Aria features-grid). |
+| `es/platform.html` | 1 section: `.container` → `.container-wide` (Una plataforma / Cada punto de contacto features-grid). |
+| `es/demos.html` | 1 section: `.container` → `.container-wide` (Escuchar / Tres llamadas reales features-grid). |
 
-`assets/booking-viz.js` is included in the staged folder for completeness
-but is byte-identical to the previous version — skip pushing it if the
-deploy step diffs.
+### ES pages reviewed but NOT modified
+
+- `es/integrations.html` — prose-only structure, no PMS card grid or section-block CSS. Nothing to widen cleanly.
+- `es/case-studies.html` — prose-only structure, no card grid, no section-block CSS. Nothing to widen cleanly.
+- `es/pricing.html` — single-tier pricing card capped to 680px (different structure from English 3-tier). No section-block CSS. No tier-grid or "What everyone gets" 6-card grid. Nothing to widen cleanly.
+
+---
+
+## Verification grep results
+
+| File | Counts |
+|------|--------|
+| `index.html` | 9 `container-wide` (3 pre-existing in hero/stats/demo + 6 new) |
+| `how-aria-compares.html` | 4 `container-wide` + 1 `max-width:1400px` (table) = 5 |
+| `compare.html` | 3 `container-wide` |
+| `roi-calculator.html` | 3 `container-wide` + `.methodology` updated to 1300px |
+| `integrations.html` | 1 modifier rule + 2 `section-block is-wide` instances + 1 cap rule = 4 occurrences of `is-wide` / `1080px` / `1440px` |
+| `platform.html` | 2 `container-wide` |
+| `how-it-works.html` | 2 `container-wide` |
+| `portfolio.html` | 4 `container-wide`; case-features grid template updated |
+| `pricing.html` | 1 modifier rule + 2 `is-wide` section-blocks; verification count = 4 across `is-wide`/`1440px`/`1080px` |
+| `who-we-help.html` | `max-width:880px` count: 6 → 1 (only hero sub-jump remains); 5 new `max-width:1200px` |
+| `workflow.html` | 1 `container-wide` |
+| `case-studies.html` | 1 modifier rule + 2 `is-wide` section-blocks; count = 4 across `is-wide`/`1440px`/`1080px` |
+| `glossary.html` | `max-width:880px` count: 3 → 2 (hero + definition list); 1 new `max-width:1200px` |
+| `blog.html` | 1 `container-wide` |
+| `es/index.html` | 1 `container-wide` |
+| `es/platform.html` | 1 `container-wide` |
+| `es/demos.html` | 1 `container-wide` |
+
+---
+
+## Pages where widening could not be applied cleanly
+
+### `enterprise.html` — SKIPPED
+
+The audit prescribed: "Comparison table — currently inside 780px-capped wrapper. Lift the wrapper to 1280-1440px." On reading the file, there is no `<table>` or comparison table on the page. The page is composed of prose sections in 780px wrappers plus two `.features-grid` blocks (Why enterprise groups choose Aria; Compliance & security at scale). The audit also says "DO NOT touch: HIPAA/controls 780px prose blocks" — which covers most of the page. With no clear comparison table to lift and the rest gated by "do not touch", enterprise.html was left unchanged. Recommend re-auditing this page with eyes on the actual current structure.
+
+### `es/integrations.html`, `es/case-studies.html`, `es/pricing.html` — SKIPPED
+
+These three Spanish pages have a different (prose-only) structure than their English counterparts — no card grids, no section-block CSS, and no tier-grid. The audit's "same widening rules" don't map to any selectable target. Left unchanged. If the design intent is to mirror the English layout, the Spanish pages will need to be rebuilt (or new card grids added) before widening rules apply.
+
+---
+
+## Pages with adjacent un-widened sections worth a future pass (noted, not changed)
+
+- `enterprise.html` — the two `.features-grid` blocks (Why enterprise groups choose Aria; Compliance & security at scale) could plausibly benefit from `container-wide`, but they're inside 780px prose wrappers and the audit excluded them.
+- `compare.html` — the `.cp-diffs` grid (3-col) was excluded by the audit ("DO NOT touch cp-diffs"). It currently sits inside a 800px `cp-prose` wrapper and could be a future widen candidate.
+- `how-it-works.html` — the "Six steps" + "A Day with Aria" timelines are intentionally 720px single-col per audit. Confirmed; no change.
+- `platform.html` — the patient-experience two-col with chat-demo (line 108 area) was excluded; it's already a balanced two-col layout that wouldn't benefit from more width.
+
+---
+
+## Constraints honored
+
+- All edits made in place via `Edit` (no `Write` for HTML files).
+- No new colors, fonts, or component variants introduced.
+- No JS touched (booking-viz unaffected).
+- All sections marked "Skip" / "DO NOT touch" left alone.
+- Each file was Read at least once before editing.
+
+---
+
+## Deploy instructions
+
+Drag everything from `/Users/varinderkumar/Downloads/aria-widen-all/` into the GitHub repo at `varindervelzyxai/aria-dental-site`, replacing existing files. Single commit. Vercel auto-deploys.
