@@ -1377,3 +1377,37 @@ enterprise.html · california-dental-ai.html · texas-dental-ai.html · florida-
 - WizKids case study full metrics — published "Q3 2026 with customer approval" per case-studies.html.
 
 
+
+## 2026-05-07 — WizKids replacement (Newport / Vartanian removal)
+
+**Context:** Newport Institute / Dr. Vartanian is NOT an Aria customer. The user built that practice's website separately. WizKids Dental & Orthodontics IS the live Aria customer. Every reference across the site needed to be corrected.
+
+**Files modified:**
+- `index.html` — removed Newport Institute live-chip, swapped Newport Voice Agent subtitle to WizKids, replaced Newport testimonial card with Q3-2026 placeholder, rewrote 2 Vartanian transcript lines in the home call demo player.
+- `about.html` — replaced "Newport Institute and WizKids" sentence with WizKids-only live customer line (front-line positioning preserved).
+- `portfolio.html` — Section 1 ("Live Client") fully rewritten: WizKids Dental & Orthodontics as the live customer with peds + ortho + Open-Dental tags, image src changed to `images/case-wizkids.png` with TODO comment, Visit-Website external link replaced with internal /case-studies link. Section 2 ("Launching Soon — OpenDental integration") rewritten to "In Production — Live with OpenDental" since WizKids is the live OD client.
+- `case-studies.html` — meta description, og:description, twitter:description, JSON-LD Article schema all updated. Newport featured card REPLACED entirely with new spec'd WizKids featured card per user instructions. Old Batch-9 duplicate WizKids card removed.
+- `demo.html` — agent subtitle, opening greeting, doctor-choice line.
+- `demo-booking.html` — 4× chat-sub headers, schedule-card title, opening greeting, "Dr. Vartanian's availability" line (provider-agnostic).
+- `demo-gcal.html` — 3× chat-sub headers, Step 5 calendar section label, opening greeting, gcal write-back action item, conversation lines about provider availability.
+- `demo-reschedule.html` — 4× chat-sub headers, opening greeting + final confirmation lines.
+- `platform.html` — opening chat bot greeting changed from Vartanian/TMJ to WizKids/pediatric. The follow-up TMJ exchange rewritten as a parent-asking-for-daughter Delta Dental exchange (matches WizKids reality).
+- `workflow.html` — 2× phone-mock practice-name labels (Newport Dentistry → WizKids Dental), 4× calendar headers (Dr. Vartanian → WizKids Dental), 2× SMS confirmation bubbles (Dr. John Vartanian → WizKids Dental, Newport Beach → Southern California), 2× email confirmation bubbles (Provider field → Practice field), several conversation lines made provider-agnostic.
+- `how-it-works.html` — Step-5 Launch proof rewritten (Newport launch-day stat removed; WizKids front-line operational reality substituted). Google review SMS sample line de-personalized.
+- `resources.html` — case studies card line updated to WizKids only.
+- `es/case-studies.html` — Newport (cosmética) section removed entirely. Wiz Kids section rewritten to honor the front-line positioning and remove fabricated stats; Q3 2026 case-study disclosure added.
+- `do-automated-reminders-reduce-dental-no-shows.html` — internal proof comment (Newport → WizKids).
+- `how-much-do-missed-calls-cost-dental-practice.html` — internal proof comment (Newport → WizKids).
+- `verify-insurance-during-the-call.html` — internal proof comment (Newport → WizKids).
+- `email-sequences/welcome-post-demo.md` — Email 3 fully rewritten from Vartanian-DDS-3-month-stats narrative to WizKids front-line positioning narrative (no fabricated metrics).
+
+**Image asset TODO:**
+- `images/case-vartanian.png` still on disk. HTML references in `portfolio.html` and `case-studies.html` JSON-LD now point to `images/case-wizkids.png`, which DOES NOT EXIST. User must provide a WizKids logo or photo and save it as `images/case-wizkids.png`. Inline TODO comments are placed near the references in `portfolio.html`. Until then, those `<img>` tags will be broken.
+
+**Audio asset note (not corrected):**
+- `aria-call-demo.mp3` — the actual MP3 used on `index.html` and `demo.html` is a real recording that says "Dr. Vartanian's dental office" multiple times. The on-screen transcripts have been rewritten to say "WizKids Dental," but the audio playback will still mention Vartanian. To fully resolve, the audio must be re-recorded with WizKids language. Flagging here so it doesn't get missed.
+
+**What I deliberately did NOT do:**
+- No fabricated WizKids quotes, metrics, or photos.
+- Did not modify older changelog entries in this file (`_AGENT_CHANGES.md`); historical record preserved.
+- Did not modify Batch 1–9 structural work; this is a content-level correction only.
