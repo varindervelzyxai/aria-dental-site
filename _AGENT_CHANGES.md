@@ -1,75 +1,114 @@
-# Integrations page rewrite — vendor exposure removal
+# Aria Demos — Batch 1 (Booking Demo Goes Live)
 
-**Scope:** `integrations.html` only (plus its meta tags and JSON-LD).
-**Goal:** "We integrate with everything" — without naming the vendors Aria itself is built on.
-
----
-
-## What changed
-
-### 1. Meta tags (description, og:description, twitter:description)
-Stripped Twilio, Stripe, Google Calendar from descriptions. Replaced with the 8 PMS names — those are the customer's tools, not Aria's vendors.
-
-**New copy:**
-> Aria integrates with every major dental PMS — Open Dental, Dentrix, Eaglesoft, Dentrix Ascend, Denticon, Curve, Carestream, Practice-Web — plus custom builds for proprietary systems.
-
-### 2. JSON-LD `ItemList`
-Removed Twilio, Google Calendar, Stripe, Mailchimp. Now lists only the 8 PMSes (positions 1–8): Open Dental, Dentrix, Eaglesoft, Dentrix Ascend, Denticon, Curve, Carestream, Practice-Web.
-
-### 3. PMS section — 8 cards, no status pills, simpler language
-Expanded from 6 to 8 PMS cards (added Dentrix Ascend and Denticon as separate cards; previously Dentrix Ascend was buried as "tested across" copy on the Dentrix card).
-
-**Removed all status pills** on PMS cards — no more "Live," "Coming Soon," or "Planned." Each card is now a flat statement that Aria integrates with that PMS. CSS class definitions for `.status-pill`, `.status-live`, `.status-coming`, `.status-planned`, `.status-launching` are kept in the stylesheet as legacy (no markup uses them on this page).
-
-**Stripped technical phrases:**
-- "Full write-back integration. Appointments, patients, providers, insurance, recall — all sync bi-directionally." → "Aria integrates with Open Dental for appointments, patients, providers, insurance, and recall. Cloud and on-prem deployments supported."
-- "Appointment write-back, patient creation, provider sync. Tested across Dentrix Ascend and Enterprise." → "Aria handles appointments, patient records, and provider routing in Dentrix. Works with Dentrix G7 and Enterprise installations."
-- "Appointment write-back and patient sync. Production-tested with Eaglesoft cloud and on-prem deployments." → "Aria works with Eaglesoft in cloud and on-prem deployments. Appointments, patients, and provider scheduling handled in-system."
-
-No more "writeback," "write-back," "bi-directional," or "two-way sync" anywhere on the page.
-
-### 4. Phone, Calendar, Payments, CRM/Marketing — collapsed to one generic card each
-Replaced the multi-vendor card grids with a single capability statement per category. Removed every named vendor (Twilio, RingCentral, Weave Phone, Google Calendar, Outlook 365, iCloud Calendar, Stripe, Square, CareCredit, Mailchimp, Klaviyo, HubSpot CRM).
-
-**Phone:**
-> Aria works with your existing phone infrastructure — VoIP, SIP, or traditional carrier. No number porting required. We route calls to Aria first; transfers to your team happen seamlessly when patient needs require human handoff.
-
-**Calendar:**
-> Aria syncs with the calendar your practice already uses. Appointments booked through Aria appear instantly on your providers' schedules. Reschedules and cancellations sync both ways.
-
-**Payments:**
-> Aria collects payments and copays during the call or via secure SMS link. PCI-compliant card-on-file, post-visit payment links, and patient financing options. Works with your existing merchant processor.
-
-**CRM & Marketing:**
-> Patient records, lead capture, and marketing automation flow into your existing CRM and email platform. Two-way contact sync supported across the major dental marketing tools.
-
-### 5. Prominent "Using a different PMS?" callout
-Added a full-width charcoal section with cream/amber typography, positioned **immediately after the PMS card grid** and before the Phone/Calendar/Payments/Marketing block. Frames custom PMS work as a 48-hour scoping turnaround with 2–6 week build timeline. CTA → `/contact?type=custom-integration`.
-
-### 6. Hero, chip filter, "Don't see your tool?" footer
-- Chip filter renamed last entry from "Marketing / CRM" to "CRM & Marketing" to match new section heading.
-- "Don't see your tool?" closing section retained — softened wording slightly to remove the "send us the vendor name" phrasing that hinted at vendor lists.
+**Date:** 2026-05-09
+**Scope:** Wires the first real Aria demo audio (`demo-book-self.mp3`) into the demos page, replaces the placeholder transcript with the recorded one, flips the booking demo from "coming soon" to active, and bumps the sitemap lastmod.
 
 ---
 
-## Verification
+## Files in this batch
 
-```
-$ grep -in "twilio\|ringcentral\|weave phone\|stripe\|square\|carecredit\|mailchimp\|klaviyo\|hubspot\|google calendar\|outlook 365\|icloud" integrations.html
-(no matches)
+| Path (relative to repo root) | Action | Bytes | Notes |
+|------------------------------|--------|-------|-------|
+| `audio/demo-book-self.mp3`   | NEW    | 1,445,137 (~1.4 MB) | Aria booking demo, 60.19 sec, MP3 192 kbps mono 44.1 kHz |
+| `demos.html`                 | EDIT   | 38,182 | Booking card transcript + headline + JSON-LD updated; "audio missing" notice removed for this demo only |
+| `sitemap.xml`                | EDIT   | 16,884 | `/demos` lastmod bumped from 2026-05-07 → 2026-05-09 |
 
-$ grep -in "write-back\|writeback\|bi-directional\|bidirectional" integrations.html
-(no matches)
+The other 5 demos (insurance, child, SMS billing, recall, history) are unchanged — they still display the "Audio file not yet uploaded" notice until Varinder records them.
 
-$ grep -in "planned" integrations.html
-67:.status-planned{background:rgba(26,26,46,0.04);color:var(--charcoal-50)}
+---
+
+## Audio details
+
+- **Source file:** `~/Downloads/Aria-Voice-demo-0509.MP4` (2,153,968 bytes, generated via Cartesia)
+- **Source format:** Despite the `.MP4` extension, the file is a real H.264 video container (1920×1080, 30 fps, AAC stereo audio at 44.1 kHz). I extracted the audio stream only and transcoded to MP3.
+- **ffmpeg command used:**
+  ```
+  ffmpeg -y -i ~/Downloads/Aria-Voice-demo-0509.MP4 \
+    -vn -ac 1 -ar 44100 -b:a 192k -map_metadata -1 \
+    ~/Downloads/aria-demos-audio/demo-booking.mp3
+  ```
+- **Output:** MP3, 60.186 sec, mono, 44.1 kHz, 192 kbps CBR, 1,445,137 bytes (~1.4 MB)
+- **Verified playable:** ffprobe confirms valid MP3 stream, duration matches source within 50 ms.
+
+---
+
+## Content changes in `demos.html`
+
+### 1. Booking card headline (line ~176)
+
+**Before:** `2. New Appointment — Patient Books for Themselves`
+**After:**  `2. New Appointment — Patient Books Implant Consultation`
+
+### 2. Booking card "Why this matters" subhead (line ~177)
+
+**Before:** "Returning patient recognized by phone, due-status surfaced, three slot options, booked in 70 seconds. SMS confirmation auto-sent. Zero human touch."
+**After:** "Caller asks for an implant consultation, Aria checks the slot, books it with the doctor, and texts a confirmation in 60 seconds. Zero human touch."
+
+The "due-status surfaced" and "three slot options" claims were dropped because they don't appear in the recorded audio. The recorded call is single-slot, name-based intake, ~60 sec total.
+
+### 3. "Audio file not yet uploaded" notice (line ~179)
+
+Removed for this demo card only. The other 5 demo cards still show the notice.
+
+### 4. Transcript (lines ~180–193)
+
+Replaced the original cleaning-with-Dr-Patel-on-Friday script with the actual recorded transcript: implant consultation with Dr. Smith on Monday at 11 a.m., caller is Mike Patterson, callback number 949-657-5555.
+
+Kept the existing HTML structure exactly: `<div class="demo-line aria">` / `<div class="demo-line patient">`, `&#39;` for apostrophes, `&mdash;` only where applicable. The `<span class="who">` label stays as "Aria" / "Patient" for styling consistency with the other 5 demos — Mike's name surfaces in the transcript text itself.
+
+### 5. JSON-LD MediaObject for position 2 (line ~99)
+
+**Before:**
+```json
+{"@type":"MediaObject","position":2,"name":"Aria Demo 2: New Appointment - Patient Books for Self","description":"Aria books a returning patient for a cleaning in under a minute.","contentUrl":"https://www.ariadental.ai/audio/demo-book-self.mp3","encodingFormat":"audio/mpeg","duration":"PT70S"}
 ```
 
-Only one "planned" hit — a CSS class definition kept as legacy (no markup uses it). All status pills removed from card markup.
+**After:**
+```json
+{"@type":"MediaObject","position":2,"name":"Aria Demo 2: New Appointment - Patient Books Implant Consultation","description":"Aria books a caller for an implant consultation, confirms the slot, and texts a confirmation in 60 seconds.","contentUrl":"https://www.ariadental.ai/audio/demo-book-self.mp3","encodingFormat":"audio/mpeg","duration":"PT1M0S","uploadDate":"2026-05-09"}
+```
+
+Changes: name updated, description updated, `duration` corrected from `PT70S` to `PT1M0S` (matches actual ffprobe duration of 60.186 s rounded to whole seconds), `uploadDate` added.
 
 ---
 
-## Files staged
+## Deploy instructions (GitHub → Vercel)
 
-- `integrations.html` — rewritten page
-- `_AGENT_CHANGES.md` — this file
+The Aria dental site is plain static HTML on Vercel. Push these three files to GitHub at `varindervelzyxai/aria-dental-site` (main branch) and Vercel auto-deploys.
+
+**Steps:**
+
+1. Open the repo in GitHub web UI: https://github.com/varindervelzyxai/aria-dental-site
+2. **Create the `audio/` folder if it doesn't exist** by uploading `demo-book-self.mp3` directly:
+   - Click "Add file" → "Upload files"
+   - Drag `aria-demos-batch1/audio/demo-book-self.mp3` into the upload area
+   - In the "destination path" line type `audio/demo-book-self.mp3` (this creates the folder)
+   - Commit message: `audio: add demo-book-self.mp3 (booking demo, 60s)`
+3. Replace `demos.html` at repo root:
+   - Navigate to `demos.html` in the GitHub UI → click pencil/edit OR delete and re-upload
+   - Easier: drag `aria-demos-batch1/demos.html` into the repo root via "Add file" → "Upload files" (it overwrites the existing one)
+   - Commit message: `demos: wire booking audio + replace transcript with recorded version`
+4. Replace `sitemap.xml` at repo root the same way:
+   - Commit message: `sitemap: bump /demos lastmod to 2026-05-09`
+5. Wait ~30–60 sec for Vercel to deploy. Verify at https://www.ariadental.ai/demos — click the "Book Appointment" tab, hit play, confirm the audio loads and matches the transcript.
+
+**Alternative (single PR):** make all three uploads in one branch via "Add file" → "Upload files" with commit message `demos: ship batch 1 — booking demo audio + transcript + sitemap`.
+
+---
+
+## Verification on staged files (already done)
+
+- `grep -c "Mike Patterson" demos.html` → present
+- `grep -c "Friday at nine\|June fourth\|four-seven-eight-two" demos.html` → 0 (old script remnants gone from booking card)
+- `ffprobe demo-book-self.mp3` → 60.186 sec, mono, 44.1 kHz, 192 kbps
+- Audio src in `demos.html` for `data-demo="book-self"` → `/audio/demo-book-self.mp3` (matches staged file path)
+
+---
+
+## Quirks / notes
+
+- **The `.MP4` was a real video file, not a misnamed audio file.** It contained an H.264 1920×1080 video stream (probably a screen-recording or visual asset Cartesia bundled) plus the AAC audio. I extracted audio only — no visuals were carried into the MP3.
+- **Filename in repo is `demo-book-self.mp3`, not `demo-booking.mp3`.** The page was already wired to `/audio/demo-book-self.mp3` in both the `<audio src="">` attribute and the JSON-LD `contentUrl`. Renaming the audio file would have required changing both references; reusing the existing filename is cleaner. The intermediate transcoded file at `~/Downloads/aria-demos-audio/demo-booking.mp3` (per the original instruction) still exists but the deployed copy uses `demo-book-self.mp3`.
+- **Tab label unchanged.** The tab still reads "Book Appointment" (generic) — no need to swap to "Implant Consultation" since the card headline does that work.
+- **"Audio file not yet uploaded" notice still appears on the other 5 demos.** That's intentional — they're still placeholders.
+- **Duration `PT1M0S` vs `PT60S`:** ISO 8601 accepts both. Picked `PT1M0S` for human readability and consistency with how Google rich-results parser displays the value.

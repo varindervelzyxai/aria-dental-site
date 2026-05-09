@@ -96,7 +96,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://www.ariadental.ai/#organization","name":"Aria Dental AI","alternateName":"Aria","legalName":"Aria by Velzyx AI","url":"https://www.ariadental.ai/","logo":{"@type":"ImageObject","url":"https://www.ariadental.ai/images/aria-logo.png","width":512,"height":512},"description":"AI receptionist for dental practices.","foundingDate":"2025-09-01","parentOrganization":{"@type":"Organization","name":"Aria by Velzyx AI","url":"https://velzyx.ai/"},"sameAs":["https://www.linkedin.com/company/aria-dental-ai","https://twitter.com/ariadentalai","https://www.instagram.com/ariadentalai"]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","itemListElement":[
 {"@type":"MediaObject","position":1,"name":"Aria Demo 1: Insurance Verification","description":"Aria verifies dental insurance coverage live during a phone call with a returning patient.","contentUrl":"https://www.ariadental.ai/audio/demo-insurance-verification.mp3","encodingFormat":"audio/mpeg","duration":"PT95S"},
-{"@type":"MediaObject","position":2,"name":"Aria Demo 2: New Appointment - Patient Books for Self","description":"Aria books a returning patient for a cleaning in under a minute.","contentUrl":"https://www.ariadental.ai/audio/demo-book-self.mp3","encodingFormat":"audio/mpeg","duration":"PT70S"},
+{"@type":"MediaObject","position":2,"name":"Aria Demo 2: New Appointment - Patient Books Implant Consultation","description":"Aria books a caller for an implant consultation, confirms the slot, and texts a confirmation in 60 seconds.","contentUrl":"https://www.ariadental.ai/audio/demo-book-self.mp3","encodingFormat":"audio/mpeg","duration":"PT1M0S","uploadDate":"2026-05-09"},
 {"@type":"MediaObject","position":3,"name":"Aria Demo 3: Parent Books for Child","description":"Aria handles a parent booking a first-visit appointment for their six-year-old.","contentUrl":"https://www.ariadental.ai/audio/demo-book-child.mp3","encodingFormat":"audio/mpeg","duration":"PT95S"},
 {"@type":"MediaObject","position":4,"name":"Aria Demo 4: SMS Billing Link for Copay","description":"Aria sends a secure payment link by text for an unpaid copay.","contentUrl":"https://www.ariadental.ai/audio/demo-sms-billing.mp3","encodingFormat":"audio/mpeg","duration":"PT45S"},
 {"@type":"MediaObject","position":5,"name":"Aria Demo 5: Recall Automation","description":"Aria identifies overdue patients and books them via SMS without staff touch.","contentUrl":"https://www.ariadental.ai/audio/demo-recall-automation.mp3","encodingFormat":"audio/mpeg","duration":"PT55S"},
@@ -173,23 +173,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- Demo 2: Book Self -->
 <div class="demo-panel" data-panel="book-self" role="tabpanel">
 <div class="demo-card">
-<h2>2. New Appointment &mdash; Patient Books for Themselves</h2>
-<div class="why"><strong>Why this matters:</strong> Returning patient recognized by phone, due-status surfaced, three slot options, booked in 70 seconds. SMS confirmation auto-sent. Zero human touch.</div>
+<h2>2. New Appointment &mdash; Patient Books Implant Consultation</h2>
+<div class="why"><strong>Why this matters:</strong> Caller asks for an implant consultation, Aria checks the slot, books it with the doctor, and texts a confirmation in 60 seconds. Zero human touch.</div>
 <div class="demo-audio"><audio controls preload="none" src="/audio/demo-book-self.mp3" data-demo="book-self"></audio></div>
-<div class="demo-missing">Audio file not yet uploaded.</div>
 <div class="demo-transcript">
 <h3>Full transcript</h3>
 <div class="demo-line aria"><span class="who">Aria</span><span class="text">Thank you for calling Smith Family Dental. This is Aria. How can I help?</span></div>
-<div class="demo-line patient"><span class="who">Patient</span><span class="text">Hi, I&#39;d like to book a cleaning.</span></div>
+<div class="demo-line patient"><span class="who">Patient</span><span class="text">Hi. I&#39;d like to book a cleaning.</span></div>
 <div class="demo-line aria"><span class="who">Aria</span><span class="text">I&#39;d be happy to. Can I get your name?</span></div>
 <div class="demo-line patient"><span class="who">Patient</span><span class="text">Mike Patterson.</span></div>
-<div class="demo-line aria"><span class="who">Aria</span><span class="text">Thanks Mike. Are you an existing patient with us?</span></div>
-<div class="demo-line patient"><span class="who">Patient</span><span class="text">Yeah, I&#39;ve been coming for years.</span></div>
-<div class="demo-line aria"><span class="who">Aria</span><span class="text">Found you. You&#39;re due &mdash; your last cleaning was June fourth. I have openings this Friday at nine, next Tuesday at two-thirty, or next Thursday at eleven-fifteen. Which works?</span></div>
-<div class="demo-line patient"><span class="who">Patient</span><span class="text">Friday at nine.</span></div>
-<div class="demo-line aria"><span class="who">Aria</span><span class="text">Booked. Friday, December fifteenth, nine AM with Dr. Patel. I&#39;m texting a confirmation to your number ending in four-seven-eight-two right now, and you&#39;ll get a reminder twenty-four hours before. Anything else?</span></div>
-<div class="demo-line patient"><span class="who">Patient</span><span class="text">That&#39;s it. Thanks.</span></div>
-<div class="demo-line aria"><span class="who">Aria</span><span class="text">See you Friday, Mike.</span></div>
+<div class="demo-line aria"><span class="who">Aria</span><span class="text">Thanks, Mike. What type of appointment do you want to come in for?</span></div>
+<div class="demo-line patient"><span class="who">Patient</span><span class="text">Yeah, I needed to come in for a tooth implant consultation.</span></div>
+<div class="demo-line aria"><span class="who">Aria</span><span class="text">Okay, great. When are you thinking about coming in?</span></div>
+<div class="demo-line patient"><span class="who">Patient</span><span class="text">Um, do you have anything open for this Monday at, like, 11 a.m.?</span></div>
+<div class="demo-line aria"><span class="who">Aria</span><span class="text">Yeah, let me check that for you. Yes, I have 11 a.m. open this Monday with Dr. Smith. Which phone number would you like me to text you your appointment confirmation?</span></div>
+<div class="demo-line patient"><span class="who">Patient</span><span class="text">Okay, perfect. Thank you so much. Yeah, can you send me the confirmation to 949-657-5555? Do you know how long the consultation takes?</span></div>
+<div class="demo-line aria"><span class="who">Aria</span><span class="text">Yeah, the consultation will take about an hour. They may do some X-rays as well, and then you&#39;ll see the doctor and he&#39;ll go over everything with you.</span></div>
+<div class="demo-line patient"><span class="who">Patient</span><span class="text">Okay, cool. Thank you so much.</span></div>
+<div class="demo-line aria"><span class="who">Aria</span><span class="text">You&#39;re very welcome, Mike. We will see you Monday at 11:00. If you have any questions, you can give us a call 24/7. Enjoy your weekend.</span></div>
+<div class="demo-line patient"><span class="who">Patient</span><span class="text">Awesome, thank you. You as well.</span></div>
 </div>
 </div>
 </div>
@@ -338,7 +340,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 </main>
 <footer><div class="container"><div class="footer-top">
-<div class="footer-brand"><a href="/" class="footer-logo">aria</a><p>AI front office that closes more dental patients.</p><p style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:8px">Aria by Velzyx AI</p><a href="mailto:info@velzyx.ai" style="color:var(--amber-light);text-decoration:none;font-size:14px;display:inline-block;margin-top:12px">info@velzyx.ai</a><div class="footer-address">5000 Birch St, Suite 3000<br>Newport Beach, CA 92660</div></div>
+<div class="footer-brand"><a href="/" class="footer-logo">aria</a><p>AI front office that closes more dental patients.</p><p style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:8px">Aria by Velzyx AI</p><a href="mailto:hello@ariadental.ai" style="color:var(--amber-light);text-decoration:none;font-size:14px;display:inline-block;margin-top:12px">hello@ariadental.ai</a><div class="footer-address">5000 Birch St, Suite 3000<br>Newport Beach, CA 92660</div></div>
 <div class="footer-col"><h5>Product</h5><a href="/platform">Platform</a><a href="/how-it-works">How It Works</a><a href="/compare">Compare</a><a href="/demos">Demos</a><a href="/platform#pricing">Pricing</a></div>
 <div class="footer-col"><h5>Resources</h5><a href="/blog">Blog</a><a href="/glossary">Glossary</a><a href="/who-we-help">Who We Help</a><a href="/roi-calculator">ROI Calculator</a><a href="/voice-ai-dental-buyers-guide">Buyer&#39;s Guide</a><a href="/help">Help Center</a></div>
 <div class="footer-col"><h5>Company</h5><a href="/about">About</a><a href="/security">Security</a><a href="/contact">Contact</a><a href="/press">Press &amp; Media</a><a href="mailto:info@velzyx.ai">Careers</a></div>
