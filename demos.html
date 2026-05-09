@@ -54,7 +54,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .demo-panel{display:none;animation:fadeIn .3s ease}
 .demo-panel.active{display:block}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.demo-card{background:var(--warm-white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:36px;box-shadow:var(--shadow-md);max-width:880px;margin:0 auto}
+.demo-card{background:var(--warm-white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:clamp(24px,3vw,40px);box-shadow:var(--shadow-md);max-width:1080px;margin:0 auto}
+.demo-card.is-viz{max-width:1320px;padding:clamp(24px,3vw,44px)}
 .demo-card h2{font-family:'Fraunces',serif;font-size:28px;font-weight:600;line-height:1.2;margin-bottom:8px;color:var(--charcoal)}
 .demo-card .why{font-size:15px;color:var(--amber);font-weight:500;font-style:italic;margin-bottom:24px;padding:14px 18px;background:var(--amber-50);border-left:3px solid var(--amber);border-radius:0 8px 8px 0;line-height:1.55}
 .demo-audio{width:100%;margin:8px 0 20px}
@@ -76,7 +77,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .sms-bubble.me{background:#34C759;color:#fff;border-bottom-right-radius:6px;align-self:flex-end;margin-left:auto}
 .sms-meta{font-size:10px;color:#8E8E93;text-align:center;margin:14px 0 8px;text-transform:uppercase;letter-spacing:.04em}
 .sms-stack{display:flex;flex-direction:column}
-.dash-mockup{background:linear-gradient(135deg,var(--charcoal) 0%,#252540 100%);border-radius:16px;padding:28px;margin:24px auto;max-width:520px;color:#fff;box-shadow:var(--shadow-lg)}
+.dash-mockup{background:linear-gradient(135deg,var(--charcoal) 0%,#252540 100%);border-radius:16px;padding:28px;margin:24px auto;max-width:640px;color:#fff;box-shadow:var(--shadow-lg)}
 .dash-mockup h4{font-family:'Fraunces',serif;font-size:13px;font-weight:600;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:.12em;margin-bottom:16px}
 .dash-mockup-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .dash-stat{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:18px 14px;text-align:center}
@@ -132,7 +133,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p class="lede">Six unedited scenarios. No marketing voiceover. Just the AI doing the work the front desk used to do &mdash; <a href="/dental-insurance-verification-ai" style="color:var(--amber);font-weight:500">insurance verification</a>, scheduling, parent-for-child, SMS billing, recall outreach, and history lookup.</p>
 </div></section>
 
-<section class="demos-section"><div class="container">
+<section class="demos-section"><div class="container-wide">
 
 <div class="demos-tabs" role="tablist">
 <button class="demos-tab active" role="tab" data-demo="insurance" aria-selected="true"><span class="num">1</span>Insurance Verification</button>
@@ -174,7 +175,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- Demo 2: Book Self -->
 <div class="demo-panel" data-panel="book-self" role="tabpanel">
-<div class="demo-card">
+<div class="demo-card is-viz">
 <h2>2. New Appointment &mdash; Patient Books Implant Consultation</h2>
 <div class="why"><strong>Why this matters:</strong> Caller asks for an implant consultation, Aria checks the slot, books it with the doctor, and texts a confirmation in 60 seconds. Zero human touch.</div>
 <div class="demo-audio"><audio controls preload="none" src="/audio/demo-book-self.mp3" data-demo="book-self" id="bookSelfAudio"></audio></div>
