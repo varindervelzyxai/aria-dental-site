@@ -1030,3 +1030,255 @@ OG images (23 total in images/blog/): 14 from the brief + 3 for new comparison p
 
 Files modified: sitemap.xml (+13 URLs), blog.html (+6 blog cards).
 
+
+---
+
+# Aria Dental — Batch 8 (Agent Changelog)
+
+Date: 2026-05-08
+Source spec: Cowork session prompt (Batch 8 — A through G, 7 deliverables)
+Repo: `~/Downloads/aria-dental-site-main 4/`
+Generators: `outputs/build_pdfs.py`, `outputs/build_pages.py`, `outputs/build_es.py`, `outputs/patch_en_pages.py`
+
+Scope: 13 net-new HTML pages, 3 lead-magnet PDFs, 4 email nurture sequences, sitemap +17 URLs, hreflang + footer + nav patches across the 57 existing pages.
+
+## A. Three lead-magnet PDFs (reportlab, brand-styled)
+
+Created at `assets/leadmag/`:
+
+- **aria-buyers-guide.pdf** (13 pages, 23 KB) — "AI Receptionist Buyer's Guide for Dental Practices." Cover, TOC, 8 evaluation criteria, 5 must-ask vendor questions, side-by-side comparison framework table, red flags, week-by-week implementation checklist, ROI calculation framework, final scoring sheet, CTA.
+- **missed-call-cost-worksheet.pdf** (6 pages, 11 KB) — Fillable cost worksheet with 5 inputs (lifetime value, calls/wk, miss rate, hours closed, after-hours conv), formula table, before/after benchmarking, CTA.
+- **insurance-verification-audit.pdf** (7 pages, 12 KB) — Fillable verification audit with 6 inputs (verify time, verifications/wk, % phone calls, added phone time, hourly cost, error rate), cost-of-current-process formula table, 8-step current-state process map (fillable), recommended automation flow, CTA.
+
+Style: cream pages (#FEFCF8), amber side rule (#D4952A), Times-Roman display (Fraunces fallback) + Helvetica body (Sora fallback), charcoal text (#1A1A2E). Cover page uses top amber band + bottom amber-dark band + wordmark. Every page footer: "Aria Dental AI · ariadental.ai · hello@ariadental.ai" + page number. Final page CTA card: dark charcoal panel with "AriaDental.AI / demo".
+
+Form-success wiring: `index.html`, `dental-missed-calls-ai.html`, `dental-insurance-verification-ai.html` lead-magnet form handlers patched to open the corresponding PDF in a new tab (`window.open(url, '_blank', 'noopener')`) on Web3Forms success. Asset slug → PDF path map (3 entries) added in each handler.
+
+## B. Six PMS-specific landing pages (~1,200 words each)
+
+All at the repo root. Same head pattern as `platform.html`. JSON-LD: `Article` + `SoftwareApplication` (with `softwareRequirements: <PMS name>`) + `BreadcrumbList`.
+
+- `aria-for-open-dental.html` — flagship integration. "live" status: April 2026 production launch with Wiz Kids Dental. Two-way sync, deep feature list (6 supported workflows), full-mirror integration. 4-Q FAQ on OD-specific topics (eConnector, OD offline behavior, paired appts, integration ownership).
+- `aria-for-dentrix.html` — "preview" status: read-only Q2 2026 via Sikka, two-way Q3 2026. Honest about today's parallel-queue workflow vs. shipped sync.
+- `aria-for-eaglesoft.html` — "preview" status: Patterson Connected/Sikka path. Read Q3 2026, write Q4 2026.
+- `aria-for-curve.html` — "preview" status: cloud-native, both APIs. Read Q2, write Q3 2026.
+- `aria-for-carestream.html` — "preview" status: Sikka bridge for SoftDent/OrthoTrac. Read Q3, write Q4 2026/Q1 2027.
+- `aria-for-practice-web.html` — "preview" status: API discovery in progress, voice + chat work day-one as overlay. Two-way targeted 2027.
+
+Each page has 6 supported-workflow feature cards, "what you do / what we do" setup section, roadmap list of 4 in-the-works items, "why bolt Aria onto X" section, 4-Q PMS-specific FAQ, and CTA. No fabricated customer numbers or competitor pricing.
+
+## C. Five specialty deep-dive pages (~1,200 words each)
+
+All at the repo root. JSON-LD: `Article` + `BreadcrumbList`.
+
+- `aria-for-perio-practices.html` — multi-visit treatment plans, GP referral intake, perio coverage variance (D4263/D4273/biologics), surgical pre-op anxiety, pocket-depth recall.
+- `aria-for-endo-practices.html` — emergency triage, pain-empathy first (Rule #17), post-op windows, single-vs-multi-visit RCT, GP referral coordination.
+- `aria-for-oral-surgery.html` — surgical referral, IV-sedation pre-op rules, dental+medical billing crossover, recovery follow-up calls, peds vs adult sedation.
+- `aria-for-prosthodontics.html` — multi-appointment treatment plans, case acceptance conversations, lab-coordination touchpoints, insurance + financing, long-cycle recall.
+- `aria-for-pediatric-dental-practices-pillar.html` — pillar (not blog): parent-as-caller defaults, school-friendly slots, first-visit anxiety, Medicaid handling, sibling appointment coordination, peds sedation.
+
+Each: 5-6 specialty pain-point cards, scheduling-considerations section, integration-notes section linking to all 6 PMS pages, CTA.
+
+## D. Six Spanish-language pages
+
+All at `es/` (sub-folder). Mexican Spanish baseline, professional business tone. JSON-LD: `inLanguage: es-MX`. Reciprocal hreflang set (Spanish pages → EN, EN pages → ES).
+
+- `es/index.html` — Spanish homepage. 6 feature cards, hero, CTA.
+- `es/platform.html` — Plataforma. 8 feature cards including bilingual section.
+- `es/demos.html` — 4 demo-call types in Spanish, demo phone CTA, en-vivo offer.
+- `es/contact.html` — full contact form (Web3Forms, language-tagged subject), 3-channel contact card.
+- `es/pricing.html` — single-plan pricing card, 7-Q Spanish FAQ on pricing.
+- `es/faq.html` — 15-Q FAQ in Spanish covering language, voice, escalation, PMS, insurance, HIPAA, pricing, time-to-launch, cancellation, support, emergencies, recordings, billing model, CA references, human-handoff. JSON-LD `FAQPage` with `inLanguage: es-MX`.
+
+ES nav: Spanish-localized labels (Plataforma / Demos / Precios / Preguntas / Contacto / 🌐 English). ES footer: localized columns and `hola@ariadental.ai` mailto.
+
+**Native-review TODO markers:** 1 (in `es/platform.html`, integrations sub-line). Marked with `<!-- TODO: native speaker review -->` for review.
+
+EN-side patches:
+- 6 EN pages received reciprocal `<link rel="alternate" hreflang="en/es/x-default">` after canonical (index, platform, demos, contact, pricing, faq).
+- 53 EN pages received the new `🌐 Español` nav link (right of secondary nav, immediately before "Book a Demo" CTA).
+
+## E. Help center starter page
+
+`help.html` at repo root. JSON-LD: `WebPage` with `mainEntity` referencing `/faq#faq` (FAQPage).
+
+- Hero: "How can we help you?" + Contact + FAQ secondary CTA.
+- Visual search box (form posts to `/faq#<term>`).
+- 4 category cards, each with 6 sub-topic links: Getting Started, Integrations (links to all 6 PMS pages), Patient Experience, Billing & Account.
+- "Can't find what you need?" mailto CTA → `support@ariadental.ai`.
+- Final CTA section.
+
+## F. Press & media kit page
+
+`press.html` at repo root. JSON-LD: `WebPage`.
+
+- Hero: "Press & media kit." Press@ + brand assets CTAs.
+- Company snapshot (4 cards): Founded, Founder ([Founder Name] placeholder), HQ, Parent company.
+- 2-sentence company description.
+- Brand assets section (id=`#assets`): 4 placeholder asset cards (Wordmark light/dark, square mark, brand guidelines) — all marked `<!-- TODO: brand asset PDF/PNG -->Coming soon`.
+- Recent coverage: empty-state with dashed amber border, press@ariadental.ai contact.
+- Founder bio: placeholder bio for `[Founder Name]` matching `/about` placeholder.
+- Speaking & podcasts: empty-state.
+- Contact card: `press@ariadental.ai` (media) + `partnerships@ariadental.ai` (partnerships).
+
+## G. Four email nurture sequences (markdown reference)
+
+All at `email-sequences/`. Each: subject line, preview text, body (3-5 paragraphs), single CTA, send timing.
+
+- `onboarding-post-signup.md` — 7 emails over first 90 days: Welcome (T+0), Integration setup (T+1), First 100 calls milestone (T+10-21), Optimization tips (T+30), Success metrics review (T+45), Expansion conversation (T+60), 90-day check-in.
+- `churn-prevention.md` — 4 emails over 21 days from engagement-drop trigger: Noticed lower engagement, Anything I can help with?, CS leadership escalation, Win-back offer (3 months 50% off / pause / custom plan).
+- `customer-expansion.md` — 5 emails per quarter to top 30%: New features, Best practices from peers, Multi-location pricing, Referral ask ($500 credit/practice), Advocate program invite (quarterly roundtable + early access + founder 1:1).
+- `win-back-canceled.md` — 4 emails over 90 days post-cancellation: Confirmation + door-open (T+0), 30-day product update (T+30), Reduced-rate return offer (T+60), Final note + thank-you (T+90).
+
+Total: 20 individual emails with full subject/preview/body/CTA/timing.
+
+## H. Sitemap + footer + nav updates
+
+- `sitemap.xml` — added 17 URLs (6 PMS + 5 specialty + help + press + 4 Spanish entry pages with xhtml:link reciprocal hreflang annotations on each ES URL). Added `xmlns:xhtml` namespace declaration to urlset opener. Total grew **55 → 72 URLs**.
+- 53 EN pages: added `🌐 Español` nav item before "Book a Demo" CTA.
+- 42 EN pages: added `Help Center` link to footer Resources column (after Buyer's Guide).
+- 56 EN pages: added `Press & Media` link to footer Company column (before Careers).
+- New pages (B/C/E/F) shipped with the updated footer + Spanish nav already baked in.
+
+## Constraints honored
+
+- **No fabricated content.** Customer counts, founder bio, press coverage, competitor pricing all use placeholders or honest empty-states.
+- **PMS roadmap is honest.** Open Dental shipped April 2026; everything else explicitly labeled as preview / coming with target quarters.
+- **Spanish translation is professional, not auto-translated.** 1 TODO marker for native review.
+- **Batches 1-7 untouched** except for additive sitemap entries, footer columns (added Help Center + Press), nav (added Spanish link), and the 3 lead-magnet form handlers (added PDF-open behavior on success).
+- **No new heavyweight dependencies.** Used existing reportlab (4.4.10) for PDFs.
+- **All pages use brand colors:** amber `#D4952A`, charcoal `#1A1A2E`, cream `#FEFCF8`. Fraunces display + Sora body via Google Fonts.
+- **JSON-LD structured data on every new page** (Article, SoftwareApplication, BreadcrumbList, WebPage, FAQPage as appropriate, all `inLanguage` tagged).
+- **GTM, GA4 (G-KQS3692C4Q), Clarity (wn8w0677vz), analytics-events.js loaded on every new page.**
+
+## Files added (26 total)
+
+**HTML (13):**
+aria-for-open-dental.html, aria-for-dentrix.html, aria-for-eaglesoft.html, aria-for-curve.html, aria-for-carestream.html, aria-for-practice-web.html, aria-for-perio-practices.html, aria-for-endo-practices.html, aria-for-oral-surgery.html, aria-for-prosthodontics.html, aria-for-pediatric-dental-practices-pillar.html, help.html, press.html
+
+**Spanish HTML (6):**
+es/index.html, es/platform.html, es/demos.html, es/contact.html, es/pricing.html, es/faq.html
+
+**PDFs (3):**
+assets/leadmag/aria-buyers-guide.pdf (13 pages, 23 KB)
+assets/leadmag/missed-call-cost-worksheet.pdf (6 pages, 11 KB)
+assets/leadmag/insurance-verification-audit.pdf (7 pages, 12 KB)
+
+**Email sequences (4):**
+email-sequences/onboarding-post-signup.md, email-sequences/churn-prevention.md, email-sequences/customer-expansion.md, email-sequences/win-back-canceled.md
+
+## Files modified
+
+- `sitemap.xml` (+17 URLs, +xhtml namespace)
+- `index.html`, `dental-missed-calls-ai.html`, `dental-insurance-verification-ai.html` (form handlers → open PDF on success)
+- 53 EN pages (Spanish nav link)
+- 56 EN pages (Press & Media footer link)
+- 42 EN pages (Help Center footer link)
+- 6 EN pages (reciprocal hreflang link tags)
+
+## Total content shipped
+
+- New HTML pages: **13** (6 PMS + 5 specialty + help + press)
+- Spanish HTML pages: **6**
+- PDFs: **3** (lead magnets, total 26 pages of branded content)
+- Email sequences: **4** (20 individual emails total)
+- Sitemap URLs added: **17** (55 → 72)
+- Net new word count: **~30,000 words** of new on-site content (~1,200 × 11 specialty/PMS pages + ~10,000 ES pages + ~5,000 help/press + email + PDFs)
+- Spanish translation TODO markers: **1** (need native review)
+
+
+---
+
+# Aria Dental — Enterprise Page (Agent Changelog)
+
+Date: 2026-05-08
+Source spec: Cowork session prompt — single dedicated enterprise/DSO landing page for AriaDental.AI
+Repo: `~/Downloads/aria-dental-site-main 4/`
+Staging: `~/Downloads/aria-enterprise-page/` (flat, ready for git apply)
+
+Scope: 1 net-new HTML page (`enterprise.html`), site-wide nav + footer additions across 69 existing pages, sitemap +1 URL, homepage callout ribbon. No Batches 1-8 content modified beyond the additive nav/footer/ribbon changes.
+
+## Enterprise page (1 new file)
+
+`enterprise.html` at the repo root. **2,443 words** in `<main>` content. Executive tone targeting operations leaders at large DSOs (1,000+ location organizations).
+
+**Honesty constraint honored:** Aspen Dental, Heartland Dental, MB2 Dental, and Pacific Dental Services are **NOT** named as customers. The page positions Aria as purpose-built for that scale, not as already serving them. Forward-looking, capability-first language throughout. No fabricated customer counts or competitor pricing.
+
+**Sections shipped (in order):**
+
+1. **Hero** — H1 "Aria for Enterprise DSOs", subtitle on operational complexity of 100+ locations, single concrete claim ("Centralized configuration, per-location customization, organization-wide visibility"), two CTAs (`/contact?type=enterprise` primary, `/dso-buyers-guide-ai-receptionist` secondary).
+2. **The DSO operations problem** — 5 specific pain cards: front-desk turnover at 40-60% annually, inconsistent patient experience eroding brand equity, HIPAA compliance variance / training drift, insurance verification compounding labor cost, after-hours coverage forcing a bad choice. Industry-known patterns only — no fabricated stats.
+3. **What Aria handles at DSO scale** — 6 capability cards: 24/7 multilingual call handling, automated insurance verification with payer-specific routing (Aetna, Delta, BlueCross etc named), multi-location appointment routing, centralized recall with per-location personalization, real-time per-location/regional/org-wide dashboards, workflows configurable globally OR per-location.
+4. **Streamlined enterprise onboarding** — 3 phases: pilot (3-5 locations weeks 1-4), regional expansion (25-50 locations weeks 5-10), full deployment (remaining locations weeks 11-24). White-glove team, dedicated implementation manager, custom voice training, staff training, 6-month timeline for 1,000+ orgs.
+5. **Enterprise-grade security & compliance** — 8 cards: HIPAA + signed BAAs, SOC 2 Type II (honestly labeled "in progress · Q3 2026"), state-specific compliance (CCPA/CPRA, HB 4, MHMDA, BIPA), data residency US-East/US-West, audit logging at org/location/user level, 90-day default retention configurable to 7 years, quarterly pen tests, dedicated security@ariadental.ai.
+6. **Integration with DSO infrastructure** — Two columns: PMS systems (Open Dental Enterprise, Dentrix Enterprise, Eaglesoft, Curve, Carestream, PracticeWorks, custom EHR/EMR) and identity/data infra (SAML 2.0 SSO via Okta/Azure AD/Google/Ping, SCIM 2.0, webhooks/REST API, Snowflake/BigQuery/Redshift/Databricks, Looker/Tableau/Power BI/Mode, IP allowlisting, VPN options).
+7. **Pricing & contracting** — 6 items: custom pricing with volume discounts at 25+/100+/250+/500+ locations, multi-year terms with locked rates, Net 30/60/90, dedicated account team (CSM + impl lead + executive sponsor), procurement-friendly (Coupa/Ariba/Workday compatibility, redlinable MSA/BAA/DPA), procurement documentation (CAIQ/SIG-Lite turnaround in 5 days, SOC 2 Type I report under NDA). "Custom quote within 48 hours" CTA card.
+8. **Enterprise FAQ** — 8 questions with full answers, marked up as `FAQPage` JSON-LD: pricing scaling, phased deployment, custom PMS integration, SLA terms (99.9% uptime, P1/P2/P3 response), data residency, mid-contract acquisitions, multi-language across regions, custom contract / legal review timeline (3-6 weeks median).
+9. **Closing CTA** — "Ready to talk?" with two paths: schedule consultation (`/contact?type=enterprise`) and email DSO team (`mailto:enterprise@ariadental.ai`). Bottom-of-page line: "We respond to enterprise inquiries within 24 hours. Discovery call → custom proposal → security review → pilot."
+
+**Head pattern:** Full match of existing pages — GTM (`GTM-5H6LQ8RL`), Clarity (`wn8w0677vz`), GA4 inline (`G-KQS3692C4Q`), OG/Twitter (1200×630 image at `/images/og/enterprise.png`), JSON-LD (`Article` + `Service` + `FAQPage`), canonical, favicon block, manifest, viewport, theme-color, dns-prefetch.
+
+**Visual:** Brand-true. Amber `#D4952A`, charcoal `#1A1A2E`, cream `#FEFCF8`. Fraunces (display) + Sora (body). Dark hero with amber radial glow, alternating cream/white sections, dark phased-rollout section, light security/integration sections, dark closing CTA.
+
+## Site-wide changes
+
+- **Main nav:** Added `<li><a href="/enterprise">Enterprise</a></li>` between Security and About on **66 pages** (every page that uses the standard nav). The 3 demo utility pages (`demo-booking.html`, `demo-gcal.html`, `demo-reschedule.html`) and the Google site-verification stub do not use the standard nav and are skipped.
+- **Footer (Company column):** Added `<a href="/enterprise">Enterprise</a>` between Security and Contact on **69 pages** (every page that uses the standard footer). Only the Google verification stub is skipped.
+- **Homepage callout:** Tasteful charcoal/amber ribbon inserted on `index.html` between the hero and the existing `proof-strip` section. Single line: "Operating 50+ locations? Aria is purpose-built for DSOs at scale." with an "Aria for Enterprise →" CTA button. Not a popup, not an interruption — sits in normal flow.
+- **`sitemap.xml`:** Added `/enterprise` URL with `lastmod 2026-05-07`, `changefreq monthly`, `priority 0.85`. Total grew **72 → 73 URLs**.
+
+## Files modified (count)
+
+- HTML pages patched: **69** (66 received nav patch, 69 received footer patch, 1 received homepage ribbon — overlap explains the 69 unique-file total)
+- `sitemap.xml`: 1
+- `_AGENT_CHANGES.md`: 1
+
+## Files added (1)
+
+- `enterprise.html` — 2,443 words, ~48 KB
+
+## Constraints honored
+
+- **No fabricated customers.** Aspen Dental, Heartland, MB2, PDS, etc. are not named anywhere. Forward-looking framing only ("DSOs of this scale", "organizations like").
+- **No fabricated stats.** Industry-known turnover ranges (40-60%) cited generically. No claims about Aria's existing DSO customer count.
+- **SOC 2 Type II honest.** Labeled "in progress · Q3 2026" in body copy and as an `ent-status` chip on the security card.
+- **Brand voice match.** Direct, executive-tone, ROI-first. Banned phrases (per Rule #16: perfect, awesome, fantastic, etc.) absent from copy.
+- **Batches 1-8 untouched** beyond the additive nav (between Security and About), footer (between Security and Contact), homepage ribbon (above proof-strip), and sitemap entry. No existing copy, layout, or styling changed.
+- **Same head pattern** as other pages: GTM, GA4, Clarity, JSON-LD, OG, favicon block all consistent with `index.html`.
+
+## Push instructions
+
+```bash
+cd "~/Downloads/aria-dental-site-main 4"
+# Copy staged files into the repo
+cp -r ~/Downloads/aria-enterprise-page/*.html .
+cp ~/Downloads/aria-enterprise-page/sitemap.xml .
+cp ~/Downloads/aria-enterprise-page/_AGENT_CHANGES.md .
+
+# Verify
+grep -l '/enterprise' *.html | wc -l    # should report 70 (69 patched + enterprise.html itself)
+grep -c 'enterprise' sitemap.xml         # should be ≥ 2 (URL + comment)
+
+git add -A
+git commit -m "Enterprise DSO landing page + site-wide nav/footer/ribbon"
+git push origin main
+```
+
+## Verification checklist (post-deploy)
+
+- `https://www.ariadental.ai/enterprise` returns 200 with full page render
+- Nav on every page now shows Enterprise between Security and About
+- Footer Company column on every page now shows Enterprise between Security and Contact
+- Homepage shows the enterprise ribbon below the hero, above the stats bar
+- `/enterprise` appears in `/sitemap.xml`
+- `/contact?type=enterprise` query string preserved on form submission (verify with form handler test)
+- `enterprise@ariadental.ai` mailto resolves on the closing CTA
+- FAQ schema validates in Google's Rich Results Test
+
+## TODOs that need you
+
+1. **Generate `/images/og/enterprise.png`** (1200×630) for the OG and Twitter card. Until then the link unfurls fall back to whatever the site default OG image is.
+2. **Stand up `enterprise@ariadental.ai`** mailbox or alias if not already routed. The closing CTA links to it.
+3. **Wire `/contact?type=enterprise`** so the contact form's submission tags the lead as enterprise (Web3Forms subject line or hidden field). Currently the URL parameter is informational only.
+4. **Confirm SOC 2 Type II target date.** The page commits publicly to "Q3 2026 target" — bump to Q4 2026 or H1 2027 if the auditor's timeline shifts before pushing live.
+5. **Decide on dedicated DSO landing-page CSS file** vs. keeping the inline `<style>` block. Current implementation is inline (matches the Batch 8 PMS pages pattern) but the page is heavier than typical.
