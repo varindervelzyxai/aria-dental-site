@@ -15,3 +15,7 @@ Replaces previous booking demo audio with re-recorded version.
 Upload the single file in this folder (`audio/demo-book-self.mp3`) to the GitHub repo at the same path: `audio/demo-book-self.mp3`. Overwrites the existing file (or, if `aria-demos-batch1/` was never deployed, this becomes the FIRST upload of that file).
 
 No HTML, JSON-LD, sitemap, or transcript changes required for this replacement.
+
+## Follow-up edit (2026-05-09)
+- demos.html: Mike Patterson opening line corrected — 'book a cleaning' → 'book an appointment with Dr. Smith'
+- `demos.html` is now bundled in this folder alongside the audio replacement so both can ship together. Upload `demos.html` to the repo root (overwrite existing) when deploying this replacement batch.
