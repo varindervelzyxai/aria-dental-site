@@ -282,7 +282,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="demo-step" id="step2">
     <div class="section-label">Step 2 — Live Conversation</div>
     <div class="chat-window">
-      <div class="chat-header"><div class="chat-avatar">A</div><div class="chat-header-info"><div class="chat-name">Aria — AI Receptionist</div><div class="chat-sub">Dr. Vartanian's Office</div></div><div class="chat-live-dot">Live</div></div>
+      <div class="chat-header"><div class="chat-avatar">A</div><div class="chat-header-info"><div class="chat-name">Aria — AI Receptionist</div><div class="chat-sub">WizKids Dental</div></div><div class="chat-live-dot">Live</div></div>
       <div class="chat-body" id="chat2Body"></div>
     </div>
   </div>
@@ -302,7 +302,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div style="margin-top:20px;">
       <div class="chat-window">
-        <div class="chat-header"><div class="chat-avatar">A</div><div class="chat-header-info"><div class="chat-name">Aria — AI Receptionist</div><div class="chat-sub">Dr. Vartanian's Office</div></div><div class="chat-live-dot">Live</div></div>
+        <div class="chat-header"><div class="chat-avatar">A</div><div class="chat-header-info"><div class="chat-name">Aria — AI Receptionist</div><div class="chat-sub">WizKids Dental</div></div><div class="chat-live-dot">Live</div></div>
         <div class="chat-body" id="chat3Body"></div>
       </div>
     </div>
@@ -311,7 +311,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="demo-step" id="step4">
     <div class="section-label">Step 4 — Appointment Booking</div>
     <div class="chat-window">
-      <div class="chat-header"><div class="chat-avatar">A</div><div class="chat-header-info"><div class="chat-name">Aria — AI Receptionist</div><div class="chat-sub">Dr. Vartanian's Office</div></div><div class="chat-live-dot">Live</div></div>
+      <div class="chat-header"><div class="chat-avatar">A</div><div class="chat-header-info"><div class="chat-name">Aria — AI Receptionist</div><div class="chat-sub">WizKids Dental</div></div><div class="chat-live-dot">Live</div></div>
       <div class="chat-body" id="chat4Body"></div>
     </div>
   </div>
@@ -319,7 +319,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="demo-step" id="step5">
     <div class="section-label">Step 5 — Payment Collection</div>
     <div class="chat-window">
-      <div class="chat-header"><div class="chat-avatar">A</div><div class="chat-header-info"><div class="chat-name">Aria — AI Receptionist</div><div class="chat-sub">Dr. Vartanian's Office</div></div><div class="chat-live-dot">Live</div></div>
+      <div class="chat-header"><div class="chat-avatar">A</div><div class="chat-header-info"><div class="chat-name">Aria — AI Receptionist</div><div class="chat-sub">WizKids Dental</div></div><div class="chat-live-dot">Live</div></div>
       <div class="chat-body" id="chat5Body"></div>
     </div>
     <div id="paymentArea"></div>
@@ -328,7 +328,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="demo-step" id="step6">
     <div class="section-label">Step 6 — Schedule Updated</div>
     <div class="schedule-card">
-      <div class="schedule-header"><h3>📅 Dr. Vartanian's Schedule</h3><span class="schedule-date" id="scheduleDate"></span></div>
+      <div class="schedule-header"><h3>📅 WizKids Dental — Provider Schedule</h3><span class="schedule-date" id="scheduleDate"></span></div>
       <div class="schedule-body">
         <div class="appt-row"><span class="appt-time">9:00 AM</span><span class="appt-name">Sarah Johnson</span><span class="appt-type">Cleaning</span></div>
         <div class="appt-row"><span class="appt-time">10:30 AM</span><span class="appt-name">David Park</span><span class="appt-type">Root Canal</span></div>
@@ -450,7 +450,7 @@ async function startDemo() {
   showStep('step2');
   const c2 = document.getElementById('chat2Body');
 
-  await typeMessage(c2, "Thank you for calling Dr. Vartanian's dental office, this is Aria. How can I help you today?", 'aria', 1800);
+  await typeMessage(c2, "Thank you for calling WizKids Dental, this is Aria. How can I help you today?", 'aria', 1800);
   await typeMessage(c2, "Hi, my crown fell off and I need to come in. Do you take Delta Dental?", 'patient', 1400);
   await typeMessage(c2, "Oh no, I'm so sorry about that! Let's get you in right away. Yes, we do accept Delta Dental. Can I get your member ID so I can check your coverage?", 'aria', 2000);
   await typeMessage(c2, "Sure, it's DD-9988-77654", 'patient', 1000);
@@ -473,9 +473,9 @@ async function startDemo() {
   const c4 = document.getElementById('chat4Body');
 
   await typeMessage(c4, "Yes, can I come in tomorrow afternoon?", 'patient', 1000);
-  await typeMessage(c4, "Let me check Dr. Vartanian's availability... I have 2:00 PM, 3:30 PM, or 4:00 PM available. Which works best?", 'aria', 1800);
+  await typeMessage(c4, "Let me check the schedule... I have 2:00 PM, 3:30 PM, or 4:00 PM available. Which works best?", 'aria', 1800);
   await typeMessage(c4, "4 PM works.", 'patient', 800);
-  await typeMessage(c4, "Perfect! I have you booked with Dr. Vartanian tomorrow at 4:00 PM for a crown.", 'aria', 1400);
+  await typeMessage(c4, "Perfect! I have you booked tomorrow at 4:00 PM for a crown.", 'aria', 1400);
   await wait(600);
 
   setProgress(5, 'current');
@@ -527,7 +527,7 @@ function replayDemo() {
 <div class="footer-brand"><a href="/" class="footer-logo">aria</a><p>AI front office that closes more dental patients.</p><p style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:8px">Aria by Velzyx AI</p><a href="mailto:hello@ariadental.ai" style="color:var(--amber-light);text-decoration:none;font-size:14px;display:inline-block;margin-top:12px">hello@ariadental.ai</a><div class="footer-address">5000 Birch St, Suite 3000<br>Newport Beach, CA 92660</div></div>
 <div class="footer-col"><h5>Product</h5><a href="/platform">Platform</a><a href="/how-it-works">How It Works</a><a href="/compare">Compare</a><a href="/demos">Demos</a><a href="/platform#pricing">Pricing</a></div>
 <div class="footer-col"><h5>Resources</h5><a href="/blog">Blog</a><a href="/glossary">Glossary</a><a href="/who-we-help">Who We Help</a><a href="/roi-calculator">ROI Calculator</a><a href="/voice-ai-dental-buyers-guide">Buyer&#39;s Guide</a><a href="/help">Help Center</a></div>
-<div class="footer-col"><h5>Company</h5><a href="/about">About</a><a href="/security">Security</a><a href="/contact">Contact</a><a href="/press">Press &amp; Media</a><a href="mailto:careers@ariadental.ai">Careers</a></div>
+<div class="footer-col"><h5>Company</h5><a href="/about">About</a><a href="/security">Security</a><a href="/contact">Contact</a><a href="/press">Press &amp; Media</a><a href="mailto:info@velzyx.ai">Careers</a></div>
 <div class="footer-col"><h5>Legal</h5><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/cookies">Cookie Policy</a><a href="/privacy#hipaa-notice">HIPAA Notice</a></div>
 </div><div class="footer-bottom"><span>&copy; 2026 Aria by Velzyx AI. All rights reserved.</span><span class="footer-social"><a href="https://www.instagram.com/ariadentalai" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a> &middot; <a href="https://twitter.com/ariadentalai" target="_blank" rel="noopener" aria-label="X (Twitter)">X</a> &middot; <a href="https://www.linkedin.com/company/aria-dental-ai" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a></span></div></div></footer>
 </body>
