@@ -1,160 +1,225 @@
-# Homepage demo refresh — Mike Patterson booking + viz
+# Layout fix — wider booking-viz on `/` and `/demos`
 
-Replaced the old WizKids "crown fell off" homepage demo with the new Mike
-Patterson implant-consultation booking demo, including the synced viz that
-already lives on `/demos`. Extracted the visualization CSS + JS to external
-files so both pages share one component.
+Built on top of `~/Downloads/aria-demos-home1/` (the Mike Patterson demo
+refresh). Goal: stop the booking visualization from feeling squeezed into
+a narrow column on wide viewports, and give the other `/demos` panel
+cards more breathing room too.
 
-## What was removed from the homepage
+## TL;DR
 
-- The dark `<section class="dark-section">` that wrapped the player ("Hear
-  Aria close a real patient. ... 2 minutes 17 seconds").
-- The whole custom audio-player UI: avatar, "Real Call" pill (`#homeLiveDot`),
-  generated waveform (`#homeWaveform`), inline transcript window
-  (`#homeTranscript`), play/pause buttons, scrubber (`#homeProgressBar`),
-  current/total time labels.
-- The `<audio id="homeAudio" src="aria-call-demo.mp3">` element and the
-  ~70-line inline `<script>` block that drove it (homeMessages keyframes,
-  `toggleHomeAudio`, `seekHomeAudio`, timeupdate / loadedmetadata / ended
-  listeners).
+Three things were doing the squeezing:
 
-The homepage no longer references `aria-call-demo.mp3` at all. **Note:**
-that file (`aria-call-demo.mp3`) is still used by `demo.html` (a separate
-page), so it has been left in place.
+1. Homepage — `<div style="max-width:980px;margin:0 auto">` inline-styled
+   wrapper around the booking-viz, parented inside a `.container` (1280px).
+2. Demos page — `.demo-card { max-width: 880px }` capping every panel
+   (insurance, book-self, book-child, sms-billing, recall, history)
+   regardless of content.
+3. Both pages — only the booking-viz lived inside `.container` (1280px);
+   it could have been in `.container-wide` (1440px) like the hero/stats-bar.
 
-There was no homepage MediaObject JSON-LD for the old demo to remove.
-The meta description / OG description didn't reference Vartanian or the
-old call.
+Fix: switch both demo sections to `.container-wide`, replace the inline
+980px wrapper with class-based `.booking-viz-shell-wrap` (1320px max),
+bump `.demo-card` to 1080px and add an `.is-viz` modifier at 1320px for
+the booking-viz panel only. Bump grid gap and phone size on wider
+viewports so the visualization scales with the new real estate.
 
-## What's there now
+The global page container was **not** widened. `.container` (1280px) and
+`.container-wide` (1440px) are both already defined in `styles.css` and
+in active use across the site (hero + stats-bar already used
+`.container-wide`). The fix uses what was there.
 
-Light-background `<section class="section">` with the same `#live-demo`
-anchor (so the hero's `Hear a Real Call ↓` button still scrolls there).
-Headline reads "Hear Aria book a real patient." Inside a single warm-white
-card:
+## Selectors changed — old vs new
 
-1. Native `<audio controls>` element (`#bookSelfAudio`) pointed at
-   `audio/demo-book-self.mp3`.
-2. `.booking-viz-hint` — "Press play and watch both sides" affordance
-   lifted verbatim from `/demos`.
-3. `.booking-viz` two-column grid (`#bookingViz`):
-   - Left column: Aria's workspace — Calendar lookup card, Practice
-     management card, SMS dispatch card.
-   - Right column: Mike's iPhone with incoming-call screen + SMS
-     notification banner.
-4. Trust strip (HIPAA Compliant / AI Voice / Real-Time Booking).
-5. "▶ Listen to the full set of demos →" link below pointing to `/demos`.
+### `assets/booking-viz.css`
 
-Plus a new `MediaObject` JSON-LD entry for the call audio.
+**New rules (added):**
 
-## Extraction (external file route)
+```css
+.booking-viz-shell-wrap { max-width: 1320px; margin: 0 auto }
+.booking-viz-shell {
+  background: var(--warm-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: clamp(20px, 3vw, 44px);
+  box-shadow: var(--shadow-md);
+}
+@media (min-width: 1100px) { .booking-viz { gap: 36px } }
+@media (min-width: 1320px) { .booking-viz { gap: 48px } }
+@media (min-width: 1100px) { .bv-phone { max-width: 300px } }
+@media (min-width: 1320px) { .bv-phone { max-width: 320px } }
+```
 
-Both `index.html` and `demos.html` reference shared assets:
+No existing rules were modified — only additive. Existing 880px
+breakpoint (`grid-template-columns: 1.15fr 0.85fr; gap: 24px`) and the
+mobile-stack default are unchanged.
 
-- `assets/booking-viz.css` — all `.booking-viz` / `.bv-*` styles. Scoped
-  classes only, no global leakage. Depends on CSS variables defined in
-  `styles.css` (`--amber`, `--charcoal`, `--warm-white`, `--cream`,
-  `--border`, `--sage-deep`, `--radius-lg`, etc.) — those are loaded
-  before booking-viz.css on every page.
-- `assets/booking-viz.js` — the `initBookingViz` IIFE. It bails silently
-  if `#bookSelfAudio` or `#bookingViz` is missing, so it's safe to ship
-  on every page. Exposes `window.bookingDemoKeyframes` for live retuning.
+### `index.html`
 
-`demos.html` was rewritten to the version that contains the viz markup
-(the old 376-line demos.html in the repo did not have it yet — the new
-viz markup came from `~/Downloads/aria-demos-viz1/demos.html`). I then
-stripped its inline `<style>` block for booking-viz and the inline
-`initBookingViz` IIFE, replacing both with `<link>` and `<script>`
-references to the new shared files.
+| Line | Old | New |
+| --- | --- | --- |
+| 157 | `<section class="section"><div class="container">` | `<section class="section"><div class="container-wide">` |
+| 159 | `<div style="max-width:980px;margin:0 auto">` | `<div class="booking-viz-shell-wrap">` |
+| 160 | `<div style="background:var(--warm-white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:clamp(20px,3vw,36px);box-shadow:var(--shadow-md)">` | `<div class="booking-viz-shell">` |
 
-`demos.html` uses absolute paths (`/assets/booking-viz.css`,
-`/assets/booking-viz.js`) since that page is served at `/demos` via
-Vercel rewrites. `index.html` uses relative paths
-(`assets/booking-viz.css`, `assets/booking-viz.js`) to match the
-existing pattern in that file (`href="styles.css"`,
-`src="aria-call-demo.mp3"`, `href="images/..."`).
+The hero (`<section class="hero">`) and stats-bar (`<section class="stats-bar">`)
+already use `.container-wide` — only the live-demo `<section class="section">`
+was switched. All other homepage sections (testimonials, FAQ, after-the-booking,
+interactive-demos grid, etc.) still use their existing wrappers — none touched.
 
-## Audio path
+### `demos.html`
 
-Homepage audio tag: `src="audio/demo-book-self.mp3"` — relative path,
-matches what the rest of `index.html` uses for direct page assets.
-The mp3 was already staged at
-`aria-dental-site-main 4/audio/demo-book-self.mp3`. Not touched.
+| Line | Old | New |
+| --- | --- | --- |
+| 57 (inline `<style>`) | `.demo-card { padding: 36px; max-width: 880px; … }` | `.demo-card { padding: clamp(24px, 3vw, 40px); max-width: 1080px; … }` |
+| 58 (inline `<style>`) | _new_ | `.demo-card.is-viz { max-width: 1320px; padding: clamp(24px, 3vw, 44px) }` |
+| 80 (inline `<style>`) | `.dash-mockup { … max-width: 520px; … }` | `.dash-mockup { … max-width: 640px; … }` |
+| 136 | `<section class="demos-section"><div class="container">` | `<section class="demos-section"><div class="container-wide">` |
+| 178 | `<div class="demo-card">` (book-self panel only) | `<div class="demo-card is-viz">` |
 
-## File list to deploy
+Other panels (insurance, book-child, sms-billing, recall, history) still
+use plain `.demo-card`, so they get the new 1080px cap — wider than the
+old 880px, but capped well below the booking-viz's 1320px because they
+contain transcripts where line length matters for readability.
+
+`@media (max-width: 680px) { .demo-card { padding: 24px } }` left in
+place. The new clamp evaluates to 24px at small viewports anyway, so the
+override is harmless.
+
+## Why the global container was NOT widened
+
+`styles.css` line 5: `.container { width: 100%; max-width: 1280px; … }`
+governs testimonials, FAQ, hero proof strip, etc. — text-heavy sections
+where 1280px already gives line lengths that read comfortably. Bumping
+that globally would push line lengths past readability in the body
+content. The booking-viz is a visual block with three workspace cards
+plus a phone mock — it benefits from extra horizontal space; running
+prose does not.
+
+The site already has `.container-wide` (1440px max) for visual blocks
+like the hero. The fix uses that existing pattern.
+
+## What changed for the `/demos` other-cards grid
+
+The demos page is structured as a single column of `.demo-panel`s, each
+containing one `.demo-card`. There's no multi-card grid — only the tab
+bar lays out horizontally. The panels stack vertically (well, only one
+shows at a time via tabs).
+
+Old: every `.demo-card` capped at 880px, padded 36px solid.
+New: every `.demo-card` capped at 1080px, padded clamp(24px–40px). The
+booking-viz panel additionally gets `.is-viz` which lifts the cap to
+1320px and bumps padding max to 44px.
+
+So all six panels feel less squeezed. The book-self panel feels
+substantially wider because it has the visualization which has the most
+to gain from horizontal real estate.
+
+`.dash-mockup` (the recall demo's dark stats card) was also bumped from
+520px to 640px so it doesn't look forlorn inside the now-wider parent.
+
+## Before / after — content widths at 1440px viewport
+
+| Layer | Before | After |
+| --- | --- | --- |
+| Homepage live-demo `<section>` outer container | `.container` → 1280 - 64 = **1216px** content | `.container-wide` → 1440 - 64 = **1376px** content |
+| Homepage demo-card wrapper | inline `max-width: 980px` | `.booking-viz-shell-wrap` `max-width: 1320px` |
+| Homepage shell padding | `clamp(20px, 3vw, 36px)` | `clamp(20px, 3vw, 44px)` |
+| Homepage `.booking-viz` content area | 980 − 72 = **908px** | 1320 − 88 = **1232px** _(+36%)_ |
+| Demos `<section>` outer | `.container` → **1216px** | `.container-wide` → **1376px** |
+| Demos `.demo-card` (non-viz) | 880px | **1080px** _(+23%)_ |
+| Demos `.demo-card.is-viz` | n/a (was 880) | **1320px** _(+50% vs old)_ |
+| `.booking-viz` grid gap | 24px | **48px** at 1320+ vw _(+100%)_ |
+| `.bv-phone` max-width | 280px | **320px** at 1320+ vw _(+14%)_ |
+| `.dash-mockup` max-width | 520px | **640px** _(+23%)_ |
+
+## Mobile behavior (≤ 768px)
+
+`.booking-viz-shell-wrap`'s `max-width: 1320px` is just a cap; on mobile
+the wrapper takes 100% of its parent (the `.container-wide` minus 32px
+on each side from container padding).
+
+`.booking-viz-shell` padding is `clamp(20px, 3vw, 44px)` — at 414px
+viewport, 3vw = 12.4px, clamps to the 20px floor. Same as the previous
+`clamp(20px, 3vw, 36px)` value at small sizes.
+
+`.demo-card` uses `clamp(24px, 3vw, 40px)` — at 414px viewport, clamps
+to 24px (vs. the previous fixed 36px, so mobile actually feels slightly
+roomier inside the card). The `@media(max-width:680px)` override
+already enforced 24px below 680px in the old version; that stayed.
+
+`.booking-viz` two-column rule kicks in at ≥880px, so on phone the
+visualization still stacks with workspace on top, phone mock below.
+
+`.bv-phone` keeps the existing `@media(max-width:680px) { max-width:
+240px }` mobile rule unchanged — the wider 300/320px caps only apply at
+≥1100px.
+
+No horizontal scroll triggered at any of: 360, 414, 768, 1024, 1280,
+1440, 1920px.
+
+## Things that did NOT change
+
+- Card colors, type, animations, audio behavior, JS — untouched.
+- `.booking-viz`'s default `1.15fr 0.85fr` column ratio — kept as-is.
+  Right column still has some halo around the 320px phone at 1440px;
+  the phone is intentionally small (it's a mock), the halo reads as
+  breathing room rather than dead space.
+- `.bv-card`, `.bv-cal-grid`, `.bv-pms-frame`, `.bv-sms-meta`,
+  `.bv-sms-body` — no changes. They naturally scale to fill their
+  column, so widening the column gives the calendar bigger day cells,
+  the PMS frame more horizontal room for `.bv-pms-row` value text,
+  etc., without touching individual card rules.
+- Hero, proof strip, stats bar — already `.container-wide`. Untouched.
+- Testimonials, FAQ, "After the Booking" diff cards, footer — all use
+  their existing `.container` (1280px) wrappers. Untouched.
+- `assets/booking-viz.js` — not modified. Layout-only fix.
+- Spanish (`es/`) versions — out of scope. The repo at
+  `~/Downloads/aria-dental-site-main 4/` has them, but they aren't in
+  the staged work and weren't touched.
+
+## Files changed (vs. aria-demos-home1)
+
+```
+assets/booking-viz.css   # additive rules: .booking-viz-shell{,-wrap},
+                         # gap + phone size at 1100px / 1320px
+index.html               # live-demo section: .container → .container-wide,
+                         # 2 inline-style divs → .booking-viz-shell-wrap +
+                         # .booking-viz-shell
+demos.html               # .demos-section: .container → .container-wide,
+                         # .demo-card max-width 880 → 1080 + clamp padding,
+                         # .demo-card.is-viz @ 1320,
+                         # .dash-mockup max-width 520 → 640,
+                         # book-self panel's .demo-card → .demo-card.is-viz
+```
+
+`assets/booking-viz.js` is unchanged — included in the staged folder
+only so deploys can rsync the directory without thinking. Diff against
+`aria-demos-home1/assets/booking-viz.js` will be empty.
+
+## Things that fought (or didn't)
+
+Not much. The site already had a `.container-wide` (1440px) class
+defined in `styles.css` and in active use on the hero — so the demo
+section just needed to opt into it. No negative-margin tricks needed.
+The inline `max-width: 980px` was the cleanest target because it lived
+right on the wrapper div with nothing else to preserve.
+
+The one thing to double-check at deploy: `styles.css` is not in this
+staged folder (it's loaded from the repo root). The new wrapper classes
+depend on `.container-wide` already existing in `styles.css` line 6 of
+the production stylesheet. Confirmed it exists at
+`~/Downloads/aria-dental-site-main 4/styles.css` line 6.
+
+## Deploy checklist
 
 Mirror these into the GitHub repo `aria-dental-site` at the same paths:
 
-| Source (this folder)                  | Repo path                  |
-|---------------------------------------|----------------------------|
-| `index.html`                          | `index.html`               |
-| `demos.html`                          | `demos.html`               |
-| `assets/booking-viz.css`              | `assets/booking-viz.css`   |
-| `assets/booking-viz.js`               | `assets/booking-viz.js`    |
+| Source                     | Repo path                |
+| -------------------------- | ------------------------ |
+| `index.html`               | `index.html`             |
+| `demos.html`               | `demos.html`             |
+| `assets/booking-viz.css`   | `assets/booking-viz.css` |
 
-Deploy step: commit + push to `main`. Vercel auto-deploys ariadental.ai.
-
-## Verification grep results (all clean)
-
-```
-$ rg -i "vartanian|newport" index.html
-# Only hits: "Newport Beach, CA 92660" in postal address (Velzyx AI office)
-# and the Organization JSON-LD addressLocality. No Newport Institute /
-# Newport Dentistry / Vartanian references remain.
-
-$ rg -i "vartanian" index.html
-# 0 hits
-
-$ rg "Newport Institute|Newport Dent|newport-dent" index.html -i
-# 0 hits
-
-$ rg "demo-book-self" index.html
-# 2 hits: MediaObject JSON-LD contentUrl + audio[src] tag
-
-$ rg "booking-viz|bookSelfAudio" index.html
-# 12 hits
-
-$ rg "booking-viz\.js" index.html
-# 2 hits: <script> tag + comment in placeholder script block
-
-$ rg "homeAudio|aria-call-demo" index.html
-# 0 hits — old player fully removed
-```
-
-## Things to flag (non-blocking)
-
-1. **Old audio file still in repo:** `aria-call-demo.mp3` at the repo
-   root is still referenced by `demo.html` (a separate page, NOT the
-   homepage). Left in place. If `demo.html` is going away too, you can
-   delete the mp3 in a follow-up.
-
-2. **Stale image asset:** `images/case-vartanian.png` and
-   `case-vartanian.png` (root) exist in the repo but are NOT referenced
-   from `index.html`. Safe to delete in a follow-up if you want to
-   tidy the assets folder. Did NOT delete — flagging per task.
-
-3. **No `vartanian-demo.mp3`** was found in the audio/ directory or
-   anywhere else in the repo.
-
-4. **`demo.html` (singular) still uses old WizKids/Michael "crown fell
-   off" call** via `aria-call-demo.mp3`. That page was not in scope for
-   this task and is not the homepage demo widget — left alone. If you
-   want it updated, that's a separate cleanup.
-
-5. **Spanish homepage** (`es/index.html`) — out of scope, not touched.
-   May still have old demo content if it ever did; worth checking.
-
-## Polish-later items
-
-- The audio element on the homepage uses native `<audio controls>`
-  (matches `/demos`). Earlier the homepage had a custom-styled player
-  with waveform + transcript ticker. That UI was tightly coupled to
-  the old demo and removing it was the cleanest path. If a custom
-  styled player is desired again later, build it into `booking-viz.js`
-  so both pages stay in sync.
-- The "Hear a Real Call ↓" button in the hero still anchors to
-  `#live-demo` — copy may want to read "Watch Aria book a patient ↓"
-  to better describe the new visualization, but it works as-is.
-- The "Interactive Demos" section directly below (the 3-card grid for
-  `/demo-booking`, `/demo-gcal`, `/demo-reschedule`) is now
-  redundant-adjacent to the new live demo. Worth a copy review.
+`assets/booking-viz.js` is included in the staged folder for completeness
+but is byte-identical to the previous version — skip pushing it if the
+deploy step diffs.
