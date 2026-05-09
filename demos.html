@@ -92,6 +92,133 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .demos-footer-cta h2{font-family:'Fraunces',serif;font-size:clamp(26px,3.2vw,38px);font-weight:600;line-height:1.2;margin-bottom:14px}
 .demos-footer-cta p{color:rgba(255,255,255,0.7);max-width:540px;margin:0 auto 24px;font-size:15px}
 @media(max-width:680px){.demo-card{padding:24px}.dash-mockup-grid{grid-template-columns:1fr}}
+
+/* ============ Booking Demo Visualization (.booking-viz) ============ */
+.booking-viz-hint{display:flex;align-items:center;gap:10px;padding:12px 16px;background:linear-gradient(90deg,var(--amber-50) 0%,rgba(255,243,214,0.4) 100%);border:1px solid rgba(212,149,42,0.18);border-radius:10px;font-size:13px;color:var(--charcoal-70);margin:0 0 16px;line-height:1.5}
+.booking-viz-hint svg{flex-shrink:0;color:var(--amber)}
+.booking-viz-hint strong{color:var(--charcoal);font-weight:600}
+.booking-viz{display:grid;grid-template-columns:1fr;gap:20px;margin:24px 0 8px;font-family:'Sora',sans-serif}
+@media(min-width:880px){.booking-viz{grid-template-columns:1.15fr 0.85fr;gap:24px;align-items:start}}
+.booking-viz-col{display:flex;flex-direction:column;gap:16px;min-width:0}
+.booking-viz-col-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--charcoal-50);padding:0 4px;display:flex;align-items:center;gap:8px}
+.booking-viz-col-label::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 4px rgba(212,149,42,0.12)}
+
+/* ----- Workspace cards ----- */
+.bv-card{background:var(--warm-white);border:1px solid var(--border);border-radius:14px;padding:18px 18px 16px;box-shadow:0 1px 2px rgba(26,26,46,0.03);transition:border-color .4s ease,box-shadow .4s ease;position:relative;overflow:hidden}
+.bv-card.is-active{border-color:rgba(212,149,42,0.45);box-shadow:0 4px 20px rgba(212,149,42,0.10)}
+.bv-card.is-complete{border-color:rgba(74,124,89,0.32)}
+.bv-card-head{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.bv-card-icon{width:30px;height:30px;border-radius:8px;background:var(--amber-50);color:var(--amber);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .4s ease,color .4s ease}
+.bv-card.is-complete .bv-card-icon{background:rgba(232,240,232,0.7);color:var(--sage-deep)}
+.bv-card-title{font-size:13px;font-weight:600;color:var(--charcoal);letter-spacing:-.005em}
+.bv-card-sub{font-size:11px;color:var(--charcoal-50);margin-top:1px;font-weight:500}
+.bv-status{margin-top:12px;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--charcoal-70);min-height:18px;line-height:1.4}
+.bv-status .bv-spinner{width:12px;height:12px;border-radius:50%;border:1.5px solid rgba(212,149,42,0.25);border-top-color:var(--amber);animation:bv-spin .8s linear infinite;flex-shrink:0}
+.bv-status .bv-check{width:14px;height:14px;border-radius:50%;background:var(--sage-deep);color:#fff;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;opacity:0;transform:scale(0.6);transition:opacity .35s ease,transform .35s cubic-bezier(.2,1.2,.4,1)}
+.bv-card.is-complete .bv-status .bv-check{opacity:1;transform:scale(1)}
+.bv-status-text-idle,.bv-status-text-active,.bv-status-text-done{display:none}
+.bv-card .bv-status-text-idle{display:inline}
+.bv-card.is-active .bv-status-text-idle,.bv-card.is-complete .bv-status-text-idle{display:none}
+.bv-card.is-active .bv-status-text-active{display:inline}
+.bv-card.is-complete .bv-status-text-done{display:inline;color:var(--sage-deep);font-weight:500}
+.bv-card .bv-spinner{display:none}
+.bv-card.is-active .bv-spinner{display:inline-block}
+@keyframes bv-spin{to{transform:rotate(360deg)}}
+
+/* ----- Calendar card ----- */
+.bv-cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-top:4px;position:relative}
+.bv-cal-day{aspect-ratio:1.05;border:1px solid var(--border);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:11px;color:var(--charcoal-70);background:var(--cream);transition:border-color .35s ease,background .35s ease,color .35s ease;position:relative;overflow:hidden}
+.bv-cal-day .bv-cal-dow{font-size:9px;color:var(--charcoal-50);text-transform:uppercase;letter-spacing:.06em;font-weight:600;margin-bottom:2px}
+.bv-cal-day .bv-cal-num{font-family:'Fraunces',serif;font-size:14px;font-weight:600;color:var(--charcoal);line-height:1}
+.bv-cal-day.is-target{border-color:rgba(212,149,42,0.4);background:var(--amber-50)}
+.bv-cal-day.is-target .bv-cal-num{color:var(--amber)}
+.bv-cal-day.is-booked{border-color:var(--amber);background:#fff;box-shadow:0 0 0 1px var(--amber),0 4px 12px rgba(212,149,42,0.18)}
+.bv-cal-day.is-booked .bv-cal-num{color:var(--amber)}
+.bv-cal-day .bv-cal-dot{position:absolute;bottom:5px;width:4px;height:4px;border-radius:50%;background:var(--amber);opacity:0;transition:opacity .3s ease}
+.bv-cal-day.is-booked .bv-cal-dot{opacity:1}
+.bv-cal-sweep{position:absolute;left:0;right:0;height:24%;top:0;background:linear-gradient(180deg,transparent 0%,rgba(212,149,42,0.18) 50%,transparent 100%);pointer-events:none;opacity:0;border-radius:8px;z-index:2}
+.bv-card.is-active .bv-cal-sweep{opacity:1;animation:bv-sweep 1.4s cubic-bezier(.4,0,.4,1) infinite}
+@keyframes bv-sweep{0%{top:-30%}100%{top:100%}}
+
+/* ----- PMS card ----- */
+.bv-pms-frame{background:linear-gradient(180deg,#FAFAFA 0%,#F5F5F2 100%);border:1px solid var(--border);border-radius:10px;padding:0;overflow:hidden;margin-top:2px}
+.bv-pms-bar{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#fff;border-bottom:1px solid var(--border);font-size:10px;color:var(--charcoal-50);font-weight:600;letter-spacing:.04em}
+.bv-pms-bar-left{display:flex;align-items:center;gap:8px}
+.bv-pms-bar-dots{display:flex;gap:4px}
+.bv-pms-bar-dots span{width:7px;height:7px;border-radius:50%;background:#E5E5E5}
+.bv-pms-bar-title{color:var(--charcoal-70);font-weight:600;text-transform:none;letter-spacing:0;font-size:11px}
+.bv-pms-bar-right{font-size:9px;color:var(--charcoal-50);text-transform:uppercase;letter-spacing:.1em}
+.bv-pms-body{padding:12px 14px}
+.bv-pms-section-title{font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--charcoal-50);font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.bv-pms-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.bv-pms-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px dashed rgba(232,228,222,0.7);min-height:30px}
+.bv-pms-row:last-child{border-bottom:none}
+.bv-pms-key{font-size:11px;color:var(--charcoal-50);font-weight:500;flex-shrink:0}
+.bv-pms-val{font-size:12px;color:var(--charcoal);font-weight:500;text-align:right;font-family:'Sora',sans-serif;opacity:0;transform:translateY(3px);transition:opacity .45s ease,transform .45s ease}
+.bv-pms-val.is-shown{opacity:1;transform:translateY(0)}
+.bv-pms-pill-wrap{display:flex;justify-content:flex-end;margin-top:4px}
+.bv-pms-pill{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:50px;font-size:11px;font-weight:600;background:var(--cream);color:var(--charcoal-50);border:1px solid var(--border);transition:all .45s ease}
+.bv-pms-pill.is-shown{background:rgba(232,240,232,0.7);color:var(--sage-deep);border-color:rgba(74,124,89,0.3)}
+.bv-pms-pill .bv-pms-pill-dot{width:6px;height:6px;border-radius:50%;background:var(--charcoal-50);transition:background .45s ease}
+.bv-pms-pill.is-shown .bv-pms-pill-dot{background:var(--sage-deep);box-shadow:0 0 0 3px rgba(74,124,89,0.15)}
+
+/* ----- SMS card ----- */
+.bv-sms-meta{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:var(--cream);border:1px solid var(--border);border-radius:10px;font-size:11px;color:var(--charcoal-70);margin-bottom:10px}
+.bv-sms-meta-to{display:flex;align-items:center;gap:8px}
+.bv-sms-meta-to .bv-sms-to-icon{width:22px;height:22px;border-radius:50%;background:var(--amber-50);color:var(--amber);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.bv-sms-meta-to-num{font-family:'Sora',sans-serif;font-weight:600;color:var(--charcoal);letter-spacing:.02em;font-variant-numeric:tabular-nums}
+.bv-sms-meta-len{font-size:10px;color:var(--charcoal-50);font-variant-numeric:tabular-nums}
+.bv-sms-body{padding:12px 14px;background:#FAFAFA;border:1px solid var(--border);border-radius:10px;font-size:12px;line-height:1.55;color:var(--charcoal-70);position:relative;min-height:90px;overflow:hidden}
+.bv-sms-body::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(105deg,transparent 30%,rgba(212,149,42,0.12) 50%,transparent 70%);background-size:220% 100%;background-position:200% 0;pointer-events:none;border-radius:10px;opacity:0;transition:opacity .3s}
+.bv-card.is-active .bv-sms-body::before{opacity:1;animation:bv-shimmer 1.6s ease-in-out infinite}
+@keyframes bv-shimmer{0%{background-position:200% 0}100%{background-position:-100% 0}}
+
+/* ----- Phone column ----- */
+.booking-viz-phone-wrap{position:sticky;top:24px}
+@media(max-width:880px){.booking-viz-phone-wrap{position:static}}
+.bv-phone{width:100%;max-width:280px;margin:0 auto;background:#1A1A1A;border-radius:38px;padding:8px;box-shadow:0 24px 60px rgba(26,26,46,0.18),0 0 0 1px rgba(255,255,255,0.04) inset;position:relative}
+.bv-phone-screen{background:linear-gradient(180deg,#16161F 0%,#0E0E18 100%);border-radius:32px;overflow:hidden;position:relative;aspect-ratio:9/19.5;display:flex;flex-direction:column}
+.bv-phone-notch{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:88px;height:22px;background:#000;border-radius:14px;z-index:30;display:flex;align-items:center;justify-content:flex-end;padding-right:14px}
+.bv-phone-notch-cam{width:6px;height:6px;border-radius:50%;background:#1F1F2A;box-shadow:inset 0 0 2px rgba(255,255,255,0.1)}
+.bv-phone-status{display:flex;align-items:center;justify-content:space-between;padding:14px 22px 0;font-size:11px;color:#fff;font-weight:600;font-family:'Sora',sans-serif;letter-spacing:.02em;font-variant-numeric:tabular-nums;z-index:5;position:relative}
+.bv-phone-status-icons{display:flex;align-items:center;gap:5px;color:rgba(255,255,255,0.85)}
+.bv-phone-status-icons svg{width:12px;height:12px}
+.bv-phone-screen-body{flex:1;display:flex;flex-direction:column;padding:30px 18px 22px;position:relative;z-index:1}
+.bv-call-label{text-align:center;font-size:11px;color:rgba(255,255,255,0.55);font-weight:500;letter-spacing:.04em;margin-bottom:18px}
+.bv-call-avatar{width:96px;height:96px;border-radius:50%;background:linear-gradient(135deg,var(--amber) 0%,#E0A340 50%,#B87D1E 100%);margin:0 auto 14px;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Fraunces',serif;font-size:36px;font-weight:500;box-shadow:0 0 0 4px rgba(212,149,42,0.18),0 0 0 8px rgba(212,149,42,0.08)}
+.bv-call-name{text-align:center;font-family:'Fraunces',serif;font-size:21px;font-weight:500;color:#fff;letter-spacing:-.01em;margin-bottom:4px}
+.bv-call-sub{text-align:center;font-size:11px;color:rgba(255,255,255,0.55);font-weight:500;margin-bottom:8px}
+.bv-call-timer{text-align:center;font-size:13px;color:rgba(255,255,255,0.85);font-weight:500;font-variant-numeric:tabular-nums;letter-spacing:.04em;margin-bottom:24px}
+.bv-call-actions{margin-top:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:0 4px 8px}
+.bv-call-btn{aspect-ratio:1;border-radius:50%;background:rgba(255,255,255,0.10);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.85)}
+.bv-call-btn.bv-call-btn-end{background:#E0413A;color:#fff;grid-column:2/3}
+.bv-call-btn svg{width:18px;height:18px}
+.bv-phone-home-bar{position:absolute;bottom:7px;left:50%;transform:translateX(-50%);width:108px;height:4px;border-radius:4px;background:rgba(255,255,255,0.45);z-index:10}
+
+/* ----- Phone notification banner ----- */
+.bv-notif{position:absolute;top:38px;left:8px;right:8px;background:rgba(40,40,52,0.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-radius:14px;padding:10px 12px;color:#fff;display:flex;align-items:flex-start;gap:10px;opacity:0;transform:translateY(-30px);transition:opacity .5s cubic-bezier(.2,.8,.4,1),transform .5s cubic-bezier(.2,.8,.4,1);z-index:20;border:1px solid rgba(255,255,255,0.06);box-shadow:0 8px 28px rgba(0,0,0,0.4)}
+.bv-notif.is-shown{opacity:1;transform:translateY(0)}
+.bv-notif-icon{width:26px;height:26px;border-radius:7px;background:#34C759;color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700}
+.bv-notif-icon svg{width:14px;height:14px}
+.bv-notif-body{flex:1;min-width:0}
+.bv-notif-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:1px}
+.bv-notif-app{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,0.7)}
+.bv-notif-time{font-size:9px;color:rgba(255,255,255,0.5);font-variant-numeric:tabular-nums}
+.bv-notif-title{font-size:11px;font-weight:600;color:#fff;line-height:1.25;margin-bottom:1px}
+.bv-notif-msg{font-size:10.5px;line-height:1.35;color:rgba(255,255,255,0.78);overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical}
+
+/* ----- Reduced motion ----- */
+@media(prefers-reduced-motion:reduce){
+  .booking-viz *,.booking-viz *::before,.booking-viz *::after{transition-duration:.001ms!important;animation-duration:.001ms!important;animation-iteration-count:1!important}
+  .bv-card.is-active .bv-cal-sweep{display:none}
+  .bv-card.is-active .bv-sms-body::before{display:none}
+}
+
+@media(max-width:680px){
+  .bv-phone{max-width:240px}
+  .booking-viz{margin:18px 0 4px}
+  .bv-card{padding:16px 14px}
+}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://www.ariadental.ai/#organization","name":"Aria Dental AI","alternateName":"Aria","legalName":"Aria by Velzyx AI","url":"https://www.ariadental.ai/","logo":{"@type":"ImageObject","url":"https://www.ariadental.ai/images/aria-logo.png","width":512,"height":512},"description":"AI receptionist for dental practices.","foundingDate":"2025-09-01","parentOrganization":{"@type":"Organization","name":"Aria by Velzyx AI","url":"https://velzyx.ai/"},"sameAs":["https://www.linkedin.com/company/aria-dental-ai","https://twitter.com/ariadentalai","https://www.instagram.com/ariadentalai"]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","itemListElement":[
@@ -175,7 +302,189 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="demo-card">
 <h2>2. New Appointment &mdash; Patient Books Implant Consultation</h2>
 <div class="why"><strong>Why this matters:</strong> Caller asks for an implant consultation, Aria checks the slot, books it with the doctor, and texts a confirmation in 60 seconds. Zero human touch.</div>
-<div class="demo-audio"><audio controls preload="none" src="/audio/demo-book-self.mp3" data-demo="book-self"></audio></div>
+<div class="demo-audio"><audio controls preload="none" src="/audio/demo-book-self.mp3" data-demo="book-self" id="bookSelfAudio"></audio></div>
+
+<div class="booking-viz-hint" role="note">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6 5 22l7-3 7 3-7-16Z"/><path d="M12 2v4"/></svg>
+<span><strong>Press play and watch both sides.</strong> The left shows what Aria does behind the scenes &mdash; calendar lookup, practice management booking, SMS dispatch. The right is Mike&rsquo;s phone, mid-call.</span>
+</div>
+
+<div class="booking-viz" id="bookingViz" data-demo-target="book-self">
+  <!-- Left column: Aria's workspace -->
+  <div class="booking-viz-col" role="group" aria-label="Aria's workspace">
+    <div class="booking-viz-col-label">Aria&rsquo;s workspace</div>
+
+    <!-- Card 1: Calendar lookup -->
+    <div class="bv-card bv-card-calendar" data-bv-card="calendar" aria-live="polite">
+      <div class="bv-card-head">
+        <span class="bv-card-icon" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </span>
+        <div>
+          <div class="bv-card-title">Calendar lookup</div>
+          <div class="bv-card-sub">Dr. Smith &middot; This week</div>
+        </div>
+      </div>
+      <div class="bv-cal">
+        <div class="bv-cal-grid" role="presentation">
+          <div class="bv-cal-day"><span class="bv-cal-dow">Sun</span><span class="bv-cal-num">10</span></div>
+          <div class="bv-cal-day is-target" data-bv-cal-target><span class="bv-cal-dow">Mon</span><span class="bv-cal-num">11</span><span class="bv-cal-dot"></span></div>
+          <div class="bv-cal-day"><span class="bv-cal-dow">Tue</span><span class="bv-cal-num">12</span></div>
+          <div class="bv-cal-day"><span class="bv-cal-dow">Wed</span><span class="bv-cal-num">13</span></div>
+          <div class="bv-cal-day"><span class="bv-cal-dow">Thu</span><span class="bv-cal-num">14</span></div>
+          <div class="bv-cal-day"><span class="bv-cal-dow">Fri</span><span class="bv-cal-num">15</span></div>
+          <div class="bv-cal-day"><span class="bv-cal-dow">Sat</span><span class="bv-cal-num">16</span></div>
+          <div class="bv-cal-sweep" aria-hidden="true"></div>
+        </div>
+      </div>
+      <div class="bv-status">
+        <span class="bv-spinner" aria-hidden="true"></span>
+        <span class="bv-check" aria-hidden="true"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <span class="bv-status-text-idle">Standing by &mdash; waiting for caller&rsquo;s preferred time</span>
+        <span class="bv-status-text-active">Searching availability&hellip;</span>
+        <span class="bv-status-text-done">Available &mdash; Mon 11:00 AM with Dr. Smith</span>
+      </div>
+    </div>
+
+    <!-- Card 2: PMS booking -->
+    <div class="bv-card bv-card-pms" data-bv-card="pms" aria-live="polite">
+      <div class="bv-card-head">
+        <span class="bv-card-icon" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+        </span>
+        <div>
+          <div class="bv-card-title">Practice management</div>
+          <div class="bv-card-sub">Writing appointment to schedule</div>
+        </div>
+      </div>
+      <div class="bv-pms-frame">
+        <div class="bv-pms-bar">
+          <div class="bv-pms-bar-left">
+            <div class="bv-pms-bar-dots"><span></span><span></span><span></span></div>
+            <span class="bv-pms-bar-title">Smith Family Dental &mdash; Schedule</span>
+          </div>
+          <div class="bv-pms-bar-right">New appointment</div>
+        </div>
+        <div class="bv-pms-body">
+          <div class="bv-pms-section-title">Appointment details</div>
+          <div class="bv-pms-row">
+            <span class="bv-pms-key">Patient</span>
+            <span class="bv-pms-val" data-bv-pms-field="patient">Mike Patterson</span>
+          </div>
+          <div class="bv-pms-row">
+            <span class="bv-pms-key">Provider</span>
+            <span class="bv-pms-val" data-bv-pms-field="provider">Dr. Smith</span>
+          </div>
+          <div class="bv-pms-row">
+            <span class="bv-pms-key">Type</span>
+            <span class="bv-pms-val" data-bv-pms-field="type">Implant Consultation</span>
+          </div>
+          <div class="bv-pms-row">
+            <span class="bv-pms-key">Date</span>
+            <span class="bv-pms-val" data-bv-pms-field="date">Monday, May 11, 2026</span>
+          </div>
+          <div class="bv-pms-row">
+            <span class="bv-pms-key">Time</span>
+            <span class="bv-pms-val" data-bv-pms-field="time">11:00 AM &middot; 60 min</span>
+          </div>
+          <div class="bv-pms-pill-wrap">
+            <span class="bv-pms-pill" data-bv-pms-pill>
+              <span class="bv-pms-pill-dot" aria-hidden="true"></span>
+              <span class="bv-pms-pill-label-idle">Drafting&hellip;</span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="bv-status">
+        <span class="bv-spinner" aria-hidden="true"></span>
+        <span class="bv-check" aria-hidden="true"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <span class="bv-status-text-idle">Awaiting confirmed slot</span>
+        <span class="bv-status-text-active">Writing to practice management&hellip;</span>
+        <span class="bv-status-text-done">Booked &mdash; appointment ID generated</span>
+      </div>
+    </div>
+
+    <!-- Card 3: SMS dispatch -->
+    <div class="bv-card bv-card-sms" data-bv-card="sms" aria-live="polite">
+      <div class="bv-card-head">
+        <span class="bv-card-icon" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </span>
+        <div>
+          <div class="bv-card-title">SMS dispatch</div>
+          <div class="bv-card-sub">Confirmation to Mike</div>
+        </div>
+      </div>
+      <div class="bv-sms-meta">
+        <div class="bv-sms-meta-to">
+          <span class="bv-sms-to-icon" aria-hidden="true">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </span>
+          <span>To <span class="bv-sms-meta-to-num">(&middot;&middot;&middot;) &middot;&middot;&middot;-5555</span></span>
+        </div>
+        <span class="bv-sms-meta-len">158 chars</span>
+      </div>
+      <div class="bv-sms-body">Hi Mike &mdash; your implant consultation is confirmed for Monday, May 11 at 11:00 AM with Dr. Smith. Reply STOP to opt out.</div>
+      <div class="bv-status">
+        <span class="bv-spinner" aria-hidden="true"></span>
+        <span class="bv-check" aria-hidden="true"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <span class="bv-status-text-idle">Standing by</span>
+        <span class="bv-status-text-active" data-bv-sms-status>Composing&hellip;</span>
+        <span class="bv-status-text-done">Sent &middot; delivered to (&middot;&middot;&middot;) &middot;&middot;&middot;-5555</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right column: Mike's phone -->
+  <div class="booking-viz-col" role="group" aria-label="Mike's phone">
+    <div class="booking-viz-col-label">Mike&rsquo;s phone</div>
+    <div class="booking-viz-phone-wrap">
+      <div class="bv-phone" aria-label="Generic smartphone showing active call screen">
+        <div class="bv-phone-screen">
+          <div class="bv-phone-notch" aria-hidden="true"><span class="bv-phone-notch-cam"></span></div>
+          <div class="bv-phone-status">
+            <span data-bv-phone-clock>10:58</span>
+            <span class="bv-phone-status-icons" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 17h2v3H2zM6 14h2v6H6zM10 11h2v9h-2zM14 8h2v12h-2zM18 5h2v15h-2z"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="6" width="18" height="12" rx="2"/><rect x="21" y="10" width="1.5" height="4" rx="0.5"/></svg>
+            </span>
+          </div>
+
+          <!-- SMS notification banner -->
+          <div class="bv-notif" data-bv-notif aria-live="polite">
+            <span class="bv-notif-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </span>
+            <div class="bv-notif-body">
+              <div class="bv-notif-head">
+                <span class="bv-notif-app">Messages</span>
+                <span class="bv-notif-time">now</span>
+              </div>
+              <div class="bv-notif-title">Smith Family Dental</div>
+              <div class="bv-notif-msg">Hi Mike &mdash; your implant consultation is confirmed for Monday, May 11 at 11:00 AM with Dr. Smith. Reply STOP to opt out.</div>
+            </div>
+          </div>
+
+          <div class="bv-phone-screen-body">
+            <div class="bv-call-label">incoming call</div>
+            <div class="bv-call-avatar" aria-hidden="true">A</div>
+            <div class="bv-call-name">Smith Family Dental</div>
+            <div class="bv-call-sub">mobile &middot; (949) 775-3306</div>
+            <div class="bv-call-timer" data-bv-call-timer>00:00</div>
+            <div class="bv-call-actions" aria-hidden="true">
+              <span class="bv-call-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="1" y1="1" x2="23" y2="23"/><path d="M21 16.5c0 .38-.21.71-.53.88l-2.95 1.71c-.31.18-.69.16-.97-.07-.47-.4-1.13-.62-1.74-.93-1.5-.79-1.92-1.19-3.55-3-1.36-1.81-2.21-2.21-3-3.55-.31-.61-.53-1.27-.93-1.74-.23-.28-.25-.66-.07-.97l1.71-2.95c.17-.32.5-.53.88-.53"/></svg></span>
+              <span class="bv-call-btn bv-call-btn-end"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" transform="rotate(135 12 12)"/></svg></span>
+              <span class="bv-call-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></span>
+            </div>
+          </div>
+          <div class="bv-phone-home-bar" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="demo-transcript">
 <h3>Full transcript</h3>
 <div class="demo-line aria"><span class="who">Aria</span><span class="text">Thank you for calling Smith Family Dental. This is Aria. How can I help?</span></div>
@@ -371,6 +680,181 @@ document.querySelectorAll('audio[data-demo]').forEach(function(a){
   a.addEventListener('play',function(){if(window.dataLayer)window.dataLayer.push({event:'demo_play_started',demo_id:a.dataset.demo});});
   a.addEventListener('ended',function(){if(window.dataLayer)window.dataLayer.push({event:'demo_completed',demo_id:a.dataset.demo});});
 });
+
+// ============ Booking Demo Visualization (sync to audio) ============
+(function initBookingViz(){
+  var audio = document.getElementById('bookSelfAudio');
+  var viz = document.getElementById('bookingViz');
+  if (!audio || !viz) return;
+
+  // -------- Tunable keyframes (edit timestamps here to retune) --------
+  var bookingDemoKeyframes = [
+    { at: 28.0, action: 'calendar.start' },
+    { at: 31.5, action: 'calendar.complete' },
+    { at: 32.0, action: 'pms.start' },
+    { at: 33.2, action: 'pms.field.patient' },
+    { at: 34.0, action: 'pms.field.provider' },
+    { at: 34.8, action: 'pms.field.type' },
+    { at: 35.6, action: 'pms.field.date' },
+    { at: 36.4, action: 'pms.field.time' },
+    { at: 37.5, action: 'pms.complete' },
+    { at: 50.0, action: 'sms.start' },
+    { at: 51.0, action: 'sms.composing' },
+    { at: 51.7, action: 'sms.encrypting' },
+    { at: 52.5, action: 'sms.complete' },
+    { at: 53.0, action: 'phone.notify' }
+  ];
+  // expose for console tweaking
+  window.bookingDemoKeyframes = bookingDemoKeyframes;
+  // --------------------------------------------------------------------
+
+  var calCard = viz.querySelector('[data-bv-card="calendar"]');
+  var pmsCard = viz.querySelector('[data-bv-card="pms"]');
+  var smsCard = viz.querySelector('[data-bv-card="sms"]');
+  var calTarget = viz.querySelector('[data-bv-cal-target]');
+  var pmsFields = {
+    patient: viz.querySelector('[data-bv-pms-field="patient"]'),
+    provider: viz.querySelector('[data-bv-pms-field="provider"]'),
+    type: viz.querySelector('[data-bv-pms-field="type"]'),
+    date: viz.querySelector('[data-bv-pms-field="date"]'),
+    time: viz.querySelector('[data-bv-pms-field="time"]')
+  };
+  var pmsPill = viz.querySelector('[data-bv-pms-pill]');
+  var pmsPillLabel = pmsPill ? pmsPill.querySelector('.bv-pms-pill-label-idle') : null;
+  var smsStatus = viz.querySelector('[data-bv-sms-status]');
+  var notif = viz.querySelector('[data-bv-notif]');
+  var callTimer = viz.querySelector('[data-bv-call-timer]');
+  var phoneClock = viz.querySelector('[data-bv-phone-clock]');
+
+  function pad(n){ return n < 10 ? '0'+n : ''+n; }
+  function fmtTimer(sec){
+    sec = Math.max(0, Math.floor(sec));
+    var m = Math.floor(sec/60), s = sec%60;
+    return pad(m)+':'+pad(s);
+  }
+
+  // Apply state for a given action. cumulative reset on seek.
+  function applyAction(action){
+    switch(action){
+      case 'calendar.start':
+        calCard.classList.add('is-active');
+        calCard.classList.remove('is-complete');
+        if (calTarget) calTarget.classList.remove('is-booked');
+        break;
+      case 'calendar.complete':
+        calCard.classList.remove('is-active');
+        calCard.classList.add('is-complete');
+        if (calTarget) calTarget.classList.add('is-booked');
+        break;
+      case 'pms.start':
+        pmsCard.classList.add('is-active');
+        pmsCard.classList.remove('is-complete');
+        if (pmsPillLabel) pmsPillLabel.textContent = 'Drafting…';
+        break;
+      case 'pms.field.patient':
+        if (pmsFields.patient) pmsFields.patient.classList.add('is-shown');
+        break;
+      case 'pms.field.provider':
+        if (pmsFields.provider) pmsFields.provider.classList.add('is-shown');
+        break;
+      case 'pms.field.type':
+        if (pmsFields.type) pmsFields.type.classList.add('is-shown');
+        break;
+      case 'pms.field.date':
+        if (pmsFields.date) pmsFields.date.classList.add('is-shown');
+        break;
+      case 'pms.field.time':
+        if (pmsFields.time) pmsFields.time.classList.add('is-shown');
+        break;
+      case 'pms.complete':
+        pmsCard.classList.remove('is-active');
+        pmsCard.classList.add('is-complete');
+        if (pmsPill) pmsPill.classList.add('is-shown');
+        if (pmsPillLabel) pmsPillLabel.textContent = 'Booked';
+        // ensure all fields are shown when complete
+        Object.keys(pmsFields).forEach(function(k){ if (pmsFields[k]) pmsFields[k].classList.add('is-shown'); });
+        break;
+      case 'sms.start':
+        smsCard.classList.add('is-active');
+        smsCard.classList.remove('is-complete');
+        if (smsStatus) smsStatus.textContent = 'Composing…';
+        break;
+      case 'sms.composing':
+        if (smsStatus) smsStatus.textContent = 'Composing…';
+        break;
+      case 'sms.encrypting':
+        if (smsStatus) smsStatus.textContent = 'Encrypting…';
+        break;
+      case 'sms.complete':
+        smsCard.classList.remove('is-active');
+        smsCard.classList.add('is-complete');
+        if (smsStatus) smsStatus.textContent = 'Sent';
+        break;
+      case 'phone.notify':
+        if (notif) notif.classList.add('is-shown');
+        break;
+    }
+  }
+
+  // Reset everything to initial state
+  function resetAll(){
+    calCard.classList.remove('is-active','is-complete');
+    pmsCard.classList.remove('is-active','is-complete');
+    smsCard.classList.remove('is-active','is-complete');
+    if (calTarget) calTarget.classList.remove('is-booked');
+    Object.keys(pmsFields).forEach(function(k){ if (pmsFields[k]) pmsFields[k].classList.remove('is-shown'); });
+    if (pmsPill) pmsPill.classList.remove('is-shown');
+    if (pmsPillLabel) pmsPillLabel.textContent = 'Drafting…';
+    if (smsStatus) smsStatus.textContent = 'Composing…';
+    if (notif) notif.classList.remove('is-shown');
+    if (callTimer) callTimer.textContent = '00:00';
+  }
+
+  // Sync state to currentTime by replaying every keyframe with at <= t in order.
+  // This is robust to seeks (forward AND backward) — we always start from a fresh reset.
+  var lastSyncT = -1;
+  function syncTo(t){
+    // micro-optimize: if time advanced by less than 0.05s and we're not past a keyframe boundary, skip rebuild
+    if (Math.abs(t - lastSyncT) < 0.05) return;
+    lastSyncT = t;
+
+    resetAll();
+    for (var i = 0; i < bookingDemoKeyframes.length; i++){
+      if (bookingDemoKeyframes[i].at <= t){
+        applyAction(bookingDemoKeyframes[i].action);
+      } else {
+        break;
+      }
+    }
+    // Update call timer (counts up while audio plays)
+    if (callTimer) callTimer.textContent = fmtTimer(t);
+  }
+
+  // Audio listeners — only on this specific booking-demo audio element
+  audio.addEventListener('timeupdate', function(){ syncTo(audio.currentTime); });
+  audio.addEventListener('seeked', function(){ syncTo(audio.currentTime); });
+  audio.addEventListener('play', function(){ syncTo(audio.currentTime); });
+  audio.addEventListener('pause', function(){ /* freeze in place */ });
+  audio.addEventListener('ended', function(){
+    // Snap to final state — every keyframe applied
+    resetAll();
+    bookingDemoKeyframes.forEach(function(kf){ applyAction(kf.action); });
+    if (callTimer) callTimer.textContent = fmtTimer(audio.duration || 61);
+  });
+
+  // Reset when scrubbed back to 0 OR loaded fresh
+  audio.addEventListener('loadedmetadata', function(){ syncTo(audio.currentTime || 0); });
+
+  // Set phone clock to current time on load (cosmetic)
+  (function(){
+    if (!phoneClock) return;
+    var now = new Date();
+    var hh = now.getHours();
+    var mm = now.getMinutes();
+    var hh12 = ((hh + 11) % 12) + 1;
+    phoneClock.textContent = hh12 + ':' + pad(mm);
+  })();
+})();
 })();
 </script>
 </body></html>
