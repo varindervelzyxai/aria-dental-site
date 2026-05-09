@@ -69,10 +69,33 @@
   <url><loc>https://www.ariadental.ai/aria-for-pediatric-dental-practices-pillar</loc><lastmod>2026-05-08</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
   <url><loc>https://www.ariadental.ai/help</loc><lastmod>2026-05-08</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.ariadental.ai/press</loc><lastmod>2026-05-08</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
-  <!-- Enterprise DSO landing page (2026-05-07) -->
-  <url><loc>https://www.ariadental.ai/enterprise</loc><lastmod>2026-05-07</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
   <url><loc>https://www.ariadental.ai/es/</loc><lastmod>2026-05-08</lastmod><changefreq>weekly</changefreq><priority>0.85</priority><xhtml:link rel="alternate" hreflang="en" href="https://www.ariadental.ai/"/><xhtml:link rel="alternate" hreflang="es" href="https://www.ariadental.ai/es/"/></url>
   <url><loc>https://www.ariadental.ai/es/platform</loc><lastmod>2026-05-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel="alternate" hreflang="en" href="https://www.ariadental.ai/platform"/><xhtml:link rel="alternate" hreflang="es" href="https://www.ariadental.ai/es/platform"/></url>
   <url><loc>https://www.ariadental.ai/es/pricing</loc><lastmod>2026-05-08</lastmod><changefreq>monthly</changefreq><priority>0.75</priority><xhtml:link rel="alternate" hreflang="en" href="https://www.ariadental.ai/pricing"/><xhtml:link rel="alternate" hreflang="es" href="https://www.ariadental.ai/es/pricing"/></url>
   <url><loc>https://www.ariadental.ai/es/faq</loc><lastmod>2026-05-08</lastmod><changefreq>monthly</changefreq><priority>0.65</priority><xhtml:link rel="alternate" hreflang="en" href="https://www.ariadental.ai/faq"/><xhtml:link rel="alternate" hreflang="es" href="https://www.ariadental.ai/es/faq"/></url>
+  <!-- Batch 9 (2026-05-08) — state pages, generic comparison, specialty deep-dives, hubs, blog posts, Spanish expansion -->
+  <url><loc>https://www.ariadental.ai/enterprise</loc><lastmod>2026-05-08</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.ariadental.ai/california-dental-ai</loc><lastmod>2026-05-08</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://www.ariadental.ai/texas-dental-ai</loc><lastmod>2026-05-08</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://www.ariadental.ai/florida-dental-ai</loc><lastmod>2026-05-08</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://www.ariadental.ai/new-york-dental-ai</loc><lastmod>2026-05-08</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://www.ariadental.ai/illinois-dental-ai</loc><lastmod>2026-05-08</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://www.ariadental.ai/aria-for-implant-dentistry</loc><lastmod>2026-05-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.ariadental.ai/aria-for-cosmetic-dentistry</loc><lastmod>2026-05-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.ariadental.ai/aria-for-emergency-dental-clinics</loc><lastmod>2026-05-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.ariadental.ai/how-aria-compares</loc><lastmod>2026-05-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.ariadental.ai/changelog</loc><lastmod>2026-05-08</lastmod><changefreq>weekly</changefreq><priority>0.55</priority></url>
+  <url><loc>https://www.ariadental.ai/responsible-disclosure</loc><lastmod>2026-05-08</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.ariadental.ai/resources</loc><lastmod>2026-05-08</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.ariadental.ai/ai-receptionist-cosmetic-dentistry-2026</loc><lastmod>2026-05-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.ariadental.ai/ai-receptionist-implant-practices</loc><lastmod>2026-05-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.ariadental.ai/ai-receptionist-sleep-apnea-oral-appliance</loc><lastmod>2026-05-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.ariadental.ai/dental-laboratory-ai-coordination</loc><lastmod>2026-05-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.ariadental.ai/dental-group-practice-consolidation-2026</loc><lastmod>2026-05-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.ariadental.ai/emerging-tech-dentistry-2026</loc><lastmod>2026-05-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.ariadental.ai/es/about</loc><lastmod>2026-05-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel="alternate" hreflang="en" href="https://www.ariadental.ai/about"/><xhtml:link rel="alternate" hreflang="es" href="https://www.ariadental.ai/es/about"/></url>
+  <url><loc>https://www.ariadental.ai/es/security</loc><lastmod>2026-05-08</lastmod><changefreq>monthly</changefreq><priority>0.6</priority><xhtml:link rel="alternate" hreflang="en" href="https://www.ariadental.ai/security"/><xhtml:link rel="alternate" hreflang="es" href="https://www.ariadental.ai/es/security"/></url>
+  <url><loc>https://www.ariadental.ai/es/integrations</loc><lastmod>2026-05-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel="alternate" hreflang="en" href="https://www.ariadental.ai/integrations"/><xhtml:link rel="alternate" hreflang="es" href="https://www.ariadental.ai/es/integrations"/></url>
+  <url><loc>https://www.ariadental.ai/es/case-studies</loc><lastmod>2026-05-08</lastmod><changefreq>weekly</changefreq><priority>0.7</priority><xhtml:link rel="alternate" hreflang="en" href="https://www.ariadental.ai/case-studies"/><xhtml:link rel="alternate" hreflang="es" href="https://www.ariadental.ai/es/case-studies"/></url>
+  <url><loc>https://www.ariadental.ai/es/help</loc><lastmod>2026-05-08</lastmod><changefreq>monthly</changefreq><priority>0.55</priority><xhtml:link rel="alternate" hreflang="en" href="https://www.ariadental.ai/help"/><xhtml:link rel="alternate" hreflang="es" href="https://www.ariadental.ai/es/help"/></url>
 </urlset>
