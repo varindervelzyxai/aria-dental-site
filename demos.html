@@ -96,9 +96,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 </style>
 <link rel="stylesheet" href="/assets/booking-viz.css">
+<link rel="stylesheet" href="/assets/insurance-viz.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://www.ariadental.ai/#organization","name":"Aria Dental AI","alternateName":"Aria","legalName":"Aria by Velzyx AI","url":"https://www.ariadental.ai/","logo":{"@type":"ImageObject","url":"https://www.ariadental.ai/images/aria-logo.png","width":512,"height":512},"description":"AI receptionist for dental practices.","foundingDate":"2025-09-01","parentOrganization":{"@type":"Organization","name":"Aria by Velzyx AI","url":"https://velzyx.ai/"},"sameAs":["https://www.linkedin.com/company/aria-dental-ai","https://twitter.com/ariadentalai","https://www.instagram.com/ariadentalai"]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","itemListElement":[
-{"@type":"MediaObject","position":1,"name":"Aria Demo 1: Insurance Verification","description":"Aria verifies dental insurance coverage live during a phone call with a returning patient.","contentUrl":"https://www.ariadental.ai/audio/demo-insurance-verification.mp3","encodingFormat":"audio/mpeg","duration":"PT95S"},
+{"@type":"MediaObject","position":1,"name":"Aria Demo 1: Insurance Verification","description":"Aria verifies dental insurance coverage live — annual maximum, deductible, every coverage tier, and procedure frequency — in 69 seconds.","contentUrl":"https://www.ariadental.ai/audio/demo-insurance-verification.mp3","encodingFormat":"audio/mpeg","duration":"PT1M9S","uploadDate":"2026-05-09"},
 {"@type":"MediaObject","position":2,"name":"Aria Demo 2: New Appointment - Patient Books Implant Consultation","description":"Aria books a caller for an implant consultation, confirms the slot, and texts a confirmation in 60 seconds.","contentUrl":"https://www.ariadental.ai/audio/demo-book-self.mp3","encodingFormat":"audio/mpeg","duration":"PT1M0S","uploadDate":"2026-05-09"},
 {"@type":"MediaObject","position":3,"name":"Aria Demo 3: Parent Books for Child","description":"Aria handles a parent booking a first-visit appointment for their six-year-old.","contentUrl":"https://www.ariadental.ai/audio/demo-book-child.mp3","encodingFormat":"audio/mpeg","duration":"PT95S"},
 {"@type":"MediaObject","position":4,"name":"Aria Demo 4: SMS Billing Link for Copay","description":"Aria sends a secure payment link by text for an unpaid copay.","contentUrl":"https://www.ariadental.ai/audio/demo-sms-billing.mp3","encodingFormat":"audio/mpeg","duration":"PT45S"},
@@ -146,11 +147,230 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- Demo 1: Insurance Verification -->
 <div class="demo-panel active" data-panel="insurance" role="tabpanel">
-<div class="demo-card">
-<h2>1. Insurance Verification</h2>
-<div class="why"><strong>Why this matters:</strong> Aria reads back annual maximum, deductible, preventive coverage, and exam frequency in 90 seconds. Front-desk staff used to do this manually after the call &mdash; if they remembered.</div>
-<div class="demo-audio"><audio controls preload="none" src="/audio/demo-insurance-verification.mp3" data-demo="insurance"></audio></div>
-<div class="demo-missing">Audio file not yet uploaded. The transcript below is the source of truth and matches the recording when published.</div>
+<div class="demo-card is-viz">
+<h2>1. Insurance Verification &mdash; $2,500 Max, Every Coverage Tier</h2>
+<div class="why"><strong>Why this matters:</strong> Aria pulls eligibility live, reads annual max, deductible, every coverage tier, and exact procedure frequencies &mdash; in 69 seconds. Front desks used to do this on hold with the carrier.</div>
+<div class="demo-audio"><audio controls preload="none" src="/audio/demo-insurance-verification.mp3" data-demo="insurance" id="insuranceAudio"></audio></div>
+
+<div class="insurance-viz-hint" role="note">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11.5 11 13.5 15.5 9"/><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"/></svg>
+<span><strong>Press play and watch both sides.</strong> The left is Aria&rsquo;s verification workspace &mdash; member lookup, eligibility stamp, benefits dashboard. The right is the patient&rsquo;s benefits summary, populating in real time.</span>
+</div>
+
+<div class="insurance-viz" id="insuranceViz" data-demo-target="insurance">
+
+  <!-- LEFT COLUMN: Aria's verification workspace -->
+  <div class="insurance-viz-col" role="group" aria-label="Aria&rsquo;s verification workspace">
+    <div class="insurance-viz-col-label">Aria&rsquo;s verification workspace</div>
+
+    <!-- Card 1: Member lookup -->
+    <div class="iv-card iv-card-lookup" data-iv-card="lookup" aria-live="polite">
+      <div class="iv-card-head">
+        <span class="iv-card-icon" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M3 21v-1a7 7 0 0 1 14 0v1"/></svg>
+        </span>
+        <div>
+          <div class="iv-card-title">Member lookup</div>
+          <div class="iv-card-sub">Resolving caller against carrier records</div>
+        </div>
+      </div>
+      <div class="iv-idcard">
+        <div class="iv-idcard-stripe" aria-hidden="true"></div>
+        <div class="iv-idcard-scan" aria-hidden="true"></div>
+        <div class="iv-idcard-head">
+          <span class="iv-idcard-brand">Member ID Card</span>
+          <span class="iv-idcard-logo">aria</span>
+        </div>
+        <div class="iv-idcard-body">
+          <div class="iv-idcard-avatar" aria-hidden="true">DR</div>
+          <div class="iv-idcard-fields">
+            <div class="iv-idcard-name" data-iv-id-field="name">Daniel Reyes</div>
+            <div class="iv-idcard-pills">
+              <span class="iv-idcard-pill" data-iv-id-field="dob"><span class="iv-pill-key">DOB</span><span class="iv-pill-val">10/17/1985</span></span>
+              <span class="iv-idcard-pill" data-iv-id-field="member"><span class="iv-pill-key">Member</span><span class="iv-pill-val">BT&middot;&middot;&middot;&middot;751</span></span>
+              <span class="iv-idcard-pill iv-pill-carrier" data-iv-id-field="carrier"><span class="iv-pill-key">Carrier</span><span class="iv-pill-val">BlueCross BlueShield</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="iv-status">
+        <span class="iv-spinner" aria-hidden="true"></span>
+        <span class="iv-check" aria-hidden="true"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <span class="iv-status-text-idle">Standing by &mdash; waiting for caller info</span>
+        <span class="iv-status-text-active">Looking up member &middot; connecting to carrier&hellip;</span>
+        <span class="iv-status-text-done">Member matched &middot; carrier records pulled</span>
+      </div>
+    </div>
+
+    <!-- Card 2: Eligibility stamp -->
+    <div class="iv-card iv-card-verify" data-iv-card="verify" aria-live="polite">
+      <div class="iv-card-head">
+        <span class="iv-card-icon" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 2 4 6v6c0 5 3.5 9.5 8 10 4.5-.5 8-5 8-10V6l-8-4z"/></svg>
+        </span>
+        <div>
+          <div class="iv-card-title">Eligibility</div>
+          <div class="iv-card-sub">Real-time 270/271 with carrier</div>
+        </div>
+      </div>
+      <div class="iv-stamp-frame">
+        <div class="iv-stamp" aria-hidden="true">Verified</div>
+        <div class="iv-stamp-sub">
+          <div class="iv-stamp-meta">
+            <span class="iv-stamp-meta-key">Plan</span>
+            <span class="iv-stamp-meta-val">BlueCross BlueShield PPO</span>
+            <span class="iv-stamp-meta-val muted">Plan year 2026 &middot; in-network</span>
+          </div>
+          <span class="iv-stamp-active-dot">Active</span>
+        </div>
+      </div>
+      <div class="iv-status">
+        <span class="iv-spinner" aria-hidden="true"></span>
+        <span class="iv-check" aria-hidden="true"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <span class="iv-status-text-idle">Awaiting member match</span>
+        <span class="iv-status-text-active">Submitting 270 eligibility request&hellip;</span>
+        <span class="iv-status-text-done">271 received &middot; coverage confirmed</span>
+      </div>
+    </div>
+
+    <!-- Card 3: Benefits dashboard -->
+    <div class="iv-card iv-card-benefits" data-iv-card="benefits" aria-live="polite">
+      <div class="iv-card-head">
+        <span class="iv-card-icon" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>
+        </span>
+        <div>
+          <div class="iv-card-title">Benefits breakdown</div>
+          <div class="iv-card-sub">Annual max &middot; deductible &middot; coverage tiers</div>
+        </div>
+      </div>
+      <div class="iv-bd">
+        <div class="iv-bd-top">
+          <div class="iv-bd-stat" data-iv-stat="max">
+            <div class="iv-bd-stat-label">Annual maximum</div>
+            <div class="iv-bd-stat-num"><span class="iv-bd-stat-currency">$</span><span data-iv-num="max">0</span></div>
+            <div class="iv-bd-stat-foot"><span>Used <strong>$0</strong></span><span>Available <strong>$2,500</strong></span></div>
+            <div class="iv-bd-progress"><div class="iv-bd-progress-fill" data-iv-progress="max"></div></div>
+            <div class="iv-bd-spark" aria-hidden="true"><span>$</span><span>$</span><span>$</span><span>$</span><span>$</span><span>$</span></div>
+          </div>
+          <div class="iv-bd-stat" data-iv-stat="deductible">
+            <div class="iv-bd-stat-label">Deductible</div>
+            <div class="iv-bd-stat-num"><span class="iv-bd-stat-currency">$</span><span data-iv-num="deductible">0</span><span style="font-size:13px;color:var(--charcoal-50);font-weight:500;margin-left:4px;align-self:baseline">/$50</span></div>
+            <div class="iv-bd-stat-foot"><span>Met <strong>$0</strong></span><span>Remaining <strong>$50</strong></span></div>
+            <div class="iv-bd-progress"><div class="iv-bd-progress-fill" data-iv-progress="deductible"></div></div>
+          </div>
+        </div>
+
+        <div class="iv-bd-tiers" role="list" aria-label="Coverage tiers">
+          <div class="iv-bd-tier" data-iv-tier="preventive" data-tier="preventive" role="listitem">
+            <span class="iv-bd-tier-label">Preventive</span>
+            <span class="iv-bd-tier-track"><span class="iv-bd-tier-fill"></span></span>
+            <span class="iv-bd-tier-pct">100%</span>
+          </div>
+          <div class="iv-bd-tier" data-iv-tier="basic" data-tier="basic" role="listitem">
+            <span class="iv-bd-tier-label">Basic</span>
+            <span class="iv-bd-tier-track"><span class="iv-bd-tier-fill"></span></span>
+            <span class="iv-bd-tier-pct">80%</span>
+          </div>
+          <div class="iv-bd-tier" data-iv-tier="major" data-tier="major" role="listitem">
+            <span class="iv-bd-tier-label">Major</span>
+            <span class="iv-bd-tier-track"><span class="iv-bd-tier-fill"></span></span>
+            <span class="iv-bd-tier-pct">50%</span>
+          </div>
+        </div>
+
+        <div class="iv-bd-procs">
+          <div class="iv-bd-procs-title">Allowed procedures</div>
+          <div class="iv-bd-proc" data-iv-proc="cleanings">
+            <span class="iv-bd-proc-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="iv-bd-proc-label"><strong>Cleanings</strong> &middot; 2 per year, 6 months apart</span>
+          </div>
+          <div class="iv-bd-proc" data-iv-proc="exams">
+            <span class="iv-bd-proc-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="iv-bd-proc-label"><strong>Routine exams</strong> &middot; 2 per year</span>
+          </div>
+          <div class="iv-bd-proc" data-iv-proc="bitewings">
+            <span class="iv-bd-proc-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="iv-bd-proc-label"><strong>Bitewing X-rays</strong> &middot; 1 set / year</span>
+            <span class="iv-bd-proc-xray" aria-hidden="true" title="X-ray covered"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3.5c-1.6 0-3 1.1-3 2.5 0 .8.4 1.4 1 2 .8.7 1.2 1.4 1.2 2.5 0 1.4-.6 2-1.2 2.8-.6.7-1 1.5-1 2.7 0 2.6 1.5 4.5 3 5.5"/><path d="M15 3.5c1.6 0 3 1.1 3 2.5 0 .8-.4 1.4-1 2-.8.7-1.2 1.4-1.2 2.5 0 1.4.6 2 1.2 2.8.6.7 1 1.5 1 2.7 0 2.6-1.5 4.5-3 5.5"/><path d="M9 8h6M9 12h6M9 16h6" stroke-dasharray="1.6 1.6"/></svg></span>
+          </div>
+          <div class="iv-bd-proc" data-iv-proc="panoramic">
+            <span class="iv-bd-proc-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="iv-bd-proc-label"><strong>Panoramic X-ray</strong> &middot; every 3 years</span>
+            <span class="iv-bd-proc-xray" aria-hidden="true" title="X-ray covered"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12c0-3 4-6 9-6s9 3 9 6-4 6-9 6-9-3-9-6z"/><path d="M7 12v2.5M10 11.5v3M13 11.5v3M16 12v2.5" stroke-dasharray="1.4 1.4"/><circle cx="12" cy="11.5" r=".7"/></svg></span>
+          </div>
+        </div>
+      </div>
+      <div class="iv-status">
+        <span class="iv-spinner" aria-hidden="true"></span>
+        <span class="iv-check" aria-hidden="true"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <span class="iv-status-text-idle">Awaiting eligibility response</span>
+        <span class="iv-status-text-active">Parsing benefits &middot; coverage tiers&hellip;</span>
+        <span class="iv-status-text-done">Benefits parsed &middot; reading back to caller</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT COLUMN: Patient Benefits Summary doc -->
+  <div class="insurance-viz-col" role="group" aria-label="Patient Benefits Summary">
+    <div class="insurance-viz-col-label">Patient Benefits Summary</div>
+    <div class="iv-doc-wrap">
+      <div class="iv-doc">
+        <div class="iv-doc-letterhead">
+          <div class="iv-doc-mark">Smith Family <span>Dental</span></div>
+          <div class="iv-doc-tagline">Patient Benefits Summary &middot; Plan Year 2026</div>
+        </div>
+
+        <div class="iv-doc-patient">
+          <div class="iv-doc-patient-avatar" aria-hidden="true">DR</div>
+          <div class="iv-doc-patient-info">
+            <div class="iv-doc-patient-name">Daniel Reyes</div>
+            <div class="iv-doc-patient-id">Member BT&middot;&middot;&middot;&middot;751 &middot; Self</div>
+          </div>
+          <span class="iv-doc-patient-badge" data-iv-doc-badge>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Insurance Verified
+          </span>
+        </div>
+
+        <div class="iv-doc-section">
+          <div class="iv-doc-section-title">Identity</div>
+          <div class="iv-doc-row"><span class="iv-doc-key">Patient</span><span class="iv-doc-val" data-iv-doc="patient">Daniel Reyes</span></div>
+          <div class="iv-doc-row"><span class="iv-doc-key">Date of birth</span><span class="iv-doc-val" data-iv-doc="dob">Oct 17, 1985</span></div>
+          <div class="iv-doc-row"><span class="iv-doc-key">Carrier</span><span class="iv-doc-val" data-iv-doc="carrier">BlueCross BlueShield PPO</span></div>
+          <div class="iv-doc-row"><span class="iv-doc-key">Plan year</span><span class="iv-doc-val" data-iv-doc="planYear">2026</span></div>
+        </div>
+
+        <div class="iv-doc-section">
+          <div class="iv-doc-section-title">Plan limits</div>
+          <div class="iv-doc-row"><span class="iv-doc-key">Annual maximum</span><span class="iv-doc-val" data-iv-doc="max"><span class="iv-doc-val-em">$2,500</span></span></div>
+          <div class="iv-doc-row"><span class="iv-doc-key">Deductible</span><span class="iv-doc-val" data-iv-doc="deductible">$50 <span class="iv-doc-val-met">&middot; Met $0</span></span></div>
+        </div>
+
+        <div class="iv-doc-section">
+          <div class="iv-doc-section-title">Coverage</div>
+          <div class="iv-doc-row"><span class="iv-doc-key">Preventive</span><span class="iv-doc-val" data-iv-doc="preventive"><span class="iv-doc-val-em">100%</span> &middot; no deductible</span></div>
+          <div class="iv-doc-row"><span class="iv-doc-key">Basic services</span><span class="iv-doc-val" data-iv-doc="basic">80% after deductible</span></div>
+          <div class="iv-doc-row"><span class="iv-doc-key">Major services</span><span class="iv-doc-val" data-iv-doc="major">50% after deductible</span></div>
+        </div>
+
+        <div class="iv-doc-section">
+          <div class="iv-doc-section-title">Frequency</div>
+          <div class="iv-doc-row"><span class="iv-doc-key">Cleanings</span><span class="iv-doc-val" data-iv-doc="cleanings">2 / year &middot; every 6 mo</span></div>
+          <div class="iv-doc-row"><span class="iv-doc-key">Routine exams</span><span class="iv-doc-val" data-iv-doc="exams">2 / year</span></div>
+          <div class="iv-doc-row"><span class="iv-doc-key">Bitewing X-rays</span><span class="iv-doc-val" data-iv-doc="bitewings">1 set / year</span></div>
+          <div class="iv-doc-row"><span class="iv-doc-key">Panoramic X-ray</span><span class="iv-doc-val" data-iv-doc="panoramic">Every 3 years</span></div>
+        </div>
+
+        <div class="iv-doc-foot">
+          <span class="iv-doc-foot-mark"><span class="iv-doc-foot-dot" aria-hidden="true"></span>Verified live with carrier</span>
+          <span class="iv-doc-foot-stamp" data-iv-doc-stamp>Generated by Aria &middot; 00:00</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="demo-transcript">
 <h3>Full transcript</h3>
 <div class="demo-line aria"><span class="who">Aria</span><span class="text">Thank you for calling Smith Family Dental. This is Aria. How can I help?</span></div>
@@ -169,6 +389,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="demo-line aria"><span class="who">Aria</span><span class="text">Two cleanings per year, six months apart. You&#39;re also covered for two routine exams annually, one set of bitewing x-rays per year, and a full panoramic x-ray every three years.</span></div>
 <div class="demo-line patient"><span class="who">Patient</span><span class="text">Perfect. Thank you.</span></div>
 <div class="demo-line aria"><span class="who">Aria</span><span class="text">You&#39;re welcome, Daniel. We&#39;ll see you at your visit.</span></div>
+<!-- FIXME: above transcript is from the source script. Recording is ~69s and may differ slightly in pacing/wording — review against final audio and update if needed. -->
 </div>
 </div>
 </div>
@@ -560,4 +781,5 @@ document.querySelectorAll('audio[data-demo]').forEach(function(a){
 })();
 </script>
 <script src="/assets/booking-viz.js" defer></script>
+<script src="/assets/insurance-viz.js" defer></script>
 </body></html>
