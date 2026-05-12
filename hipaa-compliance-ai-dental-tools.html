@@ -145,7 +145,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <li><a href="#baa">The BAA — what to insist on</a></li>
 <li><a href="#encryption">Encryption: in transit and at rest</a></li>
 <li><a href="#access-and-audit">Access controls and audit logs</a></li>
-<li><a href="#subprocessors">Subprocessors and the OpenAI question</a></li>
+<li><a href="#subprocessors">Subprocessors and the AI-model question</a></li>
 <li><a href="#breach">Breach notification and incident response</a></li>
 <li><a href="#checklist">The 14-point vendor checklist</a></li>
 </ol>
@@ -197,15 +197,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <p>The audit log question is the most revealing. A vendor that can't produce an access log on demand is one that hasn't built the muscle of being audited. That's not where you want to be the first one to find out.</p>
 
-<h2 id="subprocessors">Subprocessors and the OpenAI question</h2>
+<h2 id="subprocessors">Subprocessors and the AI-model question</h2>
 
-<p>Most AI receptionists rely on third-party AI models — OpenAI, Anthropic, Google, or open-source models hosted on AWS or Azure. This isn't bad. It's the way the industry works. What matters is whether those subprocessors are also bound by BAAs, and whether your data is being used to train their models.</p>
+<p>Most AI receptionists rely on third-party large language models. This isn't bad — it's how the industry works. What matters is whether those subprocessors are also bound by BAAs, and whether your data is being used to train their models.</p>
 
-<p>Two specific questions to ask:</p>
+<p>Two specific questions to ask the vendor:</p>
 
 <ol>
-<li><strong>Is my data used to train AI models?</strong> The correct answer is no. Both OpenAI and Anthropic offer enterprise plans where customer data is excluded from training, and any vendor handling PHI should be on those plans.</li>
-<li><strong>Do you have BAAs with your AI model providers?</strong> Yes for OpenAI's enterprise/API tiers, yes for Anthropic, yes for AWS Bedrock and Azure OpenAI. If a vendor is using consumer-tier APIs to handle your patient data, that's a violation waiting to happen.</li>
+<li><strong>Is my data used to train AI models?</strong> The correct answer is no. Mature model providers offer enterprise plans where customer data is excluded from training, and any vendor handling PHI should be on those plans.</li>
+<li><strong>Do you have BAAs with every subprocessor that touches PHI?</strong> The answer should be yes — covering model inference, cloud hosting, messaging, and payment processing. If a vendor is using consumer-tier APIs to handle your patient data, that's a violation waiting to happen.</li>
 </ol>
 
 <div class="blog-pullquote">

@@ -1,98 +1,98 @@
-# Aria FINAL Bundle — Cleanup Deploy
+# NUKE SUBPROCESSORS — Deploy Bundle
 
-**Date:** 2026-05-11
-**Source:** `aria-widen-all/` (merged staging) + `aria-final-fixes/` (homepage/vendor fix overlay)
-**Bundle size:** 6.8 MB · 112 files
-
-## Deploy Instructions (read first)
-
-Drag the entire contents of `aria-FINAL/` into the `varindervelzyxai/aria-dental-site` GitHub repo root, choosing **Replace existing files** when prompted. Single commit. Vercel auto-deploys to `www.ariadental.ai`.
+**Target:** Remove all public exposure of Aria's internal vendor/tech stack from ariadental.ai.
 
 ---
 
-## Fix #1 — `/enterprise` is now visible and discoverable
+## ⚠️ CRITICAL — MANUAL GITHUB STEP REQUIRED
 
-- `enterprise.html` (24 KB, "Aria for Enterprise DSOs") carried forward into bundle.
-- "Enterprise" link injected into the canonical nav between "Integrations" and "Security" on **85 pages** (every English page that has the main nav).
-- "Enterprise" added to the **footer Product column** on **88 pages** (between Platform and How It Works).
-- `sitemap.xml` already contained `/enterprise` entry (priority 0.85, lastmod 2026-05-08) — left in place.
-- `vercel.json` reviewed — **no rewrites or redirects block `/enterprise`**. The file at the repo root will serve cleanly at `/enterprise` thanks to `cleanUrls: true`.
+**No `subprocessors.html` file was found in `aria-FINAL/`.** A dedicated page at that path does not exist in this deploy bundle — the public vendor exposure was actually inside `privacy.html` (a full 11-row subprocessor table) and `security.html` (a named-vendor "Subprocessors" section).
 
-**Verify after deploy:** Visit `https://www.ariadental.ai/enterprise` — should render the DSO page. Click "Enterprise" in any page's nav — should land there.
+**BUT** — if a `subprocessors.html` file exists in the live GitHub repo (i.e. it was deployed in a previous bundle), you must **manually delete it via the GitHub web UI**. Uploading this bundle will NOT auto-delete files that aren't in the upload.
 
----
+### How to delete `subprocessors.html` from GitHub web UI (if present)
 
-## Fix #2 — Stale-nav pages synced
+1. Open the repo: `varindervelzyxai/aria-dental-site`
+2. Click into the file `subprocessors.html` (root of repo)
+3. Click the **trash icon (🗑)** at the top right of the file view
+4. Commit the deletion directly to `main` ("Delete subprocessors.html")
+5. Vercel will redeploy automatically; `/subprocessors` will then return 301 → `/security` per the new redirect added below.
 
-`portfolio.html`, `how-it-works.html`, `security.html`, `contact.html` all now use the canonical nav (Platform · How It Works · Demos · Portfolio · Compare · Integrations · **Enterprise** · Security · About · Español · Book a Demo). No more "Aria vs Weave / Aria vs Others" nav items anywhere in the bundle (the `aria-final-fixes` overlay had already rewritten these — Enterprise injection layered on top).
-
-**Verify:** `rg -i "aria vs weave|aria vs others" *.html` → 0 hits (confirmed).
+**If the file doesn't exist in GitHub, you're done — the 301 redirect in `vercel.json` covers any old inbound links.**
 
 ---
 
-## Fix #3 — `/who-we-help` restored
+## Files in this bundle
 
-Staged `who-we-help.html` is **35 KB / 315 lines** with full 5-persona content (Solo Practice Owner, Multi-Doctor Office Manager, DSO Operations Lead, Specialty Practice Owner, New Practice / Startup Dentist). Canonical nav with Enterprise link applied. The live site's "200 but empty body" was a previous deploy artifact — this version is whole.
+| File | Change |
+|------|--------|
+| `privacy.html` | **STRIPPED** — removed full 11-row subprocessor table (AWS, GCP, OpenAI, Anthropic, Retell AI, Twilio, Stripe, Stedi, Sentry, Brevo, Cloudflare). Replaced with NDA-request pattern. Also removed "subprocessors" from meta description. |
+| `security.html` | **STRIPPED** — removed entire named-vendor block (AWS, GCP, Retell AI, OpenAI/GPT-4o, Claude/Anthropic, Twilio, Stripe, Stedi, Sentry). Replaced with NDA-request pattern. Also genericized the "SOC 2 Type II" definition row (was "AWS, GCP, Stripe, Twilio"). Google Analytics 4 / Microsoft Clarity / Google Tag Manager mention retained (industry-standard analytics disclosure). |
+| `faq.html` | **STRIPPED** — "Is Aria SOC 2 Type II certified?" answer in both JSON-LD and visible details element. Was: "Our subprocessors (AWS, GCP, Stripe, Twilio, OpenAI, Anthropic) hold their own SOC 2..." Now: generic "Our cloud hosting, messaging, payment, and model-inference subprocessors..." |
+| `hipaa-compliance-ai-dental-tools.html` | **REWRITTEN** — section heading was "Subprocessors and the OpenAI question" (referenced OpenAI, Anthropic, AWS, Azure by name in body copy). Now "Subprocessors and the AI-model question" with generic copy. TOC link updated. |
+| `index.html` | **STRIPPED** — integration chip strip in body had "Stedi Insurance" pill visible to all visitors. Replaced with "Insurance verification". |
+| `vercel.json` | **ADDED** — 301 redirect: `/subprocessors → /security` (permanent: true). |
+| `sitemap.xml` | unchanged (no /subprocessors entry was present). Included for completeness. |
+| `dso-buyers-guide-ai-receptionist.html` | unchanged (mentions "subprocessor list" generically — no vendor names). Included for completeness. |
 
----
-
-## Fix #4 — `/case-studies` ↔ `/portfolio` loop broken
-
-In `portfolio.html`, the "Read the WizKids story →" link previously pointed to `/case-studies`, which `vercel.json` 301s back to `/portfolio`. Changed to:
-
-- Link: `<a href="#wizkids" class="case-link">See the WizKids deployment →</a>`
-- Section: added `id="wizkids"` to the WizKids section so the anchor lands cleanly.
-
-**Verify:** `rg 'href="/case-studies"' portfolio.html` → 0 hits (confirmed).
-
-Other pages still link to `/case-studies` (faq, platform, integrations, etc.) — those produce a single clean 301 to `/portfolio`, which is the intended Vercel behavior. Not a loop.
+**5 HTML files modified + vercel.json redirect.**
 
 ---
 
-## Fix #5 — `/pricing` (FLAGGED, NOT CHANGED)
+## Vendor exposure caught (the "bonus")
 
-`vercel.json` line 30-32 redirects `/pricing` → `/platform#pricing` (302, non-permanent). A standalone `pricing.html` exists in the bundle but is unreachable while this redirect is in place.
+Beyond the obvious `privacy.html` table and `security.html` section, these visible body-text vendor mentions were also stripped:
 
-**Decision needed (no action taken):**
-- (A) Keep redirect → pricing lives as a section on `/platform`. Current state.
-- (B) Remove the `/pricing` rule from `vercel.json` → `pricing.html` becomes the live pricing page.
+- `index.html` line 407: **"Stedi Insurance"** chip in the integrations strip on the homepage → genericized to "Insurance verification".
+- `faq.html`: explicit vendor list (AWS, GCP, Stripe, Twilio, OpenAI, Anthropic) in the SOC 2 FAQ in both visible HTML and the JSON-LD `FAQPage` schema → genericized.
+- `hipaa-compliance-ai-dental-tools.html`: long-form body copy naming OpenAI, Anthropic, AWS, Azure as model providers → rewritten to generic "third-party LLM providers."
+- `security.html` SOC 2 row: "AWS, GCP, Stripe, Twilio" → "cloud hosting, messaging, and payment subprocessors."
 
-Default per task spec: **leave redirect in place**. Change `vercel.json` and re-deploy if you want option B.
+**Retained (industry-standard, intentional):**
+- `Google Analytics 4`, `Microsoft Clarity`, `Google Tag Manager` on `security.html` analytics paragraph — these are analytics tools whose disclosure is privacy-policy standard. They do NOT receive PHI and disclosing them is required for cookie/analytics transparency.
 
----
-
-## Bundle contents summary
-
-| Category | Files |
-|---|---|
-| HTML pages (English) | 88 |
-| HTML pages (Spanish, `/es/`) | 11 |
-| `vercel.json` | Carried from source repo (unchanged from current production) |
-| `sitemap.xml` | Carried from source repo (already had `/enterprise`) |
-| `assets/booking-viz.{css,js}` | Carried from `aria-widen-all` |
-| `assets/insurance-viz.{css,js}` | Added from `aria-insurance-demo` |
-| `audio/demo-book-self.mp3` | Carried from `aria-widen-all` |
-| `audio/demo-insurance-verification.mp3` | Added from `aria-insurance-demo` |
-| `aria-call-demo.mp3`, `404.html`, build scripts | Carried |
-
-Files from `aria-final-fixes/` (which fixed homepage vendor names + footer mailboxes) were overlaid on top of `aria-widen-all/`, then `Enterprise` nav-link injection layered on top of that. This bundle is the canonical state — re-deploying it cannot regress anything currently live.
+**Not modified (product-positioning pages — these reference integrations as features, not subprocessors):**
+- `aria-for-open-dental.html`, `aria-for-dentrix.html`, `aria-for-eaglesoft.html`, etc. mention "Stedi 270/271" in PMS-integration feature descriptions. These are positioned as product capabilities, not infrastructure subprocessors. Recommend reviewing in a future pass if Varinder wants full vendor opacity; out of scope for this fast nuke.
 
 ---
 
-## Post-deploy verification (run from terminal)
+## Redirect added
 
-```bash
-# /enterprise loads
-curl -sI https://www.ariadental.ai/enterprise | head -1   # expect: HTTP/2 200
+In `vercel.json` (line 8):
 
-# /who-we-help has content
-curl -s https://www.ariadental.ai/who-we-help | wc -c     # expect: >30000
-
-# /case-studies 301s once, ends at /portfolio (no loop)
-curl -sI -L https://www.ariadental.ai/case-studies | grep -E '^(HTTP|location)'
-
-# nav contains Enterprise on a sample page
-curl -s https://www.ariadental.ai/security | grep -o '/enterprise">Enterprise'
+```json
+{ "source": "/subprocessors", "destination": "/security", "permanent": true }
 ```
 
-All four should pass within ~60 seconds of the Vercel deploy completing.
+Old inbound links to `/subprocessors` (search engines, anyone who bookmarked the page from a previous deploy) get a 301 → `/security`. No 404s.
+
+---
+
+## Verification (run after Vercel deploy)
+
+```
+rg -i "subprocessor" aria-NUKE-SUBPROCESSORS/
+```
+**Expected:** Only the NDA-request pattern rewrites in `privacy.html`, `security.html`, `faq.html`, `hipaa-compliance-ai-dental-tools.html`, `dso-buyers-guide-ai-receptionist.html`, plus the `/subprocessors` source path in `vercel.json`. **NO** named vendors (AWS, GCP, OpenAI, Anthropic, Retell AI, Stedi, Sentry, etc.) in subprocessor context.
+
+```
+rg "/subprocessors" aria-NUKE-SUBPROCESSORS/
+```
+**Expected:** Only `vercel.json` redirect source.
+
+```
+ls aria-NUKE-SUBPROCESSORS/subprocessors.html
+```
+**Expected:** `No such file or directory` ✓ (file is NOT in the bundle).
+
+---
+
+## Deploy steps for Varinder
+
+1. **Manually delete `subprocessors.html` from GitHub web UI** if it exists in the repo (see top of this doc). This is the most important step — Vercel won't drop the file just because the upload doesn't contain it.
+2. Drag every file in `aria-NUKE-SUBPROCESSORS/` (except this `_AGENT_CHANGES.md`) into the GitHub repo root, overwriting existing files.
+3. Commit message suggestion: `nuke vendor stack from public site — strip subprocessor exposure`
+4. Vercel auto-deploys.
+5. Hit `https://www.ariadental.ai/subprocessors` in an incognito window — should 301 to `/security`.
+6. Hit `https://www.ariadental.ai/privacy#sharing` — vendor table should be gone, replaced with NDA pattern.
+7. Hit `https://www.ariadental.ai/security` and scroll to Subprocessors — named vendor block should be gone.

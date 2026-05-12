@@ -5,6 +5,7 @@
   "redirects": [
     { "source": "/aria-vs-others", "destination": "/compare", "permanent": true },
     { "source": "/aria-vs-weave", "destination": "/compare", "permanent": true },
+    { "source": "/subprocessors", "destination": "/security", "permanent": true },
 
     {
       "source": "/:path*",
