@@ -26,10 +26,6 @@
     { "source": "/dentists",              "destination": "/ai-for-dentists", "permanent": true },
     { "source": "/case-studies/:slug*",   "destination": "/portfolio", "permanent": true },
 
-    { "source": "/demo-booking",          "destination": "/demos",   "permanent": true },
-    { "source": "/demo-gcal",             "destination": "/demos",   "permanent": true },
-    { "source": "/demo-reschedule",       "destination": "/demos",   "permanent": true },
-
     {
       "source": "/pricing",
       "destination": "/platform#pricing",
