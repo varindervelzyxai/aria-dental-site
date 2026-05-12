@@ -115,7 +115,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <li><strong>Call transcripts and SMS message content.</strong> Including everything the patient says, types, or sends.</li>
 <li><strong>Identifiers patients provide.</strong> Full name, date of birth, phone number, email address, and (for booking and verification) insurance carrier, member ID, group number, plan name, and subscriber relationship.</li>
 <li><strong>Appointment context.</strong> Provider preference, procedure type, scheduling preferences, prior visits if the patient is on file, and any clinical context the patient shares (e.g., "my crown fell out").</li>
-<li><strong>Payment instruments.</strong> When a patient pays a copay or balance through Aria, payment card details are sent directly to our payment processor (Stripe). Aria's servers receive only a tokenized reference, the last four digits, the brand, and the expiry month/year.</li>
+<li><strong>Payment instruments.</strong> When a patient pays a copay or balance through Aria, payment card details are sent directly to our PCI-compliant payment processor. Aria's servers receive only a tokenized reference, the last four digits, the brand, and the expiry month/year.</li>
 </ul>
 
 <h3>2.2 From dental practices and their staff</h3>
@@ -160,7 +160,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <li><strong>Call and chat transcripts:</strong> retained for the lifetime of the practice's account by default, so the practice can search history. A practice may shorten this in dashboard settings.</li>
 <li><strong>SMS message history:</strong> 18 months by default; configurable.</li>
 <li><strong>Patient profiles and appointments:</strong> retained for the lifetime of the practice's account; deleted on practice termination plus 30 days, unless the practice exports first.</li>
-<li><strong>Payment metadata (last four, brand, expiry):</strong> retained for the lifetime of the practice's account. Full PAN data is held by Stripe under PCI-DSS, never on Aria infrastructure.</li>
+<li><strong>Payment metadata (last four, brand, expiry):</strong> retained for the lifetime of the practice's account. Full PAN data is held by our PCI-DSS-compliant payment processor, never on Aria infrastructure.</li>
 <li><strong>Website telemetry:</strong> Google Analytics 4 retains event data for 14 months. Microsoft Clarity retains session replays for up to 30 days.</li>
 <li><strong>System logs:</strong> 30 days for application logs, 90 days for security logs.</li>
 </ul>
