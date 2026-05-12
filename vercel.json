@@ -4,6 +4,7 @@
   "trailingSlash": false,
   "redirects": [
     { "source": "/aria-vs-others", "destination": "/compare", "permanent": true },
+    { "source": "/aria-vs-weave", "destination": "/compare", "permanent": true },
 
     {
       "source": "/:path*",
@@ -23,7 +24,17 @@
     { "source": "/after-hours",           "destination": "/after-hours-dental-answering-service", "permanent": true },
     { "source": "/groups",                "destination": "/ai-for-dental-groups", "permanent": true },
     { "source": "/dentists",              "destination": "/ai-for-dentists", "permanent": true },
-    { "source": "/case-studies/:slug*",   "destination": "/portfolio", "permanent": true }
+    { "source": "/case-studies/:slug*",   "destination": "/portfolio", "permanent": true },
+
+    { "source": "/demo-booking",          "destination": "/demos",   "permanent": true },
+    { "source": "/demo-gcal",             "destination": "/demos",   "permanent": true },
+    { "source": "/demo-reschedule",       "destination": "/demos",   "permanent": true },
+
+    {
+      "source": "/pricing",
+      "destination": "/platform#pricing",
+      "permanent": false
+    }
   ],
   "headers": [
     {
