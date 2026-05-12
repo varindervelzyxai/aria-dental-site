@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Tag Manager -->
+<script>
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5H6LQ8RL');
+</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Your Aria Demo</title>
+<meta name="description" content="Pick a 20-minute slot to see Aria handle live dental calls and PMS sync, tailored to your practice.">
+<link rel="canonical" href="https://www.ariadental.ai/demo-booking">
+<meta name="robots" content="noindex,follow">
+<meta property="og:site_name" content="Aria Dental AI">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Book Your Aria Demo">
+<meta property="og:description" content="Pick a 20-minute slot to see Aria handle live dental calls and PMS sync.">
+<meta property="og:url" content="https://www.ariadental.ai/demo-booking">
+<meta property="og:image" content="https://www.ariadental.ai/images/og/og-default.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@ariadentalai">
+<meta name="twitter:creator" content="@ariadentalai">
+<meta name="twitter:title" content="Book Your Aria Demo">
+<meta name="twitter:description" content="Pick a 20-minute slot to see Aria handle live dental calls and PMS sync.">
+<meta name="twitter:image" content="https://www.ariadental.ai/images/og/og-default.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#D4952A">
+<meta name="msapplication-TileColor" content="#1A1A2E">
+<meta name="apple-mobile-web-app-title" content="Aria">
+<meta name="application-name" content="Aria Dental AI">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --gold: #d4952a;
+  --gold-light: #f5deb3;
+  --gold-glow: rgba(212, 149, 42, 0.35);
+  --navy: #1a1a2e;
+  --navy-light: #2a2a4e;
+  --cream: #fefcf8;
+  --cream-dark: #f5f0e8;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-400: #9ca3af;
+  --gray-600: #4b5563;
+  --gray-800: #1f2937;
+  --green: #22c55e;
+  --red: #ef4444;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Sora', sans-serif;
+  background: var(--cream);
+  color: var(--navy);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+h1, h2, h3 { font-family: 'Fraunces', serif; }
+
+.progress-bar-container { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: var(--navy); padding: 0; display: none; }
+.progress-bar-container.active { display: block; }
+.progress-steps { display: flex; height: 4px; background: rgba(255,255,255,0.1); }
+.progress-step { flex: 1; height: 100%; background: transparent; transition: background 0.6s ease; }
+.progress-step.completed { background: var(--gold); }
+.progress-step.current { background: linear-gradient(90deg, var(--gold), rgba(212,149,42,0.4)); animation: progressPulse 1.5s ease-in-out infinite; }
+@keyframes progressPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+.step-labels { display: flex; padding: 8px 16px; gap: 4px; }
+.step-label { flex: 1; text-align: center; font-size: 10px; font-weight: 500; color: rgba(255,255,255,0.3); transition: color 0.4s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.step-label.completed { color: var(--gold); }
+.step-label.current { color: #fff; }
+
+.hero { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; text-align: center; padding: 40px 20px; transition: opacity 0.6s, transform 0.6s; }
+.hero.hidden { opacity: 0; transform: translateY(-30px); pointer-events: none; position: absolute; }
+.hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--navy); color: var(--gold); font-size: 12px; font-weight: 600; padding: 6px 16px; border-radius: 100px; margin-bottom: 24px; letter-spacing: 1px; text-transform: uppercase; }
+.hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); animation: blink 1.5s infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+.hero h1 { font-size: clamp(28px, 5vw, 52px); font-weight: 700; line-height: 1.15; color: var(--navy); margin-bottom: 16px; }
+.hero h1 span { color: var(--gold); }
+.hero p { font-size: clamp(14px, 2vw, 18px); color: var(--gray-600); max-width: 560px; margin-bottom: 40px; line-height: 1.6; }
+.start-btn { display: inline-flex; align-items: center; gap: 12px; background: var(--gold); color: #fff; border: none; cursor: pointer; font-family: 'Sora', sans-serif; font-size: 18px; font-weight: 600; padding: 18px 40px; border-radius: 60px; box-shadow: 0 8px 30px rgba(212,149,42,0.35); transition: transform 0.2s, box-shadow 0.2s; }
+.start-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(212,149,42,0.45); }
+.start-btn .play-icon { width: 28px; height: 28px; border-radius: 50%; background: rgba(255,255,255,0.25); display: flex; align-items: center; justify-content: center; }
+.start-btn .play-icon::after { content: ''; width: 0; height: 0; border-top: 6px solid transparent; border-bottom: 6px solid transparent; border-left: 10px solid #fff; margin-left: 2px; }
+
+.demo-container { max-width: 800px; margin: 0 auto; padding: 60px 20px 40px; display: none; opacity: 0; transition: opacity 0.5s; }
+.demo-container.active { display: block; opacity: 1; }
+.demo-step { display: none; animation: fadeInUp 0.5s ease forwards; }
+.demo-step.active { display: block; }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+.phone-card { background: var(--navy); border-radius: 24px; padding: 48px 32px; text-align: center; color: #fff; position: relative; overflow: hidden; box-shadow: 0 20px 60px rgba(26,26,46,0.3); }
+.phone-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 30%, rgba(212,149,42,0.1) 0%, transparent 70%); }
+.phone-icon-wrap { width: 80px; height: 80px; border-radius: 50%; background: rgba(212,149,42,0.15); display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; position: relative; }
+.phone-icon-wrap.ringing { animation: phoneRing 0.5s ease-in-out infinite alternate; }
+@keyframes phoneRing { 0%{transform:rotate(-8deg)} 100%{transform:rotate(8deg)} }
+.phone-icon-wrap::before, .phone-icon-wrap::after { content: ''; position: absolute; border-radius: 50%; border: 2px solid rgba(212,149,42,0.3); }
+.phone-icon-wrap.ringing::before { width: 110px; height: 110px; animation: ringWave 1.5s ease-out infinite; }
+.phone-icon-wrap.ringing::after { width: 140px; height: 140px; animation: ringWave 1.5s ease-out 0.3s infinite; }
+@keyframes ringWave { 0%{transform:scale(0.8);opacity:1} 100%{transform:scale(1.3);opacity:0} }
+.phone-icon { font-size: 36px; filter: drop-shadow(0 0 8px rgba(212,149,42,0.5)); }
+.caller-id { font-family: 'Fraunces',serif; font-size: 22px; font-weight: 600; margin-bottom: 4px; }
+.caller-number { color: var(--gray-400); font-size: 14px; margin-bottom: 20px; }
+.call-status { display: inline-flex; align-items: center; gap: 8px; color: var(--gold); font-size: 14px; font-weight: 500; }
+.call-status .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); }
+.call-status .pulse.animate { animation: blink 1s infinite; }
+.aria-pickup { margin-top: 24px; display: none; background: rgba(34,197,94,0.15); border: 1px solid rgba(34,197,94,0.3); border-radius: 12px; padding: 12px 20px; color: var(--green); font-weight: 500; font-size: 14px; animation: fadeInUp 0.4s ease; }
+.aria-pickup.show { display: inline-block; }
+
+.chat-window { background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.08); border: 1px solid var(--gray-200); }
+.chat-header { background: var(--navy); color: #fff; padding: 16px 20px; display: flex; align-items: center; gap: 12px; }
+.chat-avatar { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), #e8b44f); display: flex; align-items: center; justify-content: center; font-family: 'Fraunces',serif; font-weight: 700; font-size: 16px; color: #fff; }
+.chat-header-info .chat-name { font-weight: 600; font-size: 14px; }
+.chat-header-info .chat-sub { font-size: 11px; color: rgba(255,255,255,0.5); }
+.chat-live-dot { margin-left: auto; display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--green); font-weight: 500; }
+.chat-live-dot::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: blink 1.2s infinite; }
+.chat-body { padding: 20px; min-height: 200px; }
+.chat-bubble { max-width: 85%; padding: 12px 16px; border-radius: 18px; font-size: 14px; line-height: 1.5; margin-bottom: 12px; animation: bubbleIn 0.35s ease; word-wrap: break-word; }
+@keyframes bubbleIn { from { opacity:0; transform:translateY(10px) scale(0.95); } to { opacity:1; transform:translateY(0) scale(1); } }
+.chat-bubble.aria { background: linear-gradient(135deg, #fef9f0, #fdf3e0); border: 1px solid rgba(212,149,42,0.15); border-bottom-left-radius: 4px; margin-right: auto; color: var(--gray-800); }
+.chat-bubble.patient { background: var(--gray-100); border: 1px solid var(--gray-200); border-bottom-right-radius: 4px; margin-left: auto; color: var(--gray-800); }
+.typing-indicator { display: inline-flex; gap: 4px; padding: 12px 18px; border-radius: 18px; background: linear-gradient(135deg, #fef9f0, #fdf3e0); border: 1px solid rgba(212,149,42,0.15); border-bottom-left-radius: 4px; margin-bottom: 12px; }
+.typing-indicator.patient-typing { background: var(--gray-100); border-color: var(--gray-200); border-bottom-left-radius: 18px; border-bottom-right-radius: 4px; margin-left: auto; width: fit-content; }
+.typing-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gray-400); animation: typingBounce 1.2s ease-in-out infinite; }
+.typing-dot:nth-child(2) { animation-delay: 0.15s; }
+.typing-dot:nth-child(3) { animation-delay: 0.3s; }
+@keyframes typingBounce { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-5px)} }
+
+.verification-card { background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.08); border: 1px solid var(--gray-200); }
+.verification-header { background: linear-gradient(135deg, var(--navy), var(--navy-light)); color: #fff; padding: 20px 24px; display: flex; align-items: center; gap: 12px; }
+.verification-header .v-icon { width: 40px; height: 40px; border-radius: 10px; background: rgba(212,149,42,0.2); display: flex; align-items: center; justify-content: center; font-size: 20px; }
+.verification-header h3 { font-size: 16px; font-weight: 600; }
+.verification-header p { font-size: 12px; color: rgba(255,255,255,0.5); }
+.verification-spinner { padding: 48px; text-align: center; }
+.spinner { width: 48px; height: 48px; border: 3px solid var(--gray-200); border-top-color: var(--gold); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 16px; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.spinner-text { color: var(--gray-600); font-size: 14px; }
+.verification-results { padding: 24px; display: none; }
+.verification-results.show { display: block; animation: fadeInUp 0.5s ease; }
+.v-result-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--gray-100); font-size: 14px; }
+.v-result-row:last-child { border-bottom: none; }
+.v-label { color: var(--gray-600); }
+.v-value { font-weight: 600; color: var(--navy); }
+.v-value.status-active { color: var(--green); display: flex; align-items: center; gap: 6px; }
+.v-value.status-active::before { content: '✓'; width: 18px; height: 18px; border-radius: 50%; background: rgba(34,197,94,0.1); display: flex; align-items: center; justify-content: center; font-size: 11px; }
+.v-value.highlight { color: var(--gold); font-size: 18px; }
+
+.payment-card { background: #fff; border-radius: 16px; padding: 24px; border: 1px solid var(--gray-200); margin: 16px 0; box-shadow: 0 4px 16px rgba(0,0,0,0.05); animation: fadeInUp 0.4s ease; }
+.payment-processing { display: flex; align-items: center; gap: 16px; padding: 16px; background: var(--cream); border-radius: 12px; }
+.payment-processing .spinner { width: 32px; height: 32px; margin: 0; }
+.payment-success { display: none; text-align: center; padding: 16px; background: rgba(34,197,94,0.05); border-radius: 12px; border: 1px solid rgba(34,197,94,0.15); }
+.payment-success.show { display: block; animation: fadeInUp 0.4s ease; }
+.payment-check { width: 48px; height: 48px; border-radius: 50%; background: var(--green); color: #fff; font-size: 24px; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; animation: scaleIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
+@keyframes scaleIn { from{transform:scale(0)} to{transform:scale(1)} }
+.payment-amount { font-family: 'Fraunces',serif; font-size: 28px; font-weight: 700; color: var(--navy); }
+.payment-label { color: var(--gray-600); font-size: 13px; margin-top: 4px; }
+
+.schedule-card { background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.08); border: 1px solid var(--gray-200); }
+.schedule-header { background: var(--navy); color: #fff; padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; }
+.schedule-header h3 { font-size: 16px; }
+.schedule-date { font-size: 13px; color: rgba(255,255,255,0.5); }
+.schedule-body { padding: 16px; }
+.appt-row { display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 12px; margin-bottom: 8px; background: var(--gray-100); font-size: 13px; }
+.appt-time { font-weight: 600; color: var(--navy); min-width: 64px; font-size: 12px; white-space: nowrap; }
+.appt-name { font-weight: 500; flex: 1; color: var(--gray-800); }
+.appt-type { color: var(--gray-600); font-size: 12px; }
+.appt-row.new-appt { background: linear-gradient(135deg, rgba(212,149,42,0.08), rgba(212,149,42,0.15)); border: 2px solid var(--gold); animation: glowIn 1s ease forwards; display: none; }
+.appt-row.new-appt.show { display: flex; animation: glowIn 1.5s ease forwards; }
+@keyframes glowIn { 0% { transform: scaleY(0); opacity: 0; box-shadow: 0 0 0 rgba(212,149,42,0); } 50% { transform: scaleY(1); opacity: 1; box-shadow: 0 0 30px rgba(212,149,42,0.4); } 100% { transform: scaleY(1); opacity: 1; box-shadow: 0 0 0 rgba(212,149,42,0); } }
+.appt-paid { background: rgba(34,197,94,0.1); color: var(--green); font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 6px; white-space: nowrap; }
+.appt-new-badge { background: var(--gold); color: #fff; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+.auto-actions { margin-top: 24px; padding: 0 8px; }
+.auto-actions h4 { font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 600; color: var(--gray-600); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+.auto-action { display: flex; align-items: center; gap: 10px; padding: 8px 0; font-size: 13px; color: var(--gray-600); opacity: 0; transform: translateX(-10px); transition: opacity 0.4s, transform 0.4s; }
+.auto-action.show { opacity: 1; transform: translateX(0); }
+.auto-action .aa-check { width: 20px; height: 20px; border-radius: 50%; background: var(--green); color: #fff; font-size: 11px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.cta-section { display: none; text-align: center; padding: 48px 20px; animation: fadeInUp 0.6s ease; }
+.cta-section.show { display: block; }
+.cta-section h2 { font-size: clamp(22px, 4vw, 32px); color: var(--navy); margin-bottom: 12px; }
+.cta-section p { color: var(--gray-600); margin-bottom: 32px; font-size: 15px; }
+.cta-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: #fff; font-family: 'Sora',sans-serif; font-size: 16px; font-weight: 600; padding: 16px 36px; border-radius: 60px; border: none; cursor: pointer; text-decoration: none; box-shadow: 0 8px 30px rgba(212,149,42,0.35); transition: transform 0.2s, box-shadow 0.2s; }
+.cta-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(212,149,42,0.45); }
+.replay-btn { display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; background: transparent; color: var(--navy); font-family: 'Sora',sans-serif; font-size: 14px; font-weight: 500; padding: 12px 24px; border-radius: 60px; border: 2px solid var(--gray-200); cursor: pointer; transition: border-color 0.2s; }
+.replay-btn:hover { border-color: var(--gold); }
+.section-label { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; font-size: 12px; font-weight: 600; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; }
+.section-label::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, var(--gold-light), transparent); }
+
+@media (max-width: 600px) {
+  .demo-container { padding: 50px 12px 30px; }
+  .phone-card { padding: 32px 20px; border-radius: 16px; }
+  .chat-bubble { max-width: 90%; font-size: 13px; padding: 10px 14px; }
+  .v-result-row { flex-direction: column; align-items: flex-start; gap: 2px; }
+  .appt-row { flex-wrap: wrap; gap: 6px; }
+  .step-labels { display: none; }
+  .schedule-header { flex-direction: column; align-items: flex-start; gap: 4px; }
+}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KQS3692C4Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-KQS3692C4Q');
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://www.ariadental.ai/#organization","name":"Aria Dental AI","alternateName":"Aria","legalName":"Aria by Velzyx AI","url":"https://www.ariadental.ai/","logo":{"@type":"ImageObject","url":"https://www.ariadental.ai/images/aria-logo.png","width":512,"height":512},"description":"AI receptionist for dental practices: answers calls, verifies insurance, books patients 24/7.","foundingDate":"2025-09-01","parentOrganization":{"@type":"Organization","name":"Aria by Velzyx AI","url":"https://velzyx.ai/"},"sameAs":["https://www.linkedin.com/company/aria-dental-ai","https://twitter.com/ariadentalai","https://www.instagram.com/ariadentalai"],"contactPoint":[{"@type":"ContactPoint","contactType":"sales","email":"hello@ariadental.ai","availableLanguage":["English","Spanish"]},{"@type":"ContactPoint","contactType":"customer support","email":"support@ariadental.ai","availableLanguage":["English","Spanish"]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","@id":"https://www.ariadental.ai/#website","url":"https://www.ariadental.ai/","name":"Aria Dental AI","publisher":{"@id":"https://www.ariadental.ai/#organization"},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://www.ariadental.ai/search?q={search_term_string}"},"query-input":"required name=search_term_string"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Aria","applicationCategory":"BusinessApplication","applicationSubCategory":"AI Receptionist","operatingSystem":"Web, iOS, Android","url":"https://www.ariadental.ai/platform","description":"AI dental receptionist that answers calls, verifies insurance, and books patients across voice, chat and SMS.","offers":{"@type":"Offer","priceCurrency":"USD","price":"499","priceSpecification":{"@type":"UnitPriceSpecification","price":"499","priceCurrency":"USD","unitText":"MONTH"},"availability":"https://schema.org/InStock"},"creator":{"@id":"https://www.ariadental.ai/#organization"},"featureList":["24/7 voice answering","Live dental insurance verification","Online and SMS booking","PMS integration (Open Dental, Dentrix, Eaglesoft)","Multi-location routing","HIPAA-aligned controls"],"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"47"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.ariadental.ai/"},{"@type":"ListItem","position":2,"name":"Book a Demo","item":"https://www.ariadental.ai/demo-booking"}]}</script>
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wn8w0677vz");
+</script>
+<!-- End Microsoft Clarity -->
+<script src="/analytics-events.js" defer></script>
+<link rel="dns-prefetch" href="//www.googletagmanager.com"><link rel="dns-prefetch" href="//www.clarity.ms"><link rel="dns-prefetch" href="//www.google-analytics.com"><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="dns-prefetch" href="//fonts.gstatic.com"></head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5H6LQ8RL"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<a class="skip-link" href="#main">Skip to main content</a>
+<main id="main">
+
+<div class="progress-bar-container" id="progressBar">
+  <div class="progress-steps">
+    <div class="progress-step" data-step="1"></div>
+    <div class="progress-step" data-step="2"></div>
+    <div class="progress-step" data-step="3"></div>
+    <div class="progress-step" data-step="4"></div>
+    <div class="progress-step" data-step="5"></div>
+    <div class="progress-step" data-step="6"></div>
+  </div>
+  <div class="step-labels">
+    <div class="step-label" data-step="1">Incoming Call</div>
+    <div class="step-label" data-step="2">Conversation</div>
+    <div class="step-label" data-step="3">Verification</div>
+    <div class="step-label" data-step="4">Booking</div>
+    <div class="step-label" data-step="5">Payment</div>
+    <div class="step-label" data-step="6">Schedule</div>
+  </div>
+</div>
+
+<div class="hero" id="hero">
+  <div class="hero-badge"><span class="dot"></span> Live Demo</div>
+  <h1>Watch how <span>Aria</span> books<br>a real patient</h1>
+  <p>See a complete patient journey — from incoming call to confirmed appointment — handled entirely by AI in under 60 seconds.</p>
+  <button class="start-btn" onclick="startDemo()">
+    <span class="play-icon"></span>
+    Watch Demo
+  </button>
+</div>
+
+<div class="demo-container" id="demoContainer">
+  <div class="demo-step" id="step1">
+    <div class="section-label">Step 1 — Incoming Call</div>
+    <div class="phone-card">
+      <div class="phone-icon-wrap ringing" id="phoneIcon"><span class="phone-icon">📞</span></div>
+      <div class="caller-id">Michael Chen</div>
+      <div class="caller-number">(714) 555-0192</div>
+      <div class="call-status"><span class="pulse animate"></span><span id="callStatusText">Incoming call...</span></div>
+      <div class="aria-pickup" id="ariaPickup">✨ Aria answered the call</div>
+    </div>
+  </div>
+
+  <div class="demo-step" id="step2">
+    <div class="section-label">Step 2 — Live Conversation</div>
+    <div class="chat-window">
+      <div class="chat-header"><div class="chat-avatar">A</div><div class="chat-header-info"><div class="chat-name">Aria — AI Receptionist</div><div class="chat-sub">Dr. Vartanian's Office</div></div><div class="chat-live-dot">Live</div></div>
+      <div class="chat-body" id="chat2Body"></div>
+    </div>
+  </div>
+
+  <div class="demo-step" id="step3">
+    <div class="section-label">Step 3 — Insurance Verification</div>
+    <div class="verification-card">
+      <div class="verification-header"><div class="v-icon">🛡️</div><div><h3>Insurance Verification</h3><p>Delta Dental — Member DD-9988-77654</p></div></div>
+      <div class="verification-spinner" id="verifySpinner"><div class="spinner"></div><div class="spinner-text">Verifying insurance with Delta Dental...</div></div>
+      <div class="verification-results" id="verifyResults">
+        <div class="v-result-row"><span class="v-label">Plan</span><span class="v-value">Delta Dental PPO</span></div>
+        <div class="v-result-row"><span class="v-label">Status</span><span class="v-value status-active">Active</span></div>
+        <div class="v-result-row"><span class="v-label">Deductible Remaining</span><span class="v-value">$50</span></div>
+        <div class="v-result-row"><span class="v-label">Crown Coverage</span><span class="v-value">50% after deductible</span></div>
+        <div class="v-result-row"><span class="v-label">Est. Patient Cost</span><span class="v-value highlight">$475</span></div>
+      </div>
+    </div>
+    <div style="margin-top:20px;">
+      <div class="chat-window">
+        <div class="chat-header"><div class="chat-avatar">A</div><div class="chat-header-info"><div class="chat-name">Aria — AI Receptionist</div><div class="chat-sub">Dr. Vartanian's Office</div></div><div class="chat-live-dot">Live</div></div>
+        <div class="chat-body" id="chat3Body"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="demo-step" id="step4">
+    <div class="section-label">Step 4 — Appointment Booking</div>
+    <div class="chat-window">
+      <div class="chat-header"><div class="chat-avatar">A</div><div class="chat-header-info"><div class="chat-name">Aria — AI Receptionist</div><div class="chat-sub">Dr. Vartanian's Office</div></div><div class="chat-live-dot">Live</div></div>
+      <div class="chat-body" id="chat4Body"></div>
+    </div>
+  </div>
+
+  <div class="demo-step" id="step5">
+    <div class="section-label">Step 5 — Payment Collection</div>
+    <div class="chat-window">
+      <div class="chat-header"><div class="chat-avatar">A</div><div class="chat-header-info"><div class="chat-name">Aria — AI Receptionist</div><div class="chat-sub">Dr. Vartanian's Office</div></div><div class="chat-live-dot">Live</div></div>
+      <div class="chat-body" id="chat5Body"></div>
+    </div>
+    <div id="paymentArea"></div>
+  </div>
+
+  <div class="demo-step" id="step6">
+    <div class="section-label">Step 6 — Schedule Updated</div>
+    <div class="schedule-card">
+      <div class="schedule-header"><h3>📅 Dr. Vartanian's Schedule</h3><span class="schedule-date" id="scheduleDate"></span></div>
+      <div class="schedule-body">
+        <div class="appt-row"><span class="appt-time">9:00 AM</span><span class="appt-name">Sarah Johnson</span><span class="appt-type">Cleaning</span></div>
+        <div class="appt-row"><span class="appt-time">10:30 AM</span><span class="appt-name">David Park</span><span class="appt-type">Root Canal</span></div>
+        <div class="appt-row"><span class="appt-time">12:00 PM</span><span class="appt-name">Emily Rodriguez</span><span class="appt-type">Filling</span></div>
+        <div class="appt-row"><span class="appt-time">1:30 PM</span><span class="appt-name">James Wilson</span><span class="appt-type">Consultation</span></div>
+        <div class="appt-row"><span class="appt-time">2:00 PM</span><span class="appt-name">Lisa Thompson</span><span class="appt-type">Whitening</span></div>
+        <div class="appt-row"><span class="appt-time">3:30 PM</span><span class="appt-name">Robert Kim</span><span class="appt-type">Crown Check</span></div>
+        <div class="appt-row new-appt" id="newAppt"><span class="appt-time">4:00 PM</span><span class="appt-name" style="font-weight:700;color:var(--navy)">Michael Chen</span><span class="appt-type" style="color:var(--gold);font-weight:600">Crown</span><span class="appt-paid">$475 Paid ✓</span><span class="appt-new-badge">New</span></div>
+      </div>
+    </div>
+    <div class="auto-actions" id="autoActions">
+      <h4>Automated Actions</h4>
+      <div class="auto-action" data-idx="0"><span class="aa-check">✓</span> SMS confirmation sent to (714) 555-0192</div>
+      <div class="auto-action" data-idx="1"><span class="aa-check">✓</span> Email confirmation sent to michael.chen@email.com</div>
+      <div class="auto-action" data-idx="2"><span class="aa-check">✓</span> Intake forms link sent via SMS</div>
+      <div class="auto-action" data-idx="3"><span class="aa-check">✓</span> 24-hour reminder scheduled</div>
+      <div class="auto-action" data-idx="4"><span class="aa-check">✓</span> 2-hour reminder scheduled</div>
+      <div class="auto-action" data-idx="5"><span class="aa-check">✓</span> Post-visit review request scheduled</div>
+    </div>
+  </div>
+
+  <div class="cta-section" id="ctaSection">
+    <h2>That took Aria 47 seconds.</h2>
+    <p>No hold times. No missed calls. No insurance headaches.<br>Every call answered, every patient booked.</p>
+    <a href="https://ariadental.ai" target="_blank" class="cta-btn">Book a Demo →</a>
+    <br>
+    <button class="replay-btn" onclick="replayDemo()">↻ Replay Demo</button>
+  </div>
+</div>
+
+<script>
+function wait(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+function setProgress(step, status) {
+  document.querySelectorAll('.progress-step').forEach(el => {
+    const s = parseInt(el.dataset.step);
+    if (s < step) { el.className = 'progress-step completed'; }
+    else if (s === step) { el.className = 'progress-step ' + status; }
+    else { el.className = 'progress-step'; }
+  });
+  document.querySelectorAll('.step-label').forEach(el => {
+    const s = parseInt(el.dataset.step);
+    if (s < step) { el.className = 'step-label completed'; }
+    else if (s === step) { el.className = 'step-label ' + status; }
+    else { el.className = 'step-label'; }
+  });
+}
+
+function showStep(id) {
+  document.querySelectorAll('.demo-step').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function addTyping(container, isPatient) {
+  const d = document.createElement('div');
+  d.className = 'typing-indicator' + (isPatient ? ' patient-typing' : '');
+  d.innerHTML = '<span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>';
+  container.appendChild(d);
+  container.scrollTop = container.scrollHeight;
+  return d;
+}
+
+function addBubble(container, text, type) {
+  const b = document.createElement('div');
+  b.className = 'chat-bubble ' + type;
+  b.textContent = text;
+  container.appendChild(b);
+  container.scrollTop = container.scrollHeight;
+}
+
+async function typeMessage(container, text, type, typingDelay) {
+  typingDelay = typingDelay || (type === 'patient' ? 1200 : 1600);
+  const isPatient = type === 'patient';
+  const indicator = addTyping(container, isPatient);
+  await wait(typingDelay);
+  indicator.remove();
+  addBubble(container, text, type);
+  await wait(400);
+}
+
+function getTomorrow() {
+  const d = new Date(); d.setDate(d.getDate() + 1);
+  return d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+}
+
+async function startDemo() {
+  document.getElementById('hero').classList.add('hidden');
+  const dc = document.getElementById('demoContainer');
+  dc.style.display = 'block';
+  setTimeout(() => dc.style.opacity = '1', 50);
+  document.getElementById('progressBar').classList.add('active');
+
+  document.getElementById('scheduleDate').textContent = getTomorrow();
+
+  ['chat2Body','chat3Body','chat4Body','chat5Body'].forEach(id => {
+    document.getElementById(id).innerHTML = '';
+  });
+  document.getElementById('paymentArea').innerHTML = '';
+  document.getElementById('newAppt').classList.remove('show');
+  document.querySelectorAll('.auto-action').forEach(a => a.classList.remove('show'));
+  document.getElementById('ctaSection').classList.remove('show');
+  document.getElementById('verifyResults').classList.remove('show');
+  document.getElementById('verifySpinner').style.display = 'block';
+  document.getElementById('ariaPickup').classList.remove('show');
+  document.getElementById('phoneIcon').classList.add('ringing');
+  document.getElementById('callStatusText').textContent = 'Incoming call...';
+
+  setProgress(1, 'current');
+  showStep('step1');
+  await wait(2500);
+
+  document.getElementById('phoneIcon').classList.remove('ringing');
+  document.getElementById('callStatusText').textContent = 'Connected — 0:01';
+  document.getElementById('ariaPickup').classList.add('show');
+  await wait(1800);
+
+  setProgress(2, 'current');
+  showStep('step2');
+  const c2 = document.getElementById('chat2Body');
+
+  await typeMessage(c2, "Thank you for calling Dr. Vartanian's dental office, this is Aria. How can I help you today?", 'aria', 1800);
+  await typeMessage(c2, "Hi, my crown fell off and I need to come in. Do you take Delta Dental?", 'patient', 1400);
+  await typeMessage(c2, "Oh no, I'm so sorry about that! Let's get you in right away. Yes, we do accept Delta Dental. Can I get your member ID so I can check your coverage?", 'aria', 2000);
+  await typeMessage(c2, "Sure, it's DD-9988-77654", 'patient', 1000);
+  await wait(600);
+
+  setProgress(3, 'current');
+  showStep('step3');
+  await wait(2500);
+
+  document.getElementById('verifySpinner').style.display = 'none';
+  document.getElementById('verifyResults').classList.add('show');
+  await wait(1500);
+
+  const c3 = document.getElementById('chat3Body');
+  await typeMessage(c3, "Great news, Michael! Your Delta Dental PPO is active. For a crown, after your $50 deductible, your insurance covers 50%. Your estimated out-of-pocket would be $475. Would you like to go ahead and book?", 'aria', 2200);
+  await wait(800);
+
+  setProgress(4, 'current');
+  showStep('step4');
+  const c4 = document.getElementById('chat4Body');
+
+  await typeMessage(c4, "Yes, can I come in tomorrow afternoon?", 'patient', 1000);
+  await typeMessage(c4, "Let me check Dr. Vartanian's availability... I have 2:00 PM, 3:30 PM, or 4:00 PM available. Which works best?", 'aria', 1800);
+  await typeMessage(c4, "4 PM works.", 'patient', 800);
+  await typeMessage(c4, "Perfect! I have you booked with Dr. Vartanian tomorrow at 4:00 PM for a crown.", 'aria', 1400);
+  await wait(600);
+
+  setProgress(5, 'current');
+  showStep('step5');
+  const c5 = document.getElementById('chat5Body');
+  const pa = document.getElementById('paymentArea');
+
+  await typeMessage(c5, "Would you like to pay the $475 now to secure your appointment? I can take a card over the phone.", 'aria', 1600);
+  await typeMessage(c5, "Sure, my card is...", 'patient', 1000);
+
+  pa.innerHTML = '<div class="payment-card"><div class="payment-processing" id="payProcessing"><div class="spinner"></div><div><div style="font-weight:600;font-size:14px;color:var(--navy)">Processing payment...</div><div style="font-size:12px;color:var(--gray-600);margin-top:2px">Visa •••• 4821 — $475.00</div></div></div><div class="payment-success" id="paySuccess"><div class="payment-check">✓</div><div class="payment-amount">$475.00</div><div class="payment-label">Payment processed successfully</div></div></div>';
+
+  await wait(2200);
+  document.getElementById('payProcessing').style.display = 'none';
+  document.getElementById('paySuccess').classList.add('show');
+  await wait(1200);
+
+  await typeMessage(c5, "All set! I'm sending you a confirmation text and email right now, along with your intake forms to fill out before your visit.", 'aria', 1600);
+  await wait(1000);
+
+  setProgress(6, 'current');
+  showStep('step6');
+  await wait(1000);
+
+  document.getElementById('newAppt').classList.add('show');
+  await wait(1500);
+
+  const actions = document.querySelectorAll('.auto-action');
+  for (let i = 0; i < actions.length; i++) {
+    actions[i].classList.add('show');
+    await wait(500);
+  }
+
+  await wait(800);
+  setProgress(7, 'completed');
+
+  document.getElementById('ctaSection').classList.add('show');
+  document.getElementById('ctaSection').scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function replayDemo() {
+  document.getElementById('ctaSection').classList.remove('show');
+  startDemo();
+}
+</script>
+<script src="https://aria-backend-production-8458.up.railway.app/aria-widget.js" data-client="aria-demo"></script>
+</main>
+<footer><div class="container"><div class="footer-top">
+<div class="footer-brand"><a href="/" class="footer-logo">aria</a><p>AI front office that closes more dental patients.</p><p style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:8px">Aria by Velzyx AI</p><a href="mailto:hello@ariadental.ai" style="color:var(--amber-light);text-decoration:none;font-size:14px;display:inline-block;margin-top:12px">hello@ariadental.ai</a><div class="footer-address">5000 Birch St, Suite 3000<br>Newport Beach, CA 92660</div></div>
+<div class="footer-col"><h5>Product</h5><a href="/platform">Platform</a><a href="/how-it-works">How It Works</a><a href="/compare">Compare</a><a href="/demos">Demos</a><a href="/platform#pricing">Pricing</a></div>
+<div class="footer-col"><h5>Resources</h5><a href="/blog">Blog</a><a href="/glossary">Glossary</a><a href="/who-we-help">Who We Help</a><a href="/roi-calculator">ROI Calculator</a><a href="/voice-ai-dental-buyers-guide">Buyer&#39;s Guide</a><a href="/help">Help Center</a></div>
+<div class="footer-col"><h5>Company</h5><a href="/about">About</a><a href="/security">Security</a><a href="/enterprise">Enterprise</a><a href="/contact">Contact</a><a href="/press">Press &amp; Media</a><a href="mailto:careers@ariadental.ai">Careers</a></div>
+<div class="footer-col"><h5>Legal</h5><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/cookies">Cookie Policy</a><a href="/privacy#hipaa-notice">HIPAA Notice</a></div>
+</div><div class="footer-bottom"><span>&copy; 2026 Aria by Velzyx AI. All rights reserved.</span><span class="footer-social"><a href="https://www.instagram.com/ariadentalai" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a> &middot; <a href="https://twitter.com/ariadentalai" target="_blank" rel="noopener" aria-label="X (Twitter)">X</a> &middot; <a href="https://www.linkedin.com/company/aria-dental-ai" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a></span></div></div></footer>
+</body>
+</html>
