@@ -1,100 +1,98 @@
-# Aria Demos Cleanup — Agent Changes
+# Aria FINAL Bundle — Cleanup Deploy
 
-**Purpose:** Remove the "See It In Action / Watch Aria close patients in real time" 3-card section sitewide and delete the orphan destination pages those cards linked to.
+**Date:** 2026-05-11
+**Source:** `aria-widen-all/` (merged staging) + `aria-final-fixes/` (homepage/vendor fix overlay)
+**Bundle size:** 6.8 MB · 112 files
 
-**Base:** `aria-widen-all/` (latest merged staging). This overlay applies on top of that.
+## Deploy Instructions (read first)
+
+Drag the entire contents of `aria-FINAL/` into the `varindervelzyxai/aria-dental-site` GitHub repo root, choosing **Replace existing files** when prompted. Single commit. Vercel auto-deploys to `www.ariadental.ai`.
 
 ---
 
-## 1. Pages where the section was found & removed
+## Fix #1 — `/enterprise` is now visible and discoverable
 
-| File | Eyebrow / headline found | What was removed |
-|---|---|---|
-| `how-it-works.html` | `See It In Action` / `Watch Aria close patients in real time.` | The full `<section class="section-alt">` block (HTML comment `<!-- INTERACTIVE DEMOS -->` through closing `</section>`). Section had `.container-wide` wrapper and 3 inline-styled `<a>` cards linking to `/demo-booking`, `/demo-gcal`, `/demo-reschedule`. |
-| `portfolio.html` | `See It In Action` / `Watch Aria close patients in real time.` | The full `<section class="section-alt">` block, sitting between the vs-grid section and the CTA section. Same 3 inline-styled cards. (No HTML comment marker on this one.) |
-| `demo.html` | `Interactive Demos` / `See exactly how Aria closes patients.` | The full `<section>` block marked `<!-- INTERACTIVE DEMOS -->` with the 3 `a.demo-card` elements. **Also removed the scoped `/* DEMO CARDS FIX */` CSS rule block** from the `<style>` element (lines defining `a.demo-card`, `.dc-header`, `.dc-title`, `.dc-sub`, `.dc-body`, `.dc-time`, `.dc-btn`) — that CSS was only used by the removed cards. |
+- `enterprise.html` (24 KB, "Aria for Enterprise DSOs") carried forward into bundle.
+- "Enterprise" link injected into the canonical nav between "Integrations" and "Security" on **85 pages** (every English page that has the main nav).
+- "Enterprise" added to the **footer Product column** on **88 pages** (between Platform and How It Works).
+- `sitemap.xml` already contained `/enterprise` entry (priority 0.85, lastmod 2026-05-08) — left in place.
+- `vercel.json` reviewed — **no rewrites or redirects block `/enterprise`**. The file at the repo root will serve cleanly at `/enterprise` thanks to `cleanUrls: true`.
 
-Page-flow verified: in all three files the CTA section now follows directly after the prior content block with no orphaned wrappers, no broken nesting, no JS handlers left dangling.
+**Verify after deploy:** Visit `https://www.ariadental.ai/enterprise` — should render the DSO page. Click "Enterprise" in any page's nav — should land there.
 
-The audit-flagged copy on demo.html used different wording ("Interactive Demos" / "See exactly how Aria closes patients" rather than "See It In Action" / "Watch Aria close patients") but it was the same 3-card pattern with the same 3 destinations, so it was treated as the same block.
+---
 
-## 2. Orphan destination pages — handled
+## Fix #2 — Stale-nav pages synced
 
-| File | Inbound links after section removal | Decision |
-|---|---|---|
-| `demo-booking.html` | None | **DELETE** from repo |
-| `demo-gcal.html` | None | **DELETE** from repo |
-| `demo-reschedule.html` | None | **DELETE** from repo |
-| `demo.html` | ~13 inbound links remaining (`who-we-help.html` ×5, `ai-for-dentists.html` ×3, `compare.html` ×2, `dental-insurance-verification-ai.html` ×2, `dental-missed-calls-ai.html` ×2, `verify-insurance-during-the-call.html`, `do-automated-reminders-reduce-dental-no-shows.html`, `after-hours-dental-answering-service.html` ×2, `how-much-do-missed-calls-cost-dental-practice.html`, `ai-for-dental-groups.html`, `blog.html`) | **KEEP** — flagged. Page still renders the audio call player + "What your demo will cover" block; only the 3-card section was excised. |
+`portfolio.html`, `how-it-works.html`, `security.html`, `contact.html` all now use the canonical nav (Platform · How It Works · Demos · Portfolio · Compare · Integrations · **Enterprise** · Security · About · Español · Book a Demo). No more "Aria vs Weave / Aria vs Others" nav items anywhere in the bundle (the `aria-final-fixes` overlay had already rewritten these — Enterprise injection layered on top).
 
-**Action required at deploy time:** delete these files from the repo manually (this overlay does not include them):
-- `demo-booking.html`
-- `demo-gcal.html`
-- `demo-reschedule.html`
+**Verify:** `rg -i "aria vs weave|aria vs others" *.html` → 0 hits (confirmed).
 
-## 3. vercel.json — redirects added
+---
 
-Three new 301 entries inserted in the `redirects` array (right after the `/case-studies/:slug*` entry, before the `/pricing` entry):
+## Fix #3 — `/who-we-help` restored
 
-```json
-{ "source": "/demo-booking",    "destination": "/demos", "permanent": true },
-{ "source": "/demo-gcal",       "destination": "/demos", "permanent": true },
-{ "source": "/demo-reschedule", "destination": "/demos", "permanent": true }
+Staged `who-we-help.html` is **35 KB / 315 lines** with full 5-persona content (Solo Practice Owner, Multi-Doctor Office Manager, DSO Operations Lead, Specialty Practice Owner, New Practice / Startup Dentist). Canonical nav with Enterprise link applied. The live site's "200 but empty body" was a previous deploy artifact — this version is whole.
+
+---
+
+## Fix #4 — `/case-studies` ↔ `/portfolio` loop broken
+
+In `portfolio.html`, the "Read the WizKids story →" link previously pointed to `/case-studies`, which `vercel.json` 301s back to `/portfolio`. Changed to:
+
+- Link: `<a href="#wizkids" class="case-link">See the WizKids deployment →</a>`
+- Section: added `id="wizkids"` to the WizKids section so the anchor lands cleanly.
+
+**Verify:** `rg 'href="/case-studies"' portfolio.html` → 0 hits (confirmed).
+
+Other pages still link to `/case-studies` (faq, platform, integrations, etc.) — those produce a single clean 301 to `/portfolio`, which is the intended Vercel behavior. Not a loop.
+
+---
+
+## Fix #5 — `/pricing` (FLAGGED, NOT CHANGED)
+
+`vercel.json` line 30-32 redirects `/pricing` → `/platform#pricing` (302, non-permanent). A standalone `pricing.html` exists in the bundle but is unreachable while this redirect is in place.
+
+**Decision needed (no action taken):**
+- (A) Keep redirect → pricing lives as a section on `/platform`. Current state.
+- (B) Remove the `/pricing` rule from `vercel.json` → `pricing.html` becomes the live pricing page.
+
+Default per task spec: **leave redirect in place**. Change `vercel.json` and re-deploy if you want option B.
+
+---
+
+## Bundle contents summary
+
+| Category | Files |
+|---|---|
+| HTML pages (English) | 88 |
+| HTML pages (Spanish, `/es/`) | 11 |
+| `vercel.json` | Carried from source repo (unchanged from current production) |
+| `sitemap.xml` | Carried from source repo (already had `/enterprise`) |
+| `assets/booking-viz.{css,js}` | Carried from `aria-widen-all` |
+| `assets/insurance-viz.{css,js}` | Added from `aria-insurance-demo` |
+| `audio/demo-book-self.mp3` | Carried from `aria-widen-all` |
+| `audio/demo-insurance-verification.mp3` | Added from `aria-insurance-demo` |
+| `aria-call-demo.mp3`, `404.html`, build scripts | Carried |
+
+Files from `aria-final-fixes/` (which fixed homepage vendor names + footer mailboxes) were overlaid on top of `aria-widen-all/`, then `Enterprise` nav-link injection layered on top of that. This bundle is the canonical state — re-deploying it cannot regress anything currently live.
+
+---
+
+## Post-deploy verification (run from terminal)
+
+```bash
+# /enterprise loads
+curl -sI https://www.ariadental.ai/enterprise | head -1   # expect: HTTP/2 200
+
+# /who-we-help has content
+curl -s https://www.ariadental.ai/who-we-help | wc -c     # expect: >30000
+
+# /case-studies 301s once, ends at /portfolio (no loop)
+curl -sI -L https://www.ariadental.ai/case-studies | grep -E '^(HTTP|location)'
+
+# nav contains Enterprise on a sample page
+curl -s https://www.ariadental.ai/security | grep -o '/enterprise">Enterprise'
 ```
 
-Used `permanent: true` only (no `statusCode` field, per the mutual-exclusivity rule).
-
-`/demo` was **not** redirected — `demo.html` is being kept since many other pages still link to it.
-
-## 4. sitemap.xml — entries removed
-
-Removed these three URL entries:
-- `https://www.ariadental.ai/demo-booking`
-- `https://www.ariadental.ai/demo-gcal`
-- `https://www.ariadental.ai/demo-reschedule`
-
-`/demos` (the canonical audio-demos page) is still present in the sitemap (line 41, `lastmod 2026-05-09`). `/demo` is also still present (it's still a live page).
-
-## 5. Audio assets
-
-- `audio/aria-call-demo.mp3` — **still in use** by `demo.html`'s audio call player (line `<audio id="audio">...<source src="aria-call-demo.mp3">`). Do not delete. The note in the original task brief suggesting it might be unused was inaccurate for this codebase state — the homepage may no longer reference it, but the `/demo` page does.
-
-## 6. Verification
-
-All run against the staged folder after edits — all returned 0 hits:
-
-```
-rg "Watch Aria close patients" .                           → 0
-rg "See It In Action" .                                    → 0
-rg "Full Patient Journey" .                                → 0
-rg "Book → Google Calendar" .                              → 0
-rg "Reschedule → Calendar Updates" .                       → 0
-rg "Old slot removed" .                                    → 0
-rg 'href="/demo-' .                                        → 0
-rg 'href="/demo"' .                                        → 0  (in staged files; still present in unchanged pages that link to /demo — intentional, that page stays)
-```
-
-## 7. Files in this overlay
-
-```
-how-it-works.html   (modified — 3-card section removed)
-portfolio.html      (modified — 3-card section removed)
-demo.html           (modified — 3-card section + scoped CSS removed)
-vercel.json         (modified — 3 redirects added)
-sitemap.xml         (modified — 3 entries removed)
-_AGENT_CHANGES.md   (this file)
-```
-
-## 8. Constraints honored
-
-- Homepage booking demo: not touched.
-- Audio demos page `/demos`: not touched.
-- Insurance demo: not touched.
-- Navigation links to `/demos`: not touched.
-- No prose blocks modified — only the specific 3-card section.
-- `permanent` + `statusCode` mutual-exclusivity respected in vercel.json.
-
-## 9. Anything tricky
-
-- The 3-card section on `demo.html` had different copy (`Interactive Demos` / `See exactly how Aria closes patients`) and used a `.demo-card` class with its own scoped CSS rather than inline styles. Both the section and the scoped CSS rules were removed. The `.demo-card` class is also used on `demos.html` (the audio demos page) — that file is untouched and has its own CSS for the class, so removing it from `demo.html` doesn't affect `demos.html`.
-- `demo.html` is kept (still heavily linked from CTAs across the site) but the 3-card section is gone, so the page now ends with the audio call player + "What your demo will cover" block, then straight to the CTA — flow verified.
+All four should pass within ~60 seconds of the Vercel deploy completing.
