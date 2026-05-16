@@ -5,7 +5,6 @@
   "redirects": [
     { "source": "/aria-vs-others", "destination": "/compare", "permanent": true },
     { "source": "/aria-vs-weave", "destination": "/compare", "permanent": true },
-    { "source": "/aria-vs-arini-dentina-comparison", "destination": "/how-aria-compares", "permanent": true },
 
     {
       "source": "/:path*",
