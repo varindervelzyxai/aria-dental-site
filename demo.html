@@ -237,12 +237,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="dc-body"><div class="dc-time">⏱ ~60 seconds</div><p>Watch Aria handle a new patient call — from answering the phone to verifying insurance, quoting cost, collecting payment, and confirming.</p><div class="dc-btn">Watch Full Demo →</div></div>
       </a>
       <a href="/demo-gcal" class="demo-card">
-        <div class="dc-header"><div style="font-size:40px;margin-bottom:8px">📅</div><div class="dc-title">Book → Google Calendar</div><div class="dc-sub">Appointment syncs instantly</div></div>
-        <div class="dc-body"><div class="dc-time">⏱ ~45 seconds</div><p>See how every booking appears on the doctor's Google Calendar automatically — no manual entry, no double-booking.</p><div class="dc-btn">Watch Calendar Demo →</div></div>
+        <div class="dc-header"><div style="font-size:40px;margin-bottom:8px">📅</div><div class="dc-title">Book → Practice Calendar</div><div class="dc-sub">Appointment syncs instantly</div></div>
+        <div class="dc-body"><div class="dc-time">⏱ ~45 seconds</div><p>See how every booking appears on the doctor's calendar automatically — no manual entry, no double-booking.</p><div class="dc-btn">Watch Calendar Demo →</div></div>
       </a>
       <a href="/demo-reschedule" class="demo-card">
         <div class="dc-header"><div style="font-size:40px;margin-bottom:8px">🔄</div><div class="dc-title">Reschedule → Calendar Updates</div><div class="dc-sub">Old slot removed, new slot added</div></div>
-        <div class="dc-body"><div class="dc-time">⏱ ~40 seconds</div><p>Watch Aria recognize a returning patient, find a new slot, and update Google Calendar — old event removed, new event added.</p><div class="dc-btn">Watch Reschedule Demo →</div></div>
+        <div class="dc-body"><div class="dc-time">⏱ ~40 seconds</div><p>Watch Aria recognize a returning patient, find a new slot, and update the practice calendar — old event removed, new event added.</p><div class="dc-btn">Watch Reschedule Demo →</div></div>
       </a>
     </div>
   </div>
@@ -291,11 +291,11 @@ var messages=[
 {time:21,speaker:'patient',text:"Yes. Michael."},
 {time:25,speaker:'aria',text:"Thanks Michael, let's get you in ASAP. Do you have a preference on which provider you'd like to see, or shall I check what we have open?"},
 {time:33,speaker:'patient',text:"Whoever can see me first is fine."},
-{time:37,speaker:'aria',text:"Perfect! What day works best for you — are you thinking today, tomorrow, or later this week?"},
+{time:37,speaker:'aria',text:"Got it. What day works best for you — today, tomorrow, or later this week?"},
 {time:44,speaker:'patient',text:"Can we do tomorrow, like, at 2 PM?"},
 {time:50,speaker:'aria',text:"Let me check what we have available tomorrow afternoon... I'm not seeing 2:00 PM, but we have 3:00, 3:30, 4:00, or 4:30 — would any of those work?"},
 {time:64,speaker:'patient',text:"Can we do 4 PM?"},
-{time:68,speaker:'aria',text:"Perfect! What's the best number to reach you?"},
+{time:68,speaker:'aria',text:"Got it. What's the best number to reach you?"},
 {time:73,speaker:'patient',text:"(555) 123-4567."},
 {time:80,speaker:'aria',text:"Got it — (555) 123-4567. And what's a good email for your confirmation?"},
 {time:90,speaker:'patient',text:"You can send it to patient at example dot com."},
@@ -361,7 +361,7 @@ audio.addEventListener('play', function() {
 });
 
 // Reveal animations
-var rv=document.querySelectorAll('.reveal');var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0.1});rv.forEach(function(el){obs.observe(el)});
+var rv=document.querySelectorAll('.reveal');var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0,rootMargin:"0px 0px -5% 0px"});rv.forEach(function(el){obs.observe(el)});
 </script>
 <script src="https://aria-backend-production-8458.up.railway.app/aria-widget.js" data-client="aria-demo"></script>
 </body>

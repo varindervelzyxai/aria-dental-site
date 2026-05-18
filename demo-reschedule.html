@@ -295,7 +295,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="hero" id="hero">
   <div class="hero-badge"><span class="dot"></span> Live Demo</div>
-  <h1>Patient reschedules.<br><span>Google Calendar updates itself.</span></h1>
+  <h1>Patient reschedules.<br><span>The calendar updates itself.</span></h1>
   <p>Michael needs to move his crown appointment. Aria handles the change in real time — no hold music, no manual updates, no confusion.</p>
   <button class="start-btn" onclick="startDemo()">
     <span class="play-icon"></span>
@@ -341,7 +341,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <!-- STEP 3: CALENDAR UPDATE -->
   <div class="demo-step" id="step3">
-    <div class="section-label">Step 3 — Google Calendar Auto-Updated</div>
+    <div class="section-label">Step 3 — Calendar Auto-Updated</div>
 
     <!-- Change summary -->
     <div class="change-summary" id="changeSummary">
@@ -366,7 +366,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="gcal-brand-top"><span>CAL</span></div>
             <div class="gcal-brand-num">6</div>
           </div>
-          <span class="gcal-brand-name">Google <span>Calendar</span></span>
+          <span class="gcal-brand-name">Practice <span>Calendar</span></span>
         </div>
         <div class="gcal-week-nav">Apr 6 – 10, 2026</div>
         <div class="gcal-aria-badge"><span class="dot"></span> Aria Connected</div>
@@ -482,7 +482,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- Auto actions -->
     <div class="auto-actions" id="autoActions">
       <h4>Automated — Instantly</h4>
-      <div class="auto-action"><span class="aa-check">✓</span> Google Calendar updated: Mon 4 PM → Wed 2 PM</div>
+      <div class="auto-action"><span class="aa-check">✓</span> Calendar updated: Mon 4 PM → Wed 2 PM</div>
       <div class="auto-action"><span class="aa-check">✓</span> Reschedule confirmation SMS sent to (714) 555-0192</div>
       <div class="auto-action"><span class="aa-check">✓</span> Old reminders cancelled, new reminders scheduled</div>
       <div class="auto-action"><span class="aa-check">✓</span> Intake forms link resent with updated appointment time</div>
@@ -632,7 +632,7 @@ async function startDemo() {
   showStep('step4');
   const c4 = document.getElementById('chat4Body');
   await typeMessage(c4, "All set, Michael! You're confirmed for Wednesday April 8th at 2:00 PM at WizKids Dental. I've sent you a new confirmation text. See you Wednesday!", 'aria', 1800);
-  await typeMessage(c4, "Perfect, thank you so much!", 'patient', 900);
+  await typeMessage(c4, "Great, thank you so much!", 'patient', 900);
   await wait(700);
 
   setProgress(5, 'completed');
