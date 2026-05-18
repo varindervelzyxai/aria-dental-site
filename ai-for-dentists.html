@@ -316,7 +316,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="section"><div class="container pillar-prose">
 <h2>Security, <a href="/security" style="color:var(--amber);font-weight:500">HIPAA</a>, and <span>Patient Trust</span></h2>
 <p>Every piece of patient data Aria touches is encrypted — <strong>AES-256-GCM at rest, TLS in transit.</strong> Access is role-controlled. All infrastructure providers operate under signed Business Associate Agreements.</p>
-<p>Aria does not store credit card numbers. Payment processing runs through Stripe's PCI-compliant infrastructure.</p>
+<p>Aria does not store credit card numbers. Payment processing runs through a PCI-DSS Level 1 card processor.</p>
 <p>Emergency calls are detected by language pattern analysis and routed immediately to your team or on-call number. Aria never provides clinical advice.</p>
 <p><a href="/security" class="inline-link">Read the full security and compliance breakdown →</a></p>
 </div></section>
@@ -372,4 +372,5 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script src="main.js" defer></script>
 <script src="https://aria-backend-production-8458.up.railway.app/aria-widget.js" data-client="aria-demo"></script>
+<script>(function(){var els=document.querySelectorAll(".reveal");if(!els.length)return;var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("visible");obs.unobserve(e.target)}})},{threshold:0,rootMargin:"0px 0px -5% 0px"});els.forEach(function(el){obs.observe(el)})})();</script>
 </body></html>
