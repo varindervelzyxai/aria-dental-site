@@ -157,9 +157,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="def-list">
 <div class="row"><strong>HIPAA</strong><span>Self-attested compliance with the Privacy, Security, and Breach Notification Rules. Signed BAA included with every customer contract; available for review prior to signing.</span></div>
-<div class="row"><strong>SOC 2 Type II</strong><span>In progress. Target completion: Q3 2026. We are not currently SOC 2 Type II certified — we will not claim certification we don't have. Our subprocessors (AWS, GCP, Stripe, Twilio) hold their own SOC 2 attestations, and we maintain SOC 2-aligned controls in advance of formal audit.</span></div>
+<div class="row"><strong>SOC 2 Type II</strong><span>In progress. Target completion: Q3 2026. We are not currently SOC 2 Type II certified — we will not claim certification we don't have. Our enterprise cloud, payment, and communications subprocessors hold their own SOC 2 attestations, and we maintain SOC 2-aligned controls in advance of formal audit.</span></div>
 <div class="row"><strong>HITECH</strong><span>Aligned. Breach notification within the 72-hour internal target / 60-day regulatory ceiling. Audit logging covers all PHI access events.</span></div>
-<div class="row"><strong>State data residency</strong><span>Default US-only data residency (us-east-1 / us-west-2 across primary cloud providers). California, Washington, New York PHI handling requirements honored. EU residency not currently supported.</span></div>
+<div class="row"><strong>State data residency</strong><span>Default US-only data residency across primary US-East and US-West cloud regions. California, Washington, New York PHI handling requirements honored. EU residency not currently supported.</span></div>
 <div class="row"><strong>HITRUST CSF</strong><span>Not pursuing today. Available on request for enterprise DSOs that require it; usually addressed via vendor questionnaire alignment.</span></div>
 </div>
 </div></section>
@@ -185,13 +185,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <h2>Subprocessors</h2>
 <p>Aria uses a small set of vetted subprocessors. Each holds its own BAA with us where PHI may flow, and each holds compliance attestations relevant to its role.</p>
 <div class="def-list">
-<div class="row"><strong>Cloud hosting</strong><span>Amazon Web Services (AWS) and Google Cloud Platform (GCP) — primary application + database. Both SOC 2 Type II, HIPAA-eligible. BAA in place.</span></div>
-<div class="row"><strong>Voice runtime</strong><span>Retell AI — voice agent runtime, low-latency speech-to-speech. PHI may flow during active calls. BAA in place.</span></div>
-<div class="row"><strong>LLM inference</strong><span>OpenAI (GPT-4o for voice; Claude for chat via Anthropic). Both maintain enterprise BAAs for healthcare workloads. PHI flows through inference pipelines for active calls and chats only; no training on customer data.</span></div>
-<div class="row"><strong>SMS gateway</strong><span>Twilio — SMS delivery for confirmations, reminders, and recall outreach. SOC 2, HIPAA-eligible with BAA. 10DLC registered.</span></div>
-<div class="row"><strong>Payments</strong><span>Stripe — PCI-DSS Level 1, HIPAA-eligible for payment metadata. We do not store card numbers; tokenized via Stripe Customer objects.</span></div>
-<div class="row"><strong>Insurance EDI</strong><span>Stedi — X12 270/271 eligibility transactions for dental <a href="/dental-insurance-verification-ai" style="color:var(--amber);font-weight:500">insurance verification</a>. SOC 2 Type II, HIPAA BAA.</span></div>
-<div class="row"><strong>Error monitoring</strong><span>Sentry — application error tracking. PHI scrubbed at the SDK level before transmission; no patient identifiers in error reports. SOC 2 Type II.</span></div>
+<div class="row"><strong>Cloud hosting</strong><span>Enterprise cloud infrastructure across two US regions — primary application + database. SOC 2 Type II, HIPAA-eligible. BAA in place.</span></div>
+<div class="row"><strong>Voice runtime</strong><span>Proprietary voice orchestration layer for low-latency speech-to-speech conversation. PHI may flow during active calls. BAA in place with all underlying subprocessors.</span></div>
+<div class="row"><strong>Language model inference</strong><span>Enterprise BAA-covered language model providers for voice and chat. PHI flows through inference pipelines for active calls and chats only; no training on customer data.</span></div>
+<div class="row"><strong>SMS gateway</strong><span>HIPAA-eligible SMS provider with BAA for delivery of confirmations, reminders, and recall outreach. SOC 2, 10DLC registered.</span></div>
+<div class="row"><strong>Payments</strong><span>PCI-DSS Level 1 payment processor, HIPAA-eligible for payment metadata. We do not store card numbers; payment instruments are tokenized.</span></div>
+<div class="row"><strong>Insurance EDI</strong><span>Real-time X12 270/271 eligibility clearinghouse for dental <a href="/dental-insurance-verification-ai" style="color:var(--amber);font-weight:500">insurance verification</a>. SOC 2 Type II, HIPAA BAA.</span></div>
+<div class="row"><strong>Error monitoring</strong><span>Application error tracking. PHI scrubbed at the SDK level before transmission; no patient identifiers in error reports. SOC 2 Type II.</span></div>
 <div class="row"><strong>Analytics</strong><span>Google Analytics 4 (de-identified site usage), Microsoft Clarity (session replay with PHI masking), Google Tag Manager. None receive PHI; aggregate marketing telemetry only.</span></div>
 </div>
 <p style="margin-top:18px">Full subprocessor list with categories, purposes, and data types is available to customers and prospects under NDA — request from <a href="mailto:security@ariadental.ai">security@ariadental.ai</a>.</p>

@@ -98,4 +98,6 @@
   <url><loc>https://www.ariadental.ai/es/integrations</loc><lastmod>2026-05-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel="alternate" hreflang="en" href="https://www.ariadental.ai/integrations"/><xhtml:link rel="alternate" hreflang="es" href="https://www.ariadental.ai/es/integrations"/></url>
   <url><loc>https://www.ariadental.ai/es/case-studies</loc><lastmod>2026-05-08</lastmod><changefreq>weekly</changefreq><priority>0.7</priority><xhtml:link rel="alternate" hreflang="en" href="https://www.ariadental.ai/case-studies"/><xhtml:link rel="alternate" hreflang="es" href="https://www.ariadental.ai/es/case-studies"/></url>
   <url><loc>https://www.ariadental.ai/es/help</loc><lastmod>2026-05-08</lastmod><changefreq>monthly</changefreq><priority>0.55</priority><xhtml:link rel="alternate" hreflang="en" href="https://www.ariadental.ai/help"/><xhtml:link rel="alternate" hreflang="es" href="https://www.ariadental.ai/es/help"/></url>
+  <!-- Batch 10 (2026-05-17) — new blog posts -->
+  <url><loc>https://www.ariadental.ai/blog/stop-losing-booked-visits-missed-front-desk-calls</loc><lastmod>2026-05-17</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
 </urlset>

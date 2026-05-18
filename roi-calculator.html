@@ -279,7 +279,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script>
 var nav=document.getElementById('nav');window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>20)});
 var nt=document.getElementById('navToggle'),nl=document.getElementById('navLinks');nt.addEventListener('click',function(){nl.classList.toggle('open')});nl.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){nl.classList.remove('open')})});
-var rv=document.querySelectorAll('.reveal');var obs=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting)en.target.classList.add('visible')})},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});rv.forEach(function(el){obs.observe(el)});
+var rv=document.querySelectorAll('.reveal');var obs=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting)en.target.classList.add('visible')})},{threshold:0,rootMargin:"0px 0px -5% 0px",rootMargin:'0px 0px -40px 0px'});rv.forEach(function(el){obs.observe(el)});
 
 // ROI Calculator
 var roiFired = false;

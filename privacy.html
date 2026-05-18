@@ -115,14 +115,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <li><strong>Call transcripts and SMS message content.</strong> Including everything the patient says, types, or sends.</li>
 <li><strong>Identifiers patients provide.</strong> Full name, date of birth, phone number, email address, and (for booking and verification) insurance carrier, member ID, group number, plan name, and subscriber relationship.</li>
 <li><strong>Appointment context.</strong> Provider preference, procedure type, scheduling preferences, prior visits if the patient is on file, and any clinical context the patient shares (e.g., "my crown fell out").</li>
-<li><strong>Payment instruments.</strong> When a patient pays a copay or balance through Aria, payment card details are sent directly to our payment processor (Stripe). Aria's servers receive only a tokenized reference, the last four digits, the brand, and the expiry month/year.</li>
+<li><strong>Payment instruments.</strong> When a patient pays a copay or balance through Aria, payment card details are sent directly to a PCI-DSS Level 1 payment processor. Aria's servers receive only a tokenized reference, the last four digits, the brand, and the expiry month/year.</li>
 </ul>
 
 <h3>2.2 From dental practices and their staff</h3>
 <ul>
 <li>Practice profile (legal name, locations, providers, hours, services offered, fee schedule, payer list).</li>
 <li>Admin dashboard credentials and JWT session tokens.</li>
-<li>Connector credentials for Google Calendar, the practice management system (e.g., OpenDental), Stripe, Twilio, Stedi, and email providers. Stored encrypted at rest.</li>
+<li>Connector credentials for calendar sync, the practice management system, payments, SMS/voice gateways, insurance eligibility, and email delivery. Stored encrypted at rest.</li>
 <li>Configuration choices: voice persona, business rules, reminder cadence, recall windows, intake form fields, and similar.</li>
 </ul>
 
@@ -151,7 +151,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </ul>
 
 <h2 id="hipaa-notice">4. <a href="/security" style="color:var(--amber);font-weight:500">HIPAA</a> &amp; BAA</h2>
-<p>Aria is built to support <a href="/hipaa-compliance-ai-dental-tools" style="color:var(--amber);font-weight:500">HIPAA compliance</a> for the dental practices that use it. We sign a Business Associate Agreement with every dental practice that handles Protected Health Information (PHI) through the Service. Each subprocessor that touches PHI also signs a BAA with us before any PHI is routed through it. Patient health information is encrypted at rest using AES-256-GCM and in transit using TLS 1.2 or higher. Access to PHI inside Velzyx AI is restricted to the smallest set of personnel needed to operate the Service and is logged.</p>
+<p>Aria is built to support <a href="/hipaa-compliance-ai-dental-tools" style="color:var(--amber);font-weight:500">HIPAA compliance</a> for the dental practices that use it. We sign a Business Associate Agreement with every dental practice that handles Protected Health Information (PHI) through the Service. Each subprocessor that touches PHI also signs a BAA with us before any PHI is routed through it. Patient health information is encrypted at rest using AES-256-GCM and in transit using TLS 1.2 or higher. Access to PHI inside Velzyx AI Inc. is restricted to the smallest set of personnel needed to operate the Service and is logged.</p>
 <p>Aria is a tool to assist a dental practice's front-office workflow. Aria does not make clinical decisions, and patients should not rely on Aria for medical advice. Patients with a dental emergency should call their practice's emergency line or seek in-person care.</p>
 
 <h2 id="retention">5. Retention</h2>
@@ -160,7 +160,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <li><strong>Call and chat transcripts:</strong> retained for the lifetime of the practice's account by default, so the practice can search history. A practice may shorten this in dashboard settings.</li>
 <li><strong>SMS message history:</strong> 18 months by default; configurable.</li>
 <li><strong>Patient profiles and appointments:</strong> retained for the lifetime of the practice's account; deleted on practice termination plus 30 days, unless the practice exports first.</li>
-<li><strong>Payment metadata (last four, brand, expiry):</strong> retained for the lifetime of the practice's account. Full PAN data is held by Stripe under PCI-DSS, never on Aria infrastructure.</li>
+<li><strong>Payment metadata (last four, brand, expiry):</strong> retained for the lifetime of the practice's account. Full PAN data is held by our PCI-DSS Level 1 payment processor, never on Aria infrastructure.</li>
 <li><strong>Website telemetry:</strong> Google Analytics 4 retains event data for 14 months. Microsoft Clarity retains session replays for up to 30 days.</li>
 <li><strong>System logs:</strong> 30 days for application logs, 90 days for security logs.</li>
 </ul>
@@ -171,17 +171,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <table class="legal-table">
 <thead><tr><th>Subprocessor</th><th>Purpose</th><th>Region</th></tr></thead>
 <tbody>
-<tr><td>Amazon Web Services</td><td>Cloud hosting, encrypted storage, networking</td><td>United States</td></tr>
-<tr><td>Google Cloud Platform</td><td>Backup hosting, Calendar API, certain ML inference</td><td>United States</td></tr>
-<tr><td>OpenAI</td><td>Voice and language model inference (zero-retention API)</td><td>United States</td></tr>
-<tr><td>Anthropic</td><td>Chat model inference (zero-retention API)</td><td>United States</td></tr>
-<tr><td>Retell AI</td><td>Real-time voice orchestration</td><td>United States</td></tr>
-<tr><td>Twilio</td><td>SMS messaging and voice trunking</td><td>United States</td></tr>
-<tr><td>Stripe</td><td>Payment processing (PCI-DSS Level 1)</td><td>United States</td></tr>
-<tr><td>Stedi</td><td>Insurance eligibility (270/271 transactions)</td><td>United States</td></tr>
-<tr><td>Sentry</td><td>Error and performance monitoring</td><td>United States</td></tr>
-<tr><td>Brevo</td><td>Transactional email</td><td>United States / EU</td></tr>
-<tr><td>Cloudflare</td><td>DNS, WAF, edge caching for the marketing site</td><td>Global</td></tr>
+<tr><td>Enterprise cloud infrastructure</td><td>Cloud hosting, encrypted storage, networking, calendar APIs, ML inference</td><td>United States</td></tr>
+<tr><td>Language and voice model inference</td><td>Real-time voice orchestration and conversational reasoning (zero-retention, BAA-covered)</td><td>United States</td></tr>
+<tr><td>SMS and voice gateway</td><td>SMS messaging and inbound/outbound voice trunking (HIPAA BAA, 10DLC registered)</td><td>United States</td></tr>
+<tr><td>Payment processor</td><td>PCI-DSS Level 1 card-on-file and payment links</td><td>United States</td></tr>
+<tr><td>Insurance EDI clearinghouse</td><td>X12 270/271 eligibility transactions (SOC 2 Type II, BAA)</td><td>United States</td></tr>
+<tr><td>Error and performance monitoring</td><td>Application error tracking with PHI scrubbed at SDK level</td><td>United States</td></tr>
+<tr><td>Transactional email</td><td>Confirmation and reminder email delivery</td><td>United States</td></tr>
+<tr><td>Edge network</td><td>DNS, WAF, edge caching for the marketing site</td><td>Global</td></tr>
 </tbody>
 </table>
 <p>The current list of subprocessors is maintained in the admin dashboard and updated when material changes occur. Practices receive at least 30 days' notice before a new subprocessor handling PHI is added, with the right to object.</p>
