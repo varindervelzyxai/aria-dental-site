@@ -122,7 +122,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <a class="skip-link" href="#main">Skip to main content</a>
 <nav id="nav"><div class="nav-inner"><a href="/" class="nav-logo">aria</a><ul class="nav-links" id="navLinks"><li><a href="/platform">Platform</a></li><li><a href="/how-it-works">How It Works</a></li><li><a href="/demos">Demos</a></li><li><a href="/portfolio">Portfolio</a></li><li><a href="/compare">Compare</a></li><li><a href="/integrations">Integrations</a></li><li><a href="/security">Security</a></li><li><a href="/about">About</a></li><li><a href="/es/" aria-label="Español" style="font-size:13px;opacity:.85">🌐 Español</a></li><li><a href="/contact" class="btn btn-primary">Book a Demo</a></li></ul><button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button></div></nav>
 <main id="main">
-
 <section class="blog-hero"><div class="blog-article">
 <div class="blog-meta">
 <span class="blog-category">Compliance</span>
@@ -133,11 +132,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <h1 style="font-family:'Fraunces',serif;font-size:clamp(32px,5vw,52px);font-weight:600;line-height:1.12;letter-spacing:-.02em;color:var(--charcoal);margin-bottom:20px"><a href="/security" style="color:var(--amber);font-weight:500">HIPAA</a> compliance for AI tools in dentistry: <span style="color:var(--amber);font-style:italic">what to look for before you buy</span></h1>
 <p style="font-size:18px;line-height:1.7;color:var(--charcoal-70);max-width:640px">AI vendors love the word 'HIPAA-compliant' on their homepage. The version that holds up in an audit is more specific than that. Here's what every dental practice should require before signing.</p>
 </div></section>
-
 <section class="blog-body"><div class="blog-article">
-
 <p>HIPAA compliance is one of those topics where the marketing copy and the actual obligation drift apart. A vendor saying "we're HIPAA-compliant" is roughly as informative as a contractor saying "we're licensed" — true but incomplete. What you need to know is what they sign, what they encrypt, what they log, who can see your patient data, and what happens if they have a breach. This guide walks through the specific questions to ask before any AI tool touches a single piece of patient information at your practice.</p>
-
 <div class="blog-toc">
 <div class="toc-label">In this post</div>
 <ol>
@@ -150,19 +146,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <li><a href="#checklist">The 14-point vendor checklist</a></li>
 </ol>
 </div>
-
 <h2 id="what-hipaa-covers">What HIPAA actually requires of AI vendors</h2>
-
 <p>An AI receptionist that talks to patients, books appointments, and reads back insurance benefits is — by every definition that matters — handling Protected Health Information (PHI). The patient's name, date of birth, payer, member ID, and reason for the visit are all PHI. The recording of a call where they describe a toothache is PHI. The transcript stored in the vendor's system is PHI. This means the vendor is a Business Associate under HIPAA, and you, the covered entity, are required to have specific controls in place before letting that data leave your office.</p>
-
 <p>HIPAA's Security Rule organizes these controls into three buckets: administrative (policies, training, designated security officer), physical (data centers, workstations), and technical (encryption, access control, audit logging). A compliant vendor needs to satisfy all three. A vendor with a SOC 2 Type II report has done most of this work and had it independently verified — that's the closest thing to a shortcut.</p>
-
 <h2 id="baa">The BAA — what to insist on</h2>
-
 <p>The Business Associate Agreement is the contract that creates a legal obligation for your vendor to handle PHI according to HIPAA. If a vendor is unwilling to sign a BAA, that conversation should end there. Don't let "we have BAAs with our subprocessors" substitute for a BAA with you — the chain has to go all the way back to you, the covered entity.</p>
-
 <p>What a strong dental BAA includes:</p>
-
 <ul>
 <li>A clear definition of PHI as it applies to your specific use case (call recordings, transcripts, patient details, insurance numbers).</li>
 <li>Permitted uses and disclosures — explicitly stating that PHI is used <em>only</em> to provide the service to you, not to train models, not to share with marketing, not to sell.</li>
@@ -170,58 +159,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <li>A subprocessor list, with a commitment that any new subprocessor will also have a BAA in place before touching PHI.</li>
 <li>Data return or destruction at end of contract.</li>
 </ul>
-
 <div class="blog-callout">
 <div class="callout-label">Red flag</div>
 <p>"We'll add a BAA to your enterprise contract." Translation: it's not part of the standard agreement and you're going to have to negotiate. For most dental practices, that's a non-starter — you don't have a procurement team. Insist on the BAA being executed alongside the standard subscription, before any data moves.</p>
 </div>
-
 <h2 id="encryption">Encryption: in transit and at rest</h2>
-
 <p>Two phrases worth knowing: encryption in transit and encryption at rest. In transit means the data is encrypted while it moves between your office, the vendor's servers, the AI model, and any third parties. The standard here is TLS 1.2 or higher; TLS 1.3 is current. At rest means the data is encrypted while it's sitting in the vendor's database. The standard is AES-256.</p>
-
 <p>Both are table stakes for an AI dental tool. If a vendor can't tell you exactly what they encrypt and how, that's a sign their security posture is more aspiration than implementation. Aria, like any serious AI receptionist for healthcare, encrypts everything end-to-end with AES-256 at rest and TLS 1.3 in transit, and we're happy to put that in writing.</p>
-
 <h2 id="access-and-audit">Access controls and audit logs</h2>
-
 <p>Your patient data should be visible only to people at your practice and the smallest possible set of vendor personnel — and every access should be logged.</p>
-
 <p>Specifically, ask:</p>
-
 <ul>
 <li>How is access to my workspace controlled? (Answer should reference role-based access control and SSO.)</li>
 <li>Can I see who at your company has accessed my data, and when?</li>
 <li>What's the retention policy for call recordings and transcripts? Can I shorten it?</li>
 <li>If I cancel, how is my data destroyed, and on what timeline?</li>
 </ul>
-
 <p>The audit log question is the most revealing. A vendor that can't produce an access log on demand is one that hasn't built the muscle of being audited. That's not where you want to be the first one to find out.</p>
-
 <h2 id="subprocessors">Subprocessors and the language-model question</h2>
-
 <p>Most AI receptionists rely on third-party language-model inference for the conversational layer. This isn't bad — it's the way the industry works. What matters is whether those subprocessors are also bound by BAAs, and whether your data is being used to train their models.</p>
-
 <p>Two specific questions to ask:</p>
-
 <ol>
 <li><strong>Is my data used to train AI models?</strong> The correct answer is no. The major enterprise language-model providers offer plans where customer data is excluded from training, and any vendor handling PHI should be on those plans.</li>
 <li><strong>Do you have BAAs with your language-model providers?</strong> Aria's enterprise language-model and voice-inference subprocessors are all on BAA-covered enterprise tiers. If a vendor is using consumer-tier APIs to handle your patient data, that's a violation waiting to happen.</li>
 </ol>
-
 <div class="blog-pullquote">
 <p>If a vendor can't show you the BAA chain from your practice down to the AI model, the gap in that chain is where your liability lives.</p>
 </div>
-
 <h2 id="breach">Breach notification and incident response</h2>
-
 <p>Breaches happen. The question isn't whether your vendor will ever have an incident — the question is whether they have a documented response process, a notification commitment, and a track record of executing on both. Ask for their incident response runbook (or a summary). Ask how they'd notify you. Ask what they did the last time something happened.</p>
-
 <p>If they say "we've never had an incident," you're either the first practice to ask, or they're not telling you the whole truth. Both are problems.</p>
-
 <h2 id="checklist">The 14-point vendor checklist</h2>
-
 <p>Before signing with any AI vendor that touches patient data, get yes/no answers to these:</p>
-
 <ol>
 <li>Will you sign a BAA before we exchange any PHI?</li>
 <li>Is the BAA part of standard onboarding, or a custom contract?</li>
@@ -238,18 +207,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <li>Do you have a designated security officer? Can I talk to them?</li>
 <li>Have you been audited by a customer in the past 12 months?</li>
 </ol>
-
 <p>A vendor that hits all 14 is doing the work. A vendor that punts on three or more — especially #1, #2, #5, or #11 — is one I wouldn't put PHI into.</p>
-
 <p>For Aria specifically, our <a href="/security">security page</a> covers each of these in detail; if you want to walk through the BAA, encryption posture, and audit log capabilities before a demo, ask us in the booking form.</p>
-
 <div class="blog-cta-box">
 <h3>Walk through Aria's HIPAA posture before you decide</h3>
 <p>We'll send the BAA, the SOC 2 summary, and our subprocessor list before the demo so you can do diligence before you commit time.</p>
 <a href="/contact" class="btn btn-primary btn-lg" style="margin-right:12px">Book a Demo →</a>
 <a href="/roi-calculator" class="btn btn-lg" style="background:rgba(255,255,255,0.15);color:#fff;border:1.5px solid rgba(255,255,255,0.3)">Run the ROI Calculator</a>
 </div>
-
 <h2 style="margin-top:64px">Related reading</h2>
 <div class="related-posts">
 <a href="/voice-ai-dental-buyers-guide" class="related-card" style="text-decoration:none;color:inherit"><h4>Voice AI Buyer's Guide</h4><p>Features to evaluate, integration must-haves, contract terms — what to look for before you buy.</p><span>Read more →</span></a>
@@ -257,17 +222,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <a href="/security" class="related-card" style="text-decoration:none;color:inherit"><h4>Aria's Security Posture</h4><p>BAA, AES-256, SOC 2 alignment, and the full audit log access we offer dental practices.</p><span>Read more →</span></a>
 <a href="/pms-integration-dental-ai" class="related-card" style="text-decoration:none;color:inherit"><h4>PMS Integration: Open Dental, Dentrix, Eaglesoft</h4><p>How AI receptionists integrate with each PMS — what works, what doesn't, what to ask about.</p><span>Read more →</span></a>
 </div>
-
 </div></section>
-
 </main>
 <footer><div class="container"><div class="footer-top">
-<div class="footer-brand"><a href="/" class="footer-logo">aria</a><p>AI front office that closes more dental patients.</p><p style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:8px">Aria is a product of <a href="https://velzyx.ai" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Velzyx AI Inc.</a></p><a href="mailto:hello@ariadental.ai" style="color:var(--amber-light);text-decoration:none;font-size:14px;display:inline-block;margin-top:12px">hello@ariadental.ai</a><div class="footer-address">5000 Birch St, Suite 3000<br>Newport Beach, CA 92660</div></div>
+<div class="footer-brand"><a href="/" class="footer-logo">aria</a><p>AI front office that closes more dental patients.</p><p style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:8px">Aria is a product of <a href="https://velzyx.ai" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Velzyx AI Inc.</a></p><a href="mailto:AriaDental@Velzyx.ai" style="color:var(--amber-light);text-decoration:none;font-size:14px;display:inline-block;margin-top:12px">AriaDental@Velzyx.ai</a><div class="footer-address">5000 Birch St, Suite 3000<br>Newport Beach, CA 92660</div></div>
 <div class="footer-col"><h5>Product</h5><a href="/platform">Platform</a><a href="/how-it-works">How It Works</a><a href="/compare">Compare</a><a href="/demos">Demos</a><a href="/platform#pricing">Pricing</a></div>
 <div class="footer-col"><h5>Resources</h5><a href="/blog">Blog</a><a href="/glossary">Glossary</a><a href="/who-we-help">Who We Help</a><a href="/roi-calculator">ROI Calculator</a><a href="/voice-ai-dental-buyers-guide">Buyer&#39;s Guide</a><a href="/help">Help Center</a></div>
-<div class="footer-col"><h5>Company</h5><a href="/about">About</a><a href="/security">Security</a><a href="/contact">Contact</a><a href="/press">Press &amp; Media</a><a href="mailto:info@velzyx.ai">Careers</a></div>
+<div class="footer-col"><h5>Company</h5><a href="/about">About</a><a href="/security">Security</a><a href="/contact">Contact</a><a href="/press">Press &amp; Media</a><a href="mailto:AriaDental@Velzyx.ai">Careers</a></div>
 <div class="footer-col"><h5>Legal</h5><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/cookies">Cookie Policy</a><a href="/privacy#hipaa-notice">HIPAA Notice</a></div>
 </div><div class="footer-bottom"><span>&copy; 2026 <a href="https://velzyx.ai" rel="noopener" style="color:inherit;text-decoration:none;">Velzyx AI Inc.</a> All rights reserved.</span><span class="footer-social"><a href="https://www.instagram.com/ariadentalai" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a> &middot; <a href="https://twitter.com/ariadentalai" target="_blank" rel="noopener" aria-label="X (Twitter)">X</a> &middot; <a href="https://www.linkedin.com/company/aria-dental-ai" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a></span></div></div></footer>
 <script src="main.js" defer></script>
-<script src="https://aria-backend-production-8458.up.railway.app/aria-widget.js" data-client="aria-demo"></script>
 </body></html>
