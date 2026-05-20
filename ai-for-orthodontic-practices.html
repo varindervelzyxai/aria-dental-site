@@ -121,9 +121,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p style="font-size:18px;line-height:1.7;color:var(--charcoal-70);max-width:640px">Orthodontic practices have call patterns and workflows that differ from general dentistry. What changes for AI receptionists when the appointments are months long, the consults are free, and the parents call about their kids.</p>
 </div></section>
 <section class="blog-body"><div class="blog-article">
-
 <p>Orthodontic practices share most of the same front-desk problems as general dentistry — <a href="/dental-missed-calls-ai" style="color:var(--amber);font-weight:500">missed calls</a>, no-shows, <a href="/dental-insurance-verification-ai" style="color:var(--amber);font-weight:500">insurance verification</a> headaches, after-hours coverage gaps. But three things make ortho different for an AI receptionist: the consult is usually free and high-stakes, the treatment plan is long, and the caller is often a parent asking about their kid. Most general-dentistry AI templates handle ortho calls badly. Here's what to look for in a vendor that does it right.</p>
-
 <div class="blog-toc">
 <div class="toc-label">In this post</div>
 <ol>
@@ -136,25 +134,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <li><a href="#what-to-ask">What to ask vendors</a></li>
 </ol>
 </div>
-
 <h2 id="consult">The free consult is your funnel</h2>
 <p>For most orthodontic practices, the new-patient consult is free, often 60+ minutes, and represents your main conversion event. Lose the call, lose the consult, lose the case. A general-dentistry AI receptionist that's tuned for "book a cleaning" will under-handle these calls — they require softer qualifying, more reassurance, and a different sense of urgency.</p>
-
 <p>What good AI handling looks like for the new ortho consult call: the AI greets warmly, doesn't rush, captures referral source ("How did you hear about us?"), confirms it's a free consult so the caller doesn't worry about cost, offers earliest available consult slots, and reminds the caller to bring previous X-rays or panoramic films if available. <a href="/recovering-revenue-missed-dental-appointments">Recovered new-patient consults</a> are usually the highest-ROI use of an AI receptionist in any specialty.</p>
-
 <h2 id="parent-routing">Parent-vs-patient caller routing</h2>
 <p>In ortho, the patient is often a 12-year-old. The caller is almost always a parent. A naive AI receptionist will ask "may I have your name?" and then proceed to book the parent into the appointment. Bad outcome — wrong patient, wrong DOB, wrong everything.</p>
-
 <p>Better: the AI asks "Are you calling for yourself or someone else?" early. If "for my child," the AI captures the child's name and DOB while keeping the parent as the contact. If "for myself" (adult ortho is a real and growing segment), it proceeds normally. The AI also handles the case where a parent says "I'd like to book a consult for both my kids" — separate appointments, each with their own patient record, but one consolidated SMS confirmation to the parent.</p>
-
 <div class="blog-callout">
 <div class="callout-label">Aria-specific</div>
 <p>Aria's voice agent has a default branch for parent-vs-patient identification on the first 1–2 turns. We've also tuned the dependent-flow handling to keep the parent as guarantor and the child as patient in the PMS, with all SMS confirmations going to the parent's phone. Configurable per practice.</p>
 </div>
-
 <h2 id="treatment-stages">Treatment-stage call types</h2>
 <p>Ortho treatment runs 18–30 months. The same patient calls for very different reasons throughout: bracket loose, wire poking, missed adjustment, retainer fitting, debanding scheduled. A general-dentistry AI doesn't have categories for these. An ortho-tuned AI does.</p>
-
 <ul>
 <li><strong>Routine adjustment</strong> — typically 4–8 week intervals, short visit, doesn't need provider override.</li>
 <li><strong>Bracket repair</strong> — same-day or next-day urgency, slot into the soonest emergency-fit window.</li>
@@ -162,26 +153,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <li><strong>Retainer check / new retainer</strong> — post-debanding follow-up, scheduled appointment.</li>
 <li><strong>Insurance question</strong> — ortho insurance is often a separate lifetime maximum from general dental; the AI should know to verify against the ortho rider, not the general dental coverage.</li>
 </ul>
-
 <h2 id="fees">"How much will braces cost?"</h2>
 <p>The single most common new-patient call question in ortho. The answer is "it depends on the case" — and a poorly tuned AI will either refuse to engage or make up a number, both of which lose the lead.</p>
-
 <p>Better: the AI explains that exact cost depends on the case length and complexity, gives the typical range for the practice (e.g., "comprehensive treatment usually runs $4,500–$7,500 depending on length and whether you're using metal braces or clear aligners"), and explains that the consult will provide an exact quote. Then asks if they'd like to schedule the consult.</p>
-
 <p>This is a place where vendor tuning matters. The default general-dentistry AI prompt won't handle this well — it'll either refuse or guess. An ortho-specific prompt knows the practice's actual price range (configured by the office) and uses it.</p>
-
 <h2 id="emergency">Ortho emergencies</h2>
 <p>Ortho doesn't have many true emergencies, but it has plenty of urgent issues: poking wires causing mouth ulcers, broken brackets that the patient is anxious about, lost retainers right before a job interview. The AI should route these correctly:</p>
-
 <ul>
 <li>True emergency (severe pain, jaw injury, suspected fracture) → escalate to a human or 911 guidance.</li>
 <li>Urgent ortho issue (pokey wire, loose bracket) → offer same-day or next-day slot, give comfort instructions while waiting (orthodontic wax, cover the offending wire end).</li>
 <li>Non-urgent ortho concern (small gap appeared, retainer feels tight) → schedule next available appointment, reassure.</li>
 </ul>
-
 <h2 id="workflow">What changes in the AI workflow for ortho</h2>
 <p>Putting it together — these are the configuration changes a good ortho AI deployment makes versus a general-dentistry deployment:</p>
-
 <table class="compare-table">
 <thead><tr><th>Element</th><th>General dentistry default</th><th>Ortho configuration</th></tr></thead>
 <tbody>
@@ -194,9 +178,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <tr><td>Emergency routing</td><td>True dental emergency</td><td>Pokey wire, broken bracket urgent path</td></tr>
 </tbody>
 </table>
-
 <h2 id="what-to-ask">What to ask AI receptionist vendors if you're an ortho practice</h2>
-
 <ol>
 <li>Do you have an ortho-specific prompt template, or are you using your general dentistry default?</li>
 <li>How does your AI handle the parent-vs-patient identification on the first turn?</li>
@@ -206,16 +188,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <li>How does PMS write-back work for adjustment vs. emergency-fit appointment types?</li>
 <li>Can SMS confirmations route to the parent's phone when the patient is a minor?</li>
 </ol>
-
 <p>If a vendor can't answer 6 of these 7 specifically, they're going to ship you a general-dentistry product with an ortho sticker. That's better than nothing — but it'll undersell every new-consult call you get.</p>
-
 <div class="blog-cta-box">
 <h3>Aria for orthodontic practices</h3>
 <p>30-minute demo. We'll show you the parent-routing, ortho consult flow, and PMS write-back live. We onboard ortho-specific configurations as part of standard setup.</p>
 <a href="/contact?vertical=ortho" class="btn btn-primary btn-lg" style="margin-right:12px">Book a Demo →</a>
 <a href="/integrations" class="btn btn-lg" style="background:rgba(255,255,255,0.15);color:#fff;border:1.5px solid rgba(255,255,255,0.3)">See our PMS integrations</a>
 </div>
-
 <h2 style="margin-top:64px">Related reading</h2>
 <div class="related-posts">
 <a href="/ai-for-pediatric-dental-practices" class="related-card"><h4>AI for Pediatric Dental</h4><p>Many of the same parent-routing challenges — how AI handles the kid-patient call.</p><span>Read more →</span></a>
@@ -227,12 +206,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div></section>
 </main>
 <footer><div class="container"><div class="footer-top">
-<div class="footer-brand"><a href="/" class="footer-logo">aria</a><p>AI front office that closes more dental patients.</p><p style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:8px">Aria is a product of <a href="https://velzyx.ai" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Velzyx AI Inc.</a></p><a href="mailto:hello@ariadental.ai" style="color:var(--amber-light);text-decoration:none;font-size:14px;display:inline-block;margin-top:12px">hello@ariadental.ai</a><div class="footer-address">5000 Birch St, Suite 3000<br>Newport Beach, CA 92660</div></div>
+<div class="footer-brand"><a href="/" class="footer-logo">aria</a><p>AI front office that closes more dental patients.</p><p style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:8px">Aria is a product of <a href="https://velzyx.ai" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Velzyx AI Inc.</a></p><a href="mailto:AriaDental@Velzyx.ai" style="color:var(--amber-light);text-decoration:none;font-size:14px;display:inline-block;margin-top:12px">AriaDental@Velzyx.ai</a><div class="footer-address">5000 Birch St, Suite 3000<br>Newport Beach, CA 92660</div></div>
 <div class="footer-col"><h5>Product</h5><a href="/platform">Platform</a><a href="/how-it-works">How It Works</a><a href="/compare">Compare</a><a href="/demos">Demos</a><a href="/pricing">Pricing</a><a href="/integrations">Integrations</a></div>
 <div class="footer-col"><h5>Resources</h5><a href="/blog">Blog</a><a href="/glossary">Glossary</a><a href="/who-we-help">Who We Help</a><a href="/roi-calculator">ROI Calculator</a><a href="/voice-ai-dental-buyers-guide">Buyer's Guide</a><a href="/faq">FAQ</a><a href="/case-studies">Case Studies</a></div>
-<div class="footer-col"><h5>Company</h5><a href="/about">About</a><a href="/security">Security</a><a href="/contact">Contact</a><a href="/press">Press &amp; Media</a><a href="mailto:info@velzyx.ai">Careers</a></div>
+<div class="footer-col"><h5>Company</h5><a href="/about">About</a><a href="/security">Security</a><a href="/contact">Contact</a><a href="/press">Press &amp; Media</a><a href="mailto:AriaDental@Velzyx.ai">Careers</a></div>
 <div class="footer-col"><h5>Legal</h5><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/cookies">Cookie Policy</a><a href="/privacy#hipaa-notice">HIPAA Notice</a></div>
 </div><div class="footer-bottom"><span>&copy; 2026 <a href="https://velzyx.ai" rel="noopener" style="color:inherit;text-decoration:none;">Velzyx AI Inc.</a> All rights reserved.</span><span class="footer-social"><a href="https://www.instagram.com/ariadentalai" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a> &middot; <a href="https://twitter.com/ariadentalai" target="_blank" rel="noopener" aria-label="X (Twitter)">X</a> &middot; <a href="https://www.linkedin.com/company/aria-dental-ai" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a></span></div></div></footer>
 <script src="main.js" defer></script>
-<script src="https://aria-backend-production-8458.up.railway.app/aria-widget.js" data-client="aria-demo"></script>
 </body></html>

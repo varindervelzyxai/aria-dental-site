@@ -121,11 +121,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p style="font-size:18px;line-height:1.7;color:var(--charcoal-70);max-width:640px">Pediatric dental practices have call mixes that look like nothing else in dentistry. After-school surges, parent-to-kid handoffs, dental anxiety conversations. What an AI receptionist needs to handle them well.</p>
 </div></section>
 <section class="blog-body"><div class="blog-article">
-
 <p>If you run a pediatric dental practice, your call patterns look nothing like a general dentistry practice's. The afternoon surge between 3pm and 5pm is more intense than your morning. The caller is almost never the patient. Half your calls have a parent reassurance subtext under whatever the surface question is. And your pediatric urgent-care calls — knocked-out tooth, swelling, post-procedure questions — need to be handled with empathy, fast.</p>
-
 <p>Most AI receptionist platforms are tuned for general dentistry. The shift to pediatric isn't huge in terms of feature count, but it's significant in tone, flow, and edge cases. Here's what to evaluate.</p>
-
 <div class="blog-toc">
 <div class="toc-label">In this post</div>
 <ol>
@@ -138,50 +135,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <li><a href="#workflow">What changes in the AI workflow</a></li>
 </ol>
 </div>
-
 <h2 id="caller">The caller is the parent</h2>
 <p>Same problem as ortho, more pronounced: 95%+ of your incoming calls are from a parent (or grandparent, or nanny) calling about a child. The AI needs to assume parent-as-caller, not patient-as-caller. The first turn should establish: which child, and what's going on.</p>
-
 <p>Where pediatric differs from ortho: families often have multiple kids in the practice. "I'd like to schedule cleanings for the boys" can mean 2 patients, sometimes 4. The AI needs to handle multi-patient family bookings — same parent, multiple kids, ideally back-to-back appointments so the parent isn't there for 4 hours. <!-- Aria handles back-to-back family bookings in single flow --></p>
-
 <h2 id="after-school">The after-school surge</h2>
 <p>The 3–5pm window in a pediatric practice is brutal. Schools let out, parents pick up, kids realize a tooth is loose / hurts / has a problem, and the calls flood in. Your front desk is also actively wrapping up the day's last appointments. This is when an AI receptionist earns its monthly fee — by handling overflow with the same quality at 4:30pm as at 9am.</p>
-
 <p>The math: if your average front-desk team can handle 6–8 simultaneous calls and your peak hour does 25–30, you're losing somewhere between 15 and 25 calls a day in that window alone. <a href="/how-much-do-missed-calls-cost-dental-practice">Missed pediatric calls</a> aren't usually high-value bookings individually, but they compound — and they're the families likeliest to switch to a competing practice that picked up.</p>
-
 <h2 id="anxiety">Handling dental anxiety conversations</h2>
 <p>A meaningful fraction of pediatric calls aren't "book me an appointment" — they're "my kid is terrified of the dentist." A good AI receptionist responds with empathy first. Aria's prompt has explicit anti-pattern guidance against "Perfect! Let me book you in!" responses to anxiety. Empathy first, booking second.</p>
-
 <p>What good handling looks like: the AI acknowledges the parent's concern, asks if there's a specific past experience driving the fear, mentions that the practice handles anxious kids regularly, offers options (a longer first visit just to meet the doctor and tour the office, sedation options if available, parent-in-the-room policy), and only then asks if they'd like to book. <!-- Aria has a 'gentle-tour visit' appointment type by default for pediatric practices --></p>
-
 <div class="blog-pullquote">
 <p>The AI's job in a pediatric practice isn't to maximize bookings on the first call. It's to be the kind of voice you'd want answering when your scared kid won't open his mouth.</p>
 </div>
-
 <h2 id="first-visit">First-visit calls</h2>
 <p>Pediatric first visits are unusual: the AAPD recommendation is age 1 or within 6 months of the first tooth. Most parents calling about a first visit are calling about a 1–2 year old, sometimes nervous about whether it's "too early." The AI should know:</p>
-
 <ul>
 <li>The standard recommendation is age 1.</li>
 <li>The first visit is short (15–20 min), educational, gentle.</li>
 <li>It typically involves the parent in the chair / lap holding the child.</li>
 <li>It usually doesn't involve any actual dental work unless something obvious is wrong.</li>
 </ul>
-
 <p>The AI shouldn't lecture parents who are calling later than the recommendation — they're already calling, that's what matters. It should book them in.</p>
-
 <h2 id="emergencies">Pediatric dental emergencies</h2>
 <p>Pediatric dental emergencies have a specific protocol that good AI receptionists handle:</p>
-
 <ul>
 <li><strong>Knocked-out permanent tooth</strong> — time-critical (under 1 hour for best outcome). The AI should immediately route the parent to come in or to the nearest pediatric ER, and give comfort instructions: keep the tooth in milk or saline, don't wash it, don't touch the root.</li>
 <li><strong>Knocked-out baby tooth</strong> — usually NOT re-implanted. The AI should reassure, offer a same-day or next-day appointment, and provide pain management guidance.</li>
 <li><strong>Severe swelling, fever, abscess</strong> — escalate to ER if the swelling involves the eye area or breathing; otherwise schedule same-day.</li>
 <li><strong>Post-procedure pain or bleeding</strong> — the AI should escalate to a human or to the on-call provider. This is one of the calls where AI alone isn't enough.</li>
 </ul>
-
 <h2 id="parent-questions">Common parent questions the AI needs to handle</h2>
-
 <table class="compare-table">
 <thead><tr><th>Question</th><th>Good AI handling</th></tr></thead>
 <tbody>
@@ -194,9 +177,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <tr><td>"Will the parent be with the kid during the appointment?"</td><td>Practice-specific policy. AI should know and explain.</td></tr>
 </tbody>
 </table>
-
 <h2 id="workflow">What changes in the AI workflow for pediatric</h2>
-
 <ul>
 <li><strong>Default caller assumption:</strong> parent calling about child. Aria's pediatric template inverts the general-dentistry default.</li>
 <li><strong>Multi-patient family booking flow:</strong> back-to-back or simultaneous appointments for siblings.</li>
@@ -206,19 +187,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <li><strong>Insurance flow:</strong> Medicaid / CHIP-aware plan checks. Many pediatric practices have heavy Medicaid mix.</li>
 <li><strong>Tour-visit appointment type:</strong> non-procedural meet-the-team visit for anxious kids.</li>
 </ul>
-
 <div class="blog-callout">
 <div class="callout-label">Aria-specific</div>
 <p>Aria has a pediatric-tuned voice template available by default. Empathy phrasing, parent-routing, multi-kid family bookings, tour-visit appointment type, pediatric emergency triage — configured during onboarding. Practices on <a href="/aria-for-open-dental" style="color:var(--amber);font-weight:500">Open Dental</a> and <a href="/aria-for-dentrix" style="color:var(--amber);font-weight:500">Dentrix</a> can be live in 5–7 days.</p>
 </div>
-
 <div class="blog-cta-box">
 <h3>Aria for pediatric dental practices</h3>
 <p>30-minute demo. We'll walk through the pediatric prompt, multi-patient family booking, and anxiety-handling flow live. Bring your hardest call type — we'll show you how Aria handles it.</p>
 <a href="/contact?vertical=pediatric" class="btn btn-primary btn-lg" style="margin-right:12px">Book a Demo →</a>
 <a href="/security" class="btn btn-lg" style="background:rgba(255,255,255,0.15);color:#fff;border:1.5px solid rgba(255,255,255,0.3)">Read about HIPAA & security</a>
 </div>
-
 <h2 style="margin-top:64px">Related reading</h2>
 <div class="related-posts">
 <a href="/ai-for-orthodontic-practices" class="related-card"><h4>AI for Orthodontic Practices</h4><p>Adjacent specialty with similar parent-caller dynamics.</p><span>Read more →</span></a>
@@ -230,12 +208,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div></section>
 </main>
 <footer><div class="container"><div class="footer-top">
-<div class="footer-brand"><a href="/" class="footer-logo">aria</a><p>AI front office that closes more dental patients.</p><p style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:8px">Aria is a product of <a href="https://velzyx.ai" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Velzyx AI Inc.</a></p><a href="mailto:hello@ariadental.ai" style="color:var(--amber-light);text-decoration:none;font-size:14px;display:inline-block;margin-top:12px">hello@ariadental.ai</a><div class="footer-address">5000 Birch St, Suite 3000<br>Newport Beach, CA 92660</div></div>
+<div class="footer-brand"><a href="/" class="footer-logo">aria</a><p>AI front office that closes more dental patients.</p><p style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:8px">Aria is a product of <a href="https://velzyx.ai" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Velzyx AI Inc.</a></p><a href="mailto:AriaDental@Velzyx.ai" style="color:var(--amber-light);text-decoration:none;font-size:14px;display:inline-block;margin-top:12px">AriaDental@Velzyx.ai</a><div class="footer-address">5000 Birch St, Suite 3000<br>Newport Beach, CA 92660</div></div>
 <div class="footer-col"><h5>Product</h5><a href="/platform">Platform</a><a href="/how-it-works">How It Works</a><a href="/compare">Compare</a><a href="/demos">Demos</a><a href="/pricing">Pricing</a><a href="/integrations">Integrations</a></div>
 <div class="footer-col"><h5>Resources</h5><a href="/blog">Blog</a><a href="/glossary">Glossary</a><a href="/who-we-help">Who We Help</a><a href="/roi-calculator">ROI Calculator</a><a href="/voice-ai-dental-buyers-guide">Buyer's Guide</a><a href="/faq">FAQ</a><a href="/case-studies">Case Studies</a></div>
-<div class="footer-col"><h5>Company</h5><a href="/about">About</a><a href="/security">Security</a><a href="/contact">Contact</a><a href="/press">Press &amp; Media</a><a href="mailto:info@velzyx.ai">Careers</a></div>
+<div class="footer-col"><h5>Company</h5><a href="/about">About</a><a href="/security">Security</a><a href="/contact">Contact</a><a href="/press">Press &amp; Media</a><a href="mailto:AriaDental@Velzyx.ai">Careers</a></div>
 <div class="footer-col"><h5>Legal</h5><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/cookies">Cookie Policy</a><a href="/privacy#hipaa-notice">HIPAA Notice</a></div>
 </div><div class="footer-bottom"><span>&copy; 2026 <a href="https://velzyx.ai" rel="noopener" style="color:inherit;text-decoration:none;">Velzyx AI Inc.</a> All rights reserved.</span><span class="footer-social"><a href="https://www.instagram.com/ariadentalai" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a> &middot; <a href="https://twitter.com/ariadentalai" target="_blank" rel="noopener" aria-label="X (Twitter)">X</a> &middot; <a href="https://www.linkedin.com/company/aria-dental-ai" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a></span></div></div></footer>
 <script src="main.js" defer></script>
-<script src="https://aria-backend-production-8458.up.railway.app/aria-widget.js" data-client="aria-demo"></script>
 </body></html>
