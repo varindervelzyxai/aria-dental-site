@@ -122,7 +122,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <a class="skip-link" href="#main">Skip to main content</a>
 <nav id="nav"><div class="nav-inner"><a href="/" class="nav-logo">aria</a><ul class="nav-links" id="navLinks"><li><a href="/platform">Platform</a></li><li><a href="/how-it-works">How It Works</a></li><li><a href="/demos">Demos</a></li><li><a href="/portfolio">Portfolio</a></li><li><a href="/compare">Compare</a></li><li><a href="/integrations">Integrations</a></li><li><a href="/security">Security</a></li><li><a href="/about">About</a></li><li><a href="/es/" aria-label="Español" style="font-size:13px;opacity:.85">🌐 Español</a></li><li><a href="/contact" class="btn btn-primary">Book a Demo</a></li></ul><button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button></div></nav>
 <main id="main">
-
 <section class="blog-hero"><div class="blog-article">
 <div class="blog-meta">
 <span class="blog-category">Implementation</span>
@@ -133,11 +132,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <h1 style="font-family:'Fraunces',serif;font-size:clamp(32px,5vw,52px);font-weight:600;line-height:1.12;letter-spacing:-.02em;color:var(--charcoal);margin-bottom:20px">Setting up your AI dental receptionist in 7 days: <span style="color:var(--amber);font-style:italic">a practitioner's checklist</span></h1>
 <p style="font-size:18px;line-height:1.7;color:var(--charcoal-70);max-width:640px">AI receptionist rollouts get sold as 'live in days' and then take six weeks because nobody wrote down what to do on which day. Here's the day-by-day checklist that makes a 7-day rollout actually happen.</p>
 </div></section>
-
 <section class="blog-body"><div class="blog-article">
-
 <p>The reason most AI receptionist deployments slip from "live in a week" to "live in two months" isn't the technology. It's the lack of a clear, written-down sequence of tasks with names attached. When the office manager doesn't know what to do on day three, day three becomes day eight. When the doctor doesn't know what configuration decisions are theirs to make, those decisions wait for a Friday meeting that gets canceled. This checklist is what a clean 7-day rollout looks like — used in dozens of dental practices, not theory.</p>
-
 <div class="blog-toc">
 <div class="toc-label">In this post</div>
 <ol>
@@ -152,17 +148,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <li><a href="#first-30-days">The first 30 days after launch</a></li>
 </ol>
 </div>
-
 <h2 id="before-day-1">Before you start: the prep call</h2>
-
 <p>Before Day 1, the vendor should run a 60-minute prep call. The goal is to know what configuration decisions are coming, who at the practice owns each decision, and what data the vendor needs from you. The output of this call is a one-page implementation brief.</p>
-
 <p>If your vendor doesn't run a prep call before kickoff, ask why. The good ones do.</p>
-
 <h2 id="day-1">Day 1: Kickoff and discovery</h2>
-
 <p>Day 1 is the kickoff meeting plus the start of discovery. 90 minutes total. Stakeholders: practice owner, office manager, vendor's implementation lead.</p>
-
 <ul>
 <li>Confirm scope: which channels (voice, chat, SMS), which use cases (overflow, after-hours, full primary), which locations.</li>
 <li>Walk through the practice's current call flow: greeting, IVR, hold messaging, transfer rules.</li>
@@ -170,26 +160,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <li>Identify provider preferences (does Dr. Singh see new patients only on Tuesdays? Do you not book sedation appointments after 4 PM?).</li>
 <li>Confirm phone numbers to be ported or forwarded, including after-hours routing rules.</li>
 </ul>
-
 <p><strong>Owner action:</strong> by end of day, send the vendor your provider list, operatory list, fee schedule, and current new-patient intake script.</p>
-
 <h2 id="day-2">Day 2: PMS integration</h2>
-
 <p>Day 2 is when the PMS integration gets connected. This usually involves a developer key (<a href="/aria-for-open-dental" style="color:var(--amber);font-weight:500">Open Dental</a>), a certified integration setup (<a href="/aria-for-dentrix" style="color:var(--amber);font-weight:500">Dentrix</a>), or a database connector (Eaglesoft).</p>
-
 <ul>
 <li>Vendor provisions the connection.</li>
 <li>Test pulls of patient records on a small sample (5-10 known patients).</li>
 <li>Test write of a placeholder appointment into a sandbox slot.</li>
 <li>Confirm the right operatories, providers, and appointment types appear in the AI's view of your schedule.</li>
 </ul>
-
 <p><strong>Office manager action:</strong> verify that test bookings appear correctly in your PMS. Flag any field mismatches (provider name spelled differently, operatory IDs).</p>
-
 <h2 id="day-3">Day 3: Voice and conversation configuration</h2>
-
 <p>Day 3 is the dental-specific tuning. The AI gets configured for your practice's voice — literally and figuratively.</p>
-
 <ul>
 <li>Choose the AI's voice character (warmer vs. more clinical; English-default with Spanish fallback).</li>
 <li>Configure greeting and closing scripts.</li>
@@ -197,13 +179,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <li>Define escalation triggers: which calls should route to a human and where.</li>
 <li>Configure SMS templates for confirmations and follow-ups.</li>
 </ul>
-
 <p><strong>Practice owner action:</strong> sign off on the conversation flows. Listen to a sample call. Approve or request changes.</p>
-
 <h2 id="day-4">Day 4: Insurance and eligibility setup</h2>
-
 <p>Day 4 is the insurance and eligibility work, which is the highest-leverage part of the configuration.</p>
-
 <ul>
 <li>Connect eligibility verification API.</li>
 <li>Map the top 10-15 payers your practice sees.</li>
@@ -211,79 +189,57 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <li>Configure the script for "I have insurance" calls — what the AI tells the patient about coverage during the call.</li>
 <li>Set up the handling for edge cases: dual coverage, plan year rollover, missing member ID.</li>
 </ul>
-
 <p><strong>Front-desk action:</strong> walk through the verification scripts with the implementation lead. Flag any payer-specific quirks (Cigna's frequency limits, Anthem's preventive definitions).</p>
-
 <h2 id="day-5">Day 5: Internal testing and team training</h2>
-
 <p>Day 5 is the dry run. The AI is configured but not yet live to patients. The team practices.</p>
-
 <ul>
 <li>Each front-desk team member calls the AI from their personal phone and tries to book a test appointment.</li>
 <li>The implementation lead runs through 8-10 scripted scenarios with the team: new patient, returning patient, emergency, complicated insurance, schedule conflict.</li>
 <li>The team reviews how the AI escalates and where the call lands.</li>
 <li>Office manager walks through the morning-huddle workflow: how AI-booked appointments will appear, what context the team needs.</li>
 </ul>
-
 <p><strong>Team action:</strong> generate a list of edge cases that didn't go well in testing. The vendor fixes them before Day 6.</p>
-
 <h2 id="day-6">Day 6: Soft launch on overflow</h2>
-
 <p>Day 6 is when the AI starts handling real calls — but only the overflow. Your front desk still handles the primary line. The AI catches calls that ring through after the second ring, plus the after-hours queue.</p>
-
 <ul>
 <li>Phone routing reconfigured to send overflow to the AI.</li>
 <li>Vendor monitors the first 20-30 calls in real time and flags any issues.</li>
 <li>Front desk reviews the AI's bookings at end of day and confirms they're appropriate.</li>
 <li>Any patterns that need adjustment get fixed overnight.</li>
 </ul>
-
 <div class="blog-callout">
 <div class="callout-label">Watch for</div>
 <p>The most common Day 6 issue is the AI booking patients for an operatory or provider who shouldn't take that appointment type. This is almost always a configuration miss from Day 1, fixable in 30 minutes once spotted.</p>
 </div>
-
 <h2 id="day-7">Day 7: Full deployment</h2>
-
 <p>Day 7 is full deployment. The AI is now the primary answering layer for the lines you've designated. Your front desk handles in-person, plus the calls the AI escalates.</p>
-
 <ul>
 <li>Phone routing reconfigured for primary handling.</li>
 <li>Vendor stays on standby for the day to monitor and tune.</li>
 <li>End-of-day review: how many calls handled, how many bookings, how many escalations, how many issues.</li>
 <li>Adjust escalation rules based on what surfaced.</li>
 </ul>
-
 <p><strong>Owner action:</strong> celebrate. You're live. The next phase is optimization, not implementation.</p>
-
 <h2 id="first-30-days">The first 30 days after launch</h2>
-
 <p>After launch, here's the cadence that keeps the AI improving:</p>
-
 <ul>
 <li><strong>Week 1:</strong> daily review of escalations and bookings. Tune scripts and edge cases.</li>
 <li><strong>Week 2:</strong> review patterns: which questions are coming up that the AI doesn't handle, what the front desk is doing differently. Add to the FAQ.</li>
 <li><strong>Week 3:</strong> measure the impact: missed-call rate, after-hours bookings, no-show rate. Compare to pre-AI baseline.</li>
 <li><strong>Week 4:</strong> first review meeting with the vendor. Decide what to expand: more channels, more locations, more use cases (recall outreach, no-show recovery).</li>
 </ul>
-
 <div class="blog-pullquote">
 <p>The AI you launch on Day 7 is not the AI you'll have on Day 30. The first month is when the rough edges get sanded — and the practice that does the sanding gets the better product.</p>
 </div>
-
 <h2>Where rollouts go wrong</h2>
-
 <p>The most common reasons a 7-day rollout slips: discovery on Day 1 was rushed and configuration decisions weren't documented; the practice owner wasn't available for sign-off on Day 3; PMS integration credentials weren't ready before Day 2; team didn't actually run the dry-run on Day 5. None of these are technology problems. All are calendar discipline problems.</p>
-
 <p>The vendors that hit 7-day rollouts consistently are the ones that send a written agenda for each day, escalate when a step slips, and won't let you go live before the dry run is clean. <a href="/how-it-works">Aria's rollout</a> follows this exact cadence; we'd rather hold a launch by 48 hours than ship something half-tuned.</p>
-
 <div class="blog-cta-box">
 <h3>Run the 7-day plan with Aria</h3>
 <p>Book a kickoff call. We'll send the day-by-day implementation brief before the call so your team knows what to expect.</p>
 <a href="/contact" class="btn btn-primary btn-lg" style="margin-right:12px">Book a Demo →</a>
 <a href="/roi-calculator" class="btn btn-lg" style="background:rgba(255,255,255,0.15);color:#fff;border:1.5px solid rgba(255,255,255,0.3)">Run the ROI Calculator</a>
 </div>
-
 <h2 style="margin-top:64px">Related reading</h2>
 <div class="related-posts">
 <a href="/pms-integration-dental-ai" class="related-card" style="text-decoration:none;color:inherit"><h4>PMS Integration Reality</h4><p>What integration depth means for Open Dental, Dentrix, and Eaglesoft.</p><span>Read more →</span></a>
@@ -291,17 +247,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <a href="/dental-insurance-verification-faster" class="related-card" style="text-decoration:none;color:inherit"><h4>Faster Insurance Verification</h4><p>What gets configured on Day 4 — and why it's the highest-leverage part of the rollout.</p><span>Read more →</span></a>
 <a href="/how-it-works" class="related-card" style="text-decoration:none;color:inherit"><h4>How Aria Gets Deployed</h4><p>Aria's standard rollout process across the major PMSs.</p><span>Read more →</span></a>
 </div>
-
 </div></section>
-
 </main>
 <footer><div class="container"><div class="footer-top">
-<div class="footer-brand"><a href="/" class="footer-logo">aria</a><p>AI front office that closes more dental patients.</p><p style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:8px">Aria is a product of <a href="https://velzyx.ai" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Velzyx AI Inc.</a></p><a href="mailto:hello@ariadental.ai" style="color:var(--amber-light);text-decoration:none;font-size:14px;display:inline-block;margin-top:12px">hello@ariadental.ai</a><div class="footer-address">5000 Birch St, Suite 3000<br>Newport Beach, CA 92660</div></div>
+<div class="footer-brand"><a href="/" class="footer-logo">aria</a><p>AI front office that closes more dental patients.</p><p style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:8px">Aria is a product of <a href="https://velzyx.ai" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Velzyx AI Inc.</a></p><a href="mailto:AriaDental@Velzyx.ai" style="color:var(--amber-light);text-decoration:none;font-size:14px;display:inline-block;margin-top:12px">AriaDental@Velzyx.ai</a><div class="footer-address">5000 Birch St, Suite 3000<br>Newport Beach, CA 92660</div></div>
 <div class="footer-col"><h5>Product</h5><a href="/platform">Platform</a><a href="/how-it-works">How It Works</a><a href="/compare">Compare</a><a href="/demos">Demos</a><a href="/platform#pricing">Pricing</a></div>
 <div class="footer-col"><h5>Resources</h5><a href="/blog">Blog</a><a href="/glossary">Glossary</a><a href="/who-we-help">Who We Help</a><a href="/roi-calculator">ROI Calculator</a><a href="/voice-ai-dental-buyers-guide">Buyer&#39;s Guide</a><a href="/help">Help Center</a></div>
-<div class="footer-col"><h5>Company</h5><a href="/about">About</a><a href="/security">Security</a><a href="/contact">Contact</a><a href="/press">Press &amp; Media</a><a href="mailto:info@velzyx.ai">Careers</a></div>
+<div class="footer-col"><h5>Company</h5><a href="/about">About</a><a href="/security">Security</a><a href="/contact">Contact</a><a href="/press">Press &amp; Media</a><a href="mailto:AriaDental@Velzyx.ai">Careers</a></div>
 <div class="footer-col"><h5>Legal</h5><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/cookies">Cookie Policy</a><a href="/privacy#hipaa-notice">HIPAA Notice</a></div>
 </div><div class="footer-bottom"><span>&copy; 2026 <a href="https://velzyx.ai" rel="noopener" style="color:inherit;text-decoration:none;">Velzyx AI Inc.</a> All rights reserved.</span><span class="footer-social"><a href="https://www.instagram.com/ariadentalai" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a> &middot; <a href="https://twitter.com/ariadentalai" target="_blank" rel="noopener" aria-label="X (Twitter)">X</a> &middot; <a href="https://www.linkedin.com/company/aria-dental-ai" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a></span></div></div></footer>
 <script src="main.js" defer></script>
-<script src="https://aria-backend-production-8458.up.railway.app/aria-widget.js" data-client="aria-demo"></script>
 </body></html>

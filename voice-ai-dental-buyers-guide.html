@@ -122,7 +122,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <a class="skip-link" href="#main">Skip to main content</a>
 <nav id="nav"><div class="nav-inner"><a href="/" class="nav-logo">aria</a><ul class="nav-links" id="navLinks"><li><a href="/platform">Platform</a></li><li><a href="/how-it-works">How It Works</a></li><li><a href="/demos">Demos</a></li><li><a href="/portfolio">Portfolio</a></li><li><a href="/compare">Compare</a></li><li><a href="/integrations">Integrations</a></li><li><a href="/security">Security</a></li><li><a href="/about">About</a></li><li><a href="/es/" aria-label="Español" style="font-size:13px;opacity:.85">🌐 Español</a></li><li><a href="/contact" class="btn btn-primary">Book a Demo</a></li></ul><button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button></div></nav>
 <main id="main">
-
 <section class="blog-hero"><div class="blog-article">
 <div class="blog-meta">
 <span class="blog-category">Buyer's Guide</span>
@@ -133,11 +132,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <h1 style="font-family:'Fraunces',serif;font-size:clamp(32px,5vw,52px);font-weight:600;line-height:1.12;letter-spacing:-.02em;color:var(--charcoal);margin-bottom:20px">The 2026 buyer's guide to <span style="color:var(--amber);font-style:italic">voice AI for dental practices</span></h1>
 <p style="font-size:18px;line-height:1.7;color:var(--charcoal-70);max-width:640px">Voice AI for dentistry went from 'experimental' to 'crowded' in about 18 months. The vendors all sound similar in the demo. They're very different under the hood. Here's the checklist that separates the ones worth signing from the ones that'll cost you in year two.</p>
 </div></section>
-
 <section class="blog-body"><div class="blog-article">
-
 <p>If you're evaluating voice AI for your practice, you've probably already noticed that every demo looks roughly the same: an AI answers the phone, talks to a fake patient, books an appointment. The differences between vendors don't show up in the demo — they show up at month four, when the AI hasn't been updated for the new payer your hygienists started seeing, or when the phone tree mishandles the patient who's been a customer for ten years and just wants to reschedule. This guide is what to actually look for before you sign.</p>
-
 <div class="blog-toc">
 <div class="toc-label">In this post</div>
 <ol>
@@ -151,11 +147,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <li><a href="#dealbreakers">10 dealbreakers</a></li>
 </ol>
 </div>
-
 <h2 id="core-capabilities">Core capabilities — table stakes</h2>
-
 <p>Before getting to differentiators, every dental voice AI worth considering should do these out of the box:</p>
-
 <ul>
 <li>Answer inbound calls 24/7 with natural-sounding voice (no IVR-like menus).</li>
 <li>Identify whether the caller is new or existing — and route accordingly.</li>
@@ -166,15 +159,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <li>Escalate to a human when the AI isn't confident.</li>
 <li>Transcribe the call and store the transcript searchably.</li>
 </ul>
-
 <p>If a vendor can't do any one of these, that's a 2024 product. Move on.</p>
-
 <h2 id="integration">Integration depth with your PMS</h2>
-
 <p>This is where most demos paper over the truth. "We integrate with Open Dental / Dentrix / Eaglesoft" can mean three very different things: real-time API integration, scheduled file sync, or "we email your office manager a list of bookings to enter manually." Only the first one works at scale.</p>
-
 <p>Specific questions:</p>
-
 <ul>
 <li>Is the integration real-time read AND write, or read-only?</li>
 <li>How are schedule conflicts handled when two systems are writing simultaneously?</li>
@@ -182,20 +170,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <li>What happens if the PMS goes down? Does the AI keep booking and queue the writes, or fail loudly?</li>
 <li>Can the AI see existing patient records during a call, or is it flying blind on returning patients?</li>
 </ul>
-
 <p>The deepest integrations let the AI behave like a long-tenured front desk: it knows the patient's last visit, last hygienist, balance, treatment plan status. That's the level you want. <a href="/pms-integration-dental-ai">A full breakdown of how integration works for each major PMS</a> walks through the gotchas.</p>
-
 <div class="blog-callout">
 <div class="callout-label">Dealbreaker question</div>
 <p>"What happens when a patient calls and asks about a balance on their account?" If the answer is "we transfer to your front desk," the integration is shallow. The AI should be able to see the balance and discuss it.</p>
 </div>
-
 <h2 id="voice-quality">Voice quality and conversational design</h2>
-
 <p>Voice quality has converged across vendors faster than expected — most use one of three or four underlying voice models, and they all sound roughly similar at this point. What hasn't converged is the conversational design: how the AI handles interruptions, awkward silences, callers who change their minds mid-sentence, callers who ramble, callers who don't speak English as a first language.</p>
-
 <p>The way to evaluate this is to demo the product yourself and try to break it. Specifically:</p>
-
 <ul>
 <li>Interrupt the AI mid-sentence. Does it gracefully stop and listen?</li>
 <li>Speak in Spanish. Most dental AIs handle Spanish; some only handle it when explicitly invoked.</li>
@@ -203,44 +185,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <li>Pretend to have a tough cluster of insurance plans (dual coverage, primary out-of-state). See whether it handles or escalates.</li>
 <li>Stay silent for 10 seconds. Does it re-prompt naturally or panic?</li>
 </ul>
-
 <h2 id="data-and-control">Data, control, and customization</h2>
-
 <p>Your practice has its own quirks. Maybe you don't book hygiene with a specific provider after 4 PM because they don't like staying late. Maybe you charge an extra fee for same-day appointments. Maybe you do free consults for ortho but not for cosmetic. None of this is in the AI's training data — it has to be configured.</p>
-
 <p>Ask: who configures the AI's behavior — me, or the vendor? How long does it take to make a change? Is there a self-serve admin panel, or do I need to email someone? When I make a change, does it take effect immediately or after a "training run"? Vendors that require you to file a ticket every time you want to change something become operational debt fast.</p>
-
 <h2 id="hipaa"><a href="/security" style="color:var(--amber);font-weight:500">HIPAA</a>, security, and audit</h2>
-
 <p>This deserves its own deep treatment, which we did <a href="/hipaa-compliance-ai-dental-tools">in this guide</a>. The 60-second version: insist on a BAA, AES-256 at rest, TLS 1.3 in transit, no model training on your data, and audit log access on demand. Anything less is a vendor pretending HIPAA is a marketing word.</p>
-
 <h2 id="pricing">Pricing models and contract terms</h2>
-
 <p>Three pricing models exist:</p>
-
 <ol>
 <li><strong>Flat monthly</strong> — predictable, doesn't penalize growth. Most dental-specific AIs use this. Aria does.</li>
 <li><strong>Per-minute</strong> — punishes you for higher volume, which is the wrong incentive. If your AI is good, you want it on more calls, not fewer.</li>
 <li><strong>Per-call resolved</strong> — middle ground. Predictable per-call cost, but you pay more as you grow.</li>
 </ol>
-
 <p>Contract terms that matter:</p>
-
 <ul>
 <li>Cancellation: 30-day notice or annual? Avoid annuals on a young product category.</li>
 <li>Price lock: are you protected against price increases for the first 12-24 months?</li>
 <li>SLA: what happens when the AI is down? Refund? Credit? "Best effort" is not a real answer.</li>
 <li>Data ownership: when you cancel, do you get your call recordings, transcripts, and configuration?</li>
 </ul>
-
 <h2 id="support">Implementation and support</h2>
-
 <p>The implementation is where most AI rollouts go sideways. Ask for the actual implementation plan — day-by-day. The vendor should have a standard 7-14 day rollout with named deliverables. <a href="/setup-ai-dental-receptionist-7-days">Our 7-day setup checklist</a> shows what good looks like.</p>
-
 <p>For ongoing support: who's on the other end when something breaks at 8 PM on a Friday? "Email support" is not 24/7 even if the product is. The good vendors offer real on-call coverage during your operating hours.</p>
-
 <h2 id="dealbreakers">10 dealbreakers</h2>
-
 <ol>
 <li>No BAA, or BAA only on enterprise tier.</li>
 <li>Can't show a real customer using the product (a video, a reference call, anything).</li>
@@ -253,24 +220,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <li>No audit log access.</li>
 <li>Customer success is "email-only" with 24-hour SLA.</li>
 </ol>
-
 <p>Any one of these is a yellow flag. Two of them is a stop. Three of them is "their roadmap is more impressive than their product, and you'd be a beta tester."</p>
-
 <div class="blog-pullquote">
 <p>The voice AI you pick is going to be answering more of your phone than any one human. Pick like that's true.</p>
 </div>
-
 <h2>The shortlist</h2>
-
 <p>If you go through this checklist with the major dental-specific voice AI vendors — Aria, Arini, Dentina, TrueLark, and the AI add-ons bundled with legacy dental phone suites — you'll find each has different strengths. Our <a href="/aria-vs-arini-dentina-comparison">honest 2026 comparison</a> walks through where each fits. The one universal: don't pick on the demo alone. Get the BAA, run the trial, and call your own line at 8 PM on a Saturday before you sign anything.</p>
-
 <div class="blog-cta-box">
 <h3>Run the buyer's checklist on Aria</h3>
 <p>Book a 30-minute demo. We'll send the BAA, the SOC 2 summary, and the integration architecture before the call so you can do diligence in advance.</p>
 <a href="/contact" class="btn btn-primary btn-lg" style="margin-right:12px">Book a Demo →</a>
 <a href="/roi-calculator" class="btn btn-lg" style="background:rgba(255,255,255,0.15);color:#fff;border:1.5px solid rgba(255,255,255,0.3)">Run the ROI Calculator</a>
 </div>
-
 <h2 style="margin-top:64px">Related reading</h2>
 <div class="related-posts">
 <a href="/aria-vs-arini-dentina-comparison" class="related-card" style="text-decoration:none;color:inherit"><h4>Aria vs. Arini vs. Dentina vs. TrueLark</h4><p>Honest 2026 comparison of the major dental voice AI vendors.</p><span>Read more →</span></a>
@@ -278,17 +239,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <a href="/pms-integration-dental-ai" class="related-card" style="text-decoration:none;color:inherit"><h4>PMS Integration Reality</h4><p>What integration depth actually means for Open Dental, Dentrix, and Eaglesoft.</p><span>Read more →</span></a>
 <a href="/setup-ai-dental-receptionist-7-days" class="related-card" style="text-decoration:none;color:inherit"><h4>7-Day Setup Checklist</h4><p>Day-by-day implementation plan for a clean rollout.</p><span>Read more →</span></a>
 </div>
-
 </div></section>
-
 </main>
 <footer><div class="container"><div class="footer-top">
-<div class="footer-brand"><a href="/" class="footer-logo">aria</a><p>AI front office that closes more dental patients.</p><p style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:8px">Aria is a product of <a href="https://velzyx.ai" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Velzyx AI Inc.</a></p><a href="mailto:hello@ariadental.ai" style="color:var(--amber-light);text-decoration:none;font-size:14px;display:inline-block;margin-top:12px">hello@ariadental.ai</a><div class="footer-address">5000 Birch St, Suite 3000<br>Newport Beach, CA 92660</div></div>
+<div class="footer-brand"><a href="/" class="footer-logo">aria</a><p>AI front office that closes more dental patients.</p><p style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:8px">Aria is a product of <a href="https://velzyx.ai" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Velzyx AI Inc.</a></p><a href="mailto:AriaDental@Velzyx.ai" style="color:var(--amber-light);text-decoration:none;font-size:14px;display:inline-block;margin-top:12px">AriaDental@Velzyx.ai</a><div class="footer-address">5000 Birch St, Suite 3000<br>Newport Beach, CA 92660</div></div>
 <div class="footer-col"><h5>Product</h5><a href="/platform">Platform</a><a href="/how-it-works">How It Works</a><a href="/compare">Compare</a><a href="/demos">Demos</a><a href="/platform#pricing">Pricing</a></div>
 <div class="footer-col"><h5>Resources</h5><a href="/blog">Blog</a><a href="/glossary">Glossary</a><a href="/who-we-help">Who We Help</a><a href="/roi-calculator">ROI Calculator</a><a href="/voice-ai-dental-buyers-guide">Buyer&#39;s Guide</a><a href="/help">Help Center</a></div>
-<div class="footer-col"><h5>Company</h5><a href="/about">About</a><a href="/security">Security</a><a href="/contact">Contact</a><a href="/press">Press &amp; Media</a><a href="mailto:info@velzyx.ai">Careers</a></div>
+<div class="footer-col"><h5>Company</h5><a href="/about">About</a><a href="/security">Security</a><a href="/contact">Contact</a><a href="/press">Press &amp; Media</a><a href="mailto:AriaDental@Velzyx.ai">Careers</a></div>
 <div class="footer-col"><h5>Legal</h5><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/cookies">Cookie Policy</a><a href="/privacy#hipaa-notice">HIPAA Notice</a></div>
 </div><div class="footer-bottom"><span>&copy; 2026 <a href="https://velzyx.ai" rel="noopener" style="color:inherit;text-decoration:none;">Velzyx AI Inc.</a> All rights reserved.</span><span class="footer-social"><a href="https://www.instagram.com/ariadentalai" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a> &middot; <a href="https://twitter.com/ariadentalai" target="_blank" rel="noopener" aria-label="X (Twitter)">X</a> &middot; <a href="https://www.linkedin.com/company/aria-dental-ai" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a></span></div></div></footer>
 <script src="main.js" defer></script>
-<script src="https://aria-backend-production-8458.up.railway.app/aria-widget.js" data-client="aria-demo"></script>
 </body></html>
