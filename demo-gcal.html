@@ -57,7 +57,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 html { scroll-behavior: smooth; }
 body { font-family: 'Sora', sans-serif; background: var(--cream); color: var(--navy); min-height: 100vh; overflow-x: hidden; }
 h1,h2,h3 { font-family: 'Fraunces', serif; }
-
 /* PROGRESS */
 .progress-bar-container { position: fixed; top:0; left:0; right:0; z-index:1000; background: var(--navy); display:none; }
 .progress-bar-container.active { display:block; }
@@ -70,7 +69,6 @@ h1,h2,h3 { font-family: 'Fraunces', serif; }
 .step-label { flex:1; text-align:center; font-size:10px; font-weight:500; color:rgba(255,255,255,.3); transition:color .4s; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 .step-label.completed { color: var(--gold); }
 .step-label.current { color:#fff; }
-
 /* HERO */
 .hero { display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; text-align:center; padding:40px 20px; transition:opacity .6s, transform .6s; }
 .hero.hidden { opacity:0; transform:translateY(-30px); pointer-events:none; position:absolute; }
@@ -84,17 +82,14 @@ h1,h2,h3 { font-family: 'Fraunces', serif; }
 .start-btn:hover { transform:translateY(-2px); box-shadow:0 12px 40px rgba(212,149,42,.45); }
 .start-btn .play-icon { width:28px; height:28px; border-radius:50%; background:rgba(255,255,255,.25); display:flex; align-items:center; justify-content:center; }
 .start-btn .play-icon::after { content:''; width:0; height:0; border-top:6px solid transparent; border-bottom:6px solid transparent; border-left:10px solid #fff; margin-left:2px; }
-
 /* DEMO CONTAINER */
 .demo-container { max-width:820px; margin:0 auto; padding:60px 20px 40px; display:none; opacity:0; transition:opacity .5s; }
 .demo-step { display:none; animation:fadeInUp .5s ease forwards; }
 .demo-step.active { display:block; }
 @keyframes fadeInUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
-
 /* SECTION LABEL */
 .section-label { display:flex; align-items:center; gap:10px; margin-bottom:16px; font-size:12px; font-weight:600; color:var(--gold); text-transform:uppercase; letter-spacing:1px; }
 .section-label::after { content:''; flex:1; height:1px; background:linear-gradient(to right, var(--gold-light), transparent); }
-
 /* PHONE CARD */
 .phone-card { background:var(--navy); border-radius:24px; padding:48px 32px; text-align:center; color:#fff; position:relative; overflow:hidden; box-shadow:0 20px 60px rgba(26,26,46,.3); }
 .phone-card::before { content:''; position:absolute; inset:0; background:radial-gradient(circle at 50% 30%, rgba(212,149,42,.1) 0%, transparent 70%); }
@@ -113,7 +108,6 @@ h1,h2,h3 { font-family: 'Fraunces', serif; }
 .call-status .pulse.animate { animation:blink 1s infinite; }
 .aria-pickup { margin-top:24px; display:none; background:rgba(34,197,94,.15); border:1px solid rgba(34,197,94,.3); border-radius:12px; padding:12px 20px; color:var(--green); font-weight:500; font-size:14px; animation:fadeInUp .4s ease; }
 .aria-pickup.show { display:inline-block; }
-
 /* CHAT */
 .chat-window { background:#fff; border-radius:20px; overflow:hidden; box-shadow:0 8px 40px rgba(0,0,0,.08); border:1px solid var(--gray-200); }
 .chat-header { background:var(--navy); color:#fff; padding:16px 20px; display:flex; align-items:center; gap:12px; }
@@ -133,7 +127,6 @@ h1,h2,h3 { font-family: 'Fraunces', serif; }
 .typing-dot:nth-child(2) { animation-delay:.15s; }
 .typing-dot:nth-child(3) { animation-delay:.3s; }
 @keyframes typingBounce { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-5px)} }
-
 /* SYNC ANIMATION */
 .sync-card { background:#fff; border-radius:20px; padding:40px 32px; text-align:center; box-shadow:0 8px 40px rgba(0,0,0,.08); border:1px solid var(--gray-200); }
 .sync-logos { display:flex; align-items:center; justify-content:center; gap:24px; margin-bottom:32px; }
@@ -143,25 +136,21 @@ h1,h2,h3 { font-family: 'Fraunces', serif; }
 .gcal-icon-top { height:18px; background:var(--gcal-blue); display:flex; align-items:center; justify-content:center; }
 .gcal-icon-top span { font-size:9px; font-weight:700; color:#fff; letter-spacing:.5px; }
 .gcal-icon-date { flex:1; display:flex; align-items:center; justify-content:center; font-size:26px; font-weight:700; color:var(--gcal-blue); font-family:'Fraunces',serif; }
-
 .sync-arrow { display:flex; align-items:center; flex-direction:column; gap:8px; }
 .sync-arrow-line { width:80px; height:2px; background:linear-gradient(90deg, var(--gold) 0%, var(--gcal-blue) 100%); border-radius:2px; position:relative; overflow:hidden; }
 .sync-arrow-line::after { content:''; position:absolute; top:0; left:-100%; width:100%; height:100%; background:linear-gradient(90deg, transparent, rgba(255,255,255,.8), transparent); animation:syncPulse 1.2s ease-in-out infinite; }
 @keyframes syncPulse { 0%{left:-100%} 100%{left:100%} }
 .sync-spinner-small { width:24px; height:24px; border:2px solid var(--gray-200); border-top-color:var(--gold); border-radius:50%; animation:spin .8s linear infinite; }
 @keyframes spin { to{transform:rotate(360deg)} }
-
 .sync-label { font-size:16px; font-weight:600; color:var(--navy); margin-bottom:8px; }
 .sync-sublabel { font-size:13px; color:var(--gray-600); }
 .sync-progress-bar { margin-top:24px; height:4px; background:var(--gray-100); border-radius:2px; overflow:hidden; }
 .sync-progress-fill { height:100%; background:linear-gradient(90deg,var(--gold),var(--gcal-blue)); border-radius:2px; width:0; transition:width 2s ease; }
 .sync-progress-fill.go { width:100%; }
-
 .sync-done { display:none; margin-top:20px; animation:fadeInUp .4s ease; }
 .sync-done.show { display:flex; align-items:center; justify-content:center; gap:8px; color:var(--gcal-green); font-weight:600; font-size:14px; }
 .sync-done-check { width:24px; height:24px; border-radius:50%; background:var(--gcal-green); color:#fff; display:flex; align-items:center; justify-content:center; font-size:13px; animation:scaleIn .4s cubic-bezier(.34,1.56,.64,1); }
 @keyframes scaleIn { from{transform:scale(0)} to{transform:scale(1)} }
-
 /* GOOGLE CALENDAR MOCK */
 .gcal-wrapper { background:#fff; border-radius:20px; overflow:hidden; box-shadow:0 8px 40px rgba(0,0,0,.1); border:1px solid var(--gcal-line); font-family:'Sora',sans-serif; }
 .gcal-topbar { background:#fff; border-bottom:1px solid var(--gcal-line); padding:10px 16px; display:flex; align-items:center; gap:12px; }
@@ -175,7 +164,6 @@ h1,h2,h3 { font-family: 'Fraunces', serif; }
 .gcal-week-nav { margin-left:auto; font-size:13px; color:#5f6368; font-weight:500; }
 .gcal-aria-badge { display:flex; align-items:center; gap:6px; background:#fef9f0; border:1px solid rgba(212,149,42,.25); border-radius:20px; padding:4px 12px; font-size:11px; font-weight:600; color:var(--gold); }
 .gcal-aria-badge .dot { width:5px; height:5px; border-radius:50%; background:var(--gold); animation:blink 1.2s infinite; }
-
 /* Calendar grid */
 .gcal-col-headers { display:grid; grid-template-columns:48px repeat(5,1fr); border-bottom:1px solid var(--gcal-line); }
 .gcal-col-spacer { width:48px; }
@@ -183,28 +171,22 @@ h1,h2,h3 { font-family: 'Fraunces', serif; }
 .gcal-col-head .dow { font-size:10px; font-weight:600; color:#70757a; text-transform:uppercase; letter-spacing:.5px; display:block; margin-bottom:4px; }
 .gcal-col-head .dom { font-size:22px; font-weight:400; color:#3c4043; display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; border-radius:50%; }
 .gcal-col-head.today .dom { background:var(--gcal-blue); color:#fff; font-weight:500; }
-
 .gcal-grid-scroll { overflow-y:auto; max-height:380px; }
 .gcal-grid { display:grid; grid-template-columns:48px repeat(5,1fr); position:relative; }
-
 .gcal-times { }
 .gcal-time-slot { height:var(--H); display:flex; align-items:flex-start; justify-content:flex-end; padding-right:8px; padding-top:2px; font-size:9px; color:#70757a; white-space:nowrap; }
-
 .gcal-day-col { position:relative; border-left:1px solid var(--gcal-line); height:calc(var(--H) * 9); }
 .gcal-day-col::before { content:''; position:absolute; top:0; left:0; right:0; bottom:0; background:repeating-linear-gradient(to bottom, transparent, transparent calc(var(--H) - 1px), var(--gcal-line) calc(var(--H) - 1px), var(--gcal-line) var(--H)); pointer-events:none; }
-
 /* Events */
 .gcal-event { position:absolute; left:2px; right:2px; border-radius:4px; padding:3px 6px; font-size:11px; font-weight:500; overflow:hidden; cursor:default; transition:box-shadow .2s; }
 .gcal-event:hover { box-shadow:0 2px 8px rgba(0,0,0,.2); z-index:2; }
 .gcal-event .ev-name { font-weight:600; display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 .gcal-event .ev-type { font-size:10px; opacity:.8; display:block; }
-
 .gcal-event.blue { background:#e8f0fe; color:#1967d2; border-left:3px solid #4285f4; }
 .gcal-event.teal { background:#e6f4ea; color:#137333; border-left:3px solid #34a853; }
 .gcal-event.purple { background:#f3e8fd; color:#681da8; border-left:3px solid #9334e6; }
 .gcal-event.orange { background:#fce8e6; color:#c5221f; border-left:3px solid #ea4335; }
 .gcal-event.gray { background:#f1f3f4; color:#3c4043; border-left:3px solid #5f6368; }
-
 /* Aria-booked event — starts hidden, animates in */
 .gcal-event.aria-booked {
   background:linear-gradient(135deg,rgba(212,149,42,.12),rgba(212,149,42,.22));
@@ -223,14 +205,12 @@ h1,h2,h3 { font-family: 'Fraunces', serif; }
   100% { opacity:1; transform:scaleY(1); box-shadow:0 0 0 rgba(212,149,42,0); }
 }
 .gcal-event.aria-booked .ev-badge { display:inline-block; background:var(--gold); color:#fff; font-size:8px; font-weight:700; padding:1px 5px; border-radius:3px; text-transform:uppercase; letter-spacing:.5px; margin-top:2px; }
-
 /* Auto actions */
 .auto-actions { margin-top:20px; padding:0 4px; }
 .auto-actions h4 { font-family:'Sora',sans-serif; font-size:11px; font-weight:600; color:var(--gray-600); text-transform:uppercase; letter-spacing:1px; margin-bottom:10px; }
 .auto-action { display:flex; align-items:center; gap:10px; padding:7px 0; font-size:13px; color:var(--gray-600); opacity:0; transform:translateX(-10px); transition:opacity .4s, transform .4s; }
 .auto-action.show { opacity:1; transform:translateX(0); }
 .auto-action .aa-check { width:20px; height:20px; border-radius:50%; background:var(--green); color:#fff; font-size:11px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-
 /* CTA */
 .cta-section { display:none; text-align:center; padding:48px 20px; animation:fadeInUp .6s ease; }
 .cta-section.show { display:block; }
@@ -240,7 +220,6 @@ h1,h2,h3 { font-family: 'Fraunces', serif; }
 .cta-btn:hover { transform:translateY(-2px); box-shadow:0 12px 40px rgba(212,149,42,.45); }
 .replay-btn { display:inline-flex; align-items:center; gap:8px; margin-top:16px; background:transparent; color:var(--navy); font-family:'Sora',sans-serif; font-size:14px; font-weight:500; padding:12px 24px; border-radius:60px; border:2px solid var(--gray-200); cursor:pointer; transition:border-color .2s; }
 .replay-btn:hover { border-color:var(--gold); }
-
 @media (max-width:600px) {
   .demo-container { padding:50px 12px 30px; }
   .phone-card { padding:32px 20px; }
@@ -250,7 +229,7 @@ h1,h2,h3 { font-family: 'Fraunces', serif; }
   .gcal-event .ev-type { display:none; }
 }
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://www.ariadental.ai/#organization","name":"Aria Dental AI","alternateName":"Aria","legalName":"Aria by Velzyx AI","url":"https://www.ariadental.ai/","logo":{"@type":"ImageObject","url":"https://www.ariadental.ai/images/aria-logo.png","width":512,"height":512},"description":"AI receptionist for dental practices: answers calls, verifies insurance, books patients 24/7.","foundingDate":"2025-09-01","parentOrganization":{"@type":"Organization","name":"Aria by Velzyx AI","url":"https://velzyx.ai/"},"sameAs":["https://www.linkedin.com/company/aria-dental-ai","https://twitter.com/ariadentalai","https://www.instagram.com/ariadentalai"],"contactPoint":[{"@type":"ContactPoint","contactType":"sales","email":"hello@ariadental.ai","availableLanguage":["English","Spanish"]},{"@type":"ContactPoint","contactType":"customer support","email":"support@ariadental.ai","availableLanguage":["English","Spanish"]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://www.ariadental.ai/#organization","name":"Aria Dental AI","alternateName":"Aria","legalName":"Aria by Velzyx AI","url":"https://www.ariadental.ai/","logo":{"@type":"ImageObject","url":"https://www.ariadental.ai/images/aria-logo.png","width":512,"height":512},"description":"AI receptionist for dental practices: answers calls, verifies insurance, books patients 24/7.","foundingDate":"2025-09-01","parentOrganization":{"@type":"Organization","name":"Aria by Velzyx AI","url":"https://velzyx.ai/"},"sameAs":["https://www.linkedin.com/company/aria-dental-ai","https://twitter.com/ariadentalai","https://www.instagram.com/ariadentalai"],"contactPoint":[{"@type":"ContactPoint","contactType":"sales","email":"AriaDental@Velzyx.ai","availableLanguage":["English","Spanish"]},{"@type":"ContactPoint","contactType":"customer support","email":"AriaDental@Velzyx.ai","availableLanguage":["English","Spanish"]}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","@id":"https://www.ariadental.ai/#website","url":"https://www.ariadental.ai/","name":"Aria Dental AI","publisher":{"@id":"https://www.ariadental.ai/#organization"},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://www.ariadental.ai/search?q={search_term_string}"},"query-input":"required name=search_term_string"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Aria","applicationCategory":"BusinessApplication","applicationSubCategory":"AI Receptionist","operatingSystem":"Web, iOS, Android","url":"https://www.ariadental.ai/platform","description":"AI dental receptionist that answers calls, verifies insurance, and books patients across voice, chat and SMS.","offers":{"@type":"Offer","priceCurrency":"USD","price":"499","priceSpecification":{"@type":"UnitPriceSpecification","price":"499","priceCurrency":"USD","unitText":"MONTH"},"availability":"https://schema.org/InStock"},"creator":{"@id":"https://www.ariadental.ai/#organization"},"featureList":["24/7 voice answering","Live dental insurance verification","Online and SMS booking","PMS integration (Open Dental, Dentrix, Eaglesoft)","Multi-location routing","HIPAA-aligned controls"],"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"47"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.ariadental.ai/"},{"@type":"ListItem","position":2,"name":"Aria Books → Calendar Syncs","item":"https://www.ariadental.ai/demo-gcal"}]}</script>
@@ -272,7 +251,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <a class="skip-link" href="#main">Skip to main content</a>
 <main id="main">
-
 <div class="progress-bar-container" id="progressBar">
   <div class="progress-steps">
     <div class="progress-step" data-step="1"></div>
@@ -289,7 +267,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="step-label" data-step="5">Calendar ✓</div>
   </div>
 </div>
-
 <div class="hero" id="hero">
   <div class="hero-badge"><span class="dot"></span> Live Demo</div>
   <h1>Aria books the patient.<br><span>The calendar updates instantly.</span></h1>
@@ -299,9 +276,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     Watch Demo
   </button>
 </div>
-
 <div class="demo-container" id="demoContainer">
-
   <!-- STEP 1: INCOMING CALL -->
   <div class="demo-step" id="step1">
     <div class="section-label">Step 1 — Incoming Call</div>
@@ -318,7 +293,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="aria-pickup" id="ariaPickup">✨ Aria answered in 0.8 seconds</div>
     </div>
   </div>
-
   <!-- STEP 2: CONVERSATION -->
   <div class="demo-step" id="step2">
     <div class="section-label">Step 2 — Live Conversation</div>
@@ -334,7 +308,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="chat-body" id="chat2Body"></div>
     </div>
   </div>
-
   <!-- STEP 3: BOOKING CONFIRMED -->
   <div class="demo-step" id="step3">
     <div class="section-label">Step 3 — Appointment Confirmed</div>
@@ -350,7 +323,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="chat-body" id="chat3Body"></div>
     </div>
   </div>
-
   <!-- STEP 4: GCAL SYNC -->
   <div class="demo-step" id="step4">
     <div class="section-label">Step 4 — Syncing to the practice calendar</div>
@@ -377,11 +349,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
   </div>
-
   <!-- STEP 5: CALENDAR VIEW -->
   <div class="demo-step" id="step5">
     <div class="section-label">Step 5 — WizKids Dental practice calendar</div>
-
     <div class="gcal-wrapper">
       <!-- Topbar -->
       <div class="gcal-topbar">
@@ -395,7 +365,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="gcal-week-nav">Apr 6 – 10, 2026</div>
         <div class="gcal-aria-badge"><span class="dot"></span> Aria Connected</div>
       </div>
-
       <!-- Day column headers -->
       <div class="gcal-col-headers">
         <div class="gcal-col-spacer"></div>
@@ -405,7 +374,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="gcal-col-head"><span class="dow">THU</span><span class="dom">9</span></div>
         <div class="gcal-col-head"><span class="dow">FRI</span><span class="dom">10</span></div>
       </div>
-
       <!-- Grid -->
       <div class="gcal-grid-scroll" id="calScroll">
         <div class="gcal-grid">
@@ -421,7 +389,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="gcal-time-slot">3 PM</div>
             <div class="gcal-time-slot">4 PM</div>
           </div>
-
           <!-- MONDAY -->
           <div class="gcal-day-col" id="calMon">
             <div class="gcal-event teal" style="top:52px;height:78px">
@@ -447,7 +414,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <span class="ev-badge">Aria</span>
             </div>
           </div>
-
           <!-- TUESDAY -->
           <div class="gcal-day-col">
             <div class="gcal-event teal" style="top:52px;height:52px">
@@ -459,7 +425,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <span class="ev-type">Crown Check · 2 PM</span>
             </div>
           </div>
-
           <!-- WEDNESDAY -->
           <div class="gcal-day-col">
             <div class="gcal-event orange" style="top:52px;height:78px">
@@ -471,7 +436,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <span class="ev-type">X-Ray · 11 AM</span>
             </div>
           </div>
-
           <!-- THURSDAY -->
           <div class="gcal-day-col">
             <div class="gcal-event blue" style="top:104px;height:52px">
@@ -483,7 +447,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <span class="ev-type">Filling · 2 PM</span>
             </div>
           </div>
-
           <!-- FRIDAY -->
           <div class="gcal-day-col">
             <div class="gcal-event teal" style="top:52px;height:52px">
@@ -498,7 +461,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
     </div>
-
     <!-- Auto actions -->
     <div class="auto-actions" id="autoActions">
       <h4>Automated — Instantly</h4>
@@ -508,7 +470,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="auto-action"><span class="aa-check">✓</span> 24-hour & 2-hour reminders scheduled</div>
     </div>
   </div>
-
   <!-- CTA -->
   <div class="cta-section" id="ctaSection">
     <h2>Zero manual entry. Ever.</h2>
@@ -518,12 +479,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <button class="replay-btn" onclick="replayDemo()">↻ Replay Demo</button>
   </div>
 </div>
-
 <script>
 const H = 52; // hour height px — must match CSS --H
-
 function wait(ms) { return new Promise(r => setTimeout(r, ms)); }
-
 function setProgress(step, status) {
   document.querySelectorAll('.progress-step').forEach(el => {
     const s = parseInt(el.dataset.step);
@@ -534,13 +492,11 @@ function setProgress(step, status) {
     el.className = 'step-label' + (s < step ? ' completed' : s === step ? ' ' + status : '');
   });
 }
-
 function showStep(id) {
   document.querySelectorAll('.demo-step').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-
 function addTyping(container, isPatient) {
   const d = document.createElement('div');
   d.className = 'typing-indicator' + (isPatient ? ' patient-typing' : '');
@@ -548,14 +504,12 @@ function addTyping(container, isPatient) {
   container.appendChild(d);
   return d;
 }
-
 function addBubble(container, text, type) {
   const b = document.createElement('div');
   b.className = 'chat-bubble ' + type;
   b.textContent = text;
   container.appendChild(b);
 }
-
 async function typeMessage(container, text, type, delay) {
   delay = delay || (type === 'patient' ? 1100 : 1500);
   const ti = addTyping(container, type === 'patient');
@@ -564,7 +518,6 @@ async function typeMessage(container, text, type, delay) {
   addBubble(container, text, type);
   await wait(350);
 }
-
 async function startDemo() {
   // Reset
   document.getElementById('hero').classList.add('hidden');
@@ -572,7 +525,6 @@ async function startDemo() {
   dc.style.display = 'block';
   setTimeout(() => dc.style.opacity = '1', 50);
   document.getElementById('progressBar').classList.add('active');
-
   ['chat2Body','chat3Body'].forEach(id => document.getElementById(id).innerHTML = '');
   document.getElementById('ariaPickup').classList.remove('show');
   document.getElementById('phoneIcon').classList.add('ringing');
@@ -582,7 +534,6 @@ async function startDemo() {
   document.getElementById('syncDone').classList.remove('show');
   document.getElementById('syncFill').classList.remove('go');
   document.querySelectorAll('.auto-action').forEach(a => a.classList.remove('show'));
-
   // ── STEP 1: CALL ──
   setProgress(1, 'current');
   showStep('step1');
@@ -591,7 +542,6 @@ async function startDemo() {
   document.getElementById('callStatusText').textContent = 'Connected — 0:01';
   document.getElementById('ariaPickup').classList.add('show');
   await wait(1600);
-
   // ── STEP 2: CONVERSATION ──
   setProgress(2, 'current');
   showStep('step2');
@@ -602,7 +552,6 @@ async function startDemo() {
   await typeMessage(c2, "Michael Chen — Delta Dental, member ID DD-9988-77654.", 'patient', 1100);
   await typeMessage(c2, "Got it, Michael. Give me one second to verify your Delta Dental coverage...", 'aria', 1400);
   await wait(600);
-
   // ── STEP 3: BOOKING ──
   setProgress(3, 'current');
   showStep('step3');
@@ -611,7 +560,6 @@ async function startDemo() {
   await typeMessage(c3, "Monday at 4 PM works for me.", 'patient', 900);
   await typeMessage(c3, "You're all set, Michael! Confirmed for Monday, April 6th at 4:00 PM. I'm adding this to the calendar and sending you a confirmation text right now.", 'aria', 1600);
   await wait(800);
-
   // ── STEP 4: SYNC ──
   setProgress(4, 'current');
   showStep('step4');
@@ -621,46 +569,39 @@ async function startDemo() {
   document.getElementById('syncSpinner').style.display = 'none';
   document.getElementById('syncDone').classList.add('show');
   await wait(1400);
-
   // ── STEP 5: CALENDAR ──
   setProgress(5, 'current');
   showStep('step5');
   await wait(900);
-
   // Scroll calendar to show 4 PM slot
   const calScroll = document.getElementById('calScroll');
   calScroll.scrollTo({ top: 200, behavior: 'smooth' });
   await wait(700);
-
   // Fire the new event animation
   document.getElementById('newCalEvent').classList.add('appear');
   await wait(1800);
-
   // Automated actions
   const actions = document.querySelectorAll('.auto-action');
   for (let i = 0; i < actions.length; i++) {
     actions[i].classList.add('show');
     await wait(450);
   }
-
   await wait(700);
   setProgress(6, 'completed');
   document.getElementById('ctaSection').classList.add('show');
   document.getElementById('ctaSection').scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
-
 function replayDemo() {
   document.getElementById('ctaSection').classList.remove('show');
   startDemo();
 }
 </script>
-<script src="https://aria-backend-production-8458.up.railway.app/aria-widget.js" data-client="aria-demo"></script>
 </main>
 <footer><div class="container"><div class="footer-top">
-<div class="footer-brand"><a href="/" class="footer-logo">aria</a><p>AI front office that closes more dental patients.</p><p style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:8px">Aria is a product of <a href="https://velzyx.ai" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Velzyx AI Inc.</a></p><a href="mailto:hello@ariadental.ai" style="color:var(--amber-light);text-decoration:none;font-size:14px;display:inline-block;margin-top:12px">hello@ariadental.ai</a><div class="footer-address">5000 Birch St, Suite 3000<br>Newport Beach, CA 92660</div></div>
+<div class="footer-brand"><a href="/" class="footer-logo">aria</a><p>AI front office that closes more dental patients.</p><p style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:8px">Aria is a product of <a href="https://velzyx.ai" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Velzyx AI Inc.</a></p><a href="mailto:AriaDental@Velzyx.ai" style="color:var(--amber-light);text-decoration:none;font-size:14px;display:inline-block;margin-top:12px">AriaDental@Velzyx.ai</a><div class="footer-address">5000 Birch St, Suite 3000<br>Newport Beach, CA 92660</div></div>
 <div class="footer-col"><h5>Product</h5><a href="/platform">Platform</a><a href="/how-it-works">How It Works</a><a href="/compare">Compare</a><a href="/demos">Demos</a><a href="/platform#pricing">Pricing</a></div>
 <div class="footer-col"><h5>Resources</h5><a href="/blog">Blog</a><a href="/glossary">Glossary</a><a href="/who-we-help">Who We Help</a><a href="/roi-calculator">ROI Calculator</a><a href="/voice-ai-dental-buyers-guide">Buyer&#39;s Guide</a><a href="/help">Help Center</a></div>
-<div class="footer-col"><h5>Company</h5><a href="/about">About</a><a href="/security">Security</a><a href="/contact">Contact</a><a href="/press">Press &amp; Media</a><a href="mailto:info@velzyx.ai">Careers</a></div>
+<div class="footer-col"><h5>Company</h5><a href="/about">About</a><a href="/security">Security</a><a href="/contact">Contact</a><a href="/press">Press &amp; Media</a><a href="mailto:AriaDental@Velzyx.ai">Careers</a></div>
 <div class="footer-col"><h5>Legal</h5><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/cookies">Cookie Policy</a><a href="/privacy#hipaa-notice">HIPAA Notice</a></div>
 </div><div class="footer-bottom"><span>&copy; 2026 <a href="https://velzyx.ai" rel="noopener" style="color:inherit;text-decoration:none;">Velzyx AI Inc.</a> All rights reserved.</span><span class="footer-social"><a href="https://www.instagram.com/ariadentalai" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a> &middot; <a href="https://twitter.com/ariadentalai" target="_blank" rel="noopener" aria-label="X (Twitter)">X</a> &middot; <a href="https://www.linkedin.com/company/aria-dental-ai" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a></span></div></div></footer>
 </body>
