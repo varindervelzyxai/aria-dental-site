@@ -100,4 +100,6 @@
   <url><loc>https://www.ariadental.ai/es/help</loc><lastmod>2026-05-08</lastmod><changefreq>monthly</changefreq><priority>0.55</priority><xhtml:link rel="alternate" hreflang="en" href="https://www.ariadental.ai/help"/><xhtml:link rel="alternate" hreflang="es" href="https://www.ariadental.ai/es/help"/></url>
   <!-- Batch 10 (2026-05-17) — new blog posts -->
   <url><loc>https://www.ariadental.ai/blog/stop-losing-booked-visits-missed-front-desk-calls</loc><lastmod>2026-05-17</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://www.ariadental.ai/blog/dental-patient-recall-best-practices</loc><lastmod>2026-06-01</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.ariadental.ai/blog/dental-insurance-verification-automation</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
 </urlset>
