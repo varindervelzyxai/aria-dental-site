@@ -1,0 +1,27 @@
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+[functions]
+  included_files = ["lib/**"]
+
+[[redirects]]
+  from = "/api/fish/tts"
+  to = "/.netlify/functions/fish-tts"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/guide/chat"
+  to = "/.netlify/functions/guide-chat"
+  status = 200
+  force = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "accelerometer=(), camera=(), geolocation=(), gyroscope=(), microphone=(self), payment=(), usb=(), interest-cohort=()"
+    X-Frame-Options = "SAMEORIGIN"
