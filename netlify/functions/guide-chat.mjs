@@ -4,6 +4,9 @@ const require = createRequire(import.meta.url);
 const { handleGuideChat } = require("../../lib/aria-apis.js");
 
 export default async (req) => {
+  if (req.method === "GET") {
+    return Response.json({ ok: true, brain: "guide" });
+  }
   if (req.method !== "POST") {
     return Response.json({ error: "method not allowed" }, { status: 405 });
   }
@@ -22,8 +25,4 @@ export default async (req) => {
       { status: 500 }
     );
   }
-};
-
-export const config = {
-  path: "/api/guide/chat",
 };
