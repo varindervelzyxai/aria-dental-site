@@ -11,6 +11,8 @@
     "Hey — this is a live demo of Aria, the Voice AI receptionist we build for dental practices. I can walk the platform, play voices, or hold a thirty-minute walkthrough. What brought you in?";
 
   var WIDGET_IDS = ["aria-wrap", "aria-bubble", "aria-badge", "aria-panel"];
+  var WIDGET_CLIENT = "velzyx-ai";
+  var WIDGET_SRC = "https://voice.velzyx.ai/aria-widget.js";
 
   function speechCtor() {
     var w = window;
@@ -194,6 +196,80 @@
     document.head.appendChild(s);
   }
 
+  function injectWidgetBrandCss() {
+    var s = document.getElementById("ad-widget-brand-css");
+    if (!s) {
+      s = document.createElement("style");
+      s.id = "ad-widget-brand-css";
+      s.textContent =
+        "#aria-bubble{background:#D4952A!important;background-color:#D4952A!important;box-shadow:0 4px 16px rgba(212,149,42,.4),0 2px 6px rgba(0,0,0,.1)!important}" +
+        "#aria-bubble:hover{box-shadow:0 6px 24px rgba(212,149,42,.5),0 4px 12px rgba(0,0,0,.15)!important}" +
+        "#aria-header{background:linear-gradient(135deg,#1A1A2E 0%,#2A2A4E 100%)!important}" +
+        "#aria-send{background:#D4952A!important;box-shadow:0 2px 6px rgba(212,149,42,.3)!important}" +
+        "#aria-input:focus{border-color:#D4952A!important}" +
+        "#aria-followups .aria-fup{border-color:rgba(212,149,42,.35)!important;color:#1A1A2E!important}" +
+        "#aria-followups .aria-fup:hover{background:rgba(212,149,42,.1)!important;border-color:#D4952A!important}" +
+        "#aria-hname{font-family:Fraunces,Georgia,serif!important;font-weight:600!important}" +
+        "#aria-bubble .ad-bubble-mark,#aria-avatar .ad-bubble-mark{font-family:Fraunces,Georgia,serif;font-size:28px;font-weight:600;color:#fff;line-height:1;display:grid;place-items:center}" +
+        "#aria-avatar .ad-bubble-mark{font-size:20px}" +
+        "#aria-wrap .aria-msg.bot .aria-bubble-text{border-color:rgba(212,149,42,.2)!important}" +
+        "#aria-footer a{color:#D4952A!important}";
+    }
+    document.head.appendChild(s);
+  }
+
+  function skinBookingWidget() {
+    injectWidgetBrandCss();
+    var wrap = document.getElementById("aria-wrap");
+    if (!wrap) return false;
+    var badge = document.getElementById("aria-badge");
+    if (badge && /velzyx|have a question/i.test(badge.textContent || "")) {
+      badge.textContent = "Questions about Aria? Book a walkthrough.";
+    }
+    var input = document.getElementById("aria-input");
+    if (input && /velzyx/i.test(input.getAttribute("placeholder") || "")) {
+      input.setAttribute("placeholder", "Ask about Aria, or book a walkthrough...");
+    }
+    var hname = document.getElementById("aria-hname");
+    if (hname) hname.textContent = "Aria";
+    var bubble = document.getElementById("aria-bubble");
+    if (bubble) {
+      var logo = bubble.querySelector("img");
+      if (logo) {
+        var mark = document.createElement("span");
+        mark.className = "aria-ic-chat ad-bubble-mark";
+        mark.textContent = "a";
+        logo.replaceWith(mark);
+      }
+    }
+    var avatar = document.getElementById("aria-avatar");
+    if (avatar) {
+      var avImg = avatar.querySelector("img");
+      if (avImg) {
+        var avMark = document.createElement("span");
+        avMark.className = "ad-bubble-mark";
+        avMark.textContent = "a";
+        avImg.replaceWith(avMark);
+      }
+    }
+    var first = document.querySelector("#aria-messages .aria-msg.bot .aria-bubble-text");
+    if (first && /velzyx/i.test(first.textContent || "")) {
+      first.textContent =
+        "Hi — I'm Aria for dental practices. I can explain the platform or book a thirty-minute walkthrough on the calendar.";
+    }
+    return true;
+  }
+
+  function watchWidgetBrand() {
+    injectWidgetBrandCss();
+    var tries = 0;
+    var tick = window.setInterval(function () {
+      tries += 1;
+      skinBookingWidget();
+      if (tries > 48) window.clearInterval(tick);
+    }, 250);
+  }
+
   function waveBars(n) {
     var html = "";
     for (var i = 0; i < n; i++) html += '<span class="bar"></span>';
@@ -216,14 +292,19 @@
   var TOPIC_GO = [
     ["/contact", DEMO_RE],
     ["/voices/", VOICES_RE],
-    ["/platform", /\b(platform|product|what (does|do) aria do)\b/i],
-    ["/how-it-works", /\b(how (it|this|you) works|setup|deploy|go live)\b/i],
-    ["/marketing", /\b(marketing|seo|website|ads)\b/i],
-    ["/dental-insurance-verification-ai", /\b(insurance|eligib|payer)\b/i],
-    ["/demos", /\b(demo recordings?|listen to (a |the )?call)\b/i],
-    ["/compare", /\bcompar/i],
+    ["/configure/", /\b(build (my |your |an )?aria|configur|customize|pick the voice|set the rules)\b/i],
+    ["/platform", /\b(platform|product|what (does|do) aria do|capabilities|features)\b/i],
+    ["/how-it-works", /\b(how (it|this|you) works|setup|deploy|go live|onboard)\b/i],
+    ["/marketing", /\b(marketing|seo|website|google ads|paid ads|local seo)\b/i],
+    ["/dental-insurance-verification-ai", /\b(insurance|eligib|payer|delta dental|ppo)\b/i],
+    ["/integrations", /\b(integrat|opendental|open dental|dentrix|eaglesoft|pms|practice management)\b/i],
+    ["/security", /\b(hipaa|baa|security|compliance|privacy)\b/i],
+    ["/demos", /\b(demo recordings?|listen to (a |the )?call|sample call)\b/i],
+    ["/compare", /\bcompar|versus|\bvs\.?\b|arini|dentina|weave|rondah\b/i],
     ["/clone/", /\bclone (my |our |your )?voice\b/i],
-    ["/about", /\babout (aria|velzyx|the (company|firm|team))\b/i],
+    ["/portfolio", /\bportfolio|case stud|examples? you (built|shipped)\b/i],
+    ["/about", /\babout (aria|velzyx|the (company|firm|team)|who (are|is) (you|varinder))\b/i],
+    ["/roi-calculator", /\b(roi|return on|calculator|how much (money|revenue))\b/i],
   ];
 
   function topicPath(text) {
@@ -397,6 +478,27 @@
     if (/\/clone/.test(p)) {
       return "Sixty seconds of your voice and Aria sounds like you on every callback and recall. Leave a sample and we take it from there.";
     }
+    if (/\/configure/.test(p)) {
+      return "This is the builder — pick a voice, set booking rules, and see what your Aria would sound like before a walkthrough.";
+    }
+    if (/\/integrations/.test(p)) {
+      return "Open Dental write-back is live. Dentrix and Eaglesoft are on the roadmap. Google Calendar is the fallback when there is no PMS.";
+    }
+    if (/\/security/.test(p)) {
+      return "Production Voice AI ships under a BAA. Access is scoped, calls are logged, and we do not train public models on your patients.";
+    }
+    if (/\/compare/.test(p)) {
+      return "This is how Aria stacks against the other dental receptionists — live insurance and marketing in the same stack is the usual gap.";
+    }
+    if (/\/demos/.test(p)) {
+      return "These are recorded calls. Press play and you will hear Aria book, verify, or recall the way a front desk would.";
+    }
+    if (/\/roi/.test(p)) {
+      return "Plug in your missed-call volume and see what those voicemails are costing. Most practices recoup Aria with one or two extra booked visits a month.";
+    }
+    if (/\/about/.test(p)) {
+      return "Aria is a product of Velzyx AI Inc. in Newport Beach. Same engineering team as the med spa sister brand.";
+    }
     return "Take a look at this page. Ask me anything — I would love to walk you through what you are seeing.";
   }
 
@@ -550,27 +652,28 @@
   }
 
   function focusContactForm() {
-    var form = document.getElementById("contact-form") || document.querySelector(".contact-form");
-    var topic = document.getElementById("topic");
-    if (topic) {
-      var hasDemo = false;
-      for (var i = 0; i < topic.options.length; i++) {
-        if (topic.options[i].value === "demo") hasDemo = true;
+    var form =
+      document.getElementById("demoForm") ||
+      document.getElementById("contact-form") ||
+      document.querySelector(".contact-form");
+    var interest = document.querySelector("#demoForm select[name='interest']");
+    if (interest) {
+      for (var i = 0; i < interest.options.length; i++) {
+        if (/full platform/i.test(interest.options[i].value || interest.options[i].textContent || "")) {
+          interest.selectedIndex = i;
+          break;
+        }
       }
-      if (!hasDemo) {
-        var opt = document.createElement("option");
-        opt.value = "demo";
-        opt.textContent = "System demo";
-        topic.insertBefore(opt, topic.options[1] || null);
-      }
-      topic.value = "demo";
     }
-    var msg = document.getElementById("message");
+    var msg = document.querySelector("#demoForm textarea[name='message']") || document.getElementById("message");
     if (msg && !String(msg.value || "").trim()) {
       msg.value = "I'd like a 30-minute walkthrough with an engineer.";
     }
     if (form) form.scrollIntoView({ behavior: "smooth", block: "start" });
-    var name = document.getElementById("name");
+    var name =
+      document.querySelector("#demoForm input[name='first_name']") ||
+      document.getElementById("name") ||
+      document.querySelector(".contact-form input[type='text']");
     if (name) {
       try {
         name.focus({ preventScroll: true });
@@ -600,6 +703,51 @@
     window.setTimeout(tick, 400);
   }
 
+  function scrollToHash(hash) {
+    if (!hash || hash === "#") return;
+    var id = String(hash).replace(/^#/, "");
+    if (!id) return;
+    window.setTimeout(function () {
+      var el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 80);
+  }
+
+  function bindNav() {
+    var nav = document.getElementById("nav");
+    var toggle = document.getElementById("navToggle");
+    var links = document.getElementById("navLinks");
+    if (toggle && links) {
+      toggle.onclick = function () {
+        links.classList.toggle("open");
+      };
+    }
+    if (nav) nav.classList.toggle("scrolled", window.scrollY > 20);
+    if (!window.__adNavScroll) {
+      window.__adNavScroll = true;
+      window.addEventListener("scroll", function () {
+        var n = document.getElementById("nav");
+        if (n) n.classList.toggle("scrolled", window.scrollY > 20);
+      });
+    }
+  }
+
+  function bindReveal() {
+    var nodes = document.querySelectorAll(".reveal");
+    if (!nodes.length) return;
+    var io = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) en.target.classList.add("visible");
+        });
+      },
+      { threshold: 0, rootMargin: "0px 0px -40px 0px" }
+    );
+    nodes.forEach(function (el) {
+      io.observe(el);
+    });
+  }
+
   function arrive(path, opts) {
     opts = opts || {};
     var dest = String(path || "");
@@ -611,6 +759,7 @@
     } else {
       setShowWidget(false);
     }
+    if (opts.hash) scrollToHash(opts.hash);
     persist();
   }
 
@@ -636,7 +785,7 @@
   }
 
   function replayPageScripts(doc) {
-    var skip = /aria-guide|aria-widget|gtm|googletagmanager|gtag|clarity|nav\.js|analytics-events|footer-accordion|__vzBlocked/;
+    var skip = /aria-guide|aria-widget|gtm|googletagmanager|gtag|clarity|nav\.js|analytics-events|footer-accordion|__vzBlocked|navToggle|getElementById\(['"]nav['"]\)/;
     doc.querySelectorAll("script").forEach(function (old) {
       var src = old.getAttribute("src") || "";
       var body = old.textContent || "";
@@ -657,34 +806,69 @@
     });
   }
 
-  function swapDocument(doc) {
-    document.title = doc.title || document.title;
-    var newHeader = doc.querySelector(".site-header");
-    var curHeader = document.querySelector(".site-header");
-    if (newHeader && curHeader) curHeader.className = newHeader.className;
-    var footer = document.querySelector(".site-footer");
-    var start = curHeader || document.querySelector("header");
-    if (!start || !footer) return false;
-    var n = start.nextSibling;
-    while (n && n !== footer) {
+  function adoptEl(from, to) {
+    if (!from || !to || !to.parentNode) return false;
+    var neu = document.importNode(from, true);
+    neu.querySelectorAll("script").forEach(function (s) {
+      s.remove();
+    });
+    to.parentNode.replaceChild(neu, to);
+    return true;
+  }
+
+  function swapBetween(curStart, curEnd, srcStart, srcEnd) {
+    if (!curStart || !curEnd || !srcStart || !srcEnd) return false;
+    var n = curStart.nextSibling;
+    while (n && n !== curEnd) {
       var next = n.nextSibling;
       if (!keepChrome(n)) n.parentNode.removeChild(n);
       n = next;
     }
-    var srcStart = doc.querySelector(".site-header") || doc.querySelector("header");
-    var srcFooter = doc.querySelector(".site-footer") || doc.querySelector("footer");
-    if (!srcStart || !srcFooter) return false;
     var node = srcStart.nextSibling;
-    while (node && node !== srcFooter) {
+    while (node && node !== srcEnd) {
       var nxt = node.nextSibling;
       if (node.nodeType === 1 && (node.tagName === "SCRIPT" || keepChrome(node))) {
         node = nxt;
         continue;
       }
-      footer.parentNode.insertBefore(document.importNode(node, true), footer);
+      curEnd.parentNode.insertBefore(document.importNode(node, true), curEnd);
       node = nxt;
     }
+    return true;
+  }
+
+  function swapDocument(doc) {
+    document.title = doc.title || document.title;
+    var curNav = document.getElementById("nav") || document.querySelector("nav");
+    var srcNav = doc.getElementById("nav") || doc.querySelector("nav");
+    var curMain = document.getElementById("main") || document.querySelector("main");
+    var srcMain = doc.getElementById("main") || doc.querySelector("main");
+    var curFooter = document.querySelector("footer") || document.querySelector(".site-footer");
+    var srcFooter = doc.querySelector("footer") || doc.querySelector(".site-footer");
+
+    if (curNav && srcNav) {
+      curNav.className = srcNav.className;
+      curNav.innerHTML = srcNav.innerHTML;
+    }
+
+    var swapped = false;
+    if (curMain && srcMain) {
+      swapped = adoptEl(srcMain, curMain);
+    } else {
+      swapped = swapBetween(
+        curNav || document.querySelector("header") || document.querySelector(".site-header"),
+        curFooter,
+        srcNav || doc.querySelector("header") || doc.querySelector(".site-header"),
+        srcFooter
+      );
+    }
+    if (!swapped) return false;
+
+    if (curFooter && srcFooter) adoptEl(srcFooter, document.querySelector("footer") || document.querySelector(".site-footer"));
+
     applyPageStyles(doc);
+    bindNav();
+    bindReveal();
     replayPageScripts(doc);
     window.scrollTo(0, 0);
     return true;
@@ -724,7 +908,7 @@
       !opts.force &&
       abs.pathname.replace(/\/$/, "") === location.pathname.replace(/\/$/, "")
     ) {
-      arrive(abs.pathname, { widget: book, form: book });
+      arrive(abs.pathname, { widget: book, form: book, hash: abs.hash });
       if (line && !state.speaking) speak(line);
       persist();
       return;
@@ -742,7 +926,7 @@
         if (!swapDocument(doc)) throw new Error("swap");
         state.didSoftNav = true;
         if (opts.push !== false) history.pushState({ vzGuide: 1 }, "", href);
-        arrive(abs.pathname, { widget: book, form: book });
+        arrive(abs.pathname, { widget: book, form: book, hash: abs.hash });
         if (line && !state.speaking) speak(line);
         persist();
         state.navigating = false;
@@ -1008,11 +1192,10 @@
   function ensureWidget() {
     if (state.open) return;
     if (document.getElementById("aria-bubble") || document.getElementById("aria-wrap") || document.getElementById("aria-root")) return;
-    var existing = document.querySelector("script[data-client='aria-dental-website']");
-    if (!existing) return;
+    if (document.querySelector("script[src*='aria-widget.js']")) return;
     var s = document.createElement("script");
-    s.src = existing.src || "https://voice.velzyx.ai/aria-widget.js";
-    s.setAttribute("data-client", "aria-dental-website");
+    s.src = WIDGET_SRC;
+    s.setAttribute("data-client", WIDGET_CLIENT);
     document.body.appendChild(s);
   }
 
@@ -1128,6 +1311,7 @@
     window.openAriaGuide = openGuide;
     window.addEventListener("pagehide", persist);
     window.addEventListener("beforeunload", persist);
+    watchWidgetBrand();
 
     var session = readSession();
     if (session && session.open) {

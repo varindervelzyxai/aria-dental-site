@@ -65,7 +65,7 @@ src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"
 .hero h1 span{color:var(--amber);font-style:italic}
 .hero-sub{font-size:19px;line-height:1.65;color:var(--charcoal-70);margin-bottom:16px;max-width:560px}
 .hero-closer{font-size:15px;color:var(--charcoal-50);margin-bottom:36px;max-width:540px;line-height:1.6}
-.hero-ctas{display:flex;gap:16px;align-items:center;margin-bottom:48px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-bottom:48px}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;background:var(--amber-glow);border:1px solid rgba(212,149,42,0.2);border-radius:50px;font-size:13px;font-weight:500;color:var(--amber);margin-bottom:24px}
 .hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--amber);animation:pulse 2s infinite}
 .channels-row{display:flex;gap:12px;margin-bottom:24px;flex-wrap:wrap}
@@ -222,7 +222,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p class="hero-sub">Pick the voice. Set the rules. Aria runs the desk — while you stay in command.</p>
 <p class="hero-closer">A configurable front-office intelligence for dental practices. Voice, chat, and SMS. Insurance, booking, recall, and payments. You decide what Aria owns and when a human steps in.</p>
 <div class="channels-row"><span class="channel-chip"><span class="dot"></span>Voice</span><span class="channel-chip"><span class="dot"></span>Chat</span><span class="channel-chip"><span class="dot"></span>SMS</span><span class="channel-chip"><span class="dot"></span>Insurance</span><span class="channel-chip"><span class="dot"></span>Payments</span><span class="channel-chip"><span class="dot"></span>100+ Languages</span></div>
-<div class="hero-ctas"><a href="/configure/" class="btn btn-primary btn-lg" data-hero-cta="build" onclick="(window.ariaTrack||function(){})('hero_cta_build',{cta:'build_your_aria',placement:'hero',destination:'/configure/'});(window.dataLayer=window.dataLayer||[]).push({event:'hero_cta_build',cta:'build_your_aria',placement:'hero'});">Build your Aria →</a><a href="#hear-aria" class="btn btn-outline btn-lg" data-hero-cta="hear" onclick="(window.ariaTrack||function(){})('hero_cta_hear',{cta:'hear_it_speak',placement:'hero',destination:'#hear-aria'});(window.dataLayer=window.dataLayer||[]).push({event:'hero_cta_hear',cta:'hear_it_speak',placement:'hero'});">Hear Aria speak ↓</a></div>
+<div class="hero-ctas"><button type="button" class="btn btn-primary btn-lg" data-aria-guide-open data-hero-cta="talk" onclick="(window.ariaTrack||function(){})('hero_cta_talk',{cta:'talk_to_aria',placement:'hero'});(window.dataLayer=window.dataLayer||[]).push({event:'hero_cta_talk',cta:'talk_to_aria',placement:'hero'});">Talk to Aria</button><a href="/configure/" class="btn btn-outline btn-lg" data-hero-cta="build" onclick="(window.ariaTrack||function(){})('hero_cta_build',{cta:'build_your_aria',placement:'hero',destination:'/configure/'});(window.dataLayer=window.dataLayer||[]).push({event:'hero_cta_build',cta:'build_your_aria',placement:'hero'});">Build your Aria →</a><a href="#hear-aria" class="btn btn-outline btn-lg" data-hero-cta="hear" onclick="(window.ariaTrack||function(){})('hero_cta_hear',{cta:'hear_it_speak',placement:'hero',destination:'#hear-aria'});(window.dataLayer=window.dataLayer||[]).push({event:'hero_cta_hear',cta:'hear_it_speak',placement:'hero'});">Hear Aria speak ↓</a></div>
 </div><div class="rounded-image"><img src="images/aria-hero-1.png" alt="Aria — the configurable AI front office for dental practices" loading="lazy" decoding="async" width="800" height="600"></div></div></div></section>
 
 <style>
@@ -1066,7 +1066,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<section class="cta-section"><div class="container cta-content"><div class="section-label">Ready?</div><h2>Stop losing patients to voicemail.<br>Let Aria <em>close them.</em></h2><p>30-minute demo on your website. We respond within 24 hours. No commitment.</p><div class="cta-buttons"><a href="/contact" class="btn btn-white btn-lg">Book a Demo →</a><a href="/roi-calculator" class="btn btn-lg" style="background:rgba(255,255,255,0.15);color:#fff;border:1.5px solid rgba(255,255,255,0.3)">Calculate Your ROI</a></div></div></section>
+<section class="cta-section"><div class="container cta-content"><div class="section-label">Ready?</div><h2>Stop losing patients to voicemail.<br>Let Aria <em>close them.</em></h2><p>30-minute demo on your website. We respond within 24 hours. No commitment.</p><div class="cta-buttons"><button type="button" class="btn btn-white btn-lg" data-aria-guide-open>Talk to Aria</button><a href="/contact" class="btn btn-lg" style="background:rgba(255,255,255,0.15);color:#fff;border:1.5px solid rgba(255,255,255,0.3)">Book a Demo →</a></div></div></section>
 </main>
 <footer><div class="container"><div class="footer-top">
 <div class="footer-brand"><a href="/" class="footer-logo">aria</a><p>AI front office that closes more dental patients.</p><p style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:8px">Aria is a product of <a href="https://velzyx.ai" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Velzyx AI Inc.</a></p><a href="mailto:info@velzyx.ai" style="color:var(--amber-light);text-decoration:none;font-size:14px;display:inline-block;margin-top:12px">info@velzyx.ai</a><div class="footer-address">California-based &middot; serving dental practices nationwide</div></div>
@@ -1183,5 +1183,5 @@ document.querySelectorAll('.lead-magnet-form').forEach(function(form){
 </script>
 
 <script src="/aria-guide.js" defer></script>
-<script src="https://voice.velzyx.ai/aria-widget.js" data-client="aria-dental-website"></script>
+<script src="https://voice.velzyx.ai/aria-widget.js" data-client="velzyx-ai"></script>
 </body></html>
