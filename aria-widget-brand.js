@@ -116,18 +116,79 @@
     return { input: input, init: init };
   }
 
+  function brandCss() {
+    return (
+      "#aria-bubble{background:#D4952A!important;background-color:#D4952A!important;box-shadow:0 4px 16px rgba(212,149,42,.4),0 2px 6px rgba(0,0,0,.1)!important}" +
+      "#aria-bubble:hover{box-shadow:0 6px 24px rgba(212,149,42,.5),0 4px 12px rgba(0,0,0,.15)!important}" +
+      "#aria-header{background:linear-gradient(135deg,#1A1A2E 0%,#2A2A4E 100%)!important}" +
+      "#aria-send{background:#D4952A!important;box-shadow:0 2px 6px rgba(212,149,42,.3)!important}" +
+      "#aria-input:focus{border-color:#D4952A!important}" +
+      "#aria-followups .aria-fup{border-color:rgba(212,149,42,.35)!important;color:#1A1A2E!important}" +
+      "#aria-followups .aria-fup:hover{background:rgba(212,149,42,.1)!important;border-color:#D4952A!important}" +
+      "#aria-hname{font-family:Fraunces,Georgia,serif!important;font-weight:600!important}" +
+      "#aria-bubble .ad-bubble-mark,#aria-avatar .ad-bubble-mark{font-family:Fraunces,Georgia,serif;font-size:28px;font-weight:600;color:#fff;line-height:1;display:grid;place-items:center}" +
+      "#aria-avatar .ad-bubble-mark{font-size:20px}" +
+      "#aria-wrap .aria-msg.bot .aria-bubble-text{border-color:rgba(212,149,42,.2)!important}" +
+      "#aria-footer,#aria-footer a{color:#D4952A!important}" +
+      "#aria-wrap .aria-msg.user .aria-bubble-text{background:#D4952A!important;background-color:#D4952A!important}"
+    );
+  }
+
+  function injectCss() {
+    if (typeof document === "undefined") return;
+    var s = document.getElementById("ad-widget-brand-css");
+    if (!s) {
+      s = document.createElement("style");
+      s.id = "ad-widget-brand-css";
+      s.textContent = brandCss();
+    }
+    document.documentElement.appendChild(s);
+  }
+
+  function skinDom() {
+    if (typeof document === "undefined") return;
+    injectCss();
+    var hname = document.getElementById("aria-hname");
+    if (hname) hname.textContent = "Aria";
+    var badge = document.getElementById("aria-badge");
+    if (badge && /velzyx/i.test(badge.textContent || "")) {
+      badge.textContent = BRAND.badge_text;
+    }
+    var input = document.getElementById("aria-input");
+    if (input && /velzyx/i.test(input.getAttribute("placeholder") || "")) {
+      input.setAttribute("placeholder", BRAND.placeholder);
+    }
+    var footer = document.getElementById("aria-footer");
+    if (footer && /powered by/i.test(footer.textContent || "")) {
+      footer.innerHTML =
+        '<span style="display:block;font-size:9px;color:#bbb;margin-bottom:2px">By providing your phone number, you agree to receive appointment-related SMS. Msg &amp; data rates may apply. Reply STOP to unsubscribe.</span>Aria Dental · a product of <a href="https://velzyx.ai" target="_blank" rel="noopener">Velzyx AI Inc.</a>';
+    }
+    var first = document.querySelector("#aria-messages .aria-msg.bot .aria-bubble-text");
+    if (first && /velzyx/i.test(first.textContent || "")) {
+      first.textContent = BRAND.greeting;
+    }
+  }
+
   function rewriteIncoming(url, res) {
     if (!res || !res.ok) return Promise.resolve(res);
-    if (/\/widget-config/.test(url)) {
-      return res.json().then(function (data) {
-        if (data && data.config) data.config = applyConfig(data.config);
-        return jsonResponse(res, data);
-      });
-    }
-    if (/\/api\/schedule\/[^/]+\/providers/.test(url)) {
-      return res.json().then(function (data) {
-        return jsonResponse(res, applyProviders(data));
-      });
+    try {
+      if (/\/widget-config/.test(url)) {
+        return res.json().then(function (data) {
+          if (data && data.config) data.config = applyConfig(data.config);
+          return jsonResponse(res, data);
+        }).catch(function () {
+          return res;
+        });
+      }
+      if (/\/api\/schedule\/[^/]+\/providers/.test(url)) {
+        return res.json().then(function (data) {
+          return jsonResponse(res, applyProviders(data));
+        }).catch(function () {
+          return res;
+        });
+      }
+    } catch (_) {
+      return Promise.resolve(res);
     }
     return Promise.resolve(res);
   }
@@ -135,15 +196,26 @@
   function install() {
     if (typeof window === "undefined" || window.__adWidgetBrand) return;
     window.__adWidgetBrand = true;
+    injectCss();
     var orig = window.fetch;
-    if (typeof orig !== "function") return;
-    window.fetch = function (input, init) {
-      var url = requestUrl(input);
-      var rewritten = rewriteOutgoing(input, init);
-      return orig.call(this, rewritten.input, rewritten.init).then(function (res) {
-        return rewriteIncoming(url, res);
-      });
-    };
+    if (typeof orig === "function") {
+      window.fetch = function (input, init) {
+        var url = requestUrl(input);
+        var rewritten = rewriteOutgoing(input, init);
+        return orig.call(this, rewritten.input, rewritten.init).then(function (res) {
+          return rewriteIncoming(url, res);
+        });
+      };
+    }
+    if (typeof document !== "undefined") {
+      var n = 0;
+      var tick = window.setInterval(function () {
+        n += 1;
+        skinDom();
+        if (n > 40) window.clearInterval(tick);
+      }, 250);
+      document.addEventListener("DOMContentLoaded", skinDom);
+    }
   }
 
   var api = {
