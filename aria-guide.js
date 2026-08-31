@@ -990,7 +990,7 @@
   }
 
   function startRec() {
-    if (state.muted || state.holdRec || !state.open) return;
+    if (state.muted || state.holdRec || !state.open || state.micBlocked) return;
     var Ctor = speechCtor();
     if (!Ctor) {
       var note = document.getElementById("vz-guide-note");
@@ -1121,6 +1121,7 @@
     state.pendingSpeak = "";
     state.pendingBook = false;
     state.asking = false;
+    state.micBlocked = false;
     setShowWidget(false);
     stopRec();
     interruptSpeech();
