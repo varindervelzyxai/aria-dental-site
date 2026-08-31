@@ -1193,6 +1193,7 @@
     if (state.open) return;
     if (document.getElementById("aria-bubble") || document.getElementById("aria-wrap") || document.getElementById("aria-root")) return;
     if (document.querySelector("script[src*='aria-widget.js']")) return;
+    if (window.AriaDentalWidgetBrand) window.AriaDentalWidgetBrand.install();
     var s = document.createElement("script");
     s.src = WIDGET_SRC;
     s.setAttribute("data-client", WIDGET_CLIENT);
