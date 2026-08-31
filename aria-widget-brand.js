@@ -41,7 +41,7 @@
     accent: "#D4952A",
     accentLight: "rgba(212,149,42,0.08)",
     accentBorder: "rgba(212,149,42,0.22)",
-    logo: "",
+    logo: "/images/aria-avatar.png",
     appointment_label: "Demo",
     person_label: "practice owner",
     placeholder: "Ask about Aria, or book a walkthrough...",
@@ -126,8 +126,8 @@
       "#aria-followups .aria-fup{border-color:rgba(212,149,42,.35)!important;color:#1A1A2E!important}" +
       "#aria-followups .aria-fup:hover{background:rgba(212,149,42,.1)!important;border-color:#D4952A!important}" +
       "#aria-hname{font-family:Fraunces,Georgia,serif!important;font-weight:600!important}" +
-      "#aria-bubble .ad-bubble-mark,#aria-avatar .ad-bubble-mark{font-family:Fraunces,Georgia,serif;font-size:28px;font-weight:600;color:#fff;line-height:1;display:grid;place-items:center}" +
-      "#aria-avatar .ad-bubble-mark{font-size:20px}" +
+      "#aria-bubble img.aria-ic-chat,#aria-bubble img{width:62px!important;height:62px!important;object-fit:cover!important;border-radius:50%!important;position:absolute!important}" +
+      "#aria-avatar img,.aria-msg-avatar img{width:100%!important;height:100%!important;object-fit:cover!important;border-radius:50%!important}" +
       "#aria-wrap .aria-msg.bot .aria-bubble-text{border-color:rgba(212,149,42,.2)!important}" +
       "#aria-footer,#aria-footer a{color:#D4952A!important}" +
       "#aria-wrap .aria-msg.user .aria-bubble-text{background:#D4952A!important;background-color:#D4952A!important}"
@@ -167,6 +167,12 @@
     if (first && /velzyx/i.test(first.textContent || "")) {
       first.textContent = BRAND.greeting;
     }
+    document.querySelectorAll("#aria-bubble img, #aria-avatar img, .aria-msg-avatar img").forEach(function (img) {
+      if (!/aria-avatar/.test(img.getAttribute("src") || "")) {
+        img.setAttribute("src", BRAND.logo);
+        img.setAttribute("alt", "Aria");
+      }
+    });
   }
 
   function rewriteIncoming(url, res) {
