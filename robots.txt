@@ -44,4 +44,5 @@ Disallow: /
 User-agent: MJ12bot
 Disallow: /
 
-Sitemap: https://www.ariadental.ai/sitemap.xml
+Sitemap: https://ariadental.ai/sitemap.xml
+# Last verified 2026-08-31: sitemap host matches the live apex (www 301s here).

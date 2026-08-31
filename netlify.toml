@@ -17,6 +17,42 @@
   status = 200
   force = true
 
+[[redirects]]
+  from = "/build"
+  to = "/configure/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/build/"
+  to = "/configure/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/security.html"
+  to = "/security"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/aria-enterprise-page"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/aria-enterprise-page/"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/aria-enterprise-page/*"
+  to = "/:splat"
+  status = 301
+  force = true
+
 [[headers]]
   for = "/*"
   [headers.values]
