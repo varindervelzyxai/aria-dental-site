@@ -460,7 +460,7 @@
       return "This is contact. Fill in the form on this page, or use the chat on the right and book the thirty-minute walkthrough.";
     }
     if (/insurance/.test(p)) {
-      return "Aria verifies coverage on the call across thirty-four hundred payers, including dependents, and can quote out-of-pocket before they hang up.";
+      return "Aria verifies coverage on the call through eligibility networks, including dependents, and can quote out-of-pocket before they hang up.";
     }
     if (/\/clone/.test(p)) {
       return "Sixty seconds of your voice and Aria sounds like you on every callback and recall. Leave a sample and we take it from there.";
@@ -1167,6 +1167,16 @@
 
   function openGuide() {
     if (state.open) return;
+    if (window.ariaTrack) {
+      window.ariaTrack("talk_to_aria", { cta_location: "guide_open", page_path: location.pathname });
+    } else {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: "talk_to_aria",
+        cta_location: "guide_open",
+        page_path: location.pathname
+      });
+    }
     unlockAudio();
     state.turns = [{ role: "assistant", content: GREETING }];
     state.chips = DEFAULT_CHIPS.slice();

@@ -323,7 +323,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
           <div class="field-block">
             <label class="field-label" for="practice-name">Practice name</label>
-            <input class="field-input" type="text" id="practice-name" data-input="practiceName" placeholder="e.g. Vartanian Family Dental" autocomplete="organization" />
+            <input class="field-input" type="text" id="practice-name" data-input="practiceName" placeholder="e.g. Sunset Family Dental" autocomplete="organization" />
           </div>
 
           <div class="field-block">
@@ -795,8 +795,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   /* ---------- GA helper --------------------------------------------------- */
   function track(event, params) {
     var payload = Object.assign({}, params || {});
+    delete payload.practice_name;
+    delete payload.practiceName;
+    delete payload.email;
+    delete payload.phone;
+    delete payload.name;
     if (window.ariaTrack) window.ariaTrack(event, payload);
-    (window.dataLayer = window.dataLayer || []).push(Object.assign({event:event}, payload));
+    else (window.dataLayer = window.dataLayer || []).push(Object.assign({event:event}, payload));
   }
 
   /* ---------- DOM refs ---------------------------------------------------- */
@@ -1169,6 +1174,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     bookBtn.addEventListener('click', function(){
       var payload = Object.assign({}, collectSnapshot(), { est_jobs_per_week: estJobsPerWeek(), submitted_at: new Date().toISOString(), source: 'build_configurator' });
       track('build_config_submit', payload);
+      track('configure_complete', { cta_location: 'configure_book', page_path: location.pathname, systems_count: (state.systems || []).length });
       postToWebhook(payload);
       // Do not preventDefault — allow mailto to open in user's client.
     });
@@ -1199,6 +1205,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   renderReceipt();
 
   showStep(state.step || 1);
+  track('configure_start', { cta_location: 'configure_boot', page_path: location.pathname });
 })();
 </script>
 
