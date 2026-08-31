@@ -321,6 +321,7 @@
     asking: false,
     didSoftNav: false,
     navigating: false,
+    micBlocked: false,
   };
 
   function normSpeech(s) {
@@ -517,9 +518,11 @@
         var note = document.getElementById("vz-guide-note");
         if (note) note.textContent = "Voice is unavailable — type a message below.";
       }
-      if (state.open && !state.muted) {
+      if (state.open && !state.muted && !state.micBlocked) {
         setStatus("listening");
         resumeRec();
+      } else if (state.open) {
+        setStatus("idle");
       }
       if (onEnd) onEnd();
     }
@@ -1030,6 +1033,8 @@
         var blocked = document.getElementById("vz-guide-note");
         if (blocked) blocked.textContent = "Microphone blocked — type instead, or allow mic and retry.";
         state.wantListen = false;
+        state.micBlocked = true;
+        if (!state.speaking) setStatus("idle");
       }
     };
     state.rec = rec;
@@ -1091,6 +1096,9 @@
       .catch(function () {
         var n = document.getElementById("vz-guide-note");
         if (n) n.textContent = "Microphone blocked — type instead, or allow mic and retry.";
+        state.micBlocked = true;
+        state.wantListen = false;
+        if (!state.speaking) setStatus("idle");
         if (thenSpeak) thenSpeak();
       });
   }
@@ -1164,6 +1172,7 @@
     state.muted = false;
     state.pendingSpeak = "";
     state.pendingBook = false;
+    state.micBlocked = false;
     setShowWidget(false);
     showCard();
     var note = document.getElementById("vz-guide-note");
@@ -1251,15 +1260,23 @@
         this.setAttribute("aria-label", "Mute");
       }
     });
-    document.getElementById("vz-guide-form").addEventListener("submit", function (e) {
-      e.preventDefault();
+    function sendTyped() {
       var inp = document.getElementById("vz-guide-input");
-      var v = inp.value;
-      inp.value = "";
-      var t = String(v || "").trim();
+      var t = String((inp && inp.value) || "").trim();
+      if (inp) inp.value = "";
       if (!t) return;
       state.ignoreUntil = 0;
       ask(t);
+    }
+    document.getElementById("vz-guide-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      sendTyped();
+    });
+    document.getElementById("vz-guide-input").addEventListener("keydown", function (e) {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        sendTyped();
+      }
     });
 
     document.addEventListener(
