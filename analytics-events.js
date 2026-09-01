@@ -142,7 +142,11 @@
     if (v.dataset && v.dataset.ariaPlayed === '1') return;
     if (v.dataset) v.dataset.ariaPlayed = '1';
     track('video_play', { video_id: id, media_type: v.tagName.toLowerCase() });
-    if (v.getAttribute('data-demo') || /demo/i.test(id || '')) {
+    if (
+      v.getAttribute('data-demo') ||
+      /demo/i.test(id || '') ||
+      /\/demo/.test(location.pathname)
+    ) {
       track('demo_start', { cta_location: 'demo_media', media_id: id });
     }
   }, true);
@@ -181,6 +185,9 @@
   function boot() {
     watchPricing();
     watchRoi();
+    if (/voice-ai-dental-buyers-guide/.test(location.pathname)) {
+      track('buyer_guide_download', { cta_location: 'guide_view' });
+    }
   }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', boot);
