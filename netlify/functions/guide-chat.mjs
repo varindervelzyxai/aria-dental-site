@@ -4,7 +4,7 @@ const require = createRequire(import.meta.url);
 const { handleGuideChat } = require("../../lib/aria-apis.js");
 
 export default async (req) => {
-  if (req.method === "GET") {
+  if (req.method === "OPTIONS" || req.method === "GET") {
     return Response.json({ ok: true, brain: "guide" });
   }
   if (req.method !== "POST") {
@@ -15,6 +15,12 @@ export default async (req) => {
       return {};
     });
     const result = await handleGuideChat(payload);
+    if (result.stream) {
+      return new Response(result.stream, {
+        status: result.status,
+        headers: result.headers,
+      });
+    }
     return new Response(result.body, {
       status: result.status,
       headers: result.headers,

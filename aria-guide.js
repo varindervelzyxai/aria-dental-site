@@ -89,7 +89,7 @@
       var Ctor = window.AudioContext || window.webkitAudioContext;
       if (!Ctor) return Promise.resolve(null);
       try {
-        player.ctx = new Ctor({ sampleRate: PLAYBACK_RATE, latencyHint: "playback" });
+        player.ctx = new Ctor({ sampleRate: PLAYBACK_RATE, latencyHint: "interactive" });
       } catch (_) {
         player.ctx = new Ctor();
       }
@@ -117,7 +117,7 @@
     var src = player.ctx.createBufferSource();
     src.buffer = buf;
     src.connect(player.gain);
-    var look = player.ctx.currentTime + (isMobile() ? 0.14 : 0.06);
+    var look = player.ctx.currentTime + (isMobile() ? 0.08 : 0.035);
     var startAt = player.next > player.ctx.currentTime ? player.next : look;
     src.start(startAt);
     player.next = startAt + buf.duration;
@@ -390,7 +390,7 @@
     if (isKeyboardNoise(said)) return true;
     if (isLikelyEcho(said, state.lastSpoken) || isLikelyEcho(said, lastAssistantText())) return true;
     var words = said.trim().split(/\s+/).filter(Boolean);
-    if (words.length < 3 && !/^(hi|hello|hey|yes|yeah|ok|okay|stop|no)$/i.test(said)) return true;
+    if (words.length < 2 && !/^(hi|hello|hey|yes|yeah|ok|okay|stop|no)$/i.test(said)) return true;
     return false;
   }
 
@@ -513,7 +513,7 @@
     function done(ok) {
       if (gen !== player.gen) return;
       state.speaking = false;
-      state.ignoreUntil = Date.now() + 800;
+      state.ignoreUntil = Date.now() + 180;
       if (!ok) {
         var note = document.getElementById("vz-guide-note");
         if (note) note.textContent = "Voice is unavailable — type a message below.";
@@ -535,7 +535,7 @@
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             text: text,
-            sampleRate: Math.min(player.rate, PLAYBACK_RATE),
+            sampleRate: 24000,
             voice: "hannah",
           }),
           signal: ctrl.signal,
@@ -549,10 +549,23 @@
         player.leftover = new Uint8Array(0);
         var reader = res.body.getReader();
         var got = false;
+        var primed = false;
+        var pending = new Uint8Array(0);
+        var PRIME = 1600;
+        function playBytes(bytes) {
+          var decoded = decodeS16le(bytes, player.leftover);
+          player.leftover = decoded.leftover;
+          if (decoded.samples.length) enqueuePcm(resample(decoded.samples));
+        }
         function pump() {
           return reader.read().then(function (chunk) {
             if (gen !== player.gen) return;
             if (chunk.done) {
+              if (!primed && pending.length) {
+                primed = true;
+                playBytes(pending);
+                pending = new Uint8Array(0);
+              }
               if (player.leftover.length >= 2) {
                 var last = decodeS16le(new Uint8Array(0), player.leftover);
                 player.leftover = new Uint8Array(0);
@@ -561,19 +574,26 @@
               if (!got) throw new Error("empty");
               window.setTimeout(function waitIdle() {
                 if (gen !== player.gen) return;
-                if (player.sources.length || remainingMs() > 50) {
-                  window.setTimeout(waitIdle, 120);
+                if (player.sources.length || remainingMs() > 40) {
+                  window.setTimeout(waitIdle, 50);
                   return;
                 }
-                window.setTimeout(function () { done(true); }, 700);
-              }, remainingMs() + 80);
+                window.setTimeout(function () { done(true); }, 80);
+              }, remainingMs() + 40);
               return;
             }
             if (chunk.value && chunk.value.byteLength) {
               got = true;
-              var decoded = decodeS16le(chunk.value.slice(), player.leftover);
-              player.leftover = decoded.leftover;
-              if (decoded.samples.length) enqueuePcm(resample(decoded.samples));
+              if (!primed) {
+                pending = concatBytes(pending, chunk.value.slice());
+                if (pending.length >= PRIME) {
+                  primed = true;
+                  playBytes(pending);
+                  pending = new Uint8Array(0);
+                }
+              } else {
+                playBytes(chunk.value.slice());
+              }
             }
             return pump();
           });
@@ -935,6 +955,52 @@
     goTo(c && c.path, line, book ? { widget: true, form: true } : {});
   }
 
+  function readGuideStream(res, onPartial) {
+    var reader = res.body.getReader();
+    var dec = new TextDecoder();
+    var buf = "";
+    var reply = null;
+    function consume(block) {
+      var line = String(block || "").replace(/^data:\s?/, "").trim();
+      if (!line) return;
+      var obj;
+      try {
+        obj = JSON.parse(line);
+      } catch (_) {
+        return;
+      }
+      if (obj.partial) onPartial(obj.partial);
+      if (obj.text) reply = obj;
+    }
+    function pump() {
+      return reader.read().then(function (chunk) {
+        if (chunk.done) {
+          if (buf.trim()) consume(buf);
+          return reply;
+        }
+        buf += dec.decode(chunk.value, { stream: true });
+        var parts = buf.split("\n\n");
+        buf = parts.pop();
+        parts.forEach(consume);
+        return pump();
+      });
+    }
+    return pump();
+  }
+
+  function updateLastAriaLine(text) {
+    if (!text || !state.turns.length) return;
+    var last = state.turns[state.turns.length - 1];
+    if (last.role !== "assistant") return;
+    last.content = text;
+    var log = document.getElementById("vz-guide-log");
+    var lines = log && log.querySelectorAll(".vz-line.aria");
+    if (lines && lines.length) {
+      var said = lines[lines.length - 1].querySelector(".vz-said");
+      if (said) said.textContent = text;
+    }
+  }
+
   async function ask(text) {
     var t = String(text || "").trim();
     if (!t || state.asking) return;
@@ -949,22 +1015,41 @@
       text: "Aria is Voice AI plus marketing for dental practices — phone, chat, SMS, insurance, and recall. Tell me if you want the platform, the voices, or a walkthrough.",
       chips: DEFAULT_CHIPS.slice(),
     };
+    var startedSpeak = false;
+
+    function applySpeak(line) {
+      var spoken = String(line || "").trim();
+      if (!spoken || startedSpeak) return;
+      startedSpeak = true;
+      state.turns.push({ role: "assistant", content: spoken });
+      addLine("aria", spoken);
+      persist();
+      speak(spoken);
+    }
+
     try {
       var res = await fetch("/api/guide/chat", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", Accept: "text/event-stream, application/json" },
         body: JSON.stringify({
           messages: state.turns.slice(-8),
           path: location.pathname,
+          stream: true,
         }),
       });
       if (res.ok) {
-        var data = await res.json();
-        if (data.text) reply = data;
+        var ct = (res.headers.get("content-type") || "").toLowerCase();
+        if (ct.indexOf("event-stream") !== -1) {
+          var streamed = await readGuideStream(res, applySpeak);
+          if (streamed && streamed.text) reply = streamed;
+        } else {
+          var data = await res.json();
+          if (data.text) reply = data;
+        }
       }
     } catch (_) {}
-    state.turns.push({ role: "assistant", content: reply.text });
-    addLine("aria", reply.text);
+    if (!startedSpeak) applySpeak(reply.text);
+    else if (reply.text) updateLastAriaLine(reply.text);
     renderChips(reply.chips);
     persist();
     state.asking = false;
@@ -980,13 +1065,44 @@
     } else if (!dest) {
       dest = topicPath(t);
     }
-    if (dest) goTo(dest, reply.text, book || /\/contact/.test(dest) ? { widget: true, form: true } : {});
-    else speak(reply.text);
+    if (dest) goTo(dest, startedSpeak ? "" : reply.text, book || /\/contact/.test(dest) ? { widget: true, form: true } : {});
+    else if (!startedSpeak) speak(reply.text);
   }
 
   function heard(said) {
     if (shouldIgnoreHeard(said)) return;
     ask(said);
+  }
+
+  var endpt = { timer: null, interim: "", committed: "", committedAt: 0 };
+
+  function clearEndpointing() {
+    if (endpt.timer) {
+      window.clearTimeout(endpt.timer);
+      endpt.timer = null;
+    }
+    endpt.interim = "";
+  }
+
+  function commitUtterance(said) {
+    said = String(said || "").replace(/\s+/g, " ").trim();
+    if (!said) return;
+    var key = normSpeech(said);
+    if (key && key === endpt.committed && Date.now() - endpt.committedAt < 3500) return;
+    if (shouldIgnoreHeard(said)) return;
+    endpt.committed = key;
+    endpt.committedAt = Date.now();
+    clearEndpointing();
+    setStatus("thinking");
+    heard(said);
+  }
+
+  function armCommit(delay) {
+    if (endpt.timer) window.clearTimeout(endpt.timer);
+    endpt.timer = window.setTimeout(function () {
+      endpt.timer = null;
+      if (endpt.interim) commitUtterance(endpt.interim);
+    }, delay);
   }
 
   function startRec() {
@@ -1011,22 +1127,37 @@
     rec.lang = "en-US";
     rec.onresult = function (ev) {
       if (state.muted || state.speaking || state.holdRec || state.asking) return;
-      if (player.sources.length || remainingMs() > 50) return;
+      if (player.sources.length || remainingMs() > 40) return;
       var last = ev.results[ev.results.length - 1];
-      if (!last || !last.isFinal) return;
-      var said = (last[0] && last[0].transcript ? last[0].transcript : "").trim();
-      var conf = last[0] && last[0].confidence;
-      if (typeof conf === "number" && conf > 0 && conf < 0.55) return;
-      heard(said);
+      if (!last) return;
+      var said = (last[0] && last[0].transcript ? last[0].transcript : "").replace(/\s+/g, " ").trim();
+      if (!said) return;
+      if (last.isFinal) {
+        var conf = last[0] && last[0].confidence;
+        if (typeof conf === "number" && conf > 0 && conf < 0.45) return;
+        commitUtterance(said);
+        return;
+      }
+      if (said === endpt.interim) return;
+      endpt.interim = said;
+      armCommit(isMobile() ? 380 : 280);
+    };
+    rec.onspeechend = function () {
+      if (state.muted || state.speaking || state.holdRec || state.asking) return;
+      if (!endpt.interim) return;
+      armCommit(90);
     };
     rec.onend = function () {
+      if (endpt.interim && !state.holdRec && !state.asking && !state.speaking) {
+        commitUtterance(endpt.interim);
+      }
       if (state.holdRec || !state.wantListen || state.muted || !state.open) return;
       window.setTimeout(function () {
         if (state.holdRec || !state.wantListen || state.muted || !state.open) return;
         try {
           rec.start();
         } catch (_) {}
-      }, 180);
+      }, 50);
     };
     rec.onerror = function (ev) {
       if (ev.error === "not-allowed") {
@@ -1048,6 +1179,7 @@
 
   function pauseRec() {
     state.holdRec = true;
+    clearEndpointing();
     if (state.rec) {
       try {
         state.rec.abort();
@@ -1069,6 +1201,7 @@
   function stopRec() {
     state.wantListen = false;
     state.holdRec = false;
+    clearEndpointing();
     if (state.rec) {
       try {
         state.rec.abort();
@@ -1080,18 +1213,22 @@
     }
   }
 
-  function holdMic(thenSpeak) {
-    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-      if (thenSpeak) thenSpeak();
-      return;
-    }
+  var warmed = false;
+  function warmApis() {
+    if (warmed) return;
+    warmed = true;
+    try { fetch("/api/guide/chat", { method: "GET", cache: "no-store" }); } catch (_) {}
+    try { fetch("/api/fish/tts", { method: "GET", cache: "no-store" }); } catch (_) {}
+  }
+
+  function requestMic() {
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) return;
     navigator.mediaDevices
       .getUserMedia({ audio: true })
       .then(function (stream) {
         stream.getTracks().forEach(function (t) {
           t.stop();
         });
-        if (thenSpeak) thenSpeak();
       })
       .catch(function () {
         var n = document.getElementById("vz-guide-note");
@@ -1099,7 +1236,6 @@
         state.micBlocked = true;
         state.wantListen = false;
         if (!state.speaking) setStatus("idle");
-        if (thenSpeak) thenSpeak();
       });
   }
 
@@ -1159,10 +1295,10 @@
     if (session.pendingBook || session.showWidget) {
       arrive("/contact", { widget: true, form: true });
     }
-    holdMic(function () {
-      if (pending) speak(pending);
-      else if (!state.muted) resumeRec();
-    });
+    warmApis();
+    requestMic();
+    if (pending) speak(pending);
+    else if (!state.muted) resumeRec();
   }
 
   function openGuide() {
@@ -1190,9 +1326,9 @@
     if (note) note.textContent = "";
     paintLog();
     persist();
-    holdMic(function () {
-      speak(GREETING);
-    });
+    warmApis();
+    requestMic();
+    speak(GREETING);
   }
 
   function ensureWidget() {
@@ -1324,6 +1460,7 @@
     });
 
     window.openAriaGuide = openGuide;
+    window.setTimeout(warmApis, 400);
     window.addEventListener("pagehide", persist);
     window.addEventListener("beforeunload", persist);
     watchWidgetBrand();
