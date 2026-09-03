@@ -500,7 +500,173 @@
     }
   }
 
-  function speak(text, onEnd) {
+  function splitUtterance(text) {
+    var s = String(text || "").replace(/\s+/g, " ").trim();
+    if (!s) return [];
+    var bits = s.match(/[^.!?]+[.!?]+(?:["')\]]+)?|\S.+$/g) || [s];
+    var out = [];
+    for (var i = 0; i < bits.length; i++) {
+      var p = bits[i].trim();
+      if (!p) continue;
+      if (out.length && p.length < 18) out[out.length - 1] += " " + p;
+      else out.push(p);
+    }
+    return out.length ? out : [s];
+  }
+
+  var voiceQ = { parts: [], started: 0, playing: 0, streams: [], onEnd: null };
+
+  function resetVoiceQ() {
+    voiceQ.parts = [];
+    voiceQ.started = 0;
+    voiceQ.playing = 0;
+    voiceQ.streams = [];
+    voiceQ.onEnd = null;
+  }
+
+  function finishSpeak(ok, gen) {
+    if (gen !== player.gen) return;
+    state.speaking = false;
+    state.ignoreUntil = Date.now() + 180;
+    if (!ok) {
+      var note = document.getElementById("vz-guide-note");
+      if (note) note.textContent = "Voice is unavailable — type a message below.";
+    }
+    var cb = voiceQ.onEnd;
+    resetVoiceQ();
+    if (state.open && !state.muted && !state.micBlocked) {
+      setStatus("listening");
+      resumeRec();
+    } else if (state.open) {
+      setStatus("idle");
+    }
+    if (cb) cb();
+  }
+
+  function waitPlayIdle(gen, then) {
+    window.setTimeout(function waitIdle() {
+      if (gen !== player.gen) return;
+      if (player.sources.length || remainingMs() > 40) {
+        window.setTimeout(waitIdle, 50);
+        return;
+      }
+      window.setTimeout(function () { then(); }, 80);
+    }, remainingMs() + 40);
+  }
+
+  function pumpPcm(res, gen) {
+    if (!res || !res.ok || !res.body) return Promise.reject(new Error("tts"));
+    player.sourceRate = Number(res.headers.get("X-Audio-Sample-Rate")) || 24000;
+    var reader = res.body.getReader();
+    var got = false;
+    var primed = false;
+    var pending = new Uint8Array(0);
+    var PRIME = 1600;
+    function playBytes(bytes) {
+      var decoded = decodeS16le(bytes, player.leftover);
+      player.leftover = decoded.leftover;
+      if (decoded.samples.length) enqueuePcm(resample(decoded.samples));
+    }
+    function pump() {
+      return reader.read().then(function (chunk) {
+        if (gen !== player.gen) return;
+        if (chunk.done) {
+          if (!primed && pending.length) playBytes(pending);
+          if (player.leftover.length >= 2) {
+            var last = decodeS16le(new Uint8Array(0), player.leftover);
+            player.leftover = new Uint8Array(0);
+            if (last.samples.length) enqueuePcm(resample(last.samples));
+          }
+          if (!got) throw new Error("empty");
+          return;
+        }
+        if (chunk.value && chunk.value.byteLength) {
+          got = true;
+          if (!primed) {
+            pending = concatBytes(pending, chunk.value.slice());
+            if (pending.length >= PRIME) {
+              primed = true;
+              playBytes(pending);
+              pending = new Uint8Array(0);
+            }
+          } else {
+            playBytes(chunk.value.slice());
+          }
+        }
+        return pump();
+      });
+    }
+    return pump();
+  }
+
+  function prefetchTts(ctrl) {
+    while (voiceQ.started < voiceQ.parts.length && voiceQ.started < voiceQ.playing + 2) {
+      (function (idx) {
+        voiceQ.started += 1;
+        voiceQ.streams[idx] = unlockAudio().then(function () {
+          if (ctrl && ctrl.signal && ctrl.signal.aborted) throw new DOMException("Aborted", "AbortError");
+          return fetch("/api/fish/tts", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              text: voiceQ.parts[idx],
+              sampleRate: 24000,
+              voice: "hannah",
+            }),
+            signal: ctrl && ctrl.signal,
+          });
+        });
+      })(voiceQ.started);
+    }
+  }
+
+  function playNextTts(ctrl, gen) {
+    if (gen !== player.gen) return;
+    if (voiceQ.playing >= voiceQ.parts.length) {
+      waitPlayIdle(gen, function () {
+        if (gen !== player.gen) return;
+        if (voiceQ.playing < voiceQ.parts.length) {
+          playNextTts(ctrl, gen);
+          return;
+        }
+        finishSpeak(true, gen);
+      });
+      return;
+    }
+    var idx = voiceQ.playing;
+    voiceQ.playing += 1;
+    prefetchTts(ctrl);
+    voiceQ.streams[idx]
+      .then(function (res) {
+        if (gen !== player.gen) return;
+        player.srcHold = new Float32Array(0);
+        player.srcFrac = 0;
+        player.leftover = new Uint8Array(0);
+        return pumpPcm(res, gen);
+      })
+      .then(function () {
+        if (gen !== player.gen) return;
+        playNextTts(ctrl, gen);
+      })
+      .catch(function (err) {
+        if (ctrl && ctrl.signal && ctrl.signal.aborted) return;
+        if (err && err.name === "AbortError") return;
+        finishSpeak(false, gen);
+      });
+  }
+
+  function speak(text, onEnd, opts) {
+    opts = opts || {};
+    var parts = splitUtterance(text);
+    if (!parts.length) return;
+    if (opts.append && state.speaking && player.abort && voiceQ.parts.length) {
+      var needKick = voiceQ.playing >= voiceQ.parts.length;
+      state.lastSpoken = (state.lastSpoken + " " + parts.join(" ")).trim();
+      voiceQ.parts = voiceQ.parts.concat(parts);
+      prefetchTts(player.abort);
+      if (needKick) playNextTts(player.abort, player.gen);
+      return;
+    }
     interruptSpeech();
     pauseRec();
     state.speaking = true;
@@ -509,101 +675,11 @@
     var gen = player.gen;
     var ctrl = new AbortController();
     player.abort = ctrl;
-
-    function done(ok) {
-      if (gen !== player.gen) return;
-      state.speaking = false;
-      state.ignoreUntil = Date.now() + 180;
-      if (!ok) {
-        var note = document.getElementById("vz-guide-note");
-        if (note) note.textContent = "Voice is unavailable — type a message below.";
-      }
-      if (state.open && !state.muted && !state.micBlocked) {
-        setStatus("listening");
-        resumeRec();
-      } else if (state.open) {
-        setStatus("idle");
-      }
-      if (onEnd) onEnd();
-    }
-
-    unlockAudio()
-      .then(function () {
-        if (gen !== player.gen) return;
-        return fetch("/api/fish/tts", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            text: text,
-            sampleRate: 24000,
-            voice: "hannah",
-          }),
-          signal: ctrl.signal,
-        });
-      })
-      .then(function (res) {
-        if (!res || !res.ok || !res.body) throw new Error("tts");
-        player.sourceRate = Number(res.headers.get("X-Audio-Sample-Rate")) || 44100;
-        player.srcHold = new Float32Array(0);
-        player.srcFrac = 0;
-        player.leftover = new Uint8Array(0);
-        var reader = res.body.getReader();
-        var got = false;
-        var primed = false;
-        var pending = new Uint8Array(0);
-        var PRIME = 1600;
-        function playBytes(bytes) {
-          var decoded = decodeS16le(bytes, player.leftover);
-          player.leftover = decoded.leftover;
-          if (decoded.samples.length) enqueuePcm(resample(decoded.samples));
-        }
-        function pump() {
-          return reader.read().then(function (chunk) {
-            if (gen !== player.gen) return;
-            if (chunk.done) {
-              if (!primed && pending.length) {
-                primed = true;
-                playBytes(pending);
-                pending = new Uint8Array(0);
-              }
-              if (player.leftover.length >= 2) {
-                var last = decodeS16le(new Uint8Array(0), player.leftover);
-                player.leftover = new Uint8Array(0);
-                if (last.samples.length) enqueuePcm(resample(last.samples));
-              }
-              if (!got) throw new Error("empty");
-              window.setTimeout(function waitIdle() {
-                if (gen !== player.gen) return;
-                if (player.sources.length || remainingMs() > 40) {
-                  window.setTimeout(waitIdle, 50);
-                  return;
-                }
-                window.setTimeout(function () { done(true); }, 80);
-              }, remainingMs() + 40);
-              return;
-            }
-            if (chunk.value && chunk.value.byteLength) {
-              got = true;
-              if (!primed) {
-                pending = concatBytes(pending, chunk.value.slice());
-                if (pending.length >= PRIME) {
-                  primed = true;
-                  playBytes(pending);
-                  pending = new Uint8Array(0);
-                }
-              } else {
-                playBytes(chunk.value.slice());
-              }
-            }
-            return pump();
-          });
-        }
-        return pump();
-      })
-      .catch(function (err) {
-        if (ctrl.signal.aborted || (err && err.name === "AbortError")) return;
-        done(false);
-      });
+    resetVoiceQ();
+    voiceQ.parts = parts;
+    voiceQ.onEnd = onEnd || null;
+    prefetchTts(ctrl);
+    playNextTts(ctrl, gen);
   }
 
   function interruptSpeech() {
@@ -618,6 +694,7 @@
     player.srcFrac = 0;
     player.sourceRate = player.rate;
     state.speaking = false;
+    resetVoiceQ();
   }
 
   function addLine(role, text) {
@@ -1016,15 +1093,32 @@
       chips: DEFAULT_CHIPS.slice(),
     };
     var startedSpeak = false;
+    var spokenSoFar = "";
 
     function applySpeak(line) {
-      var spoken = String(line || "").trim();
-      if (!spoken || startedSpeak) return;
-      startedSpeak = true;
-      state.turns.push({ role: "assistant", content: spoken });
-      addLine("aria", spoken);
+      var next = String(line || "").replace(/\s+/g, " ").trim();
+      if (!next) return;
+      if (!startedSpeak) {
+        startedSpeak = true;
+        spokenSoFar = next;
+        state.turns.push({ role: "assistant", content: next });
+        addLine("aria", next);
+        persist();
+        speak(next);
+        return;
+      }
+      if (next === spokenSoFar) return;
+      if (next.indexOf(spokenSoFar) === 0) {
+        var rest = next.slice(spokenSoFar.length).trim();
+        spokenSoFar = next;
+        updateLastAriaLine(next);
+        persist();
+        if (rest) speak(rest, null, { append: true });
+        return;
+      }
+      spokenSoFar = next;
+      updateLastAriaLine(next);
       persist();
-      speak(spoken);
     }
 
     try {
