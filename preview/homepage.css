@@ -569,7 +569,7 @@ button { font: inherit; }
   position: fixed;
   left: 0;
   right: 0;
-  bottom: 76px;
+  bottom: 0;
   z-index: 25;
   background: rgba(251, 251, 253, 0.86);
   backdrop-filter: saturate(1.8) blur(20px);
@@ -619,6 +619,7 @@ button { font: inherit; }
   .nav-toggle { display: block; }
   .hero { padding-top: 40px; min-height: auto; }
   .hero .headline { font-size: 56px; }
+  .buybar { display: none; }
   .buybar-inner { flex-wrap: wrap; }
 }
 

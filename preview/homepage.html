@@ -294,11 +294,12 @@
 
   var bar = document.getElementById("buybar");
   var hero = document.querySelector(".hero");
-  if (bar && hero && "IntersectionObserver" in window) {
-    new IntersectionObserver(function (entries) {
-      bar.classList.toggle("show", !entries[0].isIntersecting);
-    }, { threshold: 0.15 }).observe(hero);
+  function syncBuybar() {
+    if (!bar || !hero) return;
+    bar.classList.toggle("show", window.scrollY > hero.offsetHeight * 0.45);
   }
+  window.addEventListener("scroll", syncBuybar, { passive: true });
+  syncBuybar();
 
   var current;
   document.querySelectorAll(".voice-chip").forEach(function (chip) {
