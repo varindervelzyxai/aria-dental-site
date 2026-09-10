@@ -53,6 +53,11 @@
   status = 301
   force = true
 
+[[redirects]]
+  from = "/preview/homepage"
+  to = "/preview/homepage.html"
+  status = 200
+
 [[headers]]
   for = "/*"
   [headers.values]
@@ -61,3 +66,8 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "accelerometer=(), camera=(), geolocation=(), gyroscope=(), microphone=(self), payment=(), usb=(), interest-cohort=()"
     X-Frame-Options = "SAMEORIGIN"
+
+[[headers]]
+  for = "/preview/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"

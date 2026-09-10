@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aria homepage mockup — design preview</title>
+<meta name="description" content="Design preview of an Apple-inspired Aria Dental homepage. Not the live site.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="canonical" href="https://ariadental.ai/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/preview/homepage.css">
+<link rel="icon" href="/favicon.ico">
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<div class="ribbon" id="ribbon">
+  <span>Design preview — not the live homepage</span>
+  <a href="/">View current site</a>
+  <button type="button" class="ribbon-dismiss" id="ribbonDismiss" aria-label="Hide preview banner">×</button>
+</div>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="wordmark" href="/" aria-label="Aria home">aria</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/platform">Product</a></li>
+      <li><a href="/voices/">Voices</a></li>
+      <li><a href="/demos">Demos</a></li>
+      <li><a href="/security">Security</a></li>
+      <li><a href="/about">About</a></li>
+      <li><button type="button" class="nav-cta" data-aria-guide-open>Talk to Aria</button></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<main id="main">
+  <section class="hero">
+    <p class="eyebrow">Voice AI for dental practices</p>
+    <h1 class="headline">Aria.</h1>
+    <p class="tagline">The front office that answers every call.</p>
+    <div class="links">
+      <button type="button" data-aria-guide-open>Talk to Aria ›</button>
+      <a href="/configure/">Build yours ›</a>
+    </div>
+    <div class="hero-photo">
+      <img src="/images/aria-hero-1.png" alt="Aria, the AI dental receptionist" width="800" height="800">
+    </div>
+  </section>
+
+  <section class="shelf" aria-label="Product chapters">
+    <article class="tile dark">
+      <p class="eyebrow">Talk</p>
+      <h2 class="headline">Speak with her.<br>Right here.</h2>
+      <p class="tagline">Voice in the browser. Same Aria your patients hear on the phone.</p>
+      <div class="links light">
+        <button type="button" data-aria-guide-open>Start talking ›</button>
+        <a href="/how-it-works">How it works ›</a>
+      </div>
+      <div class="tile-visual">
+        <img src="/images/aria-avatar.png" alt="" width="400" height="400">
+      </div>
+    </article>
+
+    <article class="tile">
+      <p class="eyebrow">Voices</p>
+      <h2 class="headline">Hear it.<br>In four languages.</h2>
+      <p class="tagline">17 production voices. English, Español, 中文, हिन्दी. Conversational coverage beyond that.</p>
+      <div class="voice-row" id="voiceRow">
+        <button type="button" class="voice-chip" data-src="/voices/audio/aria-english-voice1.mp3">English</button>
+        <button type="button" class="voice-chip" data-src="/voices/audio/aria-spanish-lucia.mp3">Español</button>
+        <button type="button" class="voice-chip" data-src="/voices/audio/aria-chinese-gemma.mp3">中文</button>
+        <button type="button" class="voice-chip" data-src="/voices/audio/aria-hindi-anuj.mp3">हिन्दी</button>
+      </div>
+      <div class="links">
+        <a href="/voices/">Hear all 17 ›</a>
+        <a href="/clone/">Clone a voice ›</a>
+      </div>
+      <div class="tile-visual padded-visual"></div>
+    </article>
+
+    <article class="tile">
+      <p class="eyebrow">Insurance</p>
+      <h2 class="headline">Coverage,<br>on the call.</h2>
+      <p class="tagline">Member ID in. Benefits read back. Out-of-pocket quoted before they hang up.</p>
+      <div class="links">
+        <a href="/dental-insurance-verification-ai">See verification ›</a>
+        <a href="/demos">Watch a demo ›</a>
+      </div>
+      <div class="tile-visual padded-visual">
+        <img src="/images/aria-hero-2.png" alt="A team member checking a patient message on a phone" width="640" height="800">
+      </div>
+    </article>
+
+    <article class="tile dark">
+      <p class="eyebrow">Booking</p>
+      <h2 class="headline">Booked.<br>Confirmed. Done.</h2>
+      <p class="tagline">Calendar check, write-back, and an SMS confirmation — while the caller is still on the line.</p>
+      <div class="links light">
+        <a href="/demo-booking">Watch a booking ›</a>
+        <a href="/demo-gcal">Calendar demo ›</a>
+      </div>
+      <div class="status-row">
+        <span class="pill live">Open Dental live</span>
+        <span class="pill live">Google Calendar live</span>
+      </div>
+    </article>
+
+    <article class="tile">
+      <p class="eyebrow">Recall</p>
+      <h2 class="headline">Patients you<br>haven’t seen.</h2>
+      <p class="tagline">Aria calls the overdue list, handles “I’ve been busy,” and puts them back on the book.</p>
+      <div class="links">
+        <a href="/blog/dental-patient-recall-best-practices">How recall works ›</a>
+        <a href="#listen">Listen to a call ›</a>
+      </div>
+    </article>
+
+    <article class="tile dark">
+      <p class="eyebrow">After hours</p>
+      <h2 class="headline">The desk that<br>stays open.</h2>
+      <p class="tagline">Nights, weekends, lunch. Voice, chat, and SMS — one brain, one schedule.</p>
+      <div class="links light">
+        <a href="/after-hours-dental-answering-service">After-hours ›</a>
+        <a href="/configure/">Build yours ›</a>
+      </div>
+    </article>
+  </section>
+
+  <section class="cinema" id="listen">
+    <div>
+      <p class="eyebrow" style="color:#f5c563">A real conversation</p>
+      <h2 class="headline">She books.<br>They confirm.</h2>
+      <p class="tagline">A sample outbound recall. Aria names the gap, meets the objection, and writes the visit.</p>
+      <div class="links light">
+        <a href="/demos">All demos ›</a>
+        <a href="/audio/demo-book-self.mp3">Hear a booking ›</a>
+      </div>
+    </div>
+    <div class="phone" aria-label="Sample call transcript">
+      <div class="phone-notch"></div>
+      <div class="call-label">Outbound recall</div>
+      <div class="call-name">Aria</div>
+      <div class="bubble aria">Hi — this is Aria from the practice. You’re due for an exam and cleaning. We have openings this week.</div>
+      <div class="bubble patient">I’ve just been so busy. Do you have Wednesday at 2?</div>
+      <div class="bubble aria">Yes — Wednesday at 2 with Dr. Smith. I’ll text the confirmation now.</div>
+    </div>
+  </section>
+
+  <section class="bento-wrap">
+    <div class="bento-head">
+      <h2 class="headline">One front office.<br>Every channel.</h2>
+      <p class="tagline" style="margin:12px auto 0">You decide what Aria owns, and when a human steps in.</p>
+    </div>
+    <div class="bento">
+      <article class="cell span-row">
+        <h3>Voice, chat, SMS.</h3>
+        <p>Same intelligence on the phone, on the site, and in a text. A patient can start in chat and finish on a call — recognized either way.</p>
+      </article>
+      <article class="cell">
+        <h3>Insurance</h3>
+        <p>Live eligibility during the conversation. Dependents too.</p>
+      </article>
+      <article class="cell">
+        <h3>Payments</h3>
+        <p>Card on file, or a secure link mid-call. No public prices on this page.</p>
+      </article>
+      <article class="cell">
+        <h3>Languages</h3>
+        <p>17 voices in production. Conversational response in 100+ languages.</p>
+      </article>
+      <article class="cell">
+        <h3>HIPAA</h3>
+        <p>BAAs. Encryption in transit and at rest. Not SOC 2.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="integrations">
+    <h2 class="headline">Works with the book you already keep.</h2>
+    <div class="int-grid">
+      <article class="int-card">
+        <span class="pill live">Live</span>
+        <h3>Open Dental</h3>
+        <p>Write-back to the live schedule. Recall lists pull from the same source of truth.</p>
+      </article>
+      <article class="int-card">
+        <span class="pill live">Live</span>
+        <h3>Google Calendar</h3>
+        <p>Appointments land on the practice calendar. Calendar sync — not a PMS replacement.</p>
+      </article>
+      <article class="int-card">
+        <span class="pill roadmap">Roadmap</span>
+        <h3>Dentrix</h3>
+        <p>Next on the board. We will not pretend it writes back today.</p>
+      </article>
+      <article class="int-card">
+        <span class="pill roadmap">Roadmap</span>
+        <h3>Eaglesoft</h3>
+        <p>Same path as Dentrix. Calendar and payments work while PMS write-back is built.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="close">
+    <h2 class="headline">Get Aria.</h2>
+    <p class="tagline">Talk to her now, configure a voice, or book a walkthrough. No public monthly price — we scope the practice first.</p>
+    <div class="close-ctas">
+      <button type="button" class="btn-solid" data-aria-guide-open>Talk to Aria</button>
+      <a class="btn-ghost" href="/configure/">Build yours</a>
+      <a class="btn-ghost" href="/contact">Book a walkthrough</a>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <div class="foot-grid">
+      <div>
+        <a class="wordmark" href="/">aria</a>
+        <p style="margin-top:10px">A product of <a href="https://velzyx.ai" rel="noopener">Velzyx AI Inc.</a><br>California-based. Serving practices nationwide.</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <a href="/platform">Platform</a>
+        <a href="/voices/">Voices</a>
+        <a href="/demos">Demos</a>
+        <a href="/integrations">Integrations</a>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <a href="/about">About</a>
+        <a href="/security">Security</a>
+        <a href="/contact">Contact</a>
+        <a href="/blog">Blog</a>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+        <a href="/cookies">Cookies</a>
+      </div>
+    </div>
+    <p class="foot-legal">© 2026 Velzyx AI Inc. This page is a design mockup and is not indexed.</p>
+  </div>
+</footer>
+
+<div class="buybar" id="buybar">
+  <div class="buybar-inner">
+    <div>
+      <strong>Aria</strong>
+      <span>Voice AI for the dental front office</span>
+    </div>
+    <div class="buybar-actions">
+      <button type="button" class="btn-solid" data-aria-guide-open>Talk to Aria</button>
+      <a class="btn-ghost" href="/configure/">Build yours</a>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var toggle = document.getElementById("navToggle");
+  var links = document.getElementById("navLinks");
+  if (toggle && links) {
+    toggle.addEventListener("click", function () {
+      links.classList.toggle("open");
+    });
+    links.querySelectorAll("a,button").forEach(function (el) {
+      el.addEventListener("click", function () { links.classList.remove("open"); });
+    });
+  }
+
+  var ribbon = document.getElementById("ribbon");
+  var dismiss = document.getElementById("ribbonDismiss");
+  if (dismiss) {
+    dismiss.addEventListener("click", function () {
+      document.body.classList.add("ribbon-off");
+      if (ribbon) ribbon.remove();
+    });
+  }
+
+  var bar = document.getElementById("buybar");
+  var hero = document.querySelector(".hero");
+  if (bar && hero && "IntersectionObserver" in window) {
+    new IntersectionObserver(function (entries) {
+      bar.classList.toggle("show", !entries[0].isIntersecting);
+    }, { threshold: 0.15 }).observe(hero);
+  }
+
+  var current;
+  document.querySelectorAll(".voice-chip").forEach(function (chip) {
+    chip.addEventListener("click", function () {
+      document.querySelectorAll(".voice-chip").forEach(function (c) { c.classList.remove("is-on"); });
+      if (current) { current.pause(); current = null; }
+      var audio = new Audio(chip.getAttribute("data-src"));
+      chip.classList.add("is-on");
+      audio.play().catch(function () {});
+      audio.onended = function () { chip.classList.remove("is-on"); current = null; };
+      current = audio;
+    });
+  });
+})();
+</script>
+<script src="/aria-guide.js" defer></script>
+<script src="/aria-widget-brand.js"></script>
+<script src="https://voice.velzyx.ai/aria-widget.js" data-client="velzyx-ai"></script>
+</body>
+</html>
