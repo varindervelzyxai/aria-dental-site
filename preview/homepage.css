@@ -13,7 +13,7 @@
   --amber: #d4952a;
   --amber-deep: #b87d1e;
   --amber-on-dark: #f5c563;
-  --hero-yellow: #ffd000;
+  --hero-yellow: #f9b806;
   --hairline: rgba(0, 0, 0, 0.08);
   --radius-tile: 28px;
   --radius-inner: 18px;
@@ -120,10 +120,9 @@ button { font: inherit; }
 }
 .nav-links a {
   text-decoration: none;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 400;
   color: var(--ink);
-  opacity: 0.88;
 }
 .nav-links a:hover { opacity: 1; }
 .nav-cta {
@@ -215,13 +214,14 @@ button { font: inherit; }
 }
 .hero .tagline { color: rgba(29, 29, 31, 0.72); }
 .hero-photo {
-  margin-top: 12px;
-  width: min(720px, 92vw);
-  filter: drop-shadow(3px 5px 30px rgba(0, 0, 0, 0.18));
+  margin-top: 4px;
+  width: min(780px, 96vw);
 }
 .hero-photo img {
   width: 100%;
   height: auto;
+  -webkit-mask-image: radial-gradient(ellipse 58% 72% at 50% 42%, #000 46%, transparent 78%);
+  mask-image: radial-gradient(ellipse 58% 72% at 50% 42%, #000 46%, transparent 78%);
 }
 
 /* Tile shelf — Apple 2-up */
@@ -255,18 +255,81 @@ button { font: inherit; }
 .tile-visual {
   margin-top: auto;
   width: 100%;
-  max-width: 440px;
-  padding: 24px 8px 0;
+  padding: 28px 0 0;
 }
 .tile-visual img {
   width: 100%;
   height: auto;
   object-fit: cover;
   object-position: top;
-  max-height: 340px;
-  filter: drop-shadow(3px 5px 30px rgba(0, 0, 0, 0.16));
 }
-.tile.padded-visual .tile-visual { padding-bottom: 36px; }
+.tile-visual.face {
+  max-width: 280px;
+  padding-bottom: 40px;
+}
+.tile-visual.face img {
+  border-radius: 50%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: 50% 18%;
+}
+.tile-visual.bleed {
+  padding: 28px 0 0;
+}
+.tile-visual.bleed img {
+  height: 280px;
+  object-fit: cover;
+}
+.giant {
+  margin-top: auto;
+  padding: 28px 8px 40px;
+  font-family: var(--display);
+  font-size: clamp(56px, 7vw, 80px);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  color: inherit;
+  opacity: 0.92;
+}
+.tile.dark .giant { color: #f5f5f7; }
+.lang-stack {
+  margin-top: auto;
+  padding: 8px 0 36px;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 28px;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+  color: var(--ink);
+}
+.mini-cal {
+  width: min(280px, 86%);
+  margin: 28px auto 36px;
+  background: #2a2a40;
+  border-radius: 18px;
+  padding: 16px 16px 12px;
+  text-align: left;
+}
+.mini-cal-top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #d2d2d7;
+  margin-bottom: 12px;
+}
+.mini-cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+.mini-cal-grid span {
+  aspect-ratio: 1;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+}
+.mini-cal-grid span.on {
+  background: var(--amber);
+}
 
 /* Voice chips */
 .voice-row {
@@ -480,7 +543,7 @@ button { font: inherit; }
 .foot {
   background: var(--parchment);
   color: var(--ink-secondary);
-  padding: 48px 24px 80px;
+  padding: 48px 24px 160px;
   font-size: 12px;
 }
 .foot-inner { max-width: 980px; margin: 0 auto; }
@@ -506,7 +569,7 @@ button { font: inherit; }
   position: fixed;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: 76px;
   z-index: 25;
   background: rgba(251, 251, 253, 0.86);
   backdrop-filter: saturate(1.8) blur(20px);
