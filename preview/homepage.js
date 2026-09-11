@@ -124,7 +124,7 @@
       src: "/preview/films/pickup.mp4",
       poster: "/preview/films/pickup.jpg",
       caption:
-        "Pickup. The outer desk stays in the room. Aria takes the line — so the first hello is spoken before anyone waits.",
+        "Pickup. The first hello is spoken in the practice voice — then the call stays with Aria until the chair is booked.",
       audio: "/voices/audio/aria-english-voice1.mp3",
     },
     insurance: {

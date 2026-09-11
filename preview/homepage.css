@@ -219,7 +219,13 @@ body.ribbon-off .ribbon { display: none; }
 }
 .stage p { color: var(--muted); max-width: 22em; }
 .stage-art { margin-top: auto; padding-top: 28px; width: min(420px, 100%); }
-.stage-art img { width: 100%; border-radius: 18px; }
+.stage-art img {
+  width: 100%;
+  max-height: 280px;
+  object-fit: contain;
+  object-position: center top;
+  border-radius: 18px;
+}
 .face-round {
   width: 220px; height: 220px; margin: 28px auto 0; border-radius: 50%;
   overflow: hidden;
@@ -248,13 +254,14 @@ body.ribbon-off .ribbon { display: none; }
   border-radius: 32px;
   overflow: hidden;
   background: #111;
-  aspect-ratio: 16 / 9;
-  max-height: 640px;
+  aspect-ratio: 3 / 2;
+  max-height: 680px;
 }
 .film-frame video {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  background: #f5f5f7;
   display: block;
   pointer-events: none;
 }
@@ -329,7 +336,7 @@ body.ribbon-off .ribbon { display: none; }
   right: 8px;
   bottom: 8px;
   width: min(168px, 28vw);
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 3 / 2;
   border-radius: 10px;
   overflow: hidden;
   border: 2px solid #fff;
@@ -413,7 +420,12 @@ body.ribbon-off .ribbon { display: none; }
 /* Lifestyle still */
 .still { padding: 40px 24px 20px; max-width: 1120px; margin: 0 auto; }
 .still img {
-  width: 100%; border-radius: 28px; max-height: 620px; object-fit: cover;
+  width: 100%;
+  border-radius: 28px;
+  max-height: 680px;
+  object-fit: contain;
+  object-position: center top;
+  background: var(--stage);
 }
 
 /* Integrations as dots, not cards */
@@ -468,7 +480,7 @@ body.ribbon-off .ribbon { display: none; }
   .look { grid-template-columns: 1fr; }
   .stage { flex-basis: 86vw; min-height: 460px; padding: 36px 22px 24px; }
   .foot-grid { grid-template-columns: 1fr 1fr; }
-  .film-frame { aspect-ratio: 4 / 5; }
+  .film-frame { aspect-ratio: 3 / 2; }
   .phone-film { width: 78%; }
   .pip { width: 108px; bottom: 4px; }
 }
