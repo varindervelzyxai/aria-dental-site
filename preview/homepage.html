@@ -1,322 +1,317 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Aria homepage mockup — design preview</title>
-<meta name="description" content="Design preview of an Apple-inspired Aria Dental homepage. Not the live site.">
-<meta name="robots" content="noindex,nofollow">
-<link rel="canonical" href="https://ariadental.ai/">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/preview/homepage.css">
-<link rel="icon" href="/favicon.ico">
-</head>
-<body>
-<a class="skip" href="#main">Skip to main content</a>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Aria Dental — Homepage preview</title>
+    <meta
+      name="description"
+      content="Preview only. Aria answers the dental line, verifies insurance, and books the chair."
+    />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="canonical" href="https://ariadental.ai/preview/homepage" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/preview/homepage.css" />
+  </head>
+  <body>
+    <a class="skip" href="#hello">Skip to content</a>
 
-<div class="ribbon" id="ribbon">
-  <span>Design preview — not the live homepage</span>
-  <a href="/">View current site</a>
-  <button type="button" class="ribbon-dismiss" id="ribbonDismiss" aria-label="Hide preview banner">×</button>
-</div>
-
-<nav class="nav" id="nav">
-  <div class="nav-inner">
-    <a class="wordmark" href="/" aria-label="Aria home">aria</a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="/platform">Product</a></li>
-      <li><a href="/voices/">Voices</a></li>
-      <li><a href="/demos">Demos</a></li>
-      <li><a href="/security">Security</a></li>
-      <li><a href="/about">About</a></li>
-      <li><button type="button" class="nav-cta" data-aria-guide-open>Talk to Aria</button></li>
-    </ul>
-    <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
-  </div>
-</nav>
-
-<main id="main">
-  <section class="hero">
-    <p class="eyebrow">Voice AI for dental practices</p>
-    <h1 class="headline">Aria.</h1>
-    <p class="tagline">The front office that answers every call.</p>
-    <div class="links">
-      <button type="button" data-aria-guide-open>Talk to Aria ›</button>
-      <a href="/configure/">Build yours ›</a>
+    <div class="ribbon">
+      <span>Preview — the live homepage is unchanged.</span>
+      <a href="/">Open the current site</a>
+      <button type="button" class="ribbon-dismiss" data-ribbon-dismiss aria-label="Dismiss">×</button>
     </div>
-    <div class="hero-photo">
-      <img src="/images/aria-hero-1.png" alt="Aria, the AI dental receptionist" width="800" height="800">
-    </div>
-  </section>
 
-  <section class="shelf" aria-label="Product chapters">
-    <article class="tile dark">
-      <p class="eyebrow">Talk</p>
-      <h2 class="headline">Speak with her.<br>Right here.</h2>
-      <p class="tagline">Voice in the browser. Same Aria your patients hear on the phone.</p>
-      <div class="links light">
-        <button type="button" data-aria-guide-open>Start talking ›</button>
-        <a href="/how-it-works">How it works ›</a>
+    <nav class="nav" aria-label="Preview">
+      <div class="nav-inner">
+        <a class="wordmark" href="#hello">Aria Dental</a>
+        <ul class="nav-links" data-nav-links>
+          <li><a href="#highlights">Highlights</a></li>
+          <li><a href="#film">Watch</a></li>
+          <li><a href="#look">Look</a></li>
+          <li><a href="#get">Get Aria</a></li>
+          <li><a href="/configure/">Build</a></li>
+        </ul>
+        <button type="button" class="nav-cta" data-aria-guide-open>Talk to Aria</button>
+        <button type="button" class="nav-toggle" data-nav-toggle aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
-      <div class="tile-visual face">
-        <img src="/images/aria-avatar.png" alt="" width="400" height="400">
-      </div>
-    </article>
+    </nav>
 
-    <article class="tile">
-      <p class="eyebrow">Voices</p>
-      <h2 class="headline">Hear it.<br>In four languages.</h2>
-      <p class="tagline">17 production voices. English, Español, 中文, हिन्दी. Conversational coverage beyond that.</p>
-      <div class="voice-row" id="voiceRow">
-        <button type="button" class="voice-chip" data-src="/voices/audio/aria-english-voice1.mp3">English</button>
-        <button type="button" class="voice-chip" data-src="/voices/audio/aria-spanish-lucia.mp3">Español</button>
-        <button type="button" class="voice-chip" data-src="/voices/audio/aria-chinese-gemma.mp3">中文</button>
-        <button type="button" class="voice-chip" data-src="/voices/audio/aria-hindi-anuj.mp3">हिन्दी</button>
-      </div>
-      <div class="links">
-        <a href="/voices/">Hear all 17 ›</a>
-        <a href="/clone/">Clone a voice ›</a>
-      </div>
-      <p class="lang-stack">EN · ES<br>中文 · हिन्दी</p>
-    </article>
+    <main>
+      <section class="hero" id="hello">
+        <p class="kicker rise">The dental front office, answered.</p>
+        <h1 class="display rise">Hello.</h1>
+        <p class="display rise d1" style="font-weight: 500; color: var(--amber)">Aria.</p>
+        <p class="sub rise d2">
+          She picks up the practice line, verifies insurance on the call, and writes the chair into Open Dental.
+        </p>
+        <div class="links rise d3">
+          <button type="button" data-aria-guide-open>Talk to Aria</button>
+          <a href="/configure/">Build with Aria</a>
+        </div>
+        <figure class="hero-photo rise">
+          <img
+            src="/images/aria-hero-1.png"
+            width="720"
+            height="960"
+            alt="Aria, the dental front-office voice"
+          />
+        </figure>
+      </section>
 
-    <article class="tile">
-      <p class="eyebrow">Insurance</p>
-      <h2 class="headline">Coverage,<br>on the call.</h2>
-      <p class="tagline">Member ID in. Benefits read back. Out-of-pocket quoted before they hang up.</p>
-      <div class="links">
-        <a href="/dental-insurance-verification-ai">See verification ›</a>
-        <a href="/demos">Watch a demo ›</a>
-      </div>
-      <div class="tile-visual bleed">
-        <img src="/images/aria-hero-2.png" alt="A team member checking a patient message on a phone" width="640" height="800">
-      </div>
-    </article>
+      <section class="chapter" id="highlights" aria-labelledby="hl-title">
+        <div class="chapter-head">
+          <div>
+            <p class="kicker rise">Get the highlights.</p>
+            <h2 id="hl-title" class="display rise">Five moments. One line.</h2>
+          </div>
+          <a class="watch rise" href="#film">Watch the films</a>
+        </div>
+      </section>
 
-    <article class="tile dark">
-      <p class="eyebrow">Booking</p>
-      <h2 class="headline">Booked.<br>Confirmed. Done.</h2>
-      <p class="tagline">Calendar check, write-back, and an SMS confirmation — while the caller is still on the line.</p>
-      <div class="links light">
-        <a href="/demo-booking">Watch a booking ›</a>
-        <a href="/demo-gcal">Calendar demo ›</a>
-      </div>
-      <div class="status-row">
-        <span class="pill live">Open Dental live</span>
-        <span class="pill live">Google Calendar live</span>
-      </div>
-      <div class="mini-cal" aria-hidden="true">
-        <div class="mini-cal-top"><span>This week</span><span>Dr. Smith</span></div>
-        <div class="mini-cal-grid">
-          <span></span><span></span><span class="on"></span><span></span><span></span><span></span><span></span>
-          <span></span><span class="on"></span><span></span><span></span><span></span><span></span><span></span>
+      <div class="rail-wrap">
+        <div class="rail" data-rail tabindex="0" aria-label="Aria highlights">
+          <article class="stage">
+            <p class="kicker">Voice</p>
+            <h3>Answered in the practice voice.</h3>
+            <p>Seventeen production voices. More than a hundred languages in conversation.</p>
+            <div class="face-round stage-art">
+              <img src="/images/aria-hero-1.png" alt="" />
+            </div>
+          </article>
+          <article class="stage">
+            <p class="kicker">Insurance</p>
+            <h3>Benefits, before anyone waits.</h3>
+            <p>Eligibility is spoken back on the same call that booked the chair.</p>
+            <div class="stage-art">
+              <img src="/images/aria-hero-2.png" alt="" />
+            </div>
+          </article>
+          <article class="stage">
+            <p class="kicker">Book</p>
+            <h3>Open Dental gets the appointment.</h3>
+            <p>Live write-back today. Dentrix and Eaglesoft are on the roadmap.</p>
+            <div class="stage-art">
+              <img src="/images/aria-dental-3.png" alt="" />
+            </div>
+          </article>
+          <article class="stage">
+            <p class="kicker">Text</p>
+            <h3>Confirmed in their pocket.</h3>
+            <p>SMS follows the voice call so the chair stays on the calendar.</p>
+            <div class="stage-art">
+              <img src="/images/aria-dental-1.png" alt="" />
+            </div>
+          </article>
+          <article class="stage">
+            <p class="kicker">Night</p>
+            <h3>Midnight still picks up.</h3>
+            <p>After-hours callers book the same way Tuesday morning does.</p>
+            <div class="stage-art">
+              <img src="/images/wizkids-dental-front-desk.png" alt="" />
+            </div>
+          </article>
+        </div>
+        <div class="rail-nav">
+          <button type="button" class="dot on" data-rail-dot aria-label="Voice"></button>
+          <button type="button" class="dot" data-rail-dot aria-label="Insurance"></button>
+          <button type="button" class="dot" data-rail-dot aria-label="Book"></button>
+          <button type="button" class="dot" data-rail-dot aria-label="Text"></button>
+          <button type="button" class="dot" data-rail-dot aria-label="Night"></button>
+          <a class="play" href="#film" aria-label="Play the films">▶</a>
         </div>
       </div>
-    </article>
 
-    <article class="tile">
-      <p class="eyebrow">Recall</p>
-      <h2 class="headline">Patients you<br>haven’t seen.</h2>
-      <p class="tagline">Aria calls the overdue list, handles “I’ve been busy,” and puts them back on the book.</p>
-      <div class="links">
-        <a href="/blog/dental-patient-recall-best-practices">How recall works ›</a>
-        <a href="#listen">Listen to a call ›</a>
+      <section class="chapter film-chapter" id="film" data-film aria-labelledby="film-title">
+        <p class="kicker rise">Aria</p>
+        <h2 id="film-title" class="display rise">A whole front office.</h2>
+
+        <div class="film-frame rise">
+          <video
+            data-film-video
+            muted
+            loop
+            playsinline
+            autoplay
+            poster="/preview/films/pickup.jpg"
+            src="/preview/films/pickup.mp4"
+          ></video>
+          <button type="button" class="film-hear" data-film-hear>Play</button>
+          <audio data-film-audio preload="none"></audio>
+        </div>
+
+        <div class="film-meta">
+          <div class="tabs" role="tablist" aria-label="Front-office films">
+            <button type="button" class="tab on" data-film-tab="pickup" aria-pressed="true">Pickup</button>
+            <button type="button" class="tab" data-film-tab="insurance" aria-pressed="false">Insurance</button>
+            <button type="button" class="tab" data-film-tab="preview" aria-pressed="false">Preview</button>
+            <button type="button" class="tab" data-film-tab="remind" aria-pressed="false">Remind</button>
+            <button type="button" class="tab" data-film-tab="afterhours" aria-pressed="false">After hours</button>
+          </div>
+          <p class="caption" data-film-caption>
+            Pickup. The outer desk stays in the room. Aria takes the line — so the first hello is spoken before anyone waits.
+          </p>
+        </div>
+
+        <aside class="pip" aria-hidden="true">
+          <video
+            data-film-pip
+            muted
+            loop
+            playsinline
+            autoplay
+            poster="/preview/films/pickup.jpg"
+            src="/preview/films/pickup.mp4"
+          ></video>
+        </aside>
+      </section>
+
+      <section class="chapter" id="look" aria-labelledby="look-title">
+        <div class="chapter-head">
+          <div>
+            <p class="kicker rise">Take a closer look.</p>
+            <h2 id="look-title" class="display rise">Open the call.</h2>
+          </div>
+        </div>
+        <div class="look rise">
+          <div>
+            <p class="look-copy">
+              Drag the control. The desk stays quiet while the chair fills in.
+            </p>
+            <input
+              class="scrub"
+              data-look-range
+              type="range"
+              min="0"
+              max="100"
+              value="38"
+              aria-label="Open the live call"
+            />
+            <div class="poses">
+              <button type="button" class="pose on" data-look-open="22">Voice</button>
+              <button type="button" class="pose" data-look-open="48">Insurance</button>
+              <button type="button" class="pose" data-look-open="62">Calendar</button>
+              <button type="button" class="pose" data-look-open="78">SMS</button>
+              <button type="button" class="pose" data-look-open="92">After hours</button>
+            </div>
+          </div>
+          <div class="look-stage">
+            <div class="device" data-look-device style="--open: 0.38">
+              <div class="device-closed">
+                <div class="ring" aria-hidden="true">☎</div>
+                <p>Incoming</p>
+                <p style="color: #a1a1a6; font-size: 14px">Aria has the line</p>
+              </div>
+              <div class="device-open">
+                <div class="open-grid">
+                  <div>Hannah · Aria Dental</div>
+                  <div>Checking PPO benefits…</div>
+                  <div>Tuesday at 2 is open.</div>
+                  <div>Written to Open Dental</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="still" aria-labelledby="still-title">
+        <p class="kicker rise" style="max-width: 1120px; margin: 0 auto 8px; padding: 0 24px">
+          The practice, kept.
+        </p>
+        <h2 id="still-title" class="display rise" style="max-width: 1120px; margin: 0 auto 24px; padding: 0 24px">
+          She sounds like your office.
+        </h2>
+        <img
+          class="rise"
+          src="/images/aria-hero-2.png"
+          width="1600"
+          height="900"
+          alt="A clinician checking the phone while Aria has the line"
+        />
+      </section>
+
+      <section class="chapter" id="connect" aria-labelledby="dots-title">
+        <p class="kicker rise">Already in the stack.</p>
+        <h2 id="dots-title" class="display rise">Write-back where it lives.</h2>
+        <div class="dots-row rise">
+          <div class="dot-item live">
+            <div class="swatch"></div>
+            <h3>Open Dental</h3>
+            <p>Live write-back</p>
+          </div>
+          <div class="dot-item live">
+            <div class="swatch"></div>
+            <h3>Google Calendar</h3>
+            <p>Live · calendar, not PMS</p>
+          </div>
+          <div class="dot-item">
+            <div class="swatch"></div>
+            <h3>Dentrix</h3>
+            <p>Roadmap</p>
+          </div>
+          <div class="dot-item">
+            <div class="swatch"></div>
+            <h3>Eaglesoft</h3>
+            <p>Roadmap</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="close" id="get" aria-labelledby="get-title">
+        <p class="kicker rise">Get Aria.</p>
+        <h2 id="get-title" class="display rise">Put her on the line.</h2>
+        <p class="sub rise" style="margin-left: auto; margin-right: auto">
+          Talk first, or start the build. A walkthrough is on the calendar when you want a person.
+        </p>
+        <div class="close-ctas rise">
+          <button type="button" class="btn-solid" data-aria-guide-open>Talk to Aria</button>
+          <a class="btn-ghost" href="/configure/">Build with Aria</a>
+          <a class="btn-ghost" href="/demo">Book a walkthrough</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <div class="foot-inner">
+        <div class="foot-grid">
+          <div>
+            <h5>Aria Dental</h5>
+            <p>A homepage preview. The live site is unchanged.</p>
+          </div>
+          <div>
+            <h5>Product</h5>
+            <a href="/platform">Platform</a>
+            <a href="/how-it-works">How it works</a>
+            <a href="/voices/">Voices</a>
+          </div>
+          <div>
+            <h5>Start</h5>
+            <a href="/configure/">Build</a>
+            <a href="/demo">Walkthrough</a>
+            <a href="/demos">Hear a call</a>
+          </div>
+          <div>
+            <h5>This draft</h5>
+            <a href="/">Current homepage</a>
+            <a href="/preview/homepage">Preview</a>
+          </div>
+        </div>
+        <p class="foot-legal">© Velzyx AI Inc. Preview only · noindex.</p>
       </div>
-      <p class="giant">Overdue.</p>
-    </article>
+    </footer>
 
-    <article class="tile dark">
-      <p class="eyebrow">After hours</p>
-      <h2 class="headline">The desk that<br>stays open.</h2>
-      <p class="tagline">Nights, weekends, lunch. Voice, chat, and SMS — one brain, one schedule.</p>
-      <div class="links light">
-        <a href="/after-hours-dental-answering-service">After-hours ›</a>
-        <a href="/configure/">Build yours ›</a>
-      </div>
-      <p class="giant">24/7</p>
-    </article>
-  </section>
-
-  <section class="cinema" id="listen">
-    <div>
-      <p class="eyebrow" style="color:#f5c563">A real conversation</p>
-      <h2 class="headline">She books.<br>They confirm.</h2>
-      <p class="tagline">A sample outbound recall. Aria names the gap, meets the objection, and writes the visit.</p>
-      <div class="links light">
-        <a href="/demos">All demos ›</a>
-        <a href="/audio/demo-book-self.mp3">Hear a booking ›</a>
-      </div>
-    </div>
-    <div class="phone" aria-label="Sample call transcript">
-      <div class="phone-notch"></div>
-      <div class="call-label">Outbound recall</div>
-      <div class="call-name">Aria</div>
-      <div class="bubble aria">Hi — this is Aria from the practice. You’re due for an exam and cleaning. We have openings this week.</div>
-      <div class="bubble patient">I’ve just been so busy. Do you have Wednesday at 2?</div>
-      <div class="bubble aria">Yes — Wednesday at 2 with Dr. Smith. I’ll text the confirmation now.</div>
-    </div>
-  </section>
-
-  <section class="bento-wrap">
-    <div class="bento-head">
-      <h2 class="headline">One front office.<br>Every channel.</h2>
-      <p class="tagline" style="margin:12px auto 0">You decide what Aria owns, and when a human steps in.</p>
-    </div>
-    <div class="bento">
-      <article class="cell span-row">
-        <h3>Voice, chat, SMS.</h3>
-        <p>Same intelligence on the phone, on the site, and in a text. A patient can start in chat and finish on a call — recognized either way.</p>
-      </article>
-      <article class="cell">
-        <h3>Insurance</h3>
-        <p>Live eligibility during the conversation. Dependents too.</p>
-      </article>
-      <article class="cell">
-        <h3>Payments</h3>
-        <p>Card on file, or a secure link mid-call. No public prices on this page.</p>
-      </article>
-      <article class="cell">
-        <h3>Languages</h3>
-        <p>17 voices in production. Conversational response in 100+ languages.</p>
-      </article>
-      <article class="cell">
-        <h3>HIPAA</h3>
-        <p>BAAs. Encryption in transit and at rest. Not SOC 2.</p>
-      </article>
-    </div>
-  </section>
-
-  <section class="integrations">
-    <h2 class="headline">Works with the book you already keep.</h2>
-    <div class="int-grid">
-      <article class="int-card">
-        <span class="pill live">Live</span>
-        <h3>Open Dental</h3>
-        <p>Write-back to the live schedule. Recall lists pull from the same source of truth.</p>
-      </article>
-      <article class="int-card">
-        <span class="pill live">Live</span>
-        <h3>Google Calendar</h3>
-        <p>Appointments land on the practice calendar. Calendar sync — not a PMS replacement.</p>
-      </article>
-      <article class="int-card">
-        <span class="pill roadmap">Roadmap</span>
-        <h3>Dentrix</h3>
-        <p>Next on the board. We will not pretend it writes back today.</p>
-      </article>
-      <article class="int-card">
-        <span class="pill roadmap">Roadmap</span>
-        <h3>Eaglesoft</h3>
-        <p>Same path as Dentrix. Calendar and payments work while PMS write-back is built.</p>
-      </article>
-    </div>
-  </section>
-
-  <section class="close">
-    <h2 class="headline">Get Aria.</h2>
-    <p class="tagline">Talk to her now, configure a voice, or book a walkthrough. No public monthly price — we scope the practice first.</p>
-    <div class="close-ctas">
-      <button type="button" class="btn-solid" data-aria-guide-open>Talk to Aria</button>
-      <a class="btn-ghost" href="/configure/">Build yours</a>
-      <a class="btn-ghost" href="/contact">Book a walkthrough</a>
-    </div>
-  </section>
-</main>
-
-<footer class="foot">
-  <div class="foot-inner">
-    <div class="foot-grid">
-      <div>
-        <a class="wordmark" href="/">aria</a>
-        <p style="margin-top:10px">A product of <a href="https://velzyx.ai" rel="noopener">Velzyx AI Inc.</a><br>California-based. Serving practices nationwide.</p>
-      </div>
-      <div>
-        <h5>Product</h5>
-        <a href="/platform">Platform</a>
-        <a href="/voices/">Voices</a>
-        <a href="/demos">Demos</a>
-        <a href="/integrations">Integrations</a>
-      </div>
-      <div>
-        <h5>Company</h5>
-        <a href="/about">About</a>
-        <a href="/security">Security</a>
-        <a href="/contact">Contact</a>
-        <a href="/blog">Blog</a>
-      </div>
-      <div>
-        <h5>Legal</h5>
-        <a href="/privacy">Privacy</a>
-        <a href="/terms">Terms</a>
-        <a href="/cookies">Cookies</a>
-      </div>
-    </div>
-    <p class="foot-legal">© 2026 Velzyx AI Inc. This page is a design mockup and is not indexed.</p>
-  </div>
-</footer>
-
-<div class="buybar" id="buybar">
-  <div class="buybar-inner">
-    <div>
-      <strong>Aria</strong>
-      <span>Voice AI for the dental front office</span>
-    </div>
-    <div class="buybar-actions">
-      <button type="button" class="btn-solid" data-aria-guide-open>Talk to Aria</button>
-      <a class="btn-ghost" href="/configure/">Build yours</a>
-    </div>
-  </div>
-</div>
-
-<script>
-(function () {
-  var toggle = document.getElementById("navToggle");
-  var links = document.getElementById("navLinks");
-  if (toggle && links) {
-    toggle.addEventListener("click", function () {
-      links.classList.toggle("open");
-    });
-    links.querySelectorAll("a,button").forEach(function (el) {
-      el.addEventListener("click", function () { links.classList.remove("open"); });
-    });
-  }
-
-  var ribbon = document.getElementById("ribbon");
-  var dismiss = document.getElementById("ribbonDismiss");
-  if (dismiss) {
-    dismiss.addEventListener("click", function () {
-      document.body.classList.add("ribbon-off");
-      if (ribbon) ribbon.remove();
-    });
-  }
-
-  var bar = document.getElementById("buybar");
-  var hero = document.querySelector(".hero");
-  function syncBuybar() {
-    if (!bar || !hero) return;
-    bar.classList.toggle("show", window.scrollY > hero.offsetHeight * 0.45);
-  }
-  window.addEventListener("scroll", syncBuybar, { passive: true });
-  syncBuybar();
-
-  var current;
-  document.querySelectorAll(".voice-chip").forEach(function (chip) {
-    chip.addEventListener("click", function () {
-      document.querySelectorAll(".voice-chip").forEach(function (c) { c.classList.remove("is-on"); });
-      if (current) { current.pause(); current = null; }
-      var audio = new Audio(chip.getAttribute("data-src"));
-      chip.classList.add("is-on");
-      audio.play().catch(function () {});
-      audio.onended = function () { chip.classList.remove("is-on"); current = null; };
-      current = audio;
-    });
-  });
-})();
-</script>
-<script src="/aria-guide.js" defer></script>
-<script src="/aria-widget-brand.js"></script>
-<script src="https://voice.velzyx.ai/aria-widget.js" data-client="velzyx-ai"></script>
-</body>
+    <script src="/preview/homepage.js" defer></script>
+    <script src="/aria-guide.js" defer></script>
+    <script src="/aria-widget-brand.js" defer></script>
+    <script src="https://voice.velzyx.ai/aria-widget.js" data-client="velzyx-ai" defer></script>
+  </body>
 </html>
