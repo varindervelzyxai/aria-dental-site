@@ -18,6 +18,12 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/preview/homepage.css" />
+    <script>
+      (function () {
+        var shot = new URLSearchParams(location.search).get("shot");
+        if (shot) document.documentElement.classList.add("shot", "shot-" + shot);
+      })();
+    </script>
   </head>
   <body>
     <a class="skip" href="#hello">Skip to content</a>
@@ -141,10 +147,11 @@
             loop
             playsinline
             autoplay
+            disablepictureinpicture
+            controlslist="nodownload nofullscreen noremoteplayback"
             poster="/preview/films/pickup.jpg"
             src="/preview/films/pickup.mp4"
           ></video>
-          <button type="button" class="film-hear" data-film-hear>Play</button>
           <audio data-film-audio preload="none"></audio>
         </div>
 
@@ -159,6 +166,7 @@
           <p class="caption" data-film-caption>
             Pickup. The outer desk stays in the room. Aria takes the line — so the first hello is spoken before anyone waits.
           </p>
+          <button type="button" class="film-hear" data-film-hear>Play the call</button>
         </div>
 
         <aside class="pip" aria-hidden="true">

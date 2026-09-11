@@ -246,7 +246,9 @@
       });
     }
 
-    if (reduced) {
+    var clip = new URLSearchParams(location.search).get("clip");
+    if (clip && films[clip]) setClip(clip);
+    else if (reduced) {
       video.removeAttribute("autoplay");
       video.pause();
       if (pip) {

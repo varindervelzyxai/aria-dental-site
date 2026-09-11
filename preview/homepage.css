@@ -51,6 +51,45 @@ button { background: none; border: 0; cursor: pointer; color: inherit; }
   * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
 }
 
+/* Isolated chapter shots for review (?shot=hero|film|highlights|look|close) */
+html.shot .rise { opacity: 1 !important; transform: none !important; }
+html.shot .ribbon { display: none; }
+html.shot body { --ribbon-h: 0px; }
+html.shot-hero .rail-wrap,
+html.shot-hero .chapter,
+html.shot-hero .still,
+html.shot-hero .close,
+html.shot-hero .foot { display: none; }
+html.shot-highlights .hero,
+html.shot-highlights .film-chapter,
+html.shot-highlights .still,
+html.shot-highlights .close,
+html.shot-highlights .foot,
+html.shot-highlights #look,
+html.shot-highlights #connect { display: none; }
+html.shot-film .hero,
+html.shot-film .rail-wrap,
+html.shot-film #highlights,
+html.shot-film #look,
+html.shot-film #connect,
+html.shot-film .still,
+html.shot-film .close,
+html.shot-film .foot { display: none; }
+html.shot-film .film-chapter { padding-top: 36px; }
+html.shot-look .hero,
+html.shot-look .rail-wrap,
+html.shot-look #highlights,
+html.shot-look .film-chapter,
+html.shot-look #connect,
+html.shot-look .still,
+html.shot-look .close,
+html.shot-look .foot { display: none; }
+html.shot-close .hero,
+html.shot-close .rail-wrap,
+html.shot-close .chapter,
+html.shot-close .still,
+html.shot-close .foot { display: none; }
+
 /* Chrome */
 .ribbon {
   position: sticky; top: 0; z-index: 40;
@@ -217,22 +256,17 @@ body.ribbon-off .ribbon { display: none; }
   height: 100%;
   object-fit: cover;
   display: block;
+  pointer-events: none;
 }
+.film-frame video::-webkit-media-controls { display: none !important; }
 .film-hear {
-  position: absolute;
-  left: 50%;
-  bottom: 22px;
-  transform: translateX(-50%);
-  z-index: 2;
-  border-radius: var(--pill);
-  padding: 8px 18px;
-  background: rgba(255, 255, 255, 0.92);
-  color: var(--ink);
-  font-size: 14px;
-  font-weight: 500;
-  backdrop-filter: blur(8px);
+  display: inline-block;
+  margin-top: 14px;
+  color: var(--amber);
+  font-size: 17px;
 }
-.film-hear:hover { background: #fff; }
+.film-hear:hover { text-decoration: underline; }
+.film-hear[hidden] { display: none; }
 .scene {
   position: absolute; inset: 0;
   opacity: 0; pointer-events: none;
@@ -360,9 +394,11 @@ body.ribbon-off .ribbon { display: none; }
 }
 .device-closed {
   background: #111; color: #f5f5f7; flex-direction: column; gap: 8px;
-  opacity: calc(1 - var(--open, 0.38));
+  opacity: calc(1 - min(1, var(--open, 0.38) * 1.6));
 }
-.device-open { opacity: var(--open, 0.38); }
+.device-open {
+  opacity: clamp(0, calc((var(--open, 0.38) - 0.28) * 2.4), 1);
+}
 .ring {
   width: 64px; height: 64px; border-radius: 50%;
   background: #34c759; display: grid; place-items: center; font-size: 22px;
