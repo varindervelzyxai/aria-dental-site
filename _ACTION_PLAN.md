@@ -124,7 +124,7 @@ Reviews + testimonials feed three SEO mechanisms:
 2. G2/Capterra star rating (drives directory ranking).
 3. Schema.org `AggregateRating` + `Review` markup (rich snippets in SERP).
 
-**Targets for Batch 1:** WizKids Dental, Newport Institute for Dentistry, plus any other early customer who'll go on record.
+**Targets for Batch 1:** Your Practice, Newport Institute for Dentistry, plus any other early customer who'll go on record.
 
 **Workflow:**
 
@@ -184,7 +184,7 @@ Backlinks are still the single biggest off-page ranking factor. The strategy: fi
 | **Inside Dental Technology** | "AI receptionist integration with Open Dental: case study" | bjcondrey@aegiscomm.com |
 | **DentistryIQ** | "5 ways AI is automating the dental front office" | content@endeavorb2b.com |
 | **The Progressive Dentist** | "Why our practice deployed AI in 2026" — first-person founder post | hello@theprogressivedentist.com |
-| **ADA News** | News tip: "First AI dental receptionist deployed at WizKids Dental" | news@ada.org |
+| **ADA News** | News tip: "First AI dental receptionist deployed at Your Practice" | news@ada.org |
 | **DSO News (DSO Pro)** | "Multi-location AI receptionist strategy for DSOs" | editor@dsonews.com |
 
 **Dental podcasts (ask to be a guest):**
@@ -221,7 +221,7 @@ For each state association: $500–$2,000/yr for vendor membership often include
 >
 > Hi [editor name],
 >
-> I'm Varinder Kumar, founder of Aria Dental AI — we built the first AI receptionist deployed as the front-line answer at WizKids Dental & Orthodontics (not as overflow). Pulling some interesting numbers out of the data and wanted to pitch a piece for [publication].
+> I'm Varinder Kumar, founder of Aria Dental AI — we built the first AI receptionist deployed as the front-line answer at a pediatric and orthodontic practice (not as overflow). Pulling some interesting numbers out of the data and wanted to pitch a piece for [publication].
 >
 > Working title: "[Specific, concrete title — not 'AI in dentistry']"
 >
@@ -246,7 +246,7 @@ For each state association: $500–$2,000/yr for vendor membership often include
 
 ### Pitch angles (pick 1–2 to lead with)
 
-1. **"First AI dental receptionist deployed at WizKids Dental"** — local news angle (Riverside County / Inland Empire press) + dental industry trade press.
+1. **"First AI dental receptionist deployed at Your Practice"** — local news angle (Riverside County / Inland Empire press) + dental industry trade press.
 2. **"Newport Beach AI startup tackles dental phone abandonment"** — Orange County Register, OC Business Journal, OC Inno (Inno tracks startup-stage funding + product launches).
 3. **"Velzyx AI launches Aria Dental — 24/7 HIPAA-compliant front office"** — TechCrunch tip line, GeekWire, VentureBeat (long shot, but free shots cost nothing).
 4. **"How AI handles dental insurance verification" — for healthcare-IT trade press** — Healthcare IT News, HIStalk, Becker's Healthcare, MobiHealthNews.
@@ -259,15 +259,15 @@ For each state association: $500–$2,000/yr for vendor membership often include
 
 ### Where to pitch (DIY press release)
 
-- **PR Newswire** — $300–$500 per release; broadly distributed. Worth it for the WizKids partnership announcement.
+- **PR Newswire** — $300–$500 per release; broadly distributed. Worth it for the launch partner partnership announcement.
 - **PRWeb (Cision)** — $200–$400 per release.
 - **HARO Media Database** — search for healthcare/AI/dental beat reporters by name + email.
 
-### Press release angle (for the WizKids story)
+### Press release angle (for the launch partner story)
 
-Title: *"Newport Beach AI Startup Velzyx Launches Aria Dental — Industry's First Front-Line AI Receptionist Replaces Voicemail at WizKids Dental"*
+Title: *"Newport Beach AI Startup Velzyx Launches Aria Dental — Industry's First Front-Line AI Receptionist Replaces Voicemail at Your Practice"*
 
-Lead: 24/7 voice + chat + SMS, HIPAA compliant, integrates with major dental PMS systems. Pilot results so far. Quote from you. Quote from WizKids practice owner (get permission).
+Lead: 24/7 voice + chat + SMS, HIPAA compliant, integrates with major dental PMS systems. Pilot results so far. Quote from you. Quote from the launch partner practice owner (get permission).
 
 ---
 
