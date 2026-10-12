@@ -268,7 +268,7 @@ REPLACEMENTS: list[tuple[str, str]] = [
     ),
     (
         "The first production deployment went live with a Southern California pediatric dental and orthodontic practice in early 2026.",
-        "The first named production deployment is WizKids Dental &amp; Orthodontics, a Southern California pediatric and orthodontic practice (REAL DEPLOYMENT; no approved public metrics).",
+        "The first production deployment is a Southern California pediatric and orthodontic practice (REAL DEPLOYMENT; no approved public metrics).",
     ),
 ]
 
@@ -281,8 +281,8 @@ PRICE_OFFER_RE = re.compile(
 OG_RE = re.compile(
     r"https://(?:www\.)?ariadental\.ai/images/og/([A-Za-z0-9_./-]+\.(?:png|jpg|webp))"
 )
-CASE_WIZ = "https://ariadental.ai/images/case-wizkids.png"
-CASE_WIZ_NEW = "https://ariadental.ai/images/wizkids-dental-front-desk.png"
+CASE_WIZ = "https://ariadental.ai/images/case-launch-partner.png"
+CASE_WIZ_NEW = "https://ariadental.ai/images/aria-hero-1.png"
 HERO = "https://ariadental.ai/images/aria-hero-1.png"
 EXISTING_OG = {"enterprise.png"}
 
@@ -306,7 +306,7 @@ def fix_og(text: str) -> str:
 
     text = OG_RE.sub(repl, text)
     text = text.replace(CASE_WIZ, CASE_WIZ_NEW)
-    text = text.replace("/images/case-wizkids.png", "/images/wizkids-dental-front-desk.png")
+    text = text.replace("/images/case-launch-partner.png", "/images/aria-hero-2.png")
     return text
 
 

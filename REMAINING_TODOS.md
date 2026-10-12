@@ -32,7 +32,7 @@ A full sweep of `images/*.(png|jpg|svg)` references found **27 missing files**. 
 - [ ] **`images/team/varinder-kumar.jpg`** — referenced from `about.html` (inline TODO comment we just placed; the rendered `team-photo-slot` currently shows the letter "V" placeholder until this file exists)
 
 ### Customer / case study
-- [ ] **`images/case-wizkids.png`** — referenced from `case-studies.html` and `portfolio.html` (the WizKids hero image; old `images/case-vartanian.png` is still on disk and unused)
+- [ ] **`images/case-launch-partner.png`** — referenced from `case-studies.html` and `portfolio.html` (the launch partner hero image; old `images/case-vartanian.png` is still on disk and unused)
 
 ### Brand
 - [ ] **`images/aria-logo.png`** — referenced from JSON-LD `"logo"` blocks across **most pages** (the actual `aria-logo.png` is missing despite being the canonical logo URL in Organization schema)
@@ -78,7 +78,7 @@ A separate `FAVICONS_TODO.md` already exists at the repo root listing 10 missing
 ## 3. Audio assets
 
 ### Existing but wrong content
-- [ ] **`aria-call-demo.mp3`** (used on `index.html` and `demo.html`) — the audio still says "Dr. Vartanian's dental office" while the on-screen transcripts have been rewritten to WizKids. **Re-record** with WizKids language or generic "this is Aria" framing so audio + transcript match.
+- [ ] **`aria-call-demo.mp3`** (used on `index.html` and `demo.html`) — the audio still says "Dr. Vartanian's dental office" while the on-screen transcripts have been rewritten to the launch partner. **Re-record** with the launch partner language or generic "this is Aria" framing so audio + transcript match.
 
 ### Referenced but don't exist (the entire `/audio/` folder is missing)
 The `demos.html` page has 6 audio players + a `MediaObject` JSON-LD block that all link to `/audio/demo-*.mp3`. Until these MP3s are created, every player on `/demos` shows broken audio:
@@ -95,9 +95,9 @@ The `demos.html` page has 6 audio players + a `MediaObject` JSON-LD block that a
 
 ## 4. Customer-supplied content
 
-- [ ] **WizKids Dental real metrics** — `case-studies.html` line 174 displays "Full case study with metrics published Q3 2026 with customer approval." Pull live numbers (calls answered, after-hours bookings, insurance-verifications-per-week, etc.) and replace the placeholder card.
-- [ ] **WizKids Dental real domain** — confirm `wizkidsdental.com` is the correct external link (currently used in case-studies.html outbound link if any). If different, update.
-- [ ] **WizKids customer quote / testimonial** — `index.html` line 264 still shows `<em>WizKids Dental story coming soon — Q3 2026 with customer approval.</em>`. Replace with a real attributed quote when approved.
+- [ ] **Your Practice real metrics** — `case-studies.html` line 174 displays "Full case study with metrics published Q3 2026 with customer approval." Pull live numbers (calls answered, after-hours bookings, insurance-verifications-per-week, etc.) and replace the placeholder card.
+- [ ] **Your Practice real domain** — confirm `launch-partnerdental.com` is the correct external link (currently used in case-studies.html outbound link if any). If different, update.
+- [ ] **the launch partner customer quote / testimonial** — `index.html` line 264 still shows `<em>Your Practice story coming soon — Q3 2026 with customer approval.</em>`. Replace with a real attributed quote when approved.
 - [ ] **Customer story #2 / #3** — `case-studies.html` line 188 shows "More stories coming soon" placeholder card. Add real second + third customer when ready.
 - [ ] **`[Practice Name]` template tokens** — left in 4 email-sequence files (intentional merge tags, not placeholders): `email-sequences/customer-expansion.md` line 68, `email-sequences/win-back-canceled.md` line 117, `email-sequences/onboarding-post-signup.md` line 70, `recovering-revenue-missed-dental-appointments.html` line 203 (sample script, not a real form). These are intentional — confirm they get filled at send-time by your ESP.
 
@@ -188,7 +188,7 @@ Five `<!-- TODO: cite -->` markers across 5 files. Surrounding language is alrea
 ## 13. Operational / known-blocking
 
 From `_AGENT_CHANGES.md` "Punted / TODOs" section, plus other notes the project has accumulated:
-- [ ] **WizKids case-studies metrics gate** — same as §4; tracked here because it's blocking the `case-studies.html` rendering of real numbers.
+- [ ] **the launch partner case-studies metrics gate** — same as §4; tracked here because it's blocking the `case-studies.html` rendering of real numbers.
 - [ ] **Hall-of-fame placeholder** — same as §12; intentional, not a bug.
 - [ ] **Vercel CSP promotion** — currently report-only. Move to enforced after 1-2 weeks of clean violation reports.
 
@@ -203,7 +203,7 @@ From `_AGENT_CHANGES.md` "Punted / TODOs" section, plus other notes the project 
 - **Requires external setup or accounts: ~14**
   - 8 mailboxes, 6 GA4/Search Console/Capterra/G2/GBP/inline-GA4-cleanup tasks
 - **Requires customer / vendor / legal input: ~13**
-  - 4 WizKids items (metrics, domain, quote, customer #2-#3), 1 Denticon vendor confirm, 3 pricing-tier amounts, 3 PMS-roadmap confirmations, 3 legal reviews (privacy/terms/cookies)
+  - 4 the launch partner items (metrics, domain, quote, customer #2-#3), 1 Denticon vendor confirm, 3 pricing-tier amounts, 3 PMS-roadmap confirmations, 3 legal reviews (privacy/terms/cookies)
 - **Audio re-records: 7** (1 existing + 6 missing demo MP3s)
 - **Press kit / founder copy on `/press`: 5** (`[Founder Name]` x 2 + 4 brand asset files)
 - **Lead-magnet / form wiring: 6** (3 PDFs + email API + ROI tool wiring + newsletter form)
