@@ -1058,7 +1058,7 @@ Form-success wiring: `index.html`, `dental-missed-calls-ai.html`, `dental-insura
 
 All at the repo root. Same head pattern as `platform.html`. JSON-LD: `Article` + `SoftwareApplication` (with `softwareRequirements: <PMS name>`) + `BreadcrumbList`.
 
-- `aria-for-open-dental.html` — flagship integration. "live" status: April 2026 production launch with Wiz Kids Dental. Two-way sync, deep feature list (6 supported workflows), full-mirror integration. 4-Q FAQ on OD-specific topics (eConnector, OD offline behavior, paired appts, integration ownership).
+- `aria-for-open-dental.html` — flagship integration. "live" status: April 2026 production launch with a Southern California pediatric and orthodontic practice. Two-way sync, deep feature list (6 supported workflows), full-mirror integration. 4-Q FAQ on OD-specific topics (eConnector, OD offline behavior, paired appts, integration ownership).
 - `aria-for-dentrix.html` — "preview" status: read-only Q2 2026 via Sikka, two-way Q3 2026. Honest about today's parallel-queue workflow vs. shipped sync.
 - `aria-for-eaglesoft.html` — "preview" status: Patterson Connected/Sikka path. Read Q3 2026, write Q4 2026.
 - `aria-for-curve.html` — "preview" status: cloud-native, both APIs. Read Q2, write Q3 2026.
