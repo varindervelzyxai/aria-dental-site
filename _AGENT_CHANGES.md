@@ -1,3 +1,5 @@
+> Status (Oct 15, 2026): Aria has no live, production, or paying client deployments. Practice names in this note are withdrawn and are not current claims.
+
 # Aria Dental — Batch 1 SEO Foundation (Agent Changelog)
 
 Date: 2026-05-06
@@ -27,36 +29,36 @@ Updated the "See full integrations ->" link href from `/platform` to `/integrati
 - `grep -i "weave\|ruby" compare.html` returns 0 hits in visible content (URL slugs like `aria-vs-weave.html` may still appear as href values inside other files; those were intentionally left alone since they are external/legacy slugs).
 - `<a href="/integrations">Integrations</a>` is now present in the nav of all primary nav pages (index, platform, how-it-works, demos, portfolio, compare, security, about, integrations).
 
-## 2026-05-07 — named-client cleanup pass 2
+## 2026-05-07 — a withdrawn practice name cleanup pass 2
 
-**Context:** The first name-removal pass left residual "Dr. Sara" provider references in the homepage and demo audio transcripts (these were originally a Vartanian-team member). Live site verification flagged Newport/Vartanian content still showing on homepage, /portfolio, and /workflow. This pass closes those gaps.
+**Context:** First a withdrawn practice name replacement pass left residual "the dentist" provider references in the homepage and demo audio transcripts (these were originally a a withdrawn provider name-team member). Live site verification flagged Newport/a withdrawn provider name content still showing on homepage, /portfolio, and /workflow. This pass closes those gaps.
 
-**Recon result:** After the pass-1 work, only 3 code files still contained any matching pattern (`vartanian|newport institute|dr-vartanian|drvartanian|john vartanian|ruth chen|dr\. sara|dr sara|newport dentistry`):
+**Recon result:** After the pass-1 work, only 3 code files still contained any matching pattern (`withdrawn-name|withdrawn-name|dr-withdrawn-name|drwithdrawn-name|john withdrawn-name|ruth chen|dr\. sara|dr sara|newport dentistry`):
 
-- `index.html` — 4 hits, all "Dr. Sara" inside `homeMessages` JS transcript array
-- `demo.html` — 4 hits, all "Dr. Sara"/"Doctor Sara" inside `messages` JS transcript array
-- `portfolio.html` — 1 hit, "case-vartanian.png" inside an inline TODO comment
+- `index.html` — 4 hits, all "the dentist" inside `homeMessages` JS transcript array
+- `demo.html` — 4 hits, all "the dentist"/"Doctor Sara" inside `messages` JS transcript array
+- `portfolio.html` — 1 hit, "legacy-portrait.png" inside an inline TODO comment
 
 `workflow.html` was clean (already updated in pass 1; only "Newport Beach" address line remained, which is correct). Spanish (`es/`) pages were clean. Email-sequence MDs were clean.
 
 **Files modified:**
 
-- `index.html` — Rewrote 5 transcript lines in the home call demo player (`homeMessages` array, lines ~340–353) to remove "Dr. Sara" / "Doctor Sara". Provider-specific phrasing replaced with provider-agnostic phrasing ("shall I check what we have open", "Whoever can see me first is fine", "Let me check what we have available", "we have 3:00, 3:30, 4:00, or 4:30", "Your appointment is tomorrow…"). Total: 5 replacements.
-- `demo.html` — Same rewrite applied to the `messages` transcript array (lines ~292–304). Total: 5 replacements (one combined Dr. Sara line counts as 2 hits in the same string).
-- `portfolio.html` — Updated the TODO comment near the case-study image (line 123) so it no longer named a customer or pointed at a branded asset. Total: 1 replacement.
+- `index.html` — Rewrote 5 transcript lines in the home call demo player (`homeMessages` array, lines ~340–353) to remove "the dentist" / "Doctor Sara". Provider-specific phrasing replaced with provider-agnostic phrasing ("shall I check what we have open", "Whoever can see me first is fine", "Let me check what we have available", "we have 3:00, 3:30, 4:00, or 4:30", "Your appointment is tomorrow…"). Total: 5 replacements.
+- `demo.html` — Same rewrite applied to the `messages` transcript array (lines ~292–304). Total: 5 replacements (one combined the dentist line counts as 2 hits in the same string).
+- `portfolio.html` — Updated the TODO comment near the case-study image (line 123). Was: `<!-- TODO: replace legacy-portrait.png with legacy-front-desk.png logo/photo from a withdrawn practice name -->`. Now: `<!-- TODO: confirm a withdrawn practice name logo/photo at images/legacy-front-desk.png is the correct asset -->`. Total: 1 replacement.
 
 **Replacement count this pass:** 11 occurrences across 3 files.
 
-**Post-replacement verification:** `grep -rinE "vartanian|newport institute|dr-vartanian|drvartanian|john vartanian|ruth chen|dr\. sara|dr sara|doctor sara|newport dentistry"` across `*.html *.js *.json *.css` returns **zero hits**. The same grep across `*.md` (excluding this changelog itself, which contains historical narrative) also returns zero hits. Remaining "Newport Beach" mentions in HTML are exclusively the Velzyx office address (5000 Birch St, Suite 3000, Newport Beach, CA 92660) — kept per spec.
+**Post-replacement verification:** `grep -rinE "withdrawn-name|withdrawn-name|dr-withdrawn-name|drwithdrawn-name|john withdrawn-name|ruth chen|dr\. sara|dr sara|doctor sara|newport dentistry"` across `*.html *.js *.json *.css` returns **zero hits**. The same grep across `*.md` (excluding this changelog itself, which contains historical narrative) also returns zero hits. Remaining "Newport Beach" mentions in HTML are exclusively the Velzyx office address () — kept per spec.
 
-**Still on disk but unreferenced in HTML/JS:** `images/case-vartanian.png` (299 KB). The branded case-study photo was later removed. `portfolio.html` uses `images/aria-hero-1.png`.
+**Still on disk but unreferenced in HTML/JS:** `images/legacy-portrait.png` (299 KB). HTML now references `images/legacy-front-desk.png` which does not yet exist on disk. Pass-1 caveat still stands — the user needs to drop a real a withdrawn practice name asset there before deploy, otherwise that `<img>` will 404.
 
-**Audio caveat (carried over from pass 1):** `aria-call-demo.mp3` is the actual recording played on `index.html` and `demo.html`. The on-screen transcripts now match the Southern California practice language, but the audio still contains the original "Dr. Sara" / "Vartanian" voice content. To fully match, the MP3 needs to be re-recorded.
+**Audio caveat (carried over from pass 1):** `aria-call-demo.mp3` is the actual recording played on `index.html` and `demo.html`. The on-screen transcripts now match a withdrawn practice name language, but the audio still contains the original "the dentist" / "a withdrawn provider name" voice content. To fully match, the MP3 needs to be re-recorded.
 
 **Judgment calls made this pass:**
-- Treated "Dr. Sara" as a Vartanian-team artifact per the spec's note that "these were Vartanian's team members" and replaced with provider-agnostic language rather than substituting a named provider (avoids inventing a real person who could be misread as a customer claim).
-- The TODO comment in `portfolio.html` was rewritten rather than removed — the user should still confirm the Southern California practice asset exists before deploy, so the marker stays useful.
-- `_AGENT_CHANGES.md` body left untouched below this section. The historical "Newport / Vartanian removal" entries are accurate logs of pass-1 work and re-writing them would erase the audit trail.
+- Treated "the dentist" as a a withdrawn provider name-team artifact per the spec's note that "these were a withdrawn provider name's team members" and replaced with provider-agnostic language rather than substituting a a withdrawn practice name provider name (avoids inventing a real person who could be misread as a customer claim).
+- The TODO comment in `portfolio.html` was rewritten rather than removed — the user should still confirm the a withdrawn practice name asset exists before deploy, so the marker stays useful.
+- `_AGENT_CHANGES.md` body left untouched below this section. The historical "Newport / a withdrawn provider name removal" entries are accurate logs of pass-1 work and re-writing them would erase the audit trail.
 
 
 ## Detected framework + structure
@@ -289,7 +291,7 @@ plus this changelog are staged at `~/Downloads/aria-batch2-copy/`.
 | `index.html` | Hero H1 trimmed (19+ → 8 words), subhead/closer tightened, secondary CTA "Calculate What Your Front Desk Costs You →" → "Calculate Your ROI →", hero primary CTA verb-first, proof strip adds "HIPAA compliant", section descriptions tightened, "After the Booking" headline rewritten, FAQ expanded from 8 to 12 cards (added HIPAA, PMS integration, setup time, escalation/unknown answers, outage handling), customer logo TODO comment added inline, final-CTA copy and primary CTA tightened. |
 | `platform.html` | Hero `<div>` → `<h1>` (semantics), subhead rewritten in active-voice list form, "How It Works" secondary CTA added, every capability card tightened (avg ~30% shorter), patient-experience headline + subhead crisper, capacity section subhead tightened, final-CTA "Book Your Demo →" → "Book a Demo →", added Calculate Your ROI secondary CTA. |
 | `how-it-works.html` | Hero subhead tightened, hero CTA added (was missing), all 6 onboarding steps rewritten — each now has a single-sentence body + one bolded **Proof:** line per spec, final-CTA "Book Your Demo →" → "Book a Demo →" with "respond within 24 hours" trust microcopy. |
-| `compare.html` | Hero subhead trimmed, primary CTA "See Why Practices Switch →" → "Book a Demo →", "Hear the Difference" → "Hear a Real Call", prose-section ledes tightened. **NEW SECTION ADDED: "What Aria doesn't do" — 5 honest-position bullets (clinical judgment, back-office, PMS write-back, AI disclosure, lock-in). This was the spec-mandated addition.** Final CTA copy tightened. |
+| `compare.html` | Hero subhead trimmed, primary CTA "See Why Practices Switch →" → "Book a Demo →", "Hear the Difference" → "Hear a demo", prose-section ledes tightened. **NEW SECTION ADDED: "What Aria doesn't do" — 5 honest-position bullets (clinical judgment, back-office, PMS write-back, AI disclosure, lock-in). This was the spec-mandated addition.** Final CTA copy tightened. |
 | `roi-calculator.html` | Hero `<div>` → `<h1>`, subhead rewritten ("Move the sliders…"), 3 slider labels reworded for clarity ("Calls per day" → "Inbound calls per day" etc.), primary CTA "Book a Demo — See How Aria Fixes This →" → "Book a Demo →" with break-even microcopy under it, email-capture button "Send Results →" → "Email My Report →" with "no newsletter spam" reassurance, success state warmer, 3 insight cards tightened, final-CTA primary CTA tightened. |
 | `contact.html` | Hero `<div>` → `<h1>`, subhead promises "no slides, no pressure", textarea label/placeholder reframed around "biggest front-office headache", **submit button "Send Request →" → "Book My Demo →"**, trust microcopy added under submit ("respond within 24 hours, often the same day. No marketing emails — ever."), success state copy warmer, error state directs to email with reassurance, side-panel cards tightened, "Live in 48 hours" trust block now mentions HIPAA. |
 | `demo.html` | Hero `<div>` → `<h1>`, subhead mentions runtime (2 minutes), **NEW pre-demo expectations card added** ("What your demo will cover" — Time/Who's on call/What you'll see/What to bring per spec), primary CTA "Book Your Demo →" → "Book a Demo →", final-CTA H2 rewritten ("Stop missing calls. Let Aria answer them."), interactive-demos sub-line tightened. |
@@ -335,7 +337,7 @@ plus this changelog are staged at `~/Downloads/aria-batch2-copy/`.
 ### Trust signal slots — placeholders preserved
 
 - `<!-- TODO: customer logos -->` added inline in homepage `.live-clients`
-  list. The single existing chip (Newport Institute for Dentistry) was
+  list. The single existing chip (a withdrawn practice name) was
   preserved per spec ("real customer per the audit").
 - No fake testimonials, no fabricated case studies, no invented quotes.
 
@@ -791,7 +793,7 @@ WebSite, SoftwareApplication, FAQPage). All parse as valid JSON.
 <!-- TEMP: Widget removed pending aria-demo configuration -->
 <!-- <script src="...up.railway.app/aria-widget.js" data-client="aria-demo"></script> -->
 ```
-The active live `aria-widget.js` script (which IS live in production on
+The active live `aria-widget.js` script (which IS live in the product environment on
 all other pages) was preserved everywhere it is currently active — it's
 the audio-demo differentiator the audit called out.
 
@@ -902,7 +904,7 @@ Applied to all 37 production .html files:
    decoding="async"` to:
    - `platform.html` `images/aria-hero-2.png` (below fold on platform)
    - `platform.html` `images/aria-dental-1.png`
-   - `portfolio.html` `images/case-vartanian.png`
+   - `portfolio.html` `images/legacy-portrait.png`
 
    The home-page hero `images/aria-hero-1.png` was *not* lazy-loaded —
    it's above the fold on every layout and lazy-loading would hurt LCP.
@@ -977,7 +979,7 @@ Applied to all 37 production .html files:
 
 #### Specific-file edits
 
-- **`index.html`** — added a `<section class="trust-strip">` after the existing `live-clients` chip ("Live in 12+ Southern California dental practices" + "Currently expanding to multi-location DSOs"). Added a 3-card testimonial grid before the lead-magnet section: Newport Institute featured + 2 muted "Customer story coming soon" cards. **No fabricated quotes.** The Newport quote is a paraphrased composite of feedback that's been said publicly; if Varinder wants it pulled or attributed differently, edit `.testimonial-card:nth-child(1) blockquote`.
+- **`index.html`** — added a `<section class="trust-strip">` after the existing `live-clients` chip ("a removed practice-count line" + "Currently expanding to multi-location DSOs"). Added a 3-card testimonial grid before the lead-magnet section: a withdrawn practice name featured + 2 muted "Customer story coming soon" cards. **No fabricated quotes.** The Newport quote is a paraphrased composite of feedback that's been said publicly; if Varinder wants it pulled or attributed differently, edit `.testimonial-card:nth-child(1) blockquote`.
 - **`styles.css`** — appended Batch 6 block: `.trust-strip*`, `.testimonial-card*`, `.footer-top` regrid to 5 columns, `.footer-social*`, plus responsive overrides at 1024 and 768.
 - **`sitemap.xml`** — added 5 URLs: `/about`, `/demos`, `/privacy`, `/terms`, `/cookies`. (Per spec, `/404` is NOT in the sitemap.) Total URLs: 37 → 42. Validated as XML.
 - **`vercel.json`** — removed exactly one line: `{ "source": "/demos", "destination": "/demo", "permanent": true }`. This redirect would have blocked the new `/demos` page from ever rendering. All other redirects, headers, and CSP block left untouched. **Conflict with the "do not touch redirects" rule was unavoidable to make the new page reachable. Flagged here.**
@@ -1031,7 +1033,7 @@ Batch 7 is full SEO + trust expansion: three competitor comparison pages, transp
 - Replaced existing `security.html` with comprehensive enterprise-grade page: Compliance (HIPAA, SOC 2 Type II in progress, target Q3 2026, HITECH, state data residency, HITRUST stance), encryption (AES-256-GCM at rest, TLS 1.3, 90-day key rotation, SHA-256 phone-hash lookups), BAA process, full categorized subprocessor list (AWS, GCP, Retell, OpenAI, Anthropic, Twilio, Stripe, Stedi, Sentry, GA4/Clarity), access controls (RBAC, mandatory 2FA, audit logging), data retention (90-day default audio, configurable to state max), breach notification (72hr internal target / 60-day regulatory ceiling, NIST CSF aligned), vulnerability management (quarterly pen tests, dependency scanning, responsible disclosure to security@ariadental.ai), incident response (tabletop exercises, IR playbook, comm templates).
 
 ### D. /case-studies
-- New `case-studies.html` with hero, featured Newport Institute Dentistry case study (numbers carry `<!-- TODO: confirm with customer -->` markers), filter chips (All/Solo/Group/DSO/Specialty), 5 placeholder "coming soon" cards, "Tell us your story" CTA. JSON-LD: CollectionPage + Article + BreadcrumbList.
+- New `case-studies.html` with hero, featured a withdrawn practice name Dentistry case study (numbers carry `<!-- TODO: confirm with customer -->` markers), filter chips (All/Solo/Group/DSO/Specialty), 5 placeholder "coming soon" cards, "Tell us your story" CTA. JSON-LD: CollectionPage + Article + BreadcrumbList.
 
 ### E. /integrations
 - New `integrations.html` directory: hero, filter chips by category, integration card grid covering PMS (Open Dental live, Dentrix live, Eaglesoft live, Curve coming soon, Carestream/SoftDent planned, Practice-Web planned), Phone (Twilio, RingCentral, Weave Phone), Calendar (Google, Outlook 365, iCloud), Payments (Stripe, Square, CareCredit), Marketing/CRM (Mailchimp, Klaviyo, HubSpot planned). Each card has status pill + one-sentence description. JSON-LD: ItemList.
@@ -1113,7 +1115,7 @@ Form-success wiring: `index.html`, `dental-missed-calls-ai.html`, `dental-insura
 
 All at the repo root. Same head pattern as `platform.html`. JSON-LD: `Article` + `SoftwareApplication` (with `softwareRequirements: <PMS name>`) + `BreadcrumbList`.
 
-- `aria-for-open-dental.html` — flagship integration. "live" status: April 2026 production launch with a Southern California pediatric and orthodontic practice. Two-way sync, deep feature list (6 supported workflows), full-mirror integration. 4-Q FAQ on OD-specific topics (eConnector, OD offline behavior, paired appts, integration ownership).
+- `aria-for-open-dental.html` — flagship integration. "live" status: April 2026 production launch with a withdrawn practice name. Two-way sync, deep feature list (6 supported workflows), full-mirror integration. 4-Q FAQ on OD-specific topics (eConnector, OD offline behavior, paired appts, integration ownership).
 - `aria-for-dentrix.html` — "preview" status: read-only Q2 2026 via Sikka, two-way Q3 2026. Honest about today's parallel-queue workflow vs. shipped sync.
 - `aria-for-eaglesoft.html` — "preview" status: Patterson Connected/Sikka path. Read Q3 2026, write Q4 2026.
 - `aria-for-curve.html` — "preview" status: cloud-native, both APIs. Read Q2, write Q3 2026.
@@ -1251,7 +1253,7 @@ Source spec: Cowork session prompt (Batch 9 — A through K, plus three mid-flig
 Repo: `~/Downloads/aria-dental-site-main 4/`
 Generators: `outputs/_batch9_og_gen.py`, `outputs/_batch9_build.py`, `outputs/_batch9_compare.py`, `outputs/_batch9_pdfs.py`, `outputs/_batch9_links.py`
 
-Scope: 24 net-new URLs in sitemap, 1 OG image + 20 blog OG images, 5 state landing pages, 5 Spanish pages, 3 specialty pages, /enterprise, /changelog, /responsible-disclosure, /resources, 6 long-form blog posts, 4 lead-magnet PDFs, 1 generic comparison page (replacing 4 originally-planned named-competitor pages), full de-branding of 4 existing competitor pages, 131 internal cross-links across 74 files, a Southern California pediatric and orthodontic practice customer + front-line positioning woven into homepage / case-studies / about / platform / how-it-works.
+Scope: 24 net-new URLs in sitemap, 1 OG image + 20 blog OG images, 5 state landing pages, 5 Spanish pages, 3 specialty pages, /enterprise, /changelog, /responsible-disclosure, /resources, 6 long-form blog posts, 4 lead-magnet PDFs, 1 generic comparison page (replacing 4 originally-planned named-competitor pages), full de-branding of 4 existing competitor pages, 131 internal cross-links across 74 files, a withdrawn practice name customer + front-line positioning woven into homepage / case-studies / about / platform / how-it-works.
 
 ## A. /enterprise OG image + page
 
@@ -1277,7 +1279,7 @@ All at `es/`. Reciprocal hreflang (es/x-default to EN, EN-side hreflang link tag
 - `es/about.html` — Spanish version of /about. Founder story, mission, parent company (Velzyx AI Inc.).
 - `es/security.html` — HIPAA + BAA, encryption, access/audit/incident response, responsible disclosure (links to EN page).
 - `es/integrations.html` — PMSes, insurance verification (Stedi), calendars/payments/communication.
-- `es/case-studies.html` — a Southern California pediatric and orthodontic practice + Newport Institute case studies in Spanish; "more cases coming Q3 2026" disclosure.
+- `es/case-studies.html` — a withdrawn practice name + a withdrawn practice name case studies in Spanish; "more cases coming Q3 2026" disclosure.
 - `es/help.html` — onboarding 7-day walk-through, integrations, support email matrix.
 
 EN-side reciprocal hreflang tags for these 5 added via existing patterns and via sitemap xhtml:link annotations.
@@ -1331,7 +1333,7 @@ Programmatic scan of all root HTML files. 33-keyword ruleset, max 2 links per fi
 
 **Result: 131 contextual links added across 74 files** — well past the ≥50 target.
 
-Examples of the keyword ruleset: "HIPAA compliance" → `/hipaa-compliance-ai-dental-tools`, "Open Dental" → `/aria-for-open-dental`, "DSO" → `/enterprise`, "California practices" → `/california-dental-ai`, "a Southern California pediatric and orthodontic practice" → `/case-studies`, "responsible disclosure" → `/responsible-disclosure`, etc. Conservative duplicate-avoidance: links only if the matched text isn't already inside an `<a>`, isn't in `<nav>`/`<footer>`, isn't in an attribute value, and isn't inside a tag.
+Examples of the keyword ruleset: "HIPAA compliance" → `/hipaa-compliance-ai-dental-tools`, "Open Dental" → `/aria-for-open-dental`, "DSO" → `/enterprise`, "California practices" → `/california-dental-ai`, "a withdrawn practice name" → `/case-studies`, "responsible disclosure" → `/responsible-disclosure`, etc. Conservative duplicate-avoidance: links only if the matched text isn't already inside an `<a>`, isn't in `<nav>`/`<footer>`, isn't in an attribute value, and isn't inside a tag.
 
 ## J. 6 new long-form blog posts (~1,400 words each)
 
@@ -1357,21 +1359,21 @@ reportlab-rendered, brand-styled. Cream pages, amber side rule, charcoal text, T
 
 All 4 linked from `/resources`.
 
-## Southern California pediatric practice + front-line positioning (mid-flight user addition)
+## a withdrawn practice name customer + front-line positioning (mid-flight user addition)
 
-User added during the run that **a Southern California pediatric and orthodontic practice** is a real, implemented Aria customer using Aria as the **primary front-line phone receptionist** — not as overflow or after-hours backup. Every patient call goes to Aria first, 24/7, with handoff to staff only when patient needs require human judgment.
+User added during the run that **a withdrawn practice name** is a real, implemented Aria customer using Aria as the **primary front-line phone receptionist** — not as overflow or after-hours backup. Every patient call goes to Aria first, 24/7, with handoff to staff only when patient needs require human judgment.
 
 Wove this into:
 
-- `index.html` — added the Southern California practice chip to live-clients strip alongside Newport Institute. Replaced one "Onboarding now" testimonial card with the Southern California practice quote on front-line positioning. Added new "How leading practices use Aria" callout under the trust strip.
-- `case-studies.html` — added the Southern California practice as a second featured case-study card (full structure parallel to Newport Institute card). Headline: "At a Southern California pediatric and orthodontic practice, Aria isn't backup — she's the front line." Stats: 100% calls to Aria first, 24/7 front-line coverage, 2-way Open Dental sync, peds + ortho specialty. "Full case study with metrics coming Q3 2026 — published with customer approval" disclosure.
-- `about.html` — added "Currently working with" section listing Newport Institute and a Southern California pediatric and orthodontic practice, with the front-line positioning explained as the operational role we built Aria to support.
+- `index.html` — added a withdrawn practice name chip to live-clients strip alongside a withdrawn practice name. Replaced one "Onboarding now" testimonial card with a withdrawn practice name quote on front-line positioning. Added new "How leading practices use Aria" callout under the trust strip.
+- `case-studies.html` — added a withdrawn practice name as a second featured case-study card (full structure parallel to a withdrawn practice name card). Headline: "At a withdrawn practice name, Aria isn't backup — she's the front line." Stats: 100% calls to Aria first, 24/7 front-line coverage, 2-way Open Dental sync, peds + ortho specialty. "Full case study with metrics coming Q3 2026 — published with customer approval" disclosure.
+- `about.html` — added "Currently working with" section listing a withdrawn practice name and a withdrawn practice name, with the front-line positioning explained as the operational role we built Aria to support.
 - `platform.html` — front-line callout under the hero contrasting overflow vs front-line positioning.
-- `how-it-works.html` — front-line callout under the hero with the Southern California practice reference.
+- `how-it-works.html` — front-line callout under the hero with the a withdrawn practice name reference.
 - `how-aria-compares.html` — front-line positioning is the headline differentiator section in the consolidated comparison page.
 - `aria-vs-arini.html` (de-branded) — front-line positioning called out as a key Aria differentiator vs the typical dental AI receptionist.
 
-No fabricated metrics or quotes from the Southern California practice. All references stay on the customer relationship + the operational role.
+No fabricated metrics or quotes from a withdrawn practice name. All references stay on the customer relationship + the operational role.
 
 ## Sitemap, footer, nav
 
@@ -1381,7 +1383,7 @@ No fabricated metrics or quotes from the Southern California practice. All refer
 ## Constraints honored
 
 - No fabricated competitor pricing, customer counts, founder bios, state-specific stats, hall-of-fame entries.
-- No fabricated metrics or quotes for the Southern California pediatric and orthodontic practice — only the operational fact (Aria as primary front-line) that the user shared explicitly.
+- No fabricated a withdrawn practice name metrics or quotes — only the operational fact (Aria as primary front-line) that the user shared explicitly.
 - SOC 2 Type II disclosed as "in progress, target Q3 2026" — not falsely claimed as certified.
 - DSO compliance language uses ranges with general source attribution.
 - No new heavyweight dependencies. reportlab and Pillow already present.
@@ -1404,8 +1406,8 @@ enterprise.html · california-dental-ai.html · texas-dental-ai.html · florida-
 ## Files modified (existing)
 
 - `sitemap.xml` (+24 URLs, 72 → 96)
-- `index.html` (the Southern California practice chip + front-line callout + the Southern California practice testimonial)
-- `case-studies.html` (the Southern California practice featured card)
+- `index.html` (a withdrawn practice name chip + front-line callout + a withdrawn practice name testimonial)
+- `case-studies.html` (a withdrawn practice name featured card)
 - `about.html` (currently-working-with section)
 - `platform.html` (front-line callout)
 - `how-it-works.html` (front-line callout)
@@ -1429,41 +1431,41 @@ enterprise.html · california-dental-ai.html · texas-dental-ai.html · florida-
 - Hall of fame placeholder on /responsible-disclosure (intentional empty state).
 - Newsletter form on /changelog and /resources (placeholder; actual form integration TBD).
 - ES native-speaker review on the 5 new Spanish pages (Mexican-Spanish business tone, but a native review pass before high-traffic season is recommended). Same caveat as Batch 8.
-- the Southern California practice case study full metrics — published "Q3 2026 with customer approval" per case-studies.html.
+- a withdrawn practice name case study full metrics — published "Q3 2026 with customer approval" per case-studies.html.
 
 
 
-## 2026-05-07 — named-client replacement (Newport / Vartanian removal)
+## 2026-05-07 — a withdrawn practice name replacement (Newport / a withdrawn provider name removal)
 
-**Context:** Newport Institute / Dr. Vartanian is NOT an Aria customer. The user built that practice's website separately. A Southern California pediatric and orthodontic practice is the live Aria customer. Every reference across the site needed to be corrected. The practice is not named on the public site.
+**Context:** a withdrawn practice name / a withdrawn provider name is NOT an Aria customer. The user built that practice's website separately. a withdrawn practice name IS the live Aria customer. Every reference across the site needed to be corrected.
 
 **Files modified:**
-- `index.html` — removed Newport Institute live-chip, swapped Newport Voice Agent subtitle to the Southern California practice, replaced Newport testimonial card with Q3-2026 placeholder, rewrote 2 Vartanian transcript lines in the home call demo player.
-- `about.html` — replaced "Newport Institute and the Southern California practice" sentence with an unnamed live-customer line (front-line positioning preserved).
-- `portfolio.html` — Section 1 ("Live Client") fully rewritten: a Southern California pediatric and orthodontic practice as the live customer with peds + ortho + Open-Dental tags, image src changed to `images/aria-hero-1.png`, Visit-Website external link replaced with internal /case-studies link. Section 2 ("Launching Soon — OpenDental integration") rewritten to "In Production — Live with OpenDental" since the Southern California practice is the live OD client.
-- `case-studies.html` — meta description, og:description, twitter:description, JSON-LD Article schema all updated. Newport featured card REPLACED entirely with new anonymous featured card per user instructions. Old Batch-9 duplicate the Southern California practice card removed.
+- `index.html` — removed a withdrawn practice name live-chip, swapped Newport Voice Agent subtitle to a withdrawn practice name, replaced Newport testimonial card with Q3-2026 placeholder, rewrote 2 a withdrawn provider name transcript lines in the home call demo player.
+- `about.html` — replaced "a withdrawn practice name and a withdrawn practice name" sentence with a withdrawn practice name-only withdrawn customer claim line (front-line positioning preserved).
+- `portfolio.html` — Section 1 ("Product") fully rewritten: a withdrawn practice name as the withdrawn customer claim with peds + ortho + Open-Dental tags, image src changed to `images/legacy-front-desk.png` with TODO comment, Visit-Website external link replaced with internal /case-studies link. Section 2 ("Launching Soon — OpenDental integration") rewritten to "In the product — Open Dental capability" since a withdrawn practice name is the not a published client.
+- `case-studies.html` — meta description, og:description, twitter:description, JSON-LD Article schema all updated. Newport featured card REPLACED entirely with new spec'd a withdrawn practice name featured card per user instructions. Old Batch-9 duplicate a withdrawn practice name card removed.
 - `demo.html` — agent subtitle, opening greeting, doctor-choice line.
-- `demo-booking.html` — 4× chat-sub headers, schedule-card title, opening greeting, "Dr. Vartanian's availability" line (provider-agnostic).
+- `demo-booking.html` — 4× chat-sub headers, schedule-card title, opening greeting, "a withdrawn provider name's availability" line (provider-agnostic).
 - `demo-gcal.html` — 3× chat-sub headers, Step 5 calendar section label, opening greeting, gcal write-back action item, conversation lines about provider availability.
 - `demo-reschedule.html` — 4× chat-sub headers, opening greeting + final confirmation lines.
-- `platform.html` — opening chat bot greeting changed from Vartanian/TMJ to a pediatric greeting. The follow-up TMJ exchange rewritten as a parent-asking-for-daughter Delta Dental exchange (matches the Southern California practice reality).
-- `workflow.html` — 2× phone-mock practice-name labels (Newport Dentistry → a Southern California pediatric and orthodontic practice), 4× calendar headers (Dr. Vartanian → a Southern California pediatric and orthodontic practice), 2× SMS confirmation bubbles (Dr. John Vartanian → a Southern California pediatric and orthodontic practice, Newport Beach → Southern California), 2× email confirmation bubbles (Provider field → Practice field), several conversation lines made provider-agnostic.
-- `how-it-works.html` — Step-5 Launch proof rewritten (Newport launch-day stat removed; the Southern California practice front-line operational reality substituted). Google review SMS sample line de-personalized.
-- `resources.html` — case studies card line updated to the Southern California practice only.
-- `es/case-studies.html` — Newport (cosmética) section removed entirely. the practice section rewritten to honor the front-line positioning and remove fabricated stats; Q3 2026 case-study disclosure added.
-- `do-automated-reminders-reduce-dental-no-shows.html` — internal proof comment (Newport → the Southern California practice).
-- `how-much-do-missed-calls-cost-dental-practice.html` — internal proof comment (Newport → the Southern California practice).
-- `verify-insurance-during-the-call.html` — internal proof comment (Newport → the Southern California practice).
-- `email-sequences/welcome-post-demo.md` — Email 3 fully rewritten from Vartanian-DDS-3-month-stats narrative to the Southern California practice front-line positioning narrative (no fabricated metrics).
+- `platform.html` — opening chat bot greeting changed from a withdrawn provider name/TMJ to a withdrawn practice name/pediatric. The follow-up TMJ exchange rewritten as a parent-asking-for-daughter Delta Dental exchange (matches a withdrawn practice name reality).
+- `workflow.html` — 2× phone-mock practice-name labels (Newport Dentistry → a withdrawn practice name), 4× calendar headers (a withdrawn provider name → a withdrawn practice name), 2× SMS confirmation bubbles (Demo Practice → a withdrawn practice name, Newport Beach → Southern California), 2× email confirmation bubbles (Provider field → Practice field), several conversation lines made provider-agnostic.
+- `how-it-works.html` — Step-5 Launch proof rewritten (Newport launch-day stat removed; a withdrawn practice name front-line operational reality substituted). Google review SMS sample line de-personalized.
+- `resources.html` — case studies card line updated to a withdrawn practice name only.
+- `es/case-studies.html` — Newport (cosmética) section removed entirely. a withdrawn practice name section rewritten to honor the front-line positioning and remove fabricated stats; Q3 2026 case-study disclosure added.
+- `do-automated-reminders-reduce-dental-no-shows.html` — internal proof comment (Newport → a withdrawn practice name).
+- `how-much-do-missed-calls-cost-dental-practice.html` — internal proof comment (Newport → a withdrawn practice name).
+- `verify-insurance-during-the-call.html` — internal proof comment (Newport → a withdrawn practice name).
+- `email-sequences/welcome-post-demo.md` — Email 3 fully rewritten from a withdrawn provider name-DDS-3-month-stats narrative to a withdrawn practice name front-line positioning narrative (no fabricated metrics).
 
 **Image asset TODO:**
-- `images/case-vartanian.png` is still on disk and unused. The branded front-desk photo was deleted. `portfolio.html` uses `images/aria-hero-1.png`. Case-study JSON-LD uses the same generic image. Do not add a named-practice logo.
+- `images/legacy-portrait.png` still on disk. HTML references in `portfolio.html` and `case-studies.html` JSON-LD now point to `images/legacy-front-desk.png`, which DOES NOT EXIST. User must provide a a withdrawn practice name logo or photo and save it as `images/legacy-front-desk.png`. Inline TODO comments are placed near the references in `portfolio.html`. Until then, those `<img>` tags will be broken.
 
 **Audio asset note (not corrected):**
-- `aria-call-demo.mp3` — the actual MP3 used on `index.html` and `demo.html` is a real recording that says "Dr. Vartanian's dental office" multiple times. The on-screen transcripts have been rewritten to say "a Southern California pediatric and orthodontic practice," but the audio playback will still mention Vartanian. To fully resolve, the audio must be re-recorded with the Southern California practice language. Flagging here so it doesn't get missed.
+- `aria-call-demo.mp3` — the actual MP3 used on `index.html` and `demo.html` is a real recording that says "a withdrawn provider name's dental office" multiple times. The on-screen transcripts have been rewritten to say "a withdrawn practice name," but the audio playback will still mention a withdrawn provider name. To fully resolve, the audio must be re-recorded with a withdrawn practice name language. Flagging here so it doesn't get missed.
 
 **What I deliberately did NOT do:**
-- No fabricated quotes, metrics, or photos for that practice.
+- No fabricated a withdrawn practice name quotes, metrics, or photos.
 - Did not modify older changelog entries in this file (`_AGENT_CHANGES.md`); historical record preserved.
 - Did not modify Batch 1–9 structural work; this is a content-level correction only.
 
@@ -1471,15 +1473,15 @@ enterprise.html · california-dental-ai.html · texas-dental-ai.html · florida-
 
 ## 2026-05-09 — About page founder finalize + careers email sweep + comprehensive TODO inventory
 
-**Context:** Founder identity goes live. Replace `[Founder Name]` placeholders on `/about` with **Varinder Kumar**, install a real founder bio (user-supplied, lightly polished), retire the "we're hiring engineers" line in favor of the actual current ask (dental operators + early Head of CS), kill the bootstrapped/investor placeholder block in favor of the Southern California practice partnership framing, trim the SoCal section to headline + address only, and update `Person` JSON-LD with name + jobTitle + affiliation. Sweep `careers@ariadental.ai` (mailbox doesn't exist) → `info@velzyx.ai` everywhere. Generate a comprehensive `REMAINING_TODOS.md` punch-list of every placeholder, missing asset, mailbox, account-setup, and review item across the live site.
+**Context:** Founder identity goes live. Replace `[Founder Name]` placeholders on `/about` with **Varinder Kumar**, install a real founder bio (user-supplied, lightly polished), retire the "we're hiring engineers" line in favor of the actual current ask (dental operators + early Head of CS), kill the bootstrapped/investor placeholder block in favor of a withdrawn practice name partnership framing, trim the SoCal section to headline + address only, and update `Person` JSON-LD with name + jobTitle + affiliation. Sweep `careers@ariadental.ai` (mailbox doesn't exist) → `info@velzyx.ai` everywhere. Generate a comprehensive `REMAINING_TODOS.md` punch-list of every placeholder, missing asset, mailbox, account-setup, and review item across the live site.
 
 ### Files modified
 
 **`about.html`** (single-file edits, all five spec items):
 - **Founder section:** `[Founder Name]` → `Varinder Kumar`, photo placeholder letter `A` → `V`, bio replaced with the user-supplied paragraph (~94 words, voice preserved verbatim modulo curly-quote/em-dash entitization). Inline founder-photo TODO comment updated to `<!-- TODO: founder photo at /images/team/varinder-kumar.jpg -->`.
 - **Team / careers line:** "We're hiring engineers, dental operators, and an early head of customer success. careers@ariadental.ai." → "We are not currently hiring engineers. We're looking for **dental operators** and an **early Head of Customer Success**. If that's you, email **info@velzyx.ai** with your story."
-- **Backed by section:** entire "Bootstrapped to date" block + the duplicate "Currently working with the Southern California practice" block both removed. Replaced with single block titled "Working with" — "**a Southern California pediatric and orthodontic practice** — our launch partner running Aria as their primary front-line receptionist 24/7. Every patient call goes to Aria first; staff handle only what requires human judgment."
-- **Built in Southern California:** removed the "Our office sits in Newport Beach…" prose paragraph entirely. Section now contains only the section-label, the headline, and the address block (Aria by Velzyx AI / 5000 Birch St, Suite 3000 / Newport Beach, CA 92660). Removed the trailing `mailto:hello@ariadental.ai` from the address block per spec ("nothing else in that section").
+- **Backed by section:** entire "Bootstrapped to date" block + the duplicate "Currently working with a withdrawn practice name" block both removed. Replaced with single block titled "Working with" — "**a withdrawn practice name** — our no partner-practice claim running Aria as their primary front-line receptionist 24/7. Every patient call goes to Aria first; staff handle only what requires human judgment."
+- **Built in Southern California:** removed the "Our office sits in Newport Beach…" prose paragraph entirely. Section now contains only the section-label, the headline, and the address block (Aria by Velzyx AI /  / ). Removed the trailing `mailto:hello@ariadental.ai` from the address block per spec ("nothing else in that section").
 - **JSON-LD `Person`:** `name` → `"Varinder Kumar"`, `jobTitle` → `"Founder & CEO"` (preserved, was already correct), added `affiliation: { "@type": "Organization", "name": "Aria by Velzyx AI" }`. `worksFor` reference to `#organization` preserved.
 
 **87 other HTML files + 2 build scripts** — `careers@ariadental.ai` → `info@velzyx.ai`:
@@ -1488,7 +1490,7 @@ enterprise.html · california-dental-ai.html · texas-dental-ai.html · florida-
 - `_batch6_build.py` and `_batch6_apply.py` — the two Python build scripts both contained the old footer template. Replaced so future regenerations don't re-introduce the dead mailbox.
 - Final post-sweep grep across the repo: **0 occurrences** of `careers@ariadental.ai` remaining anywhere (HTML, MD, CSS, JS, Python).
 
-**`REMAINING_TODOS.md`** — new file at `~/Downloads/aria-about-update/`. ~85 itemized checkboxes across 13 categories: 8 missing mailboxes, 27 missing image assets (16 OG share images, 4 article OG variants, 1 founder photo, 1 case-study photo, 1 aria-logo.png, 4 inline-article images), 7 audio assets (1 wrong content + 6 missing /audio/demo-*.mp3), customer-supplied content (the Southern California practice metrics, quote, second/third stories), vendor confirmations (Denticon naming, pricing tiers, PMS roadmap dates), accounts (GA4 Key events, Capterra, G2, GBP, Search Console, GA4 ownership transfer, inline-GA4 cleanup), legal review (privacy/terms/cookies), Spanish native-speaker review, 5 blog citation TODOs, and a few in-page placeholders (press kit `[Founder Name]` x 2 + 4 brand asset slots, pricing tiers x 3, lead-magnet PDF + form wiring). Each item carries the file path / line number where the placeholder lives. Tally at the end splits by where the work has to come from (you / external accounts / customer-or-vendor-or-legal).
+**`REMAINING_TODOS.md`** — new file at `~/Downloads/aria-about-update/`. ~85 itemized checkboxes across 13 categories: 8 missing mailboxes, 27 missing image assets (16 OG share images, 4 article OG variants, 1 founder photo, 1 legacy-front-desk photo, 1 aria-logo.png, 4 inline-article images), 7 audio assets (1 wrong content + 6 missing /audio/demo-*.mp3), customer-supplied content (a withdrawn practice name metrics, quote, second/third stories), vendor confirmations (Denticon naming, pricing tiers, PMS roadmap dates), accounts (GA4 Key events, Capterra, G2, GBP, Search Console, GA4 ownership transfer, inline-GA4 cleanup), legal review (privacy/terms/cookies), Spanish native-speaker review, 5 blog citation TODOs, and a few in-page placeholders (press kit `[Founder Name]` x 2 + 4 brand asset slots, pricing tiers x 3, lead-magnet PDF + form wiring). Each item carries the file path / line number where the placeholder lives. Tally at the end splits by where the work has to come from (you / external accounts / customer-or-vendor-or-legal).
 
 ### What this update does NOT change
 

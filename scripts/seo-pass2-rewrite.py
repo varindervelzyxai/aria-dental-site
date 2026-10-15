@@ -18,11 +18,11 @@ REPLACEMENTS: list[tuple[str, str]] = [
     ),
     (
         "Yes — and no other AI receptionist can. Aria collects member ID and date of birth, verifies across 3,400+ payers, reads back deductibles and remaining benefits, and quotes exact out-of-pocket cost while the patient is still on the line. Works for dependents too.",
-        "Yes. Aria is built to verify eligibility during the live call — member ID, dependents, remaining benefits, and an out-of-pocket estimate — then offer to collect. Other vendors advertise verification; we differentiate on timing, benefit detail, and write-back where Open Dental is live.",
+        "Yes. Aria is built to verify eligibility during the live call — member ID, dependents, remaining benefits, and an out-of-pocket estimate — then offer to collect. Other vendors advertise verification; we differentiate on timing, benefit detail, and write-back when an Open Dental connection is configured.",
     ),
     (
         "No other AI receptionist verifies insurance during the live call. Most require manual verification after — or don't offer it at all. Aria checks 3,400+ payers in real time and gives the patient their cost estimate before they hang up.",
-        "Several AI receptionists advertise insurance verification. Aria is built to run eligibility during the live call, including dependents and remaining benefits, then quote an estimated patient cost and offer payment — and write results back where Open Dental is live.",
+        "Several AI receptionists advertise insurance verification. Aria is built to run eligibility during the live call, including dependents and remaining benefits, then quote an estimated patient cost and offer payment — and write results back when an Open Dental connection is configured.",
     ),
     (
         "Yes — and no other AI receptionist can do this.",
@@ -111,27 +111,23 @@ REPLACEMENTS: list[tuple[str, str]] = [
     # --- Stale Open Dental launch dates ---
     (
         "OpenDental — Launching April 2026",
-        "Open Dental — Live production write-back",
+        "Open Dental — write-back",
     ),
     (
         "Open Dental launches April 2026. Dentrix and Eaglesoft are next on the roadmap.",
-        "Open Dental write-back is live. Dentrix and Eaglesoft remain on the roadmap.",
+        "Aria is built to write appointments back to Open Dental. Dentrix and Eaglesoft remain on the roadmap.",
     ),
     (
         "Open Dental integration launches April 2026, with Dentrix and Eaglesoft support next on the roadmap.",
-        "Open Dental write-back is live. Dentrix and Eaglesoft remain on the roadmap. Calendar and webhook sync are available today.",
+        "Aria is built to write appointments back to Open Dental. Dentrix and Eaglesoft remain on the roadmap. Calendar and webhook sync are available today.",
     ),
     (
         "We don't write to your PMS yet. Open Dental launches April 2026; <a href=\"/aria-for-dentrix\" style=\"color:var(--amber);font-weight:500\">Dentrix</a> and Eaglesoft follow. Today, Aria writes to your calendar and your CRM via webhook, and your team mirrors confirmed appointments into your PMS — typically two clicks per day.",
-        "Open Dental write-back is live. Native Dentrix and Eaglesoft write-back remain on the roadmap. On other systems, Aria writes to Google Calendar or a confirmation queue — that is calendar/webhook behavior, not native PMS write-back.",
+        "Aria is built to write appointments back to Open Dental. Native Dentrix and Eaglesoft write-back remain on the roadmap. On other systems, Aria writes to Google Calendar or a confirmation queue — that is calendar/webhook behavior, not native PMS write-back.",
     ),
     (
         "The first AI receptionist that writes directly to Open Dental — not a parallel calendar.",
         "Aria writes appointments back to Open Dental — not only to a parallel calendar.",
-    ),
-    (
-        "Aria's Open Dental integration shipped to production with paying customers in April 2026.",
-        "Aria’s Open Dental write-back is in production.",
     ),
     # --- Absolutes ---
     ("Zero missed calls — ever", "Aria answers every assigned inbound line, 24/7"),
@@ -173,19 +169,19 @@ REPLACEMENTS: list[tuple[str, str]] = [
     ),
     (
         "Live: Open Dental, Dentrix, Eaglesoft. Coming soon: Curve Dental. Planned: Carestream/SoftDent, Practice-Web. See /integrations for the full directory.",
-        "Live production write-back: Open Dental. Live calendar: Google Calendar. Roadmap: Dentrix, Eaglesoft, Curve, Carestream/SoftDent, Practice-Web, Dentrix Ascend, Denticon. See /integrations.",
+        "Aria is built for Open Dental write-back and for Google Calendar sync. Roadmap: Dentrix, Eaglesoft, Curve, Carestream/SoftDent, Practice-Web, Dentrix Ascend, Denticon. See /integrations. No practice is published as a client.",
     ),
     (
         "PMS depth varies — \"integration\" means full appointment write-back, patient creation, provider sync, and (for Open Dental and Dentrix) insurance details and treatment plan visibility. Ask for a demo of write-back into your specific PMS test environment before signing.",
-        "PMS depth varies. Open Dental supports two-way write-back in production. Other systems should be treated as roadmap or custom until you see write-back in your own test environment.",
+        "PMS depth varies. Aria is built for two-way Open Dental write-back. Other systems should be treated as roadmap or custom until you see write-back in your own test environment.",
     ),
     (
         "We integrate with all three.",
-        "Open Dental write-back is live. Dentrix and Eaglesoft are on the roadmap.",
+        "Aria is built to write appointments back to Open Dental. Dentrix and Eaglesoft are on the roadmap.",
     ),
     (
         "Open Dental, Dentrix, and Eaglesoft via secure middleware. We also support Curve, Denticon and Carestream on a per-account basis.",
-        "Open Dental write-back is live. Dentrix and Eaglesoft are on the roadmap. Google Calendar and webhook sync are available today. Other PMS systems are scoped per account.",
+        "Aria is built to write appointments back to Open Dental. Dentrix and Eaglesoft are on the roadmap. Google Calendar and webhook sync are available today. Other PMS systems are scoped per account.",
     ),
     # --- Fake reviews / Type I ---
     (
@@ -239,11 +235,11 @@ REPLACEMENTS: list[tuple[str, str]] = [
     ),
     (
         "Real numbers from real practices. We're publishing what we can — including the messy parts. More stories rolling out as customers approve.",
-        "Named deployments are labeled. Metrics appear only with customer approval. Dashboards on this site are illustrative unless marked otherwise.",
+        "No client deployments are published. This page describes product capabilities, not customer stories.",
     ),
     (
         "<em style=\"font-size:12px;opacity:.85\">Full case study with metrics published Q3 2026 with customer approval.</em>",
-        "<em style=\"font-size:12px;opacity:.85\">REAL DEPLOYMENT. No approved public metrics. Case-study numbers will publish only with customer approval.</em>",
+        "<em style=\"font-size:12px;opacity:.85\">No client deployment is published.</em>",
     ),
     (
         "Aria handles protected health information for thousands of dental patients every day. Here's exactly how we protect it — and what we expect of every vendor in our chain.",
@@ -277,6 +273,8 @@ PRICE_OFFER_RE = re.compile(
 OG_RE = re.compile(
     r"https://(?:www\.)?ariadental\.ai/images/og/([A-Za-z0-9_./-]+\.(?:png|jpg|webp))"
 )
+CASE_WIZ = "https://ariadental.ai/images/legacy-front-desk.png"
+CASE_WIZ_NEW = "https://ariadental.ai/images/legacy-front-desk-front-desk.png"
 HERO = "https://ariadental.ai/images/aria-hero-1.png"
 EXISTING_OG = {"enterprise.png"}
 
@@ -299,6 +297,8 @@ def fix_og(text: str) -> str:
         return HERO
 
     text = OG_RE.sub(repl, text)
+    text = text.replace(CASE_WIZ, CASE_WIZ_NEW)
+    text = text.replace("/images/legacy-front-desk.png", "/images/legacy-front-desk-front-desk.png")
     return text
 
 

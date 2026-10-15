@@ -1,3 +1,5 @@
+> Status (Oct 15, 2026): Aria has no live, production, or paying client deployments. Practice names in this note are withdrawn and are not current claims.
+
 # Aria Dental Site — Remaining TODOs / Placeholders
 
 A complete punch-list of everything on the live site that still needs to be filled out, replaced, or set up externally. Each item lists the file path(s) where the placeholder lives so you can find it fast.
@@ -32,7 +34,7 @@ A full sweep of `images/*.(png|jpg|svg)` references found **27 missing files**. 
 - [ ] **`images/team/varinder-kumar.jpg`** — referenced from `about.html` (inline TODO comment we just placed; the rendered `team-photo-slot` currently shows the letter "V" placeholder until this file exists)
 
 ### Customer / case study
-- [x] **Branded case-study photo** — removed. `portfolio.html` now uses `images/aria-hero-1.png`. `images/case-vartanian.png` is still on disk and unused.
+- [ ] **`images/legacy-front-desk.png`** — referenced from `case-studies.html` and `portfolio.html` (the a withdrawn practice name hero image; old `images/legacy-portrait.png` is still on disk and unused)
 
 ### Brand
 - [ ] **`images/aria-logo.png`** — referenced from JSON-LD `"logo"` blocks across **most pages** (the actual `aria-logo.png` is missing despite being the canonical logo URL in Organization schema)
@@ -78,7 +80,7 @@ A separate `FAVICONS_TODO.md` already exists at the repo root listing 10 missing
 ## 3. Audio assets
 
 ### Existing but wrong content
-- [ ] **`aria-call-demo.mp3`** (used on `index.html` and `demo.html`) — the audio still says "Dr. Vartanian's dental office" while the on-screen transcripts no longer name a customer. **Re-record** with generic "this is Aria" framing so audio and transcript match.
+- [ ] **`aria-call-demo.mp3`** (used on `index.html` and `demo.html`) — the audio still says "a withdrawn provider name's dental office" while the on-screen transcripts have been rewritten to a withdrawn practice name. **Re-record** with a withdrawn practice name language or generic "this is Aria" framing so audio + transcript match.
 
 ### Referenced but don't exist (the entire `/audio/` folder is missing)
 The `demos.html` page has 6 audio players + a `MediaObject` JSON-LD block that all link to `/audio/demo-*.mp3`. Until these MP3s are created, every player on `/demos` shows broken audio:
@@ -95,10 +97,7 @@ The `demos.html` page has 6 audio players + a `MediaObject` JSON-LD block that a
 
 ## 4. Customer-supplied content
 
-- [ ] **Anonymous deployment metrics** — the Southern California pediatric and orthodontic card on `case-studies.html` stays unnamed. Publish numbers only with customer approval, and do not add a practice name.
-- [ ] **Practice website** — do not link a public domain for that anonymous deployment.
-- [ ] **Customer quote** — do not publish an attributed quote that names the practice. The homepage no longer teases a named story.
-- [ ] **Customer story #2 / #3** — `case-studies.html` line 188 shows "More stories coming soon" placeholder card. Add real second + third customer when ready.
+Cancelled. Aria does not publish client deployments, customer quotes, or a case-study library. Do not add practice names, metrics, or story cards back to the site.
 - [ ] **`[Practice Name]` template tokens** — left in 4 email-sequence files (intentional merge tags, not placeholders): `email-sequences/customer-expansion.md` line 68, `email-sequences/win-back-canceled.md` line 117, `email-sequences/onboarding-post-signup.md` line 70, `recovering-revenue-missed-dental-appointments.html` line 203 (sample script, not a real form). These are intentional — confirm they get filled at send-time by your ESP.
 
 ---
@@ -146,7 +145,7 @@ The `demos.html` page has 6 audio players + a `MediaObject` JSON-LD block that a
 - [ ] **Search Console: link to GA4** for organic-traffic attribution.
 - [ ] **Capterra listing** — set up dental-software directory listing.
 - [ ] **G2 listing** — set up product page with category + feature tags.
-- [ ] **Google Business Profile** — set up for "Aria by Velzyx AI" at the Newport Beach address (5000 Birch St, Suite 3000).
+- [ ] **Google Business Profile** — set up for "Aria by Velzyx AI" at the Newport Beach address ().
 - [ ] **Remove inline GA4 snippet** from every `.html` file once GTM is verified live in DebugView. Currently both fire (double-counting). Roughly 23 files × 2 lines each — see `_AGENT_CHANGES.md` line 162 for the cleanup spec.
 
 ---
@@ -188,7 +187,7 @@ Five `<!-- TODO: cite -->` markers across 5 files. Surrounding language is alrea
 ## 13. Operational / known-blocking
 
 From `_AGENT_CHANGES.md` "Punted / TODOs" section, plus other notes the project has accumulated:
-- [ ] **Anonymous deployment metrics gate** — same as §4; numbers stay unpublished until the customer approves, and the practice stays unnamed.
+- [ ] **a withdrawn practice name case-studies metrics gate** — same as §4; tracked here because it's blocking the `case-studies.html` rendering of real numbers.
 - [ ] **Hall-of-fame placeholder** — same as §12; intentional, not a bug.
 - [ ] **Vercel CSP promotion** — currently report-only. Move to enforced after 1-2 weeks of clean violation reports.
 
@@ -203,7 +202,7 @@ From `_AGENT_CHANGES.md` "Punted / TODOs" section, plus other notes the project 
 - **Requires external setup or accounts: ~14**
   - 8 mailboxes, 6 GA4/Search Console/Capterra/G2/GBP/inline-GA4-cleanup tasks
 - **Requires customer / vendor / legal input: ~13**
-  - 4 anonymous-deployment items (metrics, website, quote, customer #2-#3), 1 Denticon vendor confirm, 3 pricing-tier amounts, 3 PMS-roadmap confirmations, 3 legal reviews (privacy/terms/cookies)
+  - 4 a withdrawn practice name items (metrics, domain, quote, customer #2-#3), 1 Denticon vendor confirm, 3 pricing-tier amounts, 3 PMS-roadmap confirmations, 3 legal reviews (privacy/terms/cookies)
 - **Audio re-records: 7** (1 existing + 6 missing demo MP3s)
 - **Press kit / founder copy on `/press`: 5** (`[Founder Name]` x 2 + 4 brand asset files)
 - **Lead-magnet / form wiring: 6** (3 PDFs + email API + ROI tool wiring + newsletter form)

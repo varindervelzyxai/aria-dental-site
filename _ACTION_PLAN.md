@@ -1,3 +1,5 @@
+> Status (Oct 15, 2026): Aria has no live, production, or paying client deployments. Practice names in this note are withdrawn and are not current claims.
+
 # Aria SEO — Varinder's Action Plan (Things I Can't Do)
 
 The technical SEO is done and the 5 pillar blog posts are written. To actually move ariadental.ai onto page 1 for the target keywords, the work below requires a human (you, Varinder). I've laid out each task with concrete steps, copy templates, and timeline expectations.
@@ -54,7 +56,7 @@ This is the single highest-leverage local-SEO move you can make. A verified GBP 
 5. **Business category:**
    - Primary: `Software company`
    - Additional: `Health and medical company`, `Internet marketing service`
-6. **Address:** Yes, I have a location customers can visit → `5000 Birch St, Suite 3000, Newport Beach, CA 92660`
+6. **Address:** Yes, I have a location customers can visit → ``
 7. **Service area:** Add `United States` and `Canada`
 8. **Phone:** Use a real number. If you don't have a sales number yet, get a Google Voice number (free) at https://voice.google.com — pick a 949 area code to match Newport Beach.
 9. **Website:** `https://www.ariadental.ai`
@@ -124,7 +126,7 @@ Reviews + testimonials feed three SEO mechanisms:
 2. G2/Capterra star rating (drives directory ranking).
 3. Schema.org `AggregateRating` + `Review` markup (rich snippets in SERP).
 
-**Targets for Batch 1:** any early customer who'll go on record. Do not name the Southern California pediatric and orthodontic deployment.
+**Targets for Batch 1:** a withdrawn practice name, a withdrawn practice name, plus any other early customer who'll go on record.
 
 **Workflow:**
 
@@ -184,7 +186,7 @@ Backlinks are still the single biggest off-page ranking factor. The strategy: fi
 | **Inside Dental Technology** | "AI receptionist integration with Open Dental: case study" | bjcondrey@aegiscomm.com |
 | **DentistryIQ** | "5 ways AI is automating the dental front office" | content@endeavorb2b.com |
 | **The Progressive Dentist** | "Why our practice deployed AI in 2026" — first-person founder post | hello@theprogressivedentist.com |
-| **ADA News** | News tip: "First AI dental receptionist deployed as a front-line receptionist" | news@ada.org |
+| **ADA News** | News tip: "First AI dental receptionist deployed at a withdrawn practice name" | news@ada.org |
 | **DSO News (DSO Pro)** | "Multi-location AI receptionist strategy for DSOs" | editor@dsonews.com |
 
 **Dental podcasts (ask to be a guest):**
@@ -221,7 +223,7 @@ For each state association: $500–$2,000/yr for vendor membership often include
 >
 > Hi [editor name],
 >
-> I'm Varinder Kumar, founder of Aria Dental AI — we built the first AI receptionist deployed as the front-line answer at a Southern California pediatric and orthodontic practice (not as overflow). Pulling some interesting numbers out of the data and wanted to pitch a piece for [publication].
+> I'm Varinder Kumar, founder of Aria Dental AI — we built the first AI receptionist deployed as the front-line answer at a withdrawn practice name (not as overflow). Pulling some interesting numbers out of the data and wanted to pitch a piece for [publication].
 >
 > Working title: "[Specific, concrete title — not 'AI in dentistry']"
 >
@@ -246,7 +248,7 @@ For each state association: $500–$2,000/yr for vendor membership often include
 
 ### Pitch angles (pick 1–2 to lead with)
 
-1. **"First AI dental receptionist deployed as a practice's front line"** — dental industry trade press. Do not name the customer or the city.
+1. **"First AI dental receptionist deployed at a withdrawn practice name"** — local news angle (Riverside County / Inland Empire press) + dental industry trade press.
 2. **"Newport Beach AI startup tackles dental phone abandonment"** — Orange County Register, OC Business Journal, OC Inno (Inno tracks startup-stage funding + product launches).
 3. **"Velzyx AI launches Aria Dental — 24/7 HIPAA-compliant front office"** — TechCrunch tip line, GeekWire, VentureBeat (long shot, but free shots cost nothing).
 4. **"How AI handles dental insurance verification" — for healthcare-IT trade press** — Healthcare IT News, HIStalk, Becker's Healthcare, MobiHealthNews.
@@ -259,15 +261,15 @@ For each state association: $500–$2,000/yr for vendor membership often include
 
 ### Where to pitch (DIY press release)
 
-- **PR Newswire** — $300–$500 per release; broadly distributed. Worth it for a product-launch announcement that does not name a customer.
+- **PR Newswire** — $300–$500 per release; broadly distributed. Worth it for the a withdrawn practice name partnership announcement.
 - **PRWeb (Cision)** — $200–$400 per release.
 - **HARO Media Database** — search for healthcare/AI/dental beat reporters by name + email.
 
-### Press release angle (product launch, unnamed customer)
+### Press release angle (for the a withdrawn practice name story)
 
-Title: *"Newport Beach AI Startup Velzyx Launches Aria Dental — Industry's First Front-Line AI Receptionist"*
+Title: *"Newport Beach AI Startup Velzyx Launches Aria Dental — Industry's First Front-Line AI Receptionist Replaces Voicemail at a withdrawn practice name"*
 
-Lead: 24/7 voice + chat + SMS, HIPAA compliant, integrates with major dental PMS systems. Do not name the launch practice. Quote from the founder only, unless a customer approves an unnamed quote.
+Lead: 24/7 voice + chat + SMS, HIPAA compliant, integrates with major dental PMS systems. Pilot results so far. Quote from you. Quote from a withdrawn practice name practice owner (get permission).
 
 ---
 
