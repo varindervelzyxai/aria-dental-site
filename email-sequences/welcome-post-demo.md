@@ -1,3 +1,5 @@
+> Status (Oct 15, 2026): Aria has no live, production, or paying client deployments. Practice names in this note are withdrawn and are not current claims.
+
 # Welcome / Pre-Demo Sequence
 
 **Audience:** Practice owners and office managers who booked a demo on the calendar but haven't met yet.
@@ -54,14 +56,14 @@ If there's a specific scenario you want us to test — a tricky insurance check,
 
 ## Email 3 — One-paragraph case study (sent 1 day before demo)
 
-**Subject:** How WizKids Dental uses Aria as the front line
+**Subject:** How Aria is designed to answer the front line
 **Preview:** Pediatric + ortho. Aria first, every call.
 
 Hey {{first_name}},
 
 Sometimes it helps to see how someone actually deploys this.
 
-WizKids Dental & Orthodontics is a pediatric + ortho practice in Southern California. Every patient call goes to Aria first — 24/7, during AND after hours. Aria handles the call end-to-end and only transfers to staff when patient needs require human handoff. This isn't an overflow deployment. Aria is the primary receptionist.
+Aria is designed so every patient call can go to Aria first, with a transfer only when a person is needed. No practice is cited in this email. There is no published client.
 
 We'll publish the full case study in Q3 2026 with customer approval. Until then, the operational shape is the interesting part: AI handles the routing work AI does well, and the team focuses on chairside care and the calls Aria escalates.
 
