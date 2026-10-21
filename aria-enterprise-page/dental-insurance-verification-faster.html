@@ -136,7 +136,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <section class="blog-body"><div class="blog-article">
 
-<p>Insurance verification is one of those workflows that looks small until you measure it. Then it turns out to be eating 8-12 hours of your front desk's week, generating 15% of your no-shows when patients find out their copay at check-in, and producing the bulk of claim denials when somebody mistypes a member number. This is the playbook for fixing it — without sacrificing the accuracy that keeps you out of write-offs.</p>
+<p>Insurance verification is one of those workflows that looks small until you measure it. Then it turns out to be eating 8-12 hours of your front desk's week, generating no-shows when patients find out their copay at check-in, and producing claim denials when somebody mistypes a member number. We do not publish a share of those no-shows. This is the playbook for fixing it — without sacrificing the accuracy that keeps you out of write-offs.</p>
 
 <div class="blog-toc">
 <div class="toc-label">In this post</div>
@@ -164,7 +164,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <p>Most front desks log into seven to twelve payer portals every day. Each portal has a different password, a different layout, and a different definition of "verified." This is where most of the time goes.</p>
 
-<p>Real-time eligibility APIs (270/271 transactions in EDI terms) return verification data in seconds, not minutes. They aggregate dozens of payers behind a single integration. The drawback: not every payer is on every aggregator, and edge cases — out-of-state Medicaid, dual coverage, suspended plans — still require a portal login. The fix is hybrid: API for the 80% of standard cases, portal for the 20% of edge cases.</p>
+<p>Real-time eligibility APIs (270/271 transactions in EDI terms) return verification data in seconds, not minutes. They aggregate dozens of payers behind a single integration. The drawback: not every payer is on every aggregator, and edge cases — out-of-state Medicaid, dual coverage, suspended plans — still require a portal login. The fix is hybrid: API for straightforward cases, portal for the edge cases. We do not publish a split.</p>
 
 <h2 id="move-3">3) Batch tomorrow's schedule the night before</h2>
 
@@ -188,7 +188,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <p>Most established patients don't change plans mid-year. Re-verifying them every visit is wasted work. Build a rule: re-verify only on plan year rollover, after a job change, or every 12 months — whichever comes first. For everyone else, trust the prior verification and flag any payer-side change.</p>
 
-<p>This alone can cut verification volume by 40% in a mature practice with high recall density.</p>
+<p>This alone can cut verification volume in a mature practice with high recall density. We do not publish a reduction.</p>
 
 <div class="blog-callout">
 <div class="callout-label">Counter-point</div>
@@ -197,17 +197,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <h2 id="move-7">7) Auto-flag plans with maxed benefits</h2>
 
-<p>The most painful denial is the "this patient has already used their annual maximum" denial — discovered after the procedure. A nightly job that pulls remaining benefits for every patient on tomorrow's schedule, and flags anyone within $200 of their max, lets the front desk have the conversation before the appointment instead of inside the operatory.</p>
+<p>The most painful denial is the "this patient has already used their annual maximum" denial — discovered after the procedure. A nightly job that pulls remaining benefits for every patient on tomorrow's schedule, and flags anyone close to their annual maximum, lets the front desk have the conversation before the appointment instead of inside the operatory.</p>
 
 <h2 id="move-8">8) Hybrid: AI does eligibility, humans do edge cases</h2>
 
-<p>The pattern most efficient practices end up with: AI handles the standard 75-85% of verifications (commercial PPO, HMO with simple breakdowns, basic Delta/Cigna/Aetna/MetLife plans). Humans handle the edge cases: dual coverage, COB, Medicare Advantage with dental riders, employer-sponsored exception plans, denied claim reconsiderations.</p>
+<p>The pattern most efficient practices end up with: AI handles the straightforward verifications. We do not publish a share (commercial PPO, HMO with simple breakdowns, basic Delta/Cigna/Aetna/MetLife plans). Humans handle the edge cases: dual coverage, COB, Medicare Advantage with dental riders, employer-sponsored exception plans, denied claim reconsiderations.</p>
 
 <p>This frees the human verifier to do what they're actually good at — making judgment calls and talking to insurance reps — and lets AI do the rote work.</p>
 
 <h2 id="move-9">9) Send the breakdown to the patient before the visit</h2>
 
-<p>Once you've verified, send the patient an SMS or email with their estimated copay before they arrive. Two outcomes follow. First, no surprises at check-out — patients know what they're paying for. Second, no-shows drop, because the patient has emotionally committed to the financial transaction. Showing up to "yes, I'm spending $250 today" is different from showing up to "I think this might be free?"</p>
+<p>Once you've verified, send the patient an SMS or email with their estimated copay before they arrive. Two outcomes follow. First, no surprises at check-out — patients know what they're paying for. Second, no-shows drop, because the patient has emotionally committed to the financial transaction. Showing up already knowing the copay is different from showing up unsure whether the visit is covered.</p>
 
 <h2 id="move-10">10) Track the verification time as a KPI</h2>
 

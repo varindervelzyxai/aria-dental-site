@@ -17,6 +17,7 @@ const skipDirs = new Set([
   "email-sequences",
   "scripts",
   "__pycache__",
+  "api",
 ]);
 
 const skipFiles = new Set([
