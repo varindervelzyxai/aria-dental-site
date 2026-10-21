@@ -174,7 +174,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <h2 id="stage-3">Stage 3: Fill — same-day waitlist automation</h2>
 <p>When somebody cancels at 9 AM for a 2 PM appointment, you have five hours to fill the slot. Manual waitlist work means your front desk calls down a list during their lunch. The chair sits empty.</p>
 <p>Automated waitlist works differently. The cancellation triggers an SMS to 5-15 patients on a pre-built waitlist whose appointment needs match the open slot (procedure type, provider, time of day). The first patient to tap "I'll take it" gets the slot, and the rest get an "already filled" SMS so they're not left wondering.</p>
-<p>The fill rate on automated waitlists is dramatically higher than manual ones — often 50-70% on slots that would otherwise have stayed empty. The infrastructure to run this comes either from your PMS (<a href="/aria-for-open-dental" style="color:var(--amber);font-weight:500">Open Dental</a> and <a href="/aria-for-dentrix" style="color:var(--amber);font-weight:500">Dentrix</a> both support waitlists with varying ease) or from the practice's own texting tools. The practice sends those texts. When a patient calls or texts back to take the slot, Aria can book it. Aria does not call the waitlist.</p>
+<p>A waitlist text can fill a slot the desk does not have time to dial. We do not publish a fill rate. The infrastructure to run this comes either from your PMS (<a href="/aria-for-open-dental" style="color:var(--amber);font-weight:500">Open Dental</a> and <a href="/aria-for-dentrix" style="color:var(--amber);font-weight:500">Dentrix</a> both support waitlists with varying ease) or from the practice's own texting tools. The practice sends those texts. When a patient calls or texts back to take the slot, Aria can book it. Aria does not call the waitlist.</p>
 <h2 id="stage-4">Stage 4: Recover — same-day reschedule text</h2>
 <p>This is the most overlooked stage. When a patient no-shows, a voicemail that only says "please call us back" is easy to ignore.</p>
 <p>The version the practice can run itself: a same-day text, from the practice's own tools, with two specific openings. "We missed you for your appointment at 2 PM today. We have an opening tomorrow at 10 AM or Thursday at 3 PM." A link lets the patient confirm. Aria does not place that call and does not dial the no-show list. If the patient calls or texts back, Aria can book the new time on that inbound conversation.</p>
@@ -183,19 +183,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p>The 90 minutes after a no-show is the easiest revenue you'll ever recover. Most practices don't claim it.</p>
 </div>
 <h2 id="stage-5">Stage 5: Reactivate — patients who've drifted</h2>
-<p>The longest tail of missed revenue isn't this week's no-shows — it's the patients who haven't been seen in 18+ months. Most general practices have somewhere between 400 and 1,200 of these in their PMS, all of whom were active patients at some point.</p>
+<p>The longest tail of missed revenue isn't this week's no-shows — it's the patients who haven't been seen in 18+ months. Most general practices have a list of these patients in their PMS. The count is that practice's own report.</p>
 <p>The list stays with the practice. Aria does not call those patients, and it does not start a voice, SMS, or email campaign to people who have not contacted the practice. When someone calls in to book, Aria can schedule the visit.</p>
-<h2 id="numbers">The numbers when this works</h2>
-<p>For a representative single-doctor general practice with $1.2M annual production and a 16% no-show rate:</p>
-<div class="cost-math">
-<div class="math-row"><span>Annual production</span><strong>$1,200,000</strong></div>
-<div class="math-row"><span>No-show rate baseline</span><strong>16%</strong></div>
-<div class="math-row"><span>Estimated annual revenue lost to no-shows + cancels</span><strong>$132,000</strong></div>
-<div class="math-row"><span>Reduction with full playbook (target: 5% no-show)</span><strong>~70%</strong></div>
-<div class="math-row"><span>Annual revenue recovered</span><span class="math-total">$92,000</span></div>
-</div>
-<p>The full playbook isn't theoretical. The practices that run it consistently see 60-80% of the projected recovery. The ones that run pieces of it see proportional results.</p>
-<h2>Where to start</h2>
+<h2 id="numbers">Use your own numbers</h2>
+<p>What no-shows cost depends on that practice's production and its own no-show rate. We do not publish a recovered-revenue figure. The <a href="/roi-calculator">ROI calculator</a> uses the numbers you enter.</p>
+<h2>Where to start</h2><h2>Where to start</h2>
 <p>If you can only run one stage, start with Stage 4 — a same-day reschedule text after a no-show, sent by the practice. It recovers chair time that already opened up. Stage 1 (cancellation policy) and Stage 2 (detection) are next, because they prevent the leak. Stage 3 (waitlist) and Stage 5 (the lapsed list) take more staff time and compound over time.</p>
 <p>Aria answers the inbound call when a patient calls back to rebook. <a href="/dental-missed-calls-ai">That is the missed-call job</a>. Aria does not call patients who no-showed, and it does not text a waitlist on its own.</p>
 <div class="blog-cta-box">
