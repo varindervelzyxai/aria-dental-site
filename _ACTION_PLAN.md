@@ -248,7 +248,7 @@ For each state association: $500–$2,000/yr for vendor membership often include
 
 ### Pitch angles (pick 1–2 to lead with)
 
-1. **"First AI dental receptionist deployed at a withdrawn practice name"** — local news angle (Riverside County / Inland Empire press) + dental industry trade press.
+1. Do not pitch a named-practice deployment or a regional press story about a live office.
 2. **"Newport Beach AI startup tackles dental phone abandonment"** — Orange County Register, OC Business Journal, OC Inno (Inno tracks startup-stage funding + product launches).
 3. **"Velzyx AI launches Aria Dental — 24/7 HIPAA-compliant front office"** — TechCrunch tip line, GeekWire, VentureBeat (long shot, but free shots cost nothing).
 4. **"How AI handles dental insurance verification" — for healthcare-IT trade press** — Healthcare IT News, HIStalk, Becker's Healthcare, MobiHealthNews.

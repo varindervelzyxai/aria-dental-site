@@ -1,5 +1,6 @@
 [build]
-  publish = "."
+  publish = "publish"
+  command = "node scripts/stage-public-site.mjs"
   functions = "netlify/functions"
 
 [functions]
@@ -59,70 +60,12 @@
   status = 301
   force = true
 
-# Do not publish internal notes, backups, scripts, library source, or function
-# source. Rules are force-404 so they win over files in the publish root.
+# Backstop only. The publish directory is the real file protection: internal
+# notes, scripts, library source, and function source are not copied into it.
+# These rules use path segments Netlify splats can match. Extension wildcards
+# such as /*.md do not match file extensions and are not used.
 # /.netlify/functions/* is the invoke path and is not matched here.
 # /api/fish/tts and /api/guide/chat stay above, so the two functions still run.
-
-[[redirects]]
-  from = "/*.md"
-  to = "/404.html"
-  status = 404
-  force = true
-
-[[redirects]]
-  from = "/*/*.md"
-  to = "/404.html"
-  status = 404
-  force = true
-
-[[redirects]]
-  from = "/*/*/*.md"
-  to = "/404.html"
-  status = 404
-  force = true
-
-[[redirects]]
-  from = "/*.bak"
-  to = "/404.html"
-  status = 404
-  force = true
-
-[[redirects]]
-  from = "/*/*.bak"
-  to = "/404.html"
-  status = 404
-  force = true
-
-[[redirects]]
-  from = "/*/*/*.bak"
-  to = "/404.html"
-  status = 404
-  force = true
-
-[[redirects]]
-  from = "/*.py"
-  to = "/404.html"
-  status = 404
-  force = true
-
-[[redirects]]
-  from = "/*/*.py"
-  to = "/404.html"
-  status = 404
-  force = true
-
-[[redirects]]
-  from = "/*.pyc"
-  to = "/404.html"
-  status = 404
-  force = true
-
-[[redirects]]
-  from = "/*/*.pyc"
-  to = "/404.html"
-  status = 404
-  force = true
 
 [[redirects]]
   from = "/__pycache__/*"
@@ -168,6 +111,48 @@
 
 [[redirects]]
   from = "/scripts/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/_ACTION_PLAN.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/_AGENT_CHANGES.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/REMAINING_TODOS.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/FAVICONS_TODO.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/_AUDIT.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/aria-enterprise-page/_AGENT_CHANGES.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/aria-insurance-demo/_AGENT_CHANGES.md"
   to = "/404.html"
   status = 404
   force = true
