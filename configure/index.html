@@ -392,14 +392,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
               <div class="switch" role="switch" aria-checked="false"></div>
             </div>
-            <div class="toggle-row" data-value="recall_outbound" data-detail="Adds an outbound recall dashboard with per-day dial limits and outcomes.">
-              <div class="toggle-copy">
-                <div class="toggle-title">Recall dialing (outbound)</div>
-                <div class="toggle-desc">Dials lapsed & due-for-hygiene patients and books them back in.</div>
-                <div class="toggle-detail">✱ Adds an outbound recall dashboard with per-day dial limits and outcomes.</div>
-              </div>
-              <div class="switch" role="switch" aria-checked="false"></div>
-            </div>
             <div class="toggle-row" data-value="after_hours" data-detail="Runs Aria only outside business hours — front desk stays primary during the day.">
               <div class="toggle-copy">
                 <div class="toggle-title">After-hours only mode</div>
@@ -755,7 +747,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   var LOOP_LABELS = {
     answer_calls:'Answer calls', book_new:'Book new patients', cancel_reschedule:'Cancel / reschedule',
-    insurance_intake:'Insurance intake', payments:'Payments', recall_outbound:'Recall dialing',
+    insurance_intake:'Insurance intake', payments:'Payments',
     after_hours:'After-hours only', overflow:'Overflow only'
   };
   var SYSTEM_LABELS = {
@@ -785,6 +777,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     if (saved) {
       var parsed = JSON.parse(saved);
       Object.keys(parsed || {}).forEach(function(k){ if(k in state) state[k] = parsed[k]; });
+      if (Array.isArray(state.loops)) state.loops = state.loops.filter(function(l){ return l !== 'recall_outbound'; });
     }
   } catch(e) { /* ignore */ }
 
@@ -833,7 +826,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
     var weeklyHours = span(state.openTime,state.closeTime)*5 + span(state.satOpen,state.satClose);
     var loopWeight = 0;
-    var weights = { answer_calls:4, book_new:5, cancel_reschedule:3, insurance_intake:3, payments:2, recall_outbound:6, after_hours:2, overflow:2 };
+    var weights = { answer_calls:4, book_new:5, cancel_reschedule:3, insurance_intake:3, payments:2, after_hours:2, overflow:2 };
     state.loops.forEach(function(l){ loopWeight += weights[l] || 0; });
     var autonomyMult = [0.4, 0.7, 1.0, 1.5][state.autonomy] || 1;
     var estimate = Math.round(weeklyHours * (loopWeight/2) * autonomyMult);

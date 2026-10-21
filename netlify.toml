@@ -166,6 +166,25 @@
   status = 404
   force = true
 
+# Aria does not offer outbound calling. Keep old URLs from 404ing.
+[[redirects]]
+  from = "/outbound-calling"
+  to = "/platform"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/outbound-calling/"
+  to = "/platform"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/outbound-calling.html"
+  to = "/platform"
+  status = 301
+  force = true
+
 [[headers]]
   for = "/*"
   [headers.values]

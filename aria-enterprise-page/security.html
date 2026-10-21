@@ -188,7 +188,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="row"><strong>Cloud hosting</strong><span>Amazon Web Services (AWS) and Google Cloud Platform (GCP) — primary application + database. Both SOC 2 Type II, HIPAA-eligible. BAA in place.</span></div>
 <div class="row"><strong>Voice runtime</strong><span>Retell AI — voice agent runtime, low-latency speech-to-speech. PHI may flow during active calls. BAA in place.</span></div>
 <div class="row"><strong>LLM inference</strong><span>OpenAI (GPT-4o for voice; Claude for chat via Anthropic). Both maintain enterprise BAAs for healthcare workloads. PHI flows through inference pipelines for active calls and chats only; no training on customer data.</span></div>
-<div class="row"><strong>SMS gateway</strong><span>Twilio — SMS delivery for confirmations, reminders, and recall outreach. SOC 2, HIPAA-eligible with BAA. 10DLC registered.</span></div>
+<div class="row"><strong>SMS gateway</strong><span>Twilio — SMS delivery for confirmations and reminders for visits already booked. SOC 2, HIPAA-eligible with BAA. 10DLC registered.</span></div>
 <div class="row"><strong>Payments</strong><span>Stripe — PCI-DSS Level 1, HIPAA-eligible for payment metadata. We do not store card numbers; tokenized via Stripe Customer objects.</span></div>
 <div class="row"><strong>Insurance EDI</strong><span>Stedi — X12 270/271 eligibility transactions for dental insurance verification. SOC 2 Type II, HIPAA BAA.</span></div>
 <div class="row"><strong>Error monitoring</strong><span>Sentry — application error tracking. PHI scrubbed at the SDK level before transmission; no patient identifiers in error reports. SOC 2 Type II.</span></div>

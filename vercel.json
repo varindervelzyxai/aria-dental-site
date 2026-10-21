@@ -3,6 +3,8 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
+    { "source": "/outbound-calling", "destination": "/platform", "permanent": true },
+    { "source": "/outbound-calling.html", "destination": "/platform", "permanent": true },
     { "source": "/aria-vs-others", "destination": "/compare", "permanent": true },
     { "source": "/aria-vs-weave", "destination": "/compare", "permanent": true },
 

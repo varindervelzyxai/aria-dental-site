@@ -165,7 +165,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <ul>
 <li><strong>Real-time insurance verification.</strong> Pulling eligibility, plan details, deductible status, and remaining benefits during the call, against the actual carrier, not the day after.</li>
 <li><strong>Paired-appointment scheduling.</strong> Booking exam-plus-hygiene blocks, doctor-plus-assistant blocks, and operatory-aware visits that respect column rules in the PMS — Open Dental, Dentrix, Eaglesoft, Curve, Carestream — rather than dropping into a generic calendar.</li>
-<li><strong>Recall outreach.</strong> Calling out to overdue hygiene patients on a rolling cadence, booking them into actual open hygiene blocks, and writing the appointment into the schedule the same way the front desk does.</li>
+<li><strong>Hygiene booking on an inbound call.</strong> When a patient calls to book a cleaning, Aria can put it in an open hygiene block and write the appointment into the schedule. Aria does not call overdue patients.</li>
 <li><strong>Payment collection.</strong> Quoting an estimated patient portion based on the verified eligibility, taking a card on file, and reconciling the transaction into the practice management system.</li>
 <li><strong>Handoff with full context.</strong> When the call needs a human, the call needs to land with the front desk already knowing who is on the line, why they called, and what was discussed — not as a cold transfer.</li>
 </ul>
@@ -174,7 +174,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <h2>The dashboard is the operator surface</h2>
 
-<p>Anything that runs the front desk has to be auditable by the practice owner. The Aria dashboard is the operator surface that makes that possible. Every inbound call has a logged entry with the caller phone number, the call duration, the disposition (booked, transferred, declined, voicemail), the structured transcript, and the recording. Every booked appointment has the source call attached. The recall queue is visible end-to-end: who is overdue, who has been contacted, who has been booked, who has declined, and what is queued for outbound today.</p>
+<p>Anything that runs the front desk has to be auditable by the practice owner. The Aria dashboard is the operator surface that makes that possible. Every inbound call has a logged entry with the caller phone number, the call duration, the disposition (booked, transferred, declined, voicemail), the structured transcript, and the recording. Every booked appointment has the source call attached. Aria does not call patients, and the dashboard does not queue anyone for Aria to dial.</p>
 
 <p>This is the difference between an AI tool and an AI front desk. The tool gives you a black box and a confidence score. The front desk gives you the same level of visibility you would have if you were sitting next to the receptionist all day. Owners walk into Monday morning with a complete picture of what happened on Saturday night.</p>
 
@@ -202,15 +202,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <h2>What changes inside the practice when the front desk stops missing calls</h2>
 
-<p>The visible change is the schedule fills earlier in the week. The less visible change is the structural one: the human front desk stops being the bottleneck and starts being the operator. The receptionist's day shifts from "answer the phone" to "manage the patients in front of me and supervise the system." Hygiene recall stops being a Wednesday afternoon catch-up project and becomes a continuously running queue. Insurance verification stops being a same-day scramble and becomes a verified field on the appointment before the patient arrives.</p>
+<p>The visible change is the schedule fills earlier in the week. The less visible change is the structural one: the human front desk stops being the bottleneck and starts being the operator. The receptionist's day shifts from "answer the phone" to "manage the patients in front of me and supervise the system." The overdue hygiene list stays visible for the practice. Aria does not call it. Insurance verification stops being a same-day scramble and becomes a verified field on the appointment before the patient arrives.</p>
 
-<p>This is the operational change the product is designed to produce. Front-desk turnover comes down because the role is no longer the worst job in the office. Hygienist utilization comes up because the recall queue is actually working. Production per chair-hour improves because the schedule is denser and the unbooked time blocks are smaller. None of these are AI metrics. They are operational metrics that an AI front desk unlocks because it removes the capacity ceiling.</p>
+<p>This is the operational change the product is designed to produce. Front-desk turnover comes down because the role is no longer the worst job in the office. Hygienist utilization comes up because booked visits are confirmed before the chair sits empty. Production per chair-hour improves because the schedule is denser and the unbooked time blocks are smaller. None of these are AI metrics. They are operational metrics that an AI front desk unlocks because it removes the capacity ceiling.</p>
 
 <p>The <a href="/front-desk-burnout-dental-practice">front-desk burnout breakdown</a> and the <a href="/dental-missed-calls-ai">missed-calls AI page</a> document how this shift plays out on the team side and the revenue side respectively. The combined picture is what gets practice owners off the fence.</p>
 
 <h2>Where to start</h2>
 
-<p>Three steps, in order. First, install call tracking and get a real miss-rate number for your practice. Most owners discover their miss rate is higher than they thought. Second, run the math on your own first-visit production value and lifetime patient value. Most owners discover the per-call cost is higher than they thought. Third, evaluate the AI front desk options against the actual job description above — insurance verification, paired appointments, recall, payment collection, handoff — and not against a marketing demo.</p>
+<p>Three steps, in order. First, install call tracking and get a real miss-rate number for your practice. Most owners discover their miss rate is higher than they thought. Second, run the math on your own first-visit production value and lifetime patient value. Most owners discover the per-call cost is higher than they thought. Third, evaluate the AI front desk options against the actual job description above — insurance verification, paired appointments, inbound hygiene booking, payment collection, handoff — and not against a marketing demo.</p>
 
 <p>If you want to see what that evaluation looks like against Aria specifically, the <a href="/demo">live demo</a> walks through a real inbound call end to end, and the <a href="/aria-for-open-dental">PMS integration pages</a> document how the front desk runs against Open Dental, <a href="/aria-for-dentrix">Dentrix</a>, and <a href="/aria-for-eaglesoft">Eaglesoft</a> specifically. The math will be the same regardless of which platform you evaluate. The eight-to-twelve missed visits a week are already happening. The only question is how long you let them keep happening.</p>
 
