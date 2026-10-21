@@ -144,7 +144,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="page-hero"><div class="container">
 <div class="section-label">ROI Calculator</div>
 <h1 class="section-title">How much is your front desk <span>costing you?</span></h1>
-<p class="section-desc">Move the sliders to match your practice. Salary, <a href="/dental-missed-calls-ai" style="color:var(--amber);font-weight:500">missed calls</a>, no-shows, lost patients — the real cost is usually 3x what owners expect.</p>
+<p class="section-desc">Move the sliders to match your practice. Salary, <a href="/dental-missed-calls-ai" style="color:var(--amber);font-weight:500">missed calls</a>, no-shows, lost patients — the real cost is often more than the salary line alone.</p>
 </div></section>
 <section class="section-alt"><div class="container">
 <div class="calc-grid">
@@ -152,9 +152,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <h3>Your practice numbers</h3>
 <div class="slider-group"><label><span>Receptionist annual salary<span class="label-hint" tabindex="0" role="img" aria-label="Hint">i</span><span class="hint-text">Base wage before benefits. We multiply by 1.3 to account for taxes, PTO, and health benefits — the real loaded cost.</span></span> <span id="salaryDisplay">$45,000</span></label><input type="range" class="slider" id="salary" min="30000" max="80000" step="1000" value="45000"></div>
 <div class="slider-group"><label><span>Inbound calls per day<span class="label-hint" tabindex="0" role="img" aria-label="Hint">i</span><span class="hint-text">Total inbound — new patients, existing patients, insurance questions, after-hours overflow.</span></span> <span id="callsDisplay">30</span></label><input type="range" class="slider" id="calls" min="10" max="80" step="5" value="30"></div>
-<div class="slider-group"><label><span>% of calls that go unanswered<span class="label-hint" tabindex="0" role="img" aria-label="Hint">i</span><span class="hint-text">Industry average is 25–40% during business hours, climbs higher after-hours and at lunch. Default 35%.</span></span> <span id="missedDisplay">35%</span></label><input type="range" class="slider" id="missed" min="10" max="70" step="5" value="35"></div>
-<div class="slider-group"><label><span>Lifetime value per new patient<span class="label-hint" tabindex="0" role="img" aria-label="Hint">i</span><span class="hint-text">First treatment plus retention. Typical GP: $1,200–$1,800. Specialty (perio, ortho, implants): $3k+.</span></span> <span id="patientValueDisplay">$1,200</span></label><input type="range" class="slider" id="patientValue" min="500" max="3000" step="100" value="1200"></div>
-<div class="slider-group"><label><span>% of answered calls that book<span class="label-hint" tabindex="0" role="img" aria-label="Hint">i</span><span class="hint-text">Of the calls your team does answer, what percent end with a booked appointment? Most practices land 20–35%.</span></span> <span id="conversionDisplay">25%</span></label><input type="range" class="slider" id="conversion" min="10" max="50" step="5" value="25"></div>
+<div class="slider-group"><label><span>% of calls that go unanswered<span class="label-hint" tabindex="0" role="img" aria-label="Hint">i</span><span class="hint-text">Your assumption, not an industry statistic. This slider starts at 35%. Move it to the share of calls you believe go unanswered.</span></span> <span id="missedDisplay">35%</span></label><input type="range" class="slider" id="missed" min="10" max="70" step="5" value="35"></div>
+<div class="slider-group"><label><span>Lifetime value per new patient<span class="label-hint" tabindex="0" role="img" aria-label="Hint">i</span><span class="hint-text">Your assumption for what a new patient is worth in your practice. The starting number is only a placeholder — move the slider.</span></span> <span id="patientValueDisplay">$1,200</span></label><input type="range" class="slider" id="patientValue" min="500" max="3000" step="100" value="1200"></div>
+<div class="slider-group"><label><span>% of answered calls that book<span class="label-hint" tabindex="0" role="img" aria-label="Hint">i</span><span class="hint-text">Your assumption, not an industry statistic. If you are unsure, try a number in the 20–35% range and replace it with your own booking rate.</span></span> <span id="conversionDisplay">25%</span></label><input type="range" class="slider" id="conversion" min="10" max="50" step="5" value="25"></div>
 <div class="slider-group"><label><span>Working days per year<span class="label-hint" tabindex="0" role="img" aria-label="Hint">i</span><span class="hint-text">Standard practice runs 240–260 days. Adjust for holidays and CE days off.</span></span> <span id="daysDisplay">250</span></label><input type="range" class="slider" id="days" min="200" max="300" step="10" value="250"></div>
 </div>
 <div class="calc-results">
@@ -171,7 +171,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="result-row"><span class="result-label">No-shows & scheduling gaps</span><span class="result-value negative" id="costNoShows">$36,000</span></div>
 <div class="total-row"><div class="result-row" style="border:none;padding:0"><span class="result-label">Total annual cost</span><span class="result-value" id="totalCost">$173,250</span></div></div>
 <div style="margin-top:24px;padding:20px;background:rgba(212,149,42,0.12);border-radius:var(--radius-sm);border:1px solid rgba(212,149,42,0.25)"><div class="result-row" style="border:none;padding:0"><span class="result-label" style="color:var(--amber-light)">Patients lost per year</span><span class="result-value" style="font-size:28px" id="patientsLost">66</span></div></div>
-<p class="result-note">* Salary includes ~30% for benefits, taxes, PTO. No-show estimate based on industry average of 12% with $300 average visit value.</p>
+<p class="result-note">* The salary loading (about 30%) and the no-show line are assumptions inside this calculator, not industry statistics. Move the sliders to your own numbers.</p>
 <div class="results-cta">
 <a href="/contact" class="btn btn-primary btn-lg" id="roiBookDemoBtn">Book a demo to recover this →</a>
 <p style="font-size:13px;color:var(--charcoal-50);margin-top:12px">Payback depends on your call volume and what a booked visit is worth. This page does not assume a result.</p>
@@ -199,7 +199,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="insight-cards">
 <div class="insight-card reveal"><div class="num" style="font-size:22px;line-height:1.2">Your calls</div><p>Use your own missed-call count above. This page does not cite an industry percentage.</p></div>
 <div class="insight-card reveal reveal-delay-1"><div class="num" style="font-size:22px;line-height:1.2">Your math</div><p>Payback depends on your call volume and what a booked visit is worth. No result is assumed.</p></div>
-<div class="insight-card reveal reveal-delay-2"><div class="num">$0</div><p>missed calls with Aria. Every call answered, every chat handled, every text returned — 24/7.</p></div>
+<div class="insight-card reveal reveal-delay-2"><div class="num" style="font-size:22px;line-height:1.2">Answered</div><p>Aria picks up the inbound call, chat, and text — 24/7. This is coverage, not a dollar result.</p></div>
 </div>
 </div></section>
 <!-- METHODOLOGY -->
@@ -212,7 +212,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="method-grid">
 <div class="method-card reveal">
 <h4>💼 Salary + Benefits (×1.3)</h4>
-<p>Base salary multiplied by 1.3 to account for employer-side taxes (FICA, unemployment), health insurance, PTO, and other benefits. The 30% overhead multiplier is standard across BLS and ADA benchmarking reports.</p>
+<p>Base salary multiplied by 1.3 to account for employer-side taxes (FICA, unemployment), health insurance, PTO, and other benefits. The 1.3 loading is a benefits assumption inside this calculator, not a published benchmark. Treat it as your own assumption about taxes, PTO, and health benefits.</p>
 </div>
 <div class="method-card reveal reveal-delay-1">
 <h4>📞 Missed Call Revenue</h4>
@@ -220,7 +220,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 <div class="method-card reveal reveal-delay-2">
 <h4>📅 No-Show Cost</h4>
-<p>Based on industry average of 12% <a href="/reduce-dental-no-shows" style="color:var(--amber);font-weight:500">no-show rate</a>, 4 appointments per day, and $300 average visit value. This is a conservative estimate — specialty practices often see higher per-visit values.</p>
+<p>The no-show line is a fixed illustration inside this calculator, not a published industry rate. The missed-call line uses only the sliders you set. <a href="/reduce-dental-no-shows" style="color:var(--amber);font-weight:500">No-show tactics</a> are covered separately.</p>
 </div>
 <div class="method-card reveal reveal-delay-3">
 <h4>👥 Patients Lost</h4>
