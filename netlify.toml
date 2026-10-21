@@ -59,6 +59,138 @@
   status = 301
   force = true
 
+# Do not publish internal notes, backups, scripts, library source, or function
+# source. Rules are force-404 so they win over files in the publish root.
+# /.netlify/functions/* is the invoke path and is not matched here.
+# /api/fish/tts and /api/guide/chat stay above, so the two functions still run.
+
+[[redirects]]
+  from = "/*.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/*/*.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/*/*/*.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/*.bak"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/*/*.bak"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/*/*/*.bak"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/*.py"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/*/*.py"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/*.pyc"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/*/*.pyc"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/__pycache__/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/*/__pycache__/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/lib/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/lib/*/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/netlify/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/netlify/*/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/email-sequences/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/scripts/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+# Aria does not offer outbound calling. Keep old URLs from 404ing.
+[[redirects]]
+  from = "/outbound-calling"
+  to = "/platform"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/outbound-calling/"
+  to = "/platform"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/outbound-calling.html"
+  to = "/platform"
+  status = 301
+  force = true
+
 [[headers]]
   for = "/*"
   [headers.values]

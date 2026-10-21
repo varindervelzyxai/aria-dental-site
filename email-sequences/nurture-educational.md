@@ -33,14 +33,14 @@ Aria Dental AI
 
 ## Email 2 — Day 1: The number that changes the conversation
 
-**Subject:** The 62% that's costing you patients
+**Subject:** Count your own missed calls
 **Preview:** And how to figure out yours in five minutes.
 
 Hey {{first_name}},
 
-Here's a stat from the guide that gets the most pushback in early calls with practice owners: **about 62% of inbound dental calls go unanswered during peak hours and after-hours combined.**
+Here's a stat from the guide that gets the most pushback in early calls with practice owners: **there is no industry percentage on this page.**
 
-Owners' first reaction: "no way, our team answers every call." Then we run the audit. It's almost always between 50% and 70%.
+Pull your own call log. Do not use a borrowed percentage.
 
 Here's the five-minute test to find your number:
 

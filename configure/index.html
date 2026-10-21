@@ -392,14 +392,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
               <div class="switch" role="switch" aria-checked="false"></div>
             </div>
-            <div class="toggle-row" data-value="recall_outbound" data-detail="Adds an outbound recall dashboard with per-day dial limits and outcomes.">
-              <div class="toggle-copy">
-                <div class="toggle-title">Recall dialing (outbound)</div>
-                <div class="toggle-desc">Dials lapsed & due-for-hygiene patients and books them back in.</div>
-                <div class="toggle-detail">✱ Adds an outbound recall dashboard with per-day dial limits and outcomes.</div>
-              </div>
-              <div class="switch" role="switch" aria-checked="false"></div>
-            </div>
             <div class="toggle-row" data-value="after_hours" data-detail="Runs Aria only outside business hours — front desk stays primary during the day.">
               <div class="toggle-copy">
                 <div class="toggle-title">After-hours only mode</div>
@@ -443,7 +435,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="mock-phone">
                   <div class="mock-phone-screen">
                     <div class="caller">Incoming call · 0:14</div>
-                    <div class="caller-name">(415) 555-0142</div>
+                    <div class="caller-name">Mobile</div>
                     <div class="caller-status">Aria answering…</div>
                     <div class="caller-line">"Thanks for calling. Are you a current patient, or would you like to book your first visit?"</div>
                   </div>
@@ -620,22 +612,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
               <div class="switch" role="switch" aria-checked="false"></div>
             </div>
-            <div class="toggle-row" data-value="dentrix" data-detail="Aria writes appointments and patient info back to your practice management system.">
+            <div class="toggle-row" data-value="dentrix" data-detail="Dentrix write-back is on the roadmap. Until it ships, bookings land on Google Calendar or a confirmation queue.">
               <div class="system-tile"><div class="system-logo">Dx</div>
                 <div class="toggle-copy">
                   <div class="toggle-title">Dentrix</div>
-                  <div class="toggle-desc">Bi-directional writes for appointments and patient records.</div>
-                  <div class="toggle-detail">✱ Aria writes appointments and patient info back to your practice management system.</div>
+                  <div class="toggle-desc">Roadmap. Not live write-back.</div>
+                  <div class="toggle-detail">✱ Dentrix write-back is on the roadmap.</div>
                 </div>
               </div>
               <div class="switch" role="switch" aria-checked="false"></div>
             </div>
-            <div class="toggle-row" data-value="eaglesoft" data-detail="Aria writes appointments and patient info back to your patient chart.">
+            <div class="toggle-row" data-value="eaglesoft" data-detail="Eaglesoft write-back is on the roadmap. Until it ships, bookings land on Google Calendar or a confirmation queue.">
               <div class="system-tile"><div class="system-logo">Es</div>
                 <div class="toggle-copy">
                   <div class="toggle-title">Eaglesoft</div>
-                  <div class="toggle-desc">Bi-directional writes for appointments and patient records.</div>
-                  <div class="toggle-detail">✱ Aria writes appointments and patient info back to your patient chart.</div>
+                  <div class="toggle-desc">Roadmap. Not live write-back.</div>
+                  <div class="toggle-detail">✱ Eaglesoft write-back is on the roadmap.</div>
                 </div>
               </div>
               <div class="switch" role="switch" aria-checked="false"></div>
@@ -755,7 +747,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   var LOOP_LABELS = {
     answer_calls:'Answer calls', book_new:'Book new patients', cancel_reschedule:'Cancel / reschedule',
-    insurance_intake:'Insurance intake', payments:'Payments', recall_outbound:'Recall dialing',
+    insurance_intake:'Insurance intake', payments:'Payments',
     after_hours:'After-hours only', overflow:'Overflow only'
   };
   var SYSTEM_LABELS = {
@@ -785,6 +777,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     if (saved) {
       var parsed = JSON.parse(saved);
       Object.keys(parsed || {}).forEach(function(k){ if(k in state) state[k] = parsed[k]; });
+      if (Array.isArray(state.loops)) state.loops = state.loops.filter(function(l){ return l !== 'recall_outbound'; });
     }
   } catch(e) { /* ignore */ }
 
@@ -833,7 +826,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
     var weeklyHours = span(state.openTime,state.closeTime)*5 + span(state.satOpen,state.satClose);
     var loopWeight = 0;
-    var weights = { answer_calls:4, book_new:5, cancel_reschedule:3, insurance_intake:3, payments:2, recall_outbound:6, after_hours:2, overflow:2 };
+    var weights = { answer_calls:4, book_new:5, cancel_reschedule:3, insurance_intake:3, payments:2, after_hours:2, overflow:2 };
     state.loops.forEach(function(l){ loopWeight += weights[l] || 0; });
     var autonomyMult = [0.4, 0.7, 1.0, 1.5][state.autonomy] || 1;
     var estimate = Math.round(weeklyHours * (loopWeight/2) * autonomyMult);
@@ -1272,7 +1265,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       +   '<div style="text-align:right">'
       +     '<div style="font-size:12px;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.1em">Contact</div>'
       +     '<div style="font-size:13px;color:#F5C563;margin-top:4px">sales@ariadental.ai</div>'
-      +     '<div style="font-size:13px;color:#F5C563">+1 (949) 313-7742</div>'
       +   '</div>'
       + '</div>'
 

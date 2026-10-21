@@ -143,7 +143,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <section class="blog-body"><div class="blog-article">
 
-<p>An AI dental receptionist is a software system that answers your practice phone, replies to patient text messages, and chats on your website around the clock. It books appointments, cancels and reschedules, verifies insurance, takes payment, sends recall outreach, and hands off to a human when the situation requires one. Unlike call overflow tools, it sits at the front of the line, not behind it. It is the first voice a caller hears and, for most calls, the only voice they need.</p>
+<p>An AI dental receptionist is a software system that answers your practice phone, replies to patient text messages, and chats on your website around the clock. It books appointments, cancels and reschedules, verifies insurance, takes payment, and hands off to a human when the situation requires one. Unlike call overflow tools, it sits at the front of the line, not behind it. It is the first voice a caller hears and, for most calls, the only voice they need.</p>
 
 <p>The category has matured quickly. Five years ago, voice AI in dentistry meant a brittle phone tree dressed up with a synthesized voice. Today, the better systems hold open conversation, recognize intent, write directly to your practice management system, and run insurance eligibility against the same clearinghouses your billing team already uses. This guide explains what a 2026-grade AI dental receptionist actually does, where it differs from the alternatives, what to demand on HIPAA, and how to evaluate one without getting lost in vendor marketing. You will also see what a real call sounds like and how the math works for a typical practice.</p>
 
@@ -174,7 +174,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <li><strong>Book, cancel, and reschedule appointments.</strong> Not by sending a request to your team to handle later — directly into the calendar, with the operatory, provider, and procedure code already set. Confirmation goes out by SMS within seconds.</li>
 <li><strong>Verify dental insurance in real time.</strong> The AI collects payer, member ID, group number, subscriber details, and runs a live eligibility check against an industry-standard clearinghouse. The patient hears their estimated coverage on the same call.</li>
 <li><strong>Collect payment.</strong> Saved cards on file for known patients, secure payment links for new ones. Paid through a PCI-compliant payment processor — never card numbers stored or read aloud.</li>
-<li><strong>Run recall outreach.</strong> Automated voice and SMS campaigns to patients who are due or overdue for hygiene. Replies route back to the same conversation thread.</li>
+<li><strong>Book a recall visit when the patient calls.</strong> Aria can schedule hygiene when someone calls or texts in. Aria does not call overdue patients.</li>
 <li><strong>Cover after hours.</strong> Nights, weekends, holidays, and the long tail of inconvenient call times where most practices currently lose new patients.</li>
 <li><strong>Answer practice questions.</strong> Address, hours, parking, payment plans, accepted insurance, services offered, and anything else encoded during setup.</li>
 <li><strong>Escalate cleanly.</strong> When a question is genuinely outside scope — a clinical urgency, a billing dispute, a complex complaint — it transfers to a designated human or queues a callback with full context.</li>
@@ -227,13 +227,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <p>The caller explains. The AI confirms it sounds like a same-week priority, asks for the caller's name and date of birth, recognizes the caller is new to the practice, and offers the next two openings — Wednesday at 11 AM and Thursday at 2:30 PM. The caller picks Thursday. The AI asks whether the caller would like to use insurance. They would. It collects the payer, member ID, group number, and subscriber details one item at a time, then runs eligibility against the clearinghouse. Within thirty seconds, the AI confirms active dental coverage and a typical patient responsibility for a crown re-cementation. The appointment is booked into the practice management system. A confirmation text arrives on the caller's phone before the call ends.</p>
 
-<p>Total time, just under five minutes. No human involved. No voicemail. No callback the next morning. To <a href="/demos">hear Aria handle a real call</a>, listen to the recorded examples on the demos page — the patterns above are taken from real production calls.</p>
+<p>Total time, just under five minutes. No human involved. No voicemail. No callback the next morning. To <a href="/demos">hear Aria handle a real call</a>, listen to the recorded examples on the demos page — the patterns above are product examples, not a published customer call.</p>
 
 <h2 id="pms">How it plugs into your PMS</h2>
 
 <p>Booking is only useful if it lands in the same calendar your team already uses. A modern AI dental receptionist writes directly to your practice management system. That means the appointment shows up in your schedule view, the patient chart updates, the insurance information lands on the right record, and your hygienists and front desk see the same world they have always seen.</p>
 
-<p>The platform <a href="/integrations">works with your PMS</a> across the major dental systems — Open Dental, Dentrix, Eaglesoft, Curve, Carestream, and Practice-Web are supported, with new connectors added as demand justifies. For each PMS, the integration covers patient lookup, appointment create and update, operatory mapping, provider mapping, and procedure code translation. If the system is bidirectional, changes made in the PMS sync back into the AI's view of the world so the booking logic always matches reality.</p>
+<p>Open Dental write-back is part of the product: patient lookup, appointment create and update, and the fields that office uses. Dentrix, Eaglesoft, Curve, Carestream, and Practice-Web are on the roadmap. Until those ship, practices on those systems book to Google Calendar or a confirmation queue. See the <a href="/integrations">integrations page</a> for current status.</p>
 
 <p>Practices on a PMS not yet on the list can still run in calendar-mode against a separate scheduling system with daily reconciliation. It is not as elegant, but it works while a custom connector is built.</p>
 
