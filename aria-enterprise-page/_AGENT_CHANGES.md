@@ -743,8 +743,8 @@ all other pages) was preserved everywhere it is currently active — it's
 the audio-demo differentiator the audit called out.
 
 **A4 — Replaced leaked test data in audio demo transcripts.**
-- `562-418-0998` → `(555) 123-4567` (RFC test number)
-- `dholideepak26@gmail.com` → `patient@example.com` (RFC-reserved)
+- `a removed phone number` → `on file` (RFC test number)
+- `a personal Gmail address` → `patient@example.com` (RFC-reserved)
 - Updated visible text **and** transcript JS data structures in
   `index.html` and `demo.html`. Also updated the visible `data-tag phone`
   in `demo.html` (line 179).
@@ -888,7 +888,7 @@ Applied to all 37 production .html files:
 - `grep "TODO" *.html *.js *.css` returns exactly 3 hits — all the
   preserved `<!-- TODO: cite -->` markers in blog content (intentional
   per the brief).
-- `grep "562-418-0998\|dholideepak26"` in audio demo files: 0 hits.
+- `grep` for the removed phone number and personal Gmail in audio demo files: 0 hits.
   (Five remaining hits are in unrelated `Organization` JSON-LD
   contactPoint blocks declaring the parent company sales line — left
   alone; flagged in `BATCH5_NOTES.md` for the operator to confirm.)
@@ -907,7 +907,7 @@ Applied to all 37 production .html files:
 | File | Notes |
 |---|---|
 | `privacy.html` | Indexable. ~1,800 words. HIPAA + BAA section anchored at `#hipaa-notice` per spec. Subprocessor table (11 vendors). Retention table. CCPA + GPC clauses. |
-| `terms.html` | Indexable. ~1,750 words. SaaS + dental specifics: BAA, clinical-tool-not-clinical-decision, AUP, 99.9% target, late fee 1.5%/mo, JAMS arbitration in Delaware. |
+| `terms.html` | Indexable. ~1,750 words. SaaS + dental specifics: BAA, clinical-tool-not-clinical-decision, AUP, uptime language, with no published percentage, late fee 1.5%/mo, JAMS arbitration in Delaware. |
 | `cookies.html` | Indexable. ~1,400 words. Cookie inventory table with real GA4/Clarity cookie names. No advertising cookies declared. GPC honored. |
 | `about.html` | Founder-led tone. Honest ranges (30-60% missed calls, 5-10 min IV, etc., **no fabricated stats**). 3 principles. SoCal closer. JSON-LD: extended Organization + Person stub. **Founder name + bio left as TODO comments — placeholders explicit, no fabrication.** |
 | `404.html` | Hero "Lost a tooth? Lost a page." `noindex,follow`. 4 destination buttons. Aria persona image. Vercel auto-detects 404.html at root, no errorPage config needed. |
@@ -931,7 +931,7 @@ Applied to all 37 production .html files:
 
 ### TODOs left in place (intentional, do not autofix)
 
-- `about.html`: founder name = `[Founder Name]`, founder photo = `<!-- TODO: founder photo at /images/team/founder.jpg -->`, founder bio = TODO comment + placeholder text. Replace with real content before launch.
+- `about.html`: founder name = `Varinder Kumar`, founder photo = `<!-- TODO: founder photo at /images/team/founder.jpg -->`, founder bio = TODO comment + placeholder text. Replace with real content before launch.
 - `about.html`: "Backed by" section explicitly says bootstrapped; if/when raised, replace with real partner names.
 - `demos.html`: 6 audio files (`/audio/demo-*.mp3`) not yet uploaded. The page renders with a clear "Audio file not yet uploaded" banner per demo until they land.
 - `404.html`: not registered in `vercel.json` because Vercel auto-detects `404.html` at the project root. If a custom routing tweak is wanted later, add `"errorPage": "/404"` under root in vercel.json.
@@ -1115,11 +1115,11 @@ EN-side patches:
 `press.html` at repo root. JSON-LD: `WebPage`.
 
 - Hero: "Press & media kit." Press@ + brand assets CTAs.
-- Company snapshot (4 cards): Founded, Founder ([Founder Name] placeholder), HQ, Parent company.
+- Company snapshot (4 cards): Founded, Founder (Varinder Kumar placeholder), HQ, Parent company.
 - 2-sentence company description.
 - Brand assets section (id=`#assets`): 4 placeholder asset cards (Wordmark light/dark, square mark, brand guidelines) — all marked `<!-- TODO: brand asset PDF/PNG -->Coming soon`.
 - Recent coverage: empty-state with dashed amber border, press@ariadental.ai contact.
-- Founder bio: placeholder bio for `[Founder Name]` matching `/about` placeholder.
+- Founder bio: placeholder bio for `Varinder Kumar` matching `/about` placeholder.
 - Speaking & podcasts: empty-state.
 - Contact card: `press@ariadental.ai` (media) + `partnerships@ariadental.ai` (partnerships).
 
@@ -1215,7 +1215,7 @@ Scope: 1 net-new HTML page (`enterprise.html`), site-wide nav + footer additions
 5. **Enterprise-grade security & compliance** — 8 cards: HIPAA + signed BAAs, SOC 2 Type II (honestly labeled "in progress · Q3 2026"), state-specific compliance (CCPA/CPRA, HB 4, MHMDA, BIPA), data residency US-East/US-West, audit logging at org/location/user level, 90-day default retention configurable to 7 years, quarterly pen tests, dedicated security@ariadental.ai.
 6. **Integration with DSO infrastructure** — Two columns: PMS systems (Open Dental Enterprise, Dentrix Enterprise, Eaglesoft, Curve, Carestream, PracticeWorks, custom EHR/EMR) and identity/data infra (SAML 2.0 SSO via Okta/Azure AD/Google/Ping, SCIM 2.0, webhooks/REST API, Snowflake/BigQuery/Redshift/Databricks, Looker/Tableau/Power BI/Mode, IP allowlisting, VPN options).
 7. **Pricing & contracting** — 6 items: custom pricing with volume discounts at 25+/100+/250+/500+ locations, multi-year terms with locked rates, Net 30/60/90, dedicated account team (CSM + impl lead + executive sponsor), procurement-friendly (Coupa/Ariba/Workday compatibility, redlinable MSA/BAA/DPA), procurement documentation (CAIQ/SIG-Lite turnaround in 5 days, SOC 2 Type I report under NDA). "Custom quote within 48 hours" CTA card.
-8. **Enterprise FAQ** — 8 questions with full answers, marked up as `FAQPage` JSON-LD: pricing scaling, phased deployment, custom PMS integration, SLA terms (99.9% uptime, P1/P2/P3 response), data residency, mid-contract acquisitions, multi-language across regions, custom contract / legal review timeline (3-6 weeks median).
+8. **Enterprise FAQ** — 8 questions with full answers, marked up as `FAQPage` JSON-LD: pricing scaling, phased deployment, custom PMS integration, SLA terms (no published uptime percentage; support response is in the agreement), data residency, mid-contract acquisitions, multi-language across regions, custom contract / legal review timeline (3-6 weeks median).
 9. **Closing CTA** — "Ready to talk?" with two paths: schedule consultation (`/contact?type=enterprise`) and email DSO team (`mailto:enterprise@ariadental.ai`). Bottom-of-page line: "We respond to enterprise inquiries within 24 hours. Discovery call → custom proposal → security review → pilot."
 
 **Head pattern:** Full match of existing pages — GTM (`GTM-5H6LQ8RL`), Clarity (`wn8w0677vz`), GA4 inline (`G-KQS3692C4Q`), OG/Twitter (1200×630 image at `/images/og/enterprise.png`), JSON-LD (`Article` + `Service` + `FAQPage`), canonical, favicon block, manifest, viewport, theme-color, dns-prefetch.

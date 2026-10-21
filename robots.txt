@@ -10,6 +10,15 @@ Disallow: /admin/
 Disallow: /_next/
 Disallow: /draft/
 Disallow: /preview/
+Disallow: /lib/
+Disallow: /netlify/
+Disallow: /email-sequences/
+Disallow: /scripts/
+Disallow: /__pycache__/
+Disallow: /*.md$
+Disallow: /*.bak$
+Disallow: /*.py$
+Disallow: /*.pyc$
 Disallow: /*?preview=
 Disallow: /*?draft=
 
@@ -18,21 +27,66 @@ User-agent: Googlebot
 Allow: /
 Disallow: /api/
 Disallow: /admin/
+Disallow: /lib/
+Disallow: /netlify/
+Disallow: /email-sequences/
+Disallow: /scripts/
+Disallow: /__pycache__/
+Disallow: /*.md$
+Disallow: /*.bak$
+Disallow: /*.py$
+Disallow: /*.pyc$
 
 User-agent: Bingbot
 Allow: /
 Disallow: /api/
 Disallow: /admin/
+Disallow: /lib/
+Disallow: /netlify/
+Disallow: /email-sequences/
+Disallow: /scripts/
+Disallow: /__pycache__/
+Disallow: /*.md$
+Disallow: /*.bak$
+Disallow: /*.py$
+Disallow: /*.pyc$
 Crawl-delay: 1
 
 User-agent: GPTBot
 Allow: /
+Disallow: /lib/
+Disallow: /netlify/
+Disallow: /email-sequences/
+Disallow: /scripts/
+Disallow: /__pycache__/
+Disallow: /*.md$
+Disallow: /*.bak$
+Disallow: /*.py$
+Disallow: /*.pyc$
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /lib/
+Disallow: /netlify/
+Disallow: /email-sequences/
+Disallow: /scripts/
+Disallow: /__pycache__/
+Disallow: /*.md$
+Disallow: /*.bak$
+Disallow: /*.py$
+Disallow: /*.pyc$
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /lib/
+Disallow: /netlify/
+Disallow: /email-sequences/
+Disallow: /scripts/
+Disallow: /__pycache__/
+Disallow: /*.md$
+Disallow: /*.bak$
+Disallow: /*.py$
+Disallow: /*.pyc$
 
 # Block obvious scrapers
 User-agent: AhrefsBot

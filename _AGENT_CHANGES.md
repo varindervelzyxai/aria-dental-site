@@ -798,8 +798,8 @@ all other pages) was preserved everywhere it is currently active — it's
 the audio-demo differentiator the audit called out.
 
 **A4 — Replaced leaked test data in audio demo transcripts.**
-- `562-418-0998` → `(555) 123-4567` (RFC test number)
-- `dholideepak26@gmail.com` → `patient@example.com` (RFC-reserved)
+- `a removed phone number` → `on file` (RFC test number)
+- `a personal Gmail address` → `patient@example.com` (RFC-reserved)
 - Updated visible text **and** transcript JS data structures in
   `index.html` and `demo.html`. Also updated the visible `data-tag phone`
   in `demo.html` (line 179).
@@ -943,7 +943,7 @@ Applied to all 37 production .html files:
 - `grep "TODO" *.html *.js *.css` returns exactly 3 hits — all the
   preserved `<!-- TODO: cite -->` markers in blog content (intentional
   per the brief).
-- `grep "562-418-0998\|dholideepak26"` in audio demo files: 0 hits.
+- `grep` for the removed phone number and personal Gmail in audio demo files: 0 hits.
   (Five remaining hits are in unrelated `Organization` JSON-LD
   contactPoint blocks declaring the parent company sales line — left
   alone; flagged in `BATCH5_NOTES.md` for the operator to confirm.)
@@ -962,7 +962,7 @@ Applied to all 37 production .html files:
 | File | Notes |
 |---|---|
 | `privacy.html` | Indexable. ~1,800 words. HIPAA + BAA section anchored at `#hipaa-notice` per spec. Subprocessor table (11 vendors). Retention table. CCPA + GPC clauses. |
-| `terms.html` | Indexable. ~1,750 words. SaaS + dental specifics: BAA, clinical-tool-not-clinical-decision, AUP, 99.9% target, late fee 1.5%/mo, JAMS arbitration in Delaware. |
+| `terms.html` | Indexable. ~1,750 words. SaaS + dental specifics: BAA, clinical-tool-not-clinical-decision, AUP, uptime language, with no published percentage, late fee 1.5%/mo, JAMS arbitration in Delaware. |
 | `cookies.html` | Indexable. ~1,400 words. Cookie inventory table with real GA4/Clarity cookie names. No advertising cookies declared. GPC honored. |
 | `about.html` | Founder-led tone. Honest ranges (30-60% missed calls, 5-10 min IV, etc., **no fabricated stats**). 3 principles. SoCal closer. JSON-LD: extended Organization + Person stub. **Founder name + bio left as TODO comments — placeholders explicit, no fabrication.** |
 | `404.html` | Hero "Lost a tooth? Lost a page." `noindex,follow`. 4 destination buttons. Aria persona image. Vercel auto-detects 404.html at root, no errorPage config needed. |
@@ -986,7 +986,7 @@ Applied to all 37 production .html files:
 
 ### TODOs left in place (intentional, do not autofix)
 
-- `about.html`: founder name = `[Founder Name]`, founder photo = `<!-- TODO: founder photo at /images/team/founder.jpg -->`, founder bio = TODO comment + placeholder text. Replace with real content before launch.
+- `about.html`: founder name = `Varinder Kumar`, founder photo = `<!-- TODO: founder photo at /images/team/founder.jpg -->`, founder bio = TODO comment + placeholder text. Replace with real content before launch.
 - `about.html`: "Backed by" section explicitly says bootstrapped; if/when raised, replace with real partner names.
 - `demos.html`: 6 audio files (`/audio/demo-*.mp3`) not yet uploaded. The page renders with a clear "Audio file not yet uploaded" banner per demo until they land.
 - `404.html`: not registered in `vercel.json` because Vercel auto-detects `404.html` at the project root. If a custom routing tweak is wanted later, add `"errorPage": "/404"` under root in vercel.json.
@@ -1170,11 +1170,11 @@ EN-side patches:
 `press.html` at repo root. JSON-LD: `WebPage`.
 
 - Hero: "Press & media kit." Press@ + brand assets CTAs.
-- Company snapshot (4 cards): Founded, Founder ([Founder Name] placeholder), HQ, Parent company.
+- Company snapshot (4 cards): Founded, Founder (Varinder Kumar placeholder), HQ, Parent company.
 - 2-sentence company description.
 - Brand assets section (id=`#assets`): 4 placeholder asset cards (Wordmark light/dark, square mark, brand guidelines) — all marked `<!-- TODO: brand asset PDF/PNG -->Coming soon`.
 - Recent coverage: empty-state with dashed amber border, press@ariadental.ai contact.
-- Founder bio: placeholder bio for `[Founder Name]` matching `/about` placeholder.
+- Founder bio: placeholder bio for `Varinder Kumar` matching `/about` placeholder.
 - Speaking & podcasts: empty-state.
 - Contact card: `press@ariadental.ai` (media) + `partnerships@ariadental.ai` (partnerships).
 
@@ -1473,12 +1473,12 @@ enterprise.html · california-dental-ai.html · texas-dental-ai.html · florida-
 
 ## 2026-05-09 — About page founder finalize + careers email sweep + comprehensive TODO inventory
 
-**Context:** Founder identity goes live. Replace `[Founder Name]` placeholders on `/about` with **Varinder Kumar**, install a real founder bio (user-supplied, lightly polished), retire the "we're hiring engineers" line in favor of the actual current ask (dental operators + early Head of CS), kill the bootstrapped/investor placeholder block in favor of a withdrawn practice name partnership framing, trim the SoCal section to headline + address only, and update `Person` JSON-LD with name + jobTitle + affiliation. Sweep `careers@ariadental.ai` (mailbox doesn't exist) → `info@velzyx.ai` everywhere. Generate a comprehensive `REMAINING_TODOS.md` punch-list of every placeholder, missing asset, mailbox, account-setup, and review item across the live site.
+**Context:** Founder identity goes live. Replace `Varinder Kumar` placeholders on `/about` with **Varinder Kumar**, install a real founder bio (user-supplied, lightly polished), retire the "we're hiring engineers" line in favor of the actual current ask (dental operators + early Head of CS), kill the bootstrapped/investor placeholder block in favor of a withdrawn practice name partnership framing, trim the SoCal section to headline + address only, and update `Person` JSON-LD with name + jobTitle + affiliation. Sweep `careers@ariadental.ai` (mailbox doesn't exist) → `info@velzyx.ai` everywhere. Generate a comprehensive `REMAINING_TODOS.md` punch-list of every placeholder, missing asset, mailbox, account-setup, and review item across the live site.
 
 ### Files modified
 
 **`about.html`** (single-file edits, all five spec items):
-- **Founder section:** `[Founder Name]` → `Varinder Kumar`, photo placeholder letter `A` → `V`, bio replaced with the user-supplied paragraph (~94 words, voice preserved verbatim modulo curly-quote/em-dash entitization). Inline founder-photo TODO comment updated to `<!-- TODO: founder photo at /images/team/varinder-kumar.jpg -->`.
+- **Founder section:** `Varinder Kumar` → `Varinder Kumar`, photo placeholder letter `A` → `V`, bio replaced with the user-supplied paragraph (~94 words, voice preserved verbatim modulo curly-quote/em-dash entitization). Inline founder-photo TODO comment updated to `<!-- TODO: founder photo at /images/team/varinder-kumar.jpg -->`.
 - **Team / careers line:** "We're hiring engineers, dental operators, and an early head of customer success. careers@ariadental.ai." → "We are not currently hiring engineers. We're looking for **dental operators** and an **early Head of Customer Success**. If that's you, email **info@velzyx.ai** with your story."
 - **Backed by section:** entire "Bootstrapped to date" block + the duplicate "Currently working with a withdrawn practice name" block both removed. Replaced with single block titled "Working with" — "**a withdrawn practice name** — our no partner-practice claim running Aria as their primary front-line receptionist 24/7. Every patient call goes to Aria first; staff handle only what requires human judgment."
 - **Built in Southern California:** removed the "Our office sits in Newport Beach…" prose paragraph entirely. Section now contains only the section-label, the headline, and the address block (Aria by Velzyx AI /  / ). Removed the trailing `mailto:hello@ariadental.ai` from the address block per spec ("nothing else in that section").
@@ -1490,7 +1490,7 @@ enterprise.html · california-dental-ai.html · texas-dental-ai.html · florida-
 - `_batch6_build.py` and `_batch6_apply.py` — the two Python build scripts both contained the old footer template. Replaced so future regenerations don't re-introduce the dead mailbox.
 - Final post-sweep grep across the repo: **0 occurrences** of `careers@ariadental.ai` remaining anywhere (HTML, MD, CSS, JS, Python).
 
-**`REMAINING_TODOS.md`** — new file at `~/Downloads/aria-about-update/`. ~85 itemized checkboxes across 13 categories: 8 missing mailboxes, 27 missing image assets (16 OG share images, 4 article OG variants, 1 founder photo, 1 legacy-front-desk photo, 1 aria-logo.png, 4 inline-article images), 7 audio assets (1 wrong content + 6 missing /audio/demo-*.mp3), customer-supplied content (a withdrawn practice name metrics, quote, second/third stories), vendor confirmations (Denticon naming, pricing tiers, PMS roadmap dates), accounts (GA4 Key events, Capterra, G2, GBP, Search Console, GA4 ownership transfer, inline-GA4 cleanup), legal review (privacy/terms/cookies), Spanish native-speaker review, 5 blog citation TODOs, and a few in-page placeholders (press kit `[Founder Name]` x 2 + 4 brand asset slots, pricing tiers x 3, lead-magnet PDF + form wiring). Each item carries the file path / line number where the placeholder lives. Tally at the end splits by where the work has to come from (you / external accounts / customer-or-vendor-or-legal).
+**`REMAINING_TODOS.md`** — new file at `~/Downloads/aria-about-update/`. ~85 itemized checkboxes across 13 categories: 8 missing mailboxes, 27 missing image assets (16 OG share images, 4 article OG variants, 1 founder photo, 1 legacy-front-desk photo, 1 aria-logo.png, 4 inline-article images), 7 audio assets (1 wrong content + 6 missing /audio/demo-*.mp3), customer-supplied content (a withdrawn practice name metrics, quote, second/third stories), vendor confirmations (Denticon naming, pricing tiers, PMS roadmap dates), accounts (GA4 Key events, Capterra, G2, GBP, Search Console, GA4 ownership transfer, inline-GA4 cleanup), legal review (privacy/terms/cookies), Spanish native-speaker review, 5 blog citation TODOs, and a few in-page placeholders (press kit `Varinder Kumar` x 2 + 4 brand asset slots, pricing tiers x 3, lead-magnet PDF + form wiring). Each item carries the file path / line number where the placeholder lives. Tally at the end splits by where the work has to come from (you / external accounts / customer-or-vendor-or-legal).
 
 ### What this update does NOT change
 

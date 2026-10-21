@@ -24,7 +24,7 @@ Search Console verification just landed. Data starts flowing in 24–48 hours, b
 **Steps:**
 
 1. Go to https://search.google.com/search-console
-2. Sign in with `varindercarealtor@gmail.com` (or whichever Google account is verified on the property).
+2. Sign in with `the Google account that verified Search Console` (or whichever Google account is verified on the property).
 3. Top-left dropdown → select the **ariadental.ai** property.
 4. Left rail → **Sitemaps**.
 5. In the "Add a new sitemap" field enter: `sitemap.xml` and click **Submit**.

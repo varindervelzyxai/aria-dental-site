@@ -115,7 +115,7 @@ Cancelled. Aria does not publish client deployments, customer quotes, or a case-
 ## 6. Press kit / brand assets
 
 `press.html` — multiple placeholders:
-- [ ] **`[Founder Name]`** still appears on lines 79 and 109 of `press.html` (founder card + bio paragraph). Replace with **Varinder Kumar** + DRE-broker-turned-engineer narrative (parallel to `about.html`).
+- [ ] **`Varinder Kumar`** still appears on lines 79 and 109 of `press.html` (founder card + bio paragraph). Replace with **Varinder Kumar** + DRE-broker-turned-engineer narrative (parallel to `about.html`).
 - [ ] **Wordmark — light** asset (PNG + SVG) — line 92, "Coming soon"
 - [ ] **Wordmark — dark** asset (PNG + SVG) — line 93, "Coming soon"
 - [ ] **Square mark** asset (1024×1024 PNG) — line 94, "Coming soon"
@@ -204,11 +204,11 @@ From `_AGENT_CHANGES.md` "Punted / TODOs" section, plus other notes the project 
 - **Requires customer / vendor / legal input: ~13**
   - 4 a withdrawn practice name items (metrics, domain, quote, customer #2-#3), 1 Denticon vendor confirm, 3 pricing-tier amounts, 3 PMS-roadmap confirmations, 3 legal reviews (privacy/terms/cookies)
 - **Audio re-records: 7** (1 existing + 6 missing demo MP3s)
-- **Press kit / founder copy on `/press`: 5** (`[Founder Name]` x 2 + 4 brand asset files)
+- **Press kit / founder copy on `/press`: 5** (`Varinder Kumar` x 2 + 4 brand asset files)
 - **Lead-magnet / form wiring: 6** (3 PDFs + email API + ROI tool wiring + newsletter form)
 - **Citations: 5** blog posts (7 `<!-- TODO: cite -->` markers total — `practice-management-software-comparison-2026.html` has 3 in one row)
 - **Spanish native review: 1 explicit marker + 4 pages soft pass**
 - **Misc in-page placeholders: 3**
 - **Favicons: 10 icon files** (tracked in separate `FAVICONS_TODO.md`)
 
-Once these are done, the site has zero `TODO`, zero `[Founder Name]`, zero `[Practice Name]`, zero "Coming Soon," and zero broken `<img>`/`<audio>`/`mailto:` links.
+Once these are done, the site has zero `TODO`, zero `Varinder Kumar`, zero `[Practice Name]`, zero "Coming Soon," and zero broken `<img>`/`<audio>`/`mailto:` links.
