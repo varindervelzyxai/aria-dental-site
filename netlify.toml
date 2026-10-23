@@ -176,6 +176,55 @@
   status = 301
   force = true
 
+# Identical articles also published at the root. Canonical is the /blog/ URL.
+[[redirects]]
+  from = "/hipaa-compliant-dental-ai"
+  to = "/blog/hipaa-compliant-dental-ai"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/hipaa-compliant-dental-ai.html"
+  to = "/blog/hipaa-compliant-dental-ai"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/reduce-dental-no-shows-ai"
+  to = "/blog/reduce-dental-no-shows-ai"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/reduce-dental-no-shows-ai.html"
+  to = "/blog/reduce-dental-no-shows-ai"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/ai-dental-receptionist-complete-guide"
+  to = "/blog/ai-dental-receptionist-complete-guide"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/ai-dental-receptionist-complete-guide.html"
+  to = "/blog/ai-dental-receptionist-complete-guide"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dental-answering-service-vs-ai"
+  to = "/blog/dental-answering-service-vs-ai"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dental-answering-service-vs-ai.html"
+  to = "/blog/dental-answering-service-vs-ai"
+  status = 301
+  force = true
+
 [[headers]]
   for = "/*"
   [headers.values]

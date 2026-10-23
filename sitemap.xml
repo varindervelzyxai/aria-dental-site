@@ -100,9 +100,9 @@
   <url><loc>https://ariadental.ai/es/case-studies</loc><lastmod>2026-05-08</lastmod><changefreq>weekly</changefreq><priority>0.7</priority><xhtml:link rel="alternate" hreflang="en" href="https://ariadental.ai/case-studies"/><xhtml:link rel="alternate" hreflang="es" href="https://ariadental.ai/es/case-studies"/></url>
   <url><loc>https://ariadental.ai/es/help</loc><lastmod>2026-05-08</lastmod><changefreq>monthly</changefreq><priority>0.55</priority><xhtml:link rel="alternate" hreflang="en" href="https://ariadental.ai/help"/><xhtml:link rel="alternate" hreflang="es" href="https://ariadental.ai/es/help"/></url>
   <!-- Batch 10 (2026-05-17) — new blog posts -->
-  <url><loc>https://ariadental.ai/blog/stop-losing-booked-visits-missed-front-desk-calls</loc><lastmod>2026-05-17</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://ariadental.ai/blog/stop-losing-booked-visits-missed-front-desk-calls</loc><lastmod>2026-10-23</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
   <url><loc>https://ariadental.ai/blog/dental-patient-recall-best-practices</loc><lastmod>2026-06-01</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://ariadental.ai/blog/dental-insurance-verification-automation</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://ariadental.ai/blog/dental-insurance-verification-automation</loc><lastmod>2026-10-23</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
   <!-- Operations posts already indexed on production; added to Git 2026-10-21 -->
   <url><loc>https://ariadental.ai/blog/front-desk-lunch-hour-coverage</loc><lastmod>2026-10-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://ariadental.ai/blog/new-patient-calls-slammed-front-desk</loc><lastmod>2026-10-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -112,4 +112,15 @@
   <url><loc>https://ariadental.ai/blog/end-of-day-dental-call-overflow</loc><lastmod>2026-10-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://ariadental.ai/blog/unconfirmed-dental-appointment-chase</loc><lastmod>2026-10-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://ariadental.ai/blog/treatment-plan-follow-up-dental-calls</loc><lastmod>2026-10-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <!-- Canonical articles that were indexable but missing from the sitemap -->
+  <url><loc>https://ariadental.ai/blog/ai-dental-receptionist-complete-guide</loc><lastmod>2026-10-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ariadental.ai/blog/dental-answering-service-vs-ai</loc><lastmod>2026-05-12</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ariadental.ai/blog/after-hours-dental-call-coverage</loc><lastmod>2026-05-12</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ariadental.ai/blog/hipaa-compliant-dental-ai</loc><lastmod>2026-05-11</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ariadental.ai/blog/reduce-dental-no-shows-ai</loc><lastmod>2026-10-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ariadental.ai/aria-for-dentalcon</loc><lastmod>2026-05-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ariadental.ai/aria-for-dentrix-ascend</loc><lastmod>2026-05-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ariadental.ai/marketing</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ariadental.ai/es/contact</loc><lastmod>2026-05-08</lastmod><changefreq>monthly</changefreq><priority>0.65</priority><xhtml:link rel="alternate" hreflang="en" href="https://ariadental.ai/contact"/><xhtml:link rel="alternate" hreflang="es" href="https://ariadental.ai/es/contact"/></url>
+  <url><loc>https://ariadental.ai/es/demos</loc><lastmod>2026-05-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel="alternate" hreflang="en" href="https://ariadental.ai/demos"/><xhtml:link rel="alternate" hreflang="es" href="https://ariadental.ai/es/demos"/></url>
 </urlset>
