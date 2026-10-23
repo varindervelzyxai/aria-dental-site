@@ -34,7 +34,15 @@
       "permanent": false
     },
     { "source": "/build", "destination": "/configure", "permanent": false },
-    { "source": "/build/", "destination": "/configure", "permanent": false }
+    { "source": "/build/", "destination": "/configure", "permanent": false },
+    { "source": "/hipaa-compliant-dental-ai", "destination": "/blog/hipaa-compliant-dental-ai", "permanent": true },
+    { "source": "/hipaa-compliant-dental-ai.html", "destination": "/blog/hipaa-compliant-dental-ai", "permanent": true },
+    { "source": "/reduce-dental-no-shows-ai", "destination": "/blog/reduce-dental-no-shows-ai", "permanent": true },
+    { "source": "/reduce-dental-no-shows-ai.html", "destination": "/blog/reduce-dental-no-shows-ai", "permanent": true },
+    { "source": "/ai-dental-receptionist-complete-guide", "destination": "/blog/ai-dental-receptionist-complete-guide", "permanent": true },
+    { "source": "/ai-dental-receptionist-complete-guide.html", "destination": "/blog/ai-dental-receptionist-complete-guide", "permanent": true },
+    { "source": "/dental-answering-service-vs-ai", "destination": "/blog/dental-answering-service-vs-ai", "permanent": true },
+    { "source": "/dental-answering-service-vs-ai.html", "destination": "/blog/dental-answering-service-vs-ai", "permanent": true }
   ],
   "headers": [
     {
