@@ -225,6 +225,19 @@
   status = 301
   force = true
 
+# Duplicate of /demos. Keep the file crawlable only long enough to follow the redirect.
+[[redirects]]
+  from = "/aria-insurance-demo/demos"
+  to = "/demos"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/aria-insurance-demo/demos.html"
+  to = "/demos"
+  status = 301
+  force = true
+
 [[headers]]
   for = "/*"
   [headers.values]
