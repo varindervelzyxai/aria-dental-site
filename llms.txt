@@ -1,0 +1,51 @@
+# Aria Dental
+
+> Aria is an AI receptionist for dental practices. It answers assigned inbound calls, checks insurance eligibility, and books visits the practice has allowed.
+
+Aria Dental (Aria) is a product of Velzyx AI Inc. The public site describes it as an AI front office for dental practices: voice, chat, and SMS. It is for practice owners, office managers, dentists, and multi-location dental groups that need inbound coverage when the front desk cannot take the call.
+
+## What the site says Aria does
+
+- Answers assigned inbound lines, including overflow while the desk is with a patient, and coverage day or night.
+- Works across voice, chat, and SMS.
+- Can check insurance eligibility during the call, including a parent calling for a dependent, when the practice turns that on.
+- Books visit types and providers the practice has approved.
+- Open Dental write-back is live, so an allowed booking can land on the schedule the office already runs. Google Calendar sync is available. Dentrix and Eaglesoft write-back are on the roadmap, not a live native connection.
+- Can forward a call to the front desk when the desk is open, or leave a callback with who called, why, and what the caller was told.
+- Sends clinical questions (including pain, medication, and post-op) to the practice. Aria does not invent those answers.
+- Sits on the practice's existing phone system. The FAQ says no number port is required.
+- Spanish is supported on voice and chat.
+- The FAQ says most single-location practices are answering live calls within 2–7 days after a 30-minute kickoff.
+- The site says production voice AI is HIPAA-compliant under a signed BAA, with data encrypted in transit and at rest.
+- Pricing is three tiers (Solo, Growing, and DSO) and scales with call volume and locations. A specific quote is scoped to the practice.
+
+## What Aria does not do
+
+- Aria answers inbound calls. It does not dial an overdue recall list or place outbound recall. That work stays with the practice.
+- The site does not publish client deployments, a miss rate, or a no-show reduction percentage.
+
+## Key pages
+
+- Home: https://ariadental.ai/
+- Platform: https://ariadental.ai/platform
+- For dentists: https://ariadental.ai/ai-for-dentists
+- For office managers: https://ariadental.ai/for-office-managers
+- Who we help: https://ariadental.ai/who-we-help
+- Pricing: https://ariadental.ai/pricing
+- Contact: https://ariadental.ai/contact
+- Demo: https://ariadental.ai/demo
+- How it works: https://ariadental.ai/how-it-works
+- Integrations: https://ariadental.ai/integrations
+- Security: https://ariadental.ai/security
+
+## Blog
+
+- Who answers the second dental line during check-in: https://ariadental.ai/blog/second-line-during-dental-check-in
+- Lunch-hour front desk coverage: https://ariadental.ai/blog/front-desk-lunch-hour-coverage
+- After-hours dental call coverage: https://ariadental.ai/blog/after-hours-dental-call-coverage
+- Missed front desk calls: https://ariadental.ai/blog/stop-losing-booked-visits-missed-front-desk-calls
+- AI dental receptionist guide: https://ariadental.ai/blog/ai-dental-receptionist-complete-guide
+- Answering service vs AI: https://ariadental.ai/blog/dental-answering-service-vs-ai
+- Blog index: https://ariadental.ai/blog
+
+Published contact email: AriaDental@Velzyx.ai
