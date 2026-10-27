@@ -1,5 +1,5 @@
 # robots.txt for ariadental.ai
-# Last updated: 2026-05-06
+# Last updated: 2026-10-27
 
 User-agent: *
 Allow: /
@@ -77,6 +77,42 @@ Disallow: /*.py$
 Disallow: /*.pyc$
 
 User-agent: ClaudeBot
+Allow: /
+Disallow: /lib/
+Disallow: /netlify/
+Disallow: /email-sequences/
+Disallow: /scripts/
+Disallow: /__pycache__/
+Disallow: /*.md$
+Disallow: /*.bak$
+Disallow: /*.py$
+Disallow: /*.pyc$
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /lib/
+Disallow: /netlify/
+Disallow: /email-sequences/
+Disallow: /scripts/
+Disallow: /__pycache__/
+Disallow: /*.md$
+Disallow: /*.bak$
+Disallow: /*.py$
+Disallow: /*.pyc$
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /lib/
+Disallow: /netlify/
+Disallow: /email-sequences/
+Disallow: /scripts/
+Disallow: /__pycache__/
+Disallow: /*.md$
+Disallow: /*.bak$
+Disallow: /*.py$
+Disallow: /*.pyc$
+
+User-agent: Google-Extended
 Allow: /
 Disallow: /lib/
 Disallow: /netlify/
