@@ -34,6 +34,7 @@ Aria Dental (Aria) is a product of Velzyx AI Inc. The public site describes it a
 - Pricing: https://ariadental.ai/pricing
 - Contact: https://ariadental.ai/contact
 - Demo: https://ariadental.ai/demo
+- Dental answering service: https://ariadental.ai/dental-answering-service
 - How it works: https://ariadental.ai/how-it-works
 - Integrations: https://ariadental.ai/integrations
 - Security: https://ariadental.ai/security
