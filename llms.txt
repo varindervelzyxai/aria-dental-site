@@ -41,6 +41,7 @@ Aria Dental (Aria) is a product of Velzyx AI Inc. The public site describes it a
 
 ## Blog
 
+- What a dental office voicemail greeting should say: https://ariadental.ai/blog/dental-office-voicemail-greeting
 - Does a dental website need a separate page for each service: https://ariadental.ai/blog/separate-page-for-each-dental-service
 - How a dental office should reply to a bad Google review: https://ariadental.ai/blog/reply-to-bad-google-review-dental-office
 - Who answers the second dental line during check-in: https://ariadental.ai/blog/second-line-during-dental-check-in
