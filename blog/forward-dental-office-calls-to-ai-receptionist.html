@@ -156,7 +156,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "name": "How does a forwarded call get back to the front desk?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "When the desk is open, Aria can transfer the call to the front desk, create a callback request, or escalate under the rules you set. The transfer-rules page is the brief. This page does not repeat it."
+        "text": "When the desk is open, Aria can transfer the call to the front desk, create a callback request, or escalate under the rules you set. Which calls Aria finishes on its own and which it hands to a person are set in your transfer rules during setup."
       }
     },
     {
@@ -272,11 +272,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <h2 id="how-many-rings">How many rings before a call should forward?</h2>
 
-<p>Long enough for a free person at the desk to pick up, and short enough that the caller is not left ringing. The count comes from the carrier or the VoIP portal, not from a number you invent outside that screen.</p>
+<p>Long enough for a free person at the desk to pick up, and short enough that the caller is not left ringing. The ring-count options come from your carrier or VoIP portal.</p>
 
 <p>Call from another phone while you stand at the desk. If you can pick up before the forward, the wait fits a free desk. If Aria answers while you are still walking over, it is short. If rings continue after a free person had time to answer, it is long.</p>
 
-<p>Nextiva&rsquo;s overview says unanswered forwarding uses a specified number of rings. <a href="https://www.verizon.com/support/knowledge-base-181139/" target="_blank" rel="noopener noreferrer">Verizon&rsquo;s conditional call forwarding page</a> says a busy or unanswered call can be sent after 3-6 rings, instead of to voicemail. That page states the window and does not offer a different count.</p>
+<p>Nextiva&rsquo;s overview says unanswered forwarding uses a specified number of rings. <a href="https://www.verizon.com/support/knowledge-base-181139/" target="_blank" rel="noopener noreferrer">Verizon&rsquo;s wireless conditional call forwarding page</a> says a busy or unanswered call can be sent after 3-6 rings, instead of to voicemail.</p>
 
 <h2 id="where-to-set-it">Where do you set it up?</h2>
 
@@ -287,7 +287,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <ul>
 <li><a href="https://help.nextiva.com/article/call-forwarding-overview" target="_blank" rel="noopener noreferrer">Nextiva&rsquo;s call forwarding overview</a> covers always, busy, unanswered after a specified number of rings, and selective rules. A user rule does not include call-center or call-group calls.</li>
 <li><a href="https://support.ringcentral.com/shared/content/app/setting-up-user-call-forwarding-in-the-ringcentral-app-desktop-a.html" target="_blank" rel="noopener noreferrer">RingCentral&rsquo;s user call forwarding article</a> covers separate work hours and after hours, and missed calls forwarded to an external number.</li>
-<li><a href="https://www.verizon.com/support/knowledge-base-181139/" target="_blank" rel="noopener noreferrer">Verizon&rsquo;s conditional call forwarding page</a> describes busy or no-answer forwarding after 3-6 rings, instead of voicemail. Confirm the setting in the account tools for that line.</li>
+<li><a href="https://www.verizon.com/support/knowledge-base-181139/" target="_blank" rel="noopener noreferrer">Verizon&rsquo;s wireless conditional call forwarding page</a> describes busy or no-answer forwarding after 3-6 rings, instead of voicemail. Confirm the setting in the account tools for that line.</li>
 </ul>
 
 <p>After you save, write down the number the rule sits on, the mode, the hours or ring behavior, and who can turn the rule off.</p>
@@ -296,7 +296,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <p>When the desk is open, Aria can transfer the call to the front desk, create a callback request, or escalate under the rules you set. Those rules decide what a person still takes after the forward delivers the inbound call.</p>
 
-<p>The <a href="/faq">FAQ</a> names those modes. If the forward is off, they never run, because the call never reached Aria. What finishes on the call, and what must hand off, is the <a href="/blog/dental-ai-receptionist-transfer-rules">transfer-rules</a> brief. This page does not repeat it. Aria answers the inbound calls you assign.</p>
+<p>The <a href="/faq">FAQ</a> names those modes. If the forward is off, they never run, because the call never reached Aria. Which calls Aria finishes and which it hands back to a person is covered in <a href="/blog/dental-ai-receptionist-transfer-rules">how to set transfer rules for a dental AI receptionist</a>. Aria answers the inbound calls you assign.</p>
 
 <h2 id="test-before-live">What should you test before going live?</h2>
 
@@ -310,7 +310,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <li>Request a transfer while the desk is open and your rules allow it. The desk should receive the call.</li>
 <li>Leave a callback request when the desk is not taking transfers. Confirm a person can see who called, why, and the timing preference.</li>
 <li>Check the schedule and the call summary. A booked test visit should show in Open Dental when write-back is connected, or on the calendar when calendar sync is on. The call summary should show who called, why, and a booking, a transfer, or a callback request. Remove the test visit when you finish.</li>
-<li>Remove or adjust the old voicemail routing. If the old greeting still plays, callers will not hear the forward. Wording, if you still use a greeting, is the <a href="/blog/dental-office-voicemail-greeting">voicemail greeting</a> post.</li>
+<li>Remove or adjust the old voicemail routing. If an old voicemail rule still catches calls first, callers reach voicemail instead of the forward. Wording, if you still use a greeting, is the <a href="/blog/dental-office-voicemail-greeting">voicemail greeting</a> post.</li>
 </ol>
 
 <p>Leave the rule off for callers until each path you intend to use has passed.</p>
@@ -337,7 +337,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 <div class="faq-item">
 <h3>How does a forwarded call get back to the front desk?</h3>
-<p>When the desk is open, Aria can transfer the call to the front desk, create a callback request, or escalate under the rules you set. The transfer-rules page is the brief. This page does not repeat it.</p>
+<p>When the desk is open, Aria can transfer the call to the front desk, create a callback request, or escalate under the rules you set. Which calls Aria finishes on its own and which it hands to a person are set in your transfer rules during setup.</p>
 </div>
 <div class="faq-item">
 <h3>What should you test before callers use the new rule?</h3>
