@@ -41,6 +41,7 @@ Aria Dental (Aria) is a product of Velzyx AI Inc. The public site describes it a
 
 ## Blog
 
+- Should a dental office hire another front desk person or use an AI receptionist: https://ariadental.ai/blog/hire-front-desk-or-ai-receptionist
 - How a dental practice shows up in ChatGPT and AI search answers: https://ariadental.ai/blog/dental-practice-show-up-in-chatgpt-ai-answers
 - How to forward dental office calls to an AI receptionist: https://ariadental.ai/blog/forward-dental-office-calls-to-ai-receptionist
 - What a dental office should ask a new patient on the phone: https://ariadental.ai/blog/questions-to-ask-new-dental-patient-on-phone
