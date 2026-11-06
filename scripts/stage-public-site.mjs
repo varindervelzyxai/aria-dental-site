@@ -73,4 +73,58 @@ if (leaked.length) {
   process.exit(1);
 }
 
-console.log("Staged public site to ./publish");
+const requiredMedia = [
+  ["media/from-first-search-to-front-desk.mp4", 7_000_000],
+  ["media/from-first-search-to-front-desk-poster.jpg", 20_000],
+  ["media/from-first-search-to-front-desk.vtt", 200],
+];
+for (const [rel, minBytes] of requiredMedia) {
+  const file = path.join(dest, rel);
+  if (!fs.existsSync(file) || fs.statSync(file).size < minBytes) {
+    console.error("stage-public-site: missing or empty staged asset " + rel);
+    process.exit(1);
+  }
+}
+
+function resolvePublic(urlPath) {
+  const clean = urlPath.split("#")[0].split("?")[0];
+  if (!clean.startsWith("/")) return null;
+  const rel = decodeURIComponent(clean.replace(/^\/+/, ""));
+  if (!rel) return path.join(dest, "index.html");
+  const exact = path.join(dest, rel);
+  if (fs.existsSync(exact) && fs.statSync(exact).isFile()) return exact;
+  if (rel.endsWith("/")) {
+    const index = path.join(dest, rel, "index.html");
+    if (fs.existsSync(index)) return index;
+  }
+  const asHtml = path.join(dest, rel + ".html");
+  if (fs.existsSync(asHtml)) return asHtml;
+  const asIndex = path.join(dest, rel, "index.html");
+  if (fs.existsSync(asIndex)) return asIndex;
+  return null;
+}
+
+const pagesToCheck = ["index.html", "marketing.html"];
+const attrRe = /(?:href|src|poster|data-src)\s*=\s*["']([^"']+)["']/gi;
+const broken = [];
+let checked = 0;
+for (const page of pagesToCheck) {
+  const html = fs.readFileSync(path.join(dest, page), "utf8");
+  for (const match of html.matchAll(attrRe)) {
+    const url = match[1].trim();
+    if (!url.startsWith("/") || url.startsWith("//")) continue;
+    checked += 1;
+    if (!resolvePublic(url)) broken.push(page + " -> " + url);
+  }
+}
+if (broken.length) {
+  console.error("stage-public-site: broken local links");
+  for (const item of broken) console.error("  " + item);
+  process.exit(1);
+}
+
+console.log(
+  "Staged public site to ./publish (" +
+    checked +
+    " local links on index and marketing; video, poster, and captions present)"
+);
