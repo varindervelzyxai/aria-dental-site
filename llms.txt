@@ -1,8 +1,10 @@
 # Aria Dental
 
-> Aria is an AI receptionist for dental practices. It answers assigned inbound calls, checks insurance eligibility, and books visits the practice has allowed.
+> Aria Dental is a done-for-you growth partner for dental practices that want to grow. The package is website design and development, SEO, Google Business Profile management (including a response to every patient review), Instagram and TikTok content creation and posting, ongoing client relations with a dedicated point of contact, and Aria, an AI voice receptionist.
 
-Aria Dental (Aria) is a product of Velzyx AI Inc. The public site describes it as an AI front office for dental practices: voice, chat, and SMS. It is for practice owners, office managers, dentists, and multi-location dental groups that need inbound coverage when the front desk cannot take the call.
+Aria Dental is a product of Velzyx AI Inc. Aria is staff support, not a staff replacement. It covers after hours, lunch breaks, and busy moments, so patients can book when no one can pick up. Aria is custom-built for each practice. A patient can call to ask if a crown is ready and whether the appointment can be moved sooner, and Aria handles that on the call instead of transferring to the front desk. Aria works with Dentrix, Eaglesoft, and Open Dental. We sign a BAA with practices.
+
+We currently manage marketing — Google Business Profile, website, and SEO — for H-Town Dental’s four Houston locations. No stats, results, quotes, or testimonials are published for that work.
 
 ## What the site says Aria does
 
@@ -10,19 +12,19 @@ Aria Dental (Aria) is a product of Velzyx AI Inc. The public site describes it a
 - Works across voice, chat, and SMS.
 - Can check insurance eligibility during the call, including a parent calling for a dependent, when the practice turns that on.
 - Books visit types and providers the practice has approved.
-- Open Dental write-back is live, so an allowed booking can land on the schedule the office already runs. Google Calendar sync is available. Dentrix and Eaglesoft write-back are on the roadmap, not a live native connection.
+- Aria works with Dentrix, Eaglesoft, and Open Dental.
 - Can forward a call to the front desk when the desk is open, or leave a callback with who called, why, and what the caller was told.
 - Sends clinical questions (including pain, medication, and post-op) to the practice. Aria does not invent those answers.
 - Sits on the practice's existing phone system. The FAQ says no number port is required.
 - Spanish is supported on voice and chat.
 - The FAQ says most single-location practices are answering live calls within 2–7 days after a 30-minute kickoff.
-- The site says production voice AI is HIPAA-compliant under a signed BAA, with data encrypted in transit and at rest.
+- We sign a BAA with practices.
 - Pricing is three tiers (Solo, Growing, and DSO) and scales with call volume and locations. A specific quote is scoped to the practice.
 
 ## What Aria does not do
 
 - Aria answers inbound calls. It does not dial an overdue recall list or place outbound recall. That work stays with the practice.
-- The site does not publish client deployments, a miss rate, or a no-show reduction percentage.
+- The site names H-Town Dental’s four Houston locations as a current marketing client. It does not publish stats, results, quotes, a miss rate, or a no-show reduction percentage.
 
 ## Key pages
 
