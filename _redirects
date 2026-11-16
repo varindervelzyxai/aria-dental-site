@@ -1,0 +1,4 @@
+# Copied into ./publish by scripts/stage-public-site.mjs.
+# /uae is not a page. Send it to the Dubai discovery page.
+/uae    /dubai    301
+/uae/   /dubai    301
