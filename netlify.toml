@@ -42,6 +42,19 @@
   status = 301
   force = true
 
+# Dubai discovery page. /uae is not a separate page.
+[[redirects]]
+  from = "/uae"
+  to = "/dubai"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/uae/"
+  to = "/dubai"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "/aria-enterprise-page"
   to = "/"
