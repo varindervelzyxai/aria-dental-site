@@ -45,15 +45,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
- --gold: #d4952a; --gold-light: #f5deb3;
- --navy: #1a1a2e; --navy-light: #2a2a4e;
- --cream: #fefcf8; --gray-100: #f3f4f6;
- --gray-200: #e5e7eb; --gray-400: #9ca3af;
- --gray-600: #4b5563; --gray-800: #1f2937;
- --green: #22c55e;
- --gcal-blue: #1a73e8; --gcal-green: #34a853;
- --gcal-line: #e8eaed;
- --H: 52px; /* hour height */
+  --gold: #d4952a; --gold-light: #f5deb3;
+  --navy: #1a1a2e; --navy-light: #2a2a4e;
+  --cream: #fefcf8; --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb; --gray-400: #9ca3af;
+  --gray-600: #4b5563; --gray-800: #1f2937;
+  --green: #22c55e;
+  --gcal-blue: #1a73e8; --gcal-green: #34a853;
+  --gcal-line: #e8eaed;
+  --H: 52px; /* hour height */
 }
 html { scroll-behavior: smooth; }
 body { font-family: 'Sora', sans-serif; background: var(--cream); color: var(--navy); min-height: 100vh; overflow-x: hidden; }
@@ -190,20 +190,20 @@ h1,h2,h3 { font-family: 'Fraunces', serif; }
 .gcal-event.gray { background:#f1f3f4; color:#3c4043; border-left:3px solid #5f6368; }
 /* Aria-booked event — starts hidden, animates in */
 .gcal-event.aria-booked {
- background:linear-gradient(135deg,rgba(212,149,42,.12),rgba(212,149,42,.22));
- color:#7a4f0d;
- border-left:3px solid var(--gold);
- opacity:0;
- transform-origin:top;
- transform:scaleY(0);
+  background:linear-gradient(135deg,rgba(212,149,42,.12),rgba(212,149,42,.22));
+  color:#7a4f0d;
+  border-left:3px solid var(--gold);
+  opacity:0;
+  transform-origin:top;
+  transform:scaleY(0);
 }
 .gcal-event.aria-booked.appear {
- animation:calAppear .9s cubic-bezier(.34,1.56,.64,1) forwards;
+  animation:calAppear .9s cubic-bezier(.34,1.56,.64,1) forwards;
 }
 @keyframes calAppear {
- 0% { opacity:0; transform:scaleY(0); box-shadow:0 0 0 rgba(212,149,42,0); }
- 55% { opacity:1; transform:scaleY(1); box-shadow:0 0 30px rgba(212,149,42,.45); }
- 100% { opacity:1; transform:scaleY(1); box-shadow:0 0 0 rgba(212,149,42,0); }
+  0% { opacity:0; transform:scaleY(0); box-shadow:0 0 0 rgba(212,149,42,0); }
+  55% { opacity:1; transform:scaleY(1); box-shadow:0 0 30px rgba(212,149,42,.45); }
+  100% { opacity:1; transform:scaleY(1); box-shadow:0 0 0 rgba(212,149,42,0); }
 }
 .gcal-event.aria-booked .ev-badge { display:inline-block; background:var(--gold); color:#fff; font-size:8px; font-weight:700; padding:1px 5px; border-radius:3px; text-transform:uppercase; letter-spacing:.5px; margin-top:2px; }
 /* Auto actions */
@@ -222,12 +222,12 @@ h1,h2,h3 { font-family: 'Fraunces', serif; }
 .replay-btn { display:inline-flex; align-items:center; gap:8px; margin-top:16px; background:transparent; color:var(--navy); font-family:'Sora',sans-serif; font-size:14px; font-weight:500; padding:12px 24px; border-radius:60px; border:2px solid var(--gray-200); cursor:pointer; transition:border-color .2s; }
 .replay-btn:hover { border-color:var(--gold); }
 @media (max-width:600px) {
- .demo-container { padding:50px 12px 30px; }
- .phone-card { padding:32px 20px; }
- .chat-bubble { max-width:90%; font-size:13px; }
- .step-labels { display:none; }
- .gcal-col-head .dom { font-size:17px; width:28px; height:28px; }
- .gcal-event .ev-type { display:none; }
+  .demo-container { padding:50px 12px 30px; }
+  .phone-card { padding:32px 20px; }
+  .chat-bubble { max-width:90%; font-size:13px; }
+  .step-labels { display:none; }
+  .gcal-col-head .dom { font-size:17px; width:28px; height:28px; }
+  .gcal-event .ev-type { display:none; }
 }
 
 /* Site chrome from /styles.css — keep demo CTA from inheriting the homepage gold band */
@@ -242,11 +242,11 @@ h1,h2,h3 { font-family: 'Fraunces', serif; }
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://ariadental.ai/"},{"@type":"ListItem","position":2,"name":"Aria Books → Calendar Syncs","item":"https://ariadental.ai/demo-gcal"}]}</script>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
- (function(c,l,a,r,i,t,y){
- c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
- t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
- y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
- })(window, document, "clarity", "script", "wn8w0677vz");
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wn8w0677vz");
 </script>
 <!-- End Microsoft Clarity -->
 <script src="/analytics-events.js" defer></script>
@@ -261,348 +261,348 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <main id="main">
 <div class="progress-bar-container" id="progressBar">
- <div class="progress-steps">
- <div class="progress-step" data-step="1"></div>
- <div class="progress-step" data-step="2"></div>
- <div class="progress-step" data-step="3"></div>
- <div class="progress-step" data-step="4"></div>
- <div class="progress-step" data-step="5"></div>
- </div>
- <div class="step-labels">
- <div class="step-label" data-step="1">Incoming Call</div>
- <div class="step-label" data-step="2">Conversation</div>
- <div class="step-label" data-step="3">Booked</div>
- <div class="step-label" data-step="4">Syncing</div>
- <div class="step-label" data-step="5">Calendar ✓</div>
- </div>
+  <div class="progress-steps">
+    <div class="progress-step" data-step="1"></div>
+    <div class="progress-step" data-step="2"></div>
+    <div class="progress-step" data-step="3"></div>
+    <div class="progress-step" data-step="4"></div>
+    <div class="progress-step" data-step="5"></div>
+  </div>
+  <div class="step-labels">
+    <div class="step-label" data-step="1">Incoming Call</div>
+    <div class="step-label" data-step="2">Conversation</div>
+    <div class="step-label" data-step="3">Booked</div>
+    <div class="step-label" data-step="4">Syncing</div>
+    <div class="step-label" data-step="5">Calendar ✓</div>
+  </div>
 </div>
 <div class="hero" id="hero">
- <div class="hero-badge"><span class="dot"></span> Live Demo</div>
- <h1>Aria books the patient.<br><span>The calendar updates instantly.</span></h1>
- <p>No manual entry. No double-booking. The moment Aria confirms an appointment, it appears on the doctor's calendar — automatically.</p>
- <button class="start-btn" onclick="startDemo()">
- <span class="play-icon"></span>
- Watch Demo
- </button>
+  <div class="hero-badge"><span class="dot"></span> Live Demo</div>
+  <h1>Aria books the patient.<br><span>The calendar updates instantly.</span></h1>
+  <p>No manual entry. No double-booking. The moment Aria confirms an appointment, it appears on the doctor's calendar — automatically.</p>
+  <button class="start-btn" onclick="startDemo()">
+    <span class="play-icon"></span>
+    Watch Demo
+  </button>
 </div>
 <div class="demo-container" id="demoContainer">
- <!-- STEP 1: INCOMING CALL -->
- <div class="demo-step" id="step1">
- <div class="section-label">Step 1 — Incoming Call</div>
- <div class="phone-card">
- <div class="phone-icon-wrap ringing" id="phoneIcon">
- <span class="phone-icon">📞</span>
- </div>
- <div class="caller-id">Michael Chen</div>
- <div class="caller-number">mobile</div>
- <div class="call-status">
- <span class="pulse animate"></span>
- <span id="callStatusText">Incoming call...</span>
- </div>
- <div class="aria-pickup" id="ariaPickup">✨ Aria answered in 0.8 seconds</div>
- </div>
- </div>
- <!-- STEP 2: CONVERSATION -->
- <div class="demo-step" id="step2">
- <div class="section-label">Step 2 — Live Conversation</div>
- <div class="chat-window">
- <div class="chat-header">
- <div class="chat-avatar">A</div>
- <div class="chat-header-info">
- <div class="chat-name">Aria — AI Receptionist</div>
- <div class="chat-sub">Demo Practice</div>
- </div>
- <div class="chat-live-dot">Demo</div>
- </div>
- <div class="chat-body" id="chat2Body"></div>
- </div>
- </div>
- <!-- STEP 3: BOOKING CONFIRMED -->
- <div class="demo-step" id="step3">
- <div class="section-label">Step 3 — Appointment Confirmed</div>
- <div class="chat-window">
- <div class="chat-header">
- <div class="chat-avatar">A</div>
- <div class="chat-header-info">
- <div class="chat-name">Aria — AI Receptionist</div>
- <div class="chat-sub">Demo Practice</div>
- </div>
- <div class="chat-live-dot">Demo</div>
- </div>
- <div class="chat-body" id="chat3Body"></div>
- </div>
- </div>
- <!-- STEP 4: GCAL SYNC -->
- <div class="demo-step" id="step4">
- <div class="section-label">Step 4 — Syncing to the practice calendar</div>
- <div class="sync-card">
- <div class="sync-logos">
- <div class="sync-logo-aria">A</div>
- <div class="sync-arrow">
- <div class="sync-arrow-line"></div>
- <div class="sync-spinner-small" id="syncSpinner"></div>
- </div>
- <div class="sync-logo-gcal">
- <div class="gcal-icon-inner">
- <div class="gcal-icon-top"><span>CAL</span></div>
- <div class="gcal-icon-date">6</div>
- </div>
- </div>
- </div>
- <div class="sync-label">Pushing appointment to your calendar...</div>
- <div class="sync-sublabel">Michael Chen · Crown · Mon Apr 6 · 4:00 PM</div>
- <div class="sync-progress-bar"><div class="sync-progress-fill" id="syncFill"></div></div>
- <div class="sync-done" id="syncDone">
- <div class="sync-done-check">✓</div>
- <span>Synced successfully · calendar updated</span>
- </div>
- </div>
- </div>
- <!-- STEP 5: CALENDAR VIEW -->
- <div class="demo-step" id="step5">
- <div class="section-label">Step 5 — Demo Practice practice calendar</div>
- <div class="gcal-wrapper">
- <!-- Topbar -->
- <div class="gcal-topbar">
- <div class="gcal-brand">
- <div class="gcal-brand-icon">
- <div class="gcal-brand-top"><span>CAL</span></div>
- <div class="gcal-brand-num">6</div>
- </div>
- <span class="gcal-brand-name">Practice <span>Calendar</span></span>
- </div>
- <div class="gcal-week-nav">Apr 6 – 10, 2026</div>
- <div class="gcal-aria-badge"><span class="dot"></span> Aria Connected</div>
- </div>
- <!-- Day column headers -->
- <div class="gcal-col-headers">
- <div class="gcal-col-spacer"></div>
- <div class="gcal-col-head"><span class="dow">MON</span><span class="dom">6</span></div>
- <div class="gcal-col-head today"><span class="dow">TUE</span><span class="dom">7</span></div>
- <div class="gcal-col-head"><span class="dow">WED</span><span class="dom">8</span></div>
- <div class="gcal-col-head"><span class="dow">THU</span><span class="dom">9</span></div>
- <div class="gcal-col-head"><span class="dow">FRI</span><span class="dom">10</span></div>
- </div>
- <!-- Grid -->
- <div class="gcal-grid-scroll" id="calScroll">
- <div class="gcal-grid">
- <!-- Times -->
- <div class="gcal-times">
- <div class="gcal-time-slot">8 AM</div>
- <div class="gcal-time-slot">9 AM</div>
- <div class="gcal-time-slot">10 AM</div>
- <div class="gcal-time-slot">11 AM</div>
- <div class="gcal-time-slot">12 PM</div>
- <div class="gcal-time-slot">1 PM</div>
- <div class="gcal-time-slot">2 PM</div>
- <div class="gcal-time-slot">3 PM</div>
- <div class="gcal-time-slot">4 PM</div>
- </div>
- <!-- MONDAY -->
- <div class="gcal-day-col" id="calMon">
- <div class="gcal-event teal" style="top:52px;height:78px">
- <span class="ev-name">Sarah Johnson</span>
- <span class="ev-type">Cleaning · 9 AM</span>
- </div>
- <div class="gcal-event blue" style="top:156px;height:52px">
- <span class="ev-name">David Park</span>
- <span class="ev-type">Filling · 11 AM</span>
- </div>
- <div class="gcal-event purple" style="top:286px;height:52px">
- <span class="ev-name">James Wilson</span>
- <span class="ev-type">Consult · 1:30 PM</span>
- </div>
- <div class="gcal-event gray" style="top:364px;height:52px">
- <span class="ev-name">Lisa Thompson</span>
- <span class="ev-type">Whitening · 3 PM</span>
- </div>
- <!-- NEW — Aria booked -->
- <div class="gcal-event aria-booked" id="newCalEvent" style="top:416px;height:52px">
- <span class="ev-name">Michael Chen</span>
- <span class="ev-type">Crown · 4:00 PM</span>
- <span class="ev-badge">Aria</span>
- </div>
- </div>
- <!-- TUESDAY -->
- <div class="gcal-day-col">
- <div class="gcal-event teal" style="top:52px;height:52px">
- <span class="ev-name">Emily Rodriguez</span>
- <span class="ev-type">Filling · 9 AM</span>
- </div>
- <div class="gcal-event blue" style="top:312px;height:52px">
- <span class="ev-name">Robert Kim</span>
- <span class="ev-type">Crown Check · 2 PM</span>
- </div>
- </div>
- <!-- WEDNESDAY -->
- <div class="gcal-day-col">
- <div class="gcal-event orange" style="top:52px;height:78px">
- <span class="ev-name">Tom Baker</span>
- <span class="ev-type">Root Canal · 9 AM</span>
- </div>
- <div class="gcal-event gray" style="top:156px;height:36px">
- <span class="ev-name">Maria Santos</span>
- <span class="ev-type">X-Ray · 11 AM</span>
- </div>
- </div>
- <!-- THURSDAY -->
- <div class="gcal-day-col">
- <div class="gcal-event blue" style="top:104px;height:52px">
- <span class="ev-name">Amy Lee</span>
- <span class="ev-type">Consult · 10 AM</span>
- </div>
- <div class="gcal-event purple" style="top:312px;height:52px">
- <span class="ev-name">John Smith</span>
- <span class="ev-type">Filling · 2 PM</span>
- </div>
- </div>
- <!-- FRIDAY -->
- <div class="gcal-day-col">
- <div class="gcal-event teal" style="top:52px;height:52px">
- <span class="ev-name">Karen Davis</span>
- <span class="ev-type">Cleaning · 9 AM</span>
- </div>
- <div class="gcal-event gray" style="top:364px;height:52px">
- <span class="ev-name">Mike Johnson</span>
- <span class="ev-type">Crown Check · 3 PM</span>
- </div>
- </div>
- </div>
- </div>
- </div>
- <!-- Auto actions -->
- <div class="auto-actions" id="autoActions">
- <h4>Automated — Instantly</h4>
- <div class="auto-action"><span class="aa-check">✓</span> Appointment added to Demo Practice practice calendar</div>
- <div class="auto-action"><span class="aa-check">✓</span> SMS confirmation sent to Michael Chen</div>
- <div class="auto-action"><span class="aa-check">✓</span> Intake forms link sent via SMS</div>
- <div class="auto-action"><span class="aa-check">✓</span> 24-hour & 2-hour reminders scheduled</div>
- </div>
- </div>
- <!-- CTA -->
- <div class="cta-section" id="ctaSection">
- <h2>Zero manual entry. Ever.</h2>
- <p>Every Aria booking syncs directly to your practice calendar.<br>Your schedule is always current — no front desk required.</p>
- <a href="https://ariadental.ai" target="_blank" class="cta-btn">See Aria in Action →</a>
- <br>
- <button class="replay-btn" onclick="replayDemo()">↻ Replay Demo</button>
- </div>
+  <!-- STEP 1: INCOMING CALL -->
+  <div class="demo-step" id="step1">
+    <div class="section-label">Step 1 — Incoming Call</div>
+    <div class="phone-card">
+      <div class="phone-icon-wrap ringing" id="phoneIcon">
+        <span class="phone-icon">📞</span>
+      </div>
+      <div class="caller-id">Michael Chen</div>
+      <div class="caller-number">mobile</div>
+      <div class="call-status">
+        <span class="pulse animate"></span>
+        <span id="callStatusText">Incoming call...</span>
+      </div>
+      <div class="aria-pickup" id="ariaPickup">✨ Aria answered in 0.8 seconds</div>
+    </div>
+  </div>
+  <!-- STEP 2: CONVERSATION -->
+  <div class="demo-step" id="step2">
+    <div class="section-label">Step 2 — Live Conversation</div>
+    <div class="chat-window">
+      <div class="chat-header">
+        <div class="chat-avatar">A</div>
+        <div class="chat-header-info">
+          <div class="chat-name">Aria — AI Receptionist</div>
+          <div class="chat-sub">Demo Practice</div>
+        </div>
+        <div class="chat-live-dot">Demo</div>
+      </div>
+      <div class="chat-body" id="chat2Body"></div>
+    </div>
+  </div>
+  <!-- STEP 3: BOOKING CONFIRMED -->
+  <div class="demo-step" id="step3">
+    <div class="section-label">Step 3 — Appointment Confirmed</div>
+    <div class="chat-window">
+      <div class="chat-header">
+        <div class="chat-avatar">A</div>
+        <div class="chat-header-info">
+          <div class="chat-name">Aria — AI Receptionist</div>
+          <div class="chat-sub">Demo Practice</div>
+        </div>
+        <div class="chat-live-dot">Demo</div>
+      </div>
+      <div class="chat-body" id="chat3Body"></div>
+    </div>
+  </div>
+  <!-- STEP 4: GCAL SYNC -->
+  <div class="demo-step" id="step4">
+    <div class="section-label">Step 4 — Syncing to the practice calendar</div>
+    <div class="sync-card">
+      <div class="sync-logos">
+        <div class="sync-logo-aria">A</div>
+        <div class="sync-arrow">
+          <div class="sync-arrow-line"></div>
+          <div class="sync-spinner-small" id="syncSpinner"></div>
+        </div>
+        <div class="sync-logo-gcal">
+          <div class="gcal-icon-inner">
+            <div class="gcal-icon-top"><span>CAL</span></div>
+            <div class="gcal-icon-date">6</div>
+          </div>
+        </div>
+      </div>
+      <div class="sync-label">Pushing appointment to your calendar...</div>
+      <div class="sync-sublabel">Michael Chen · Crown · Mon Apr 6 · 4:00 PM</div>
+      <div class="sync-progress-bar"><div class="sync-progress-fill" id="syncFill"></div></div>
+      <div class="sync-done" id="syncDone">
+        <div class="sync-done-check">✓</div>
+        <span>Synced successfully · calendar updated</span>
+      </div>
+    </div>
+  </div>
+  <!-- STEP 5: CALENDAR VIEW -->
+  <div class="demo-step" id="step5">
+    <div class="section-label">Step 5 — Demo Practice practice calendar</div>
+    <div class="gcal-wrapper">
+      <!-- Topbar -->
+      <div class="gcal-topbar">
+        <div class="gcal-brand">
+          <div class="gcal-brand-icon">
+            <div class="gcal-brand-top"><span>CAL</span></div>
+            <div class="gcal-brand-num">6</div>
+          </div>
+          <span class="gcal-brand-name">Practice <span>Calendar</span></span>
+        </div>
+        <div class="gcal-week-nav">Apr 6 – 10, 2026</div>
+        <div class="gcal-aria-badge"><span class="dot"></span> Aria Connected</div>
+      </div>
+      <!-- Day column headers -->
+      <div class="gcal-col-headers">
+        <div class="gcal-col-spacer"></div>
+        <div class="gcal-col-head"><span class="dow">MON</span><span class="dom">6</span></div>
+        <div class="gcal-col-head today"><span class="dow">TUE</span><span class="dom">7</span></div>
+        <div class="gcal-col-head"><span class="dow">WED</span><span class="dom">8</span></div>
+        <div class="gcal-col-head"><span class="dow">THU</span><span class="dom">9</span></div>
+        <div class="gcal-col-head"><span class="dow">FRI</span><span class="dom">10</span></div>
+      </div>
+      <!-- Grid -->
+      <div class="gcal-grid-scroll" id="calScroll">
+        <div class="gcal-grid">
+          <!-- Times -->
+          <div class="gcal-times">
+            <div class="gcal-time-slot">8 AM</div>
+            <div class="gcal-time-slot">9 AM</div>
+            <div class="gcal-time-slot">10 AM</div>
+            <div class="gcal-time-slot">11 AM</div>
+            <div class="gcal-time-slot">12 PM</div>
+            <div class="gcal-time-slot">1 PM</div>
+            <div class="gcal-time-slot">2 PM</div>
+            <div class="gcal-time-slot">3 PM</div>
+            <div class="gcal-time-slot">4 PM</div>
+          </div>
+          <!-- MONDAY -->
+          <div class="gcal-day-col" id="calMon">
+            <div class="gcal-event teal" style="top:52px;height:78px">
+              <span class="ev-name">Sarah Johnson</span>
+              <span class="ev-type">Cleaning · 9 AM</span>
+            </div>
+            <div class="gcal-event blue" style="top:156px;height:52px">
+              <span class="ev-name">David Park</span>
+              <span class="ev-type">Filling · 11 AM</span>
+            </div>
+            <div class="gcal-event purple" style="top:286px;height:52px">
+              <span class="ev-name">James Wilson</span>
+              <span class="ev-type">Consult · 1:30 PM</span>
+            </div>
+            <div class="gcal-event gray" style="top:364px;height:52px">
+              <span class="ev-name">Lisa Thompson</span>
+              <span class="ev-type">Whitening · 3 PM</span>
+            </div>
+            <!-- NEW — Aria booked -->
+            <div class="gcal-event aria-booked" id="newCalEvent" style="top:416px;height:52px">
+              <span class="ev-name">Michael Chen</span>
+              <span class="ev-type">Crown · 4:00 PM</span>
+              <span class="ev-badge">Aria</span>
+            </div>
+          </div>
+          <!-- TUESDAY -->
+          <div class="gcal-day-col">
+            <div class="gcal-event teal" style="top:52px;height:52px">
+              <span class="ev-name">Emily Rodriguez</span>
+              <span class="ev-type">Filling · 9 AM</span>
+            </div>
+            <div class="gcal-event blue" style="top:312px;height:52px">
+              <span class="ev-name">Robert Kim</span>
+              <span class="ev-type">Crown Check · 2 PM</span>
+            </div>
+          </div>
+          <!-- WEDNESDAY -->
+          <div class="gcal-day-col">
+            <div class="gcal-event orange" style="top:52px;height:78px">
+              <span class="ev-name">Tom Baker</span>
+              <span class="ev-type">Root Canal · 9 AM</span>
+            </div>
+            <div class="gcal-event gray" style="top:156px;height:36px">
+              <span class="ev-name">Maria Santos</span>
+              <span class="ev-type">X-Ray · 11 AM</span>
+            </div>
+          </div>
+          <!-- THURSDAY -->
+          <div class="gcal-day-col">
+            <div class="gcal-event blue" style="top:104px;height:52px">
+              <span class="ev-name">Amy Lee</span>
+              <span class="ev-type">Consult · 10 AM</span>
+            </div>
+            <div class="gcal-event purple" style="top:312px;height:52px">
+              <span class="ev-name">John Smith</span>
+              <span class="ev-type">Filling · 2 PM</span>
+            </div>
+          </div>
+          <!-- FRIDAY -->
+          <div class="gcal-day-col">
+            <div class="gcal-event teal" style="top:52px;height:52px">
+              <span class="ev-name">Karen Davis</span>
+              <span class="ev-type">Cleaning · 9 AM</span>
+            </div>
+            <div class="gcal-event gray" style="top:364px;height:52px">
+              <span class="ev-name">Mike Johnson</span>
+              <span class="ev-type">Crown Check · 3 PM</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Auto actions -->
+    <div class="auto-actions" id="autoActions">
+      <h4>Automated — Instantly</h4>
+      <div class="auto-action"><span class="aa-check">✓</span> Appointment added to Demo Practice practice calendar</div>
+      <div class="auto-action"><span class="aa-check">✓</span> SMS confirmation sent to Michael Chen</div>
+      <div class="auto-action"><span class="aa-check">✓</span> Intake forms link sent via SMS</div>
+      <div class="auto-action"><span class="aa-check">✓</span> 24-hour & 2-hour reminders scheduled</div>
+    </div>
+  </div>
+  <!-- CTA -->
+  <div class="cta-section" id="ctaSection">
+    <h2>Zero manual entry. Ever.</h2>
+    <p>Every Aria booking syncs directly to your practice calendar.<br>Your schedule is always current — no front desk required.</p>
+    <a href="https://ariadental.ai" target="_blank" class="cta-btn">See Aria in Action →</a>
+    <br>
+    <button class="replay-btn" onclick="replayDemo()">↻ Replay Demo</button>
+  </div>
 </div>
 <script>
 const H = 52; // hour height px — must match CSS --H
 function wait(ms) { return new Promise(r => setTimeout(r, ms)); }
 function setProgress(step, status) {
- document.querySelectorAll('.progress-step').forEach(el => {
- const s = parseInt(el.dataset.step);
- el.className = 'progress-step' + (s < step ? ' completed' : s === step ? ' ' + status : '');
- });
- document.querySelectorAll('.step-label').forEach(el => {
- const s = parseInt(el.dataset.step);
- el.className = 'step-label' + (s < step ? ' completed' : s === step ? ' ' + status : '');
- });
+  document.querySelectorAll('.progress-step').forEach(el => {
+    const s = parseInt(el.dataset.step);
+    el.className = 'progress-step' + (s < step ? ' completed' : s === step ? ' ' + status : '');
+  });
+  document.querySelectorAll('.step-label').forEach(el => {
+    const s = parseInt(el.dataset.step);
+    el.className = 'step-label' + (s < step ? ' completed' : s === step ? ' ' + status : '');
+  });
 }
 function showStep(id) {
- document.querySelectorAll('.demo-step').forEach(s => s.classList.remove('active'));
- document.getElementById(id).classList.add('active');
- window.scrollTo({ top: 0, behavior: 'smooth' });
+  document.querySelectorAll('.demo-step').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 function addTyping(container, isPatient) {
- const d = document.createElement('div');
- d.className = 'typing-indicator' + (isPatient ? ' patient-typing' : '');
- d.innerHTML = '<span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>';
- container.appendChild(d);
- return d;
+  const d = document.createElement('div');
+  d.className = 'typing-indicator' + (isPatient ? ' patient-typing' : '');
+  d.innerHTML = '<span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>';
+  container.appendChild(d);
+  return d;
 }
 function addBubble(container, text, type) {
- const b = document.createElement('div');
- b.className = 'chat-bubble ' + type;
- b.textContent = text;
- container.appendChild(b);
+  const b = document.createElement('div');
+  b.className = 'chat-bubble ' + type;
+  b.textContent = text;
+  container.appendChild(b);
 }
 async function typeMessage(container, text, type, delay) {
- delay = delay || (type === 'patient' ? 1100 : 1500);
- const ti = addTyping(container, type === 'patient');
- await wait(delay);
- ti.remove();
- addBubble(container, text, type);
- await wait(350);
+  delay = delay || (type === 'patient' ? 1100 : 1500);
+  const ti = addTyping(container, type === 'patient');
+  await wait(delay);
+  ti.remove();
+  addBubble(container, text, type);
+  await wait(350);
 }
 async function startDemo() {
- // Reset
- document.getElementById('hero').classList.add('hidden');
- const dc = document.getElementById('demoContainer');
- dc.style.display = 'block';
- setTimeout(() => dc.style.opacity = '1', 50);
- document.getElementById('progressBar').classList.add('active');
- ['chat2Body','chat3Body'].forEach(id => document.getElementById(id).innerHTML = '');
- document.getElementById('ariaPickup').classList.remove('show');
- document.getElementById('phoneIcon').classList.add('ringing');
- document.getElementById('callStatusText').textContent = 'Incoming call...';
- document.getElementById('newCalEvent').classList.remove('appear');
- document.getElementById('ctaSection').classList.remove('show');
- document.getElementById('syncDone').classList.remove('show');
- document.getElementById('syncFill').classList.remove('go');
- document.querySelectorAll('.auto-action').forEach(a => a.classList.remove('show'));
- // ── STEP 1: CALL ──
- setProgress(1, 'current');
- showStep('step1');
- await wait(2200);
- document.getElementById('phoneIcon').classList.remove('ringing');
- document.getElementById('callStatusText').textContent = 'Connected — 0:01';
- document.getElementById('ariaPickup').classList.add('show');
- await wait(1600);
- // ── STEP 2: CONVERSATION ──
- setProgress(2, 'current');
- showStep('step2');
- const c2 = document.getElementById('chat2Body');
- await typeMessage(c2, "Thank you for calling Demo Practice, this is Aria! How can I help you?", 'aria', 1600);
- await typeMessage(c2, "Hi, my crown fell off. I need to come in as soon as possible.", 'patient', 1200);
- await typeMessage(c2, "Oh no! Let's get you in right away. Can I get your name and insurance member ID so I can check your coverage?", 'aria', 1800);
- await typeMessage(c2, "Michael Chen — Delta Dental, member ID DD-9988-77654.", 'patient', 1100);
- await typeMessage(c2, "Got it, Michael. Give me one second to verify your Delta Dental coverage...", 'aria', 1400);
- await wait(600);
- // ── STEP 3: BOOKING ──
- setProgress(3, 'current');
- showStep('step3');
- const c3 = document.getElementById('chat3Body');
- await typeMessage(c3, "Good news! Your Delta Dental PPO is active. Your estimated out-of-pocket for the crown is $475. We have Monday, April 6th at 4:00 PM open — would that work?", 'aria', 2200);
- await typeMessage(c3, "Monday at 4 PM works for me.", 'patient', 900);
- await typeMessage(c3, "You're all set, Michael! Confirmed for Monday, April 6th at 4:00 PM. I'm adding this to the calendar and sending you a confirmation text right now.", 'aria', 1600);
- await wait(800);
- // ── STEP 4: SYNC ──
- setProgress(4, 'current');
- showStep('step4');
- await wait(600);
- document.getElementById('syncFill').classList.add('go');
- await wait(2200);
- document.getElementById('syncSpinner').style.display = 'none';
- document.getElementById('syncDone').classList.add('show');
- await wait(1400);
- // ── STEP 5: CALENDAR ──
- setProgress(5, 'current');
- showStep('step5');
- await wait(900);
- // Scroll calendar to show 4 PM slot
- const calScroll = document.getElementById('calScroll');
- calScroll.scrollTo({ top: 200, behavior: 'smooth' });
- await wait(700);
- // Fire the new event animation
- document.getElementById('newCalEvent').classList.add('appear');
- await wait(1800);
- // Automated actions
- const actions = document.querySelectorAll('.auto-action');
- for (let i = 0; i < actions.length; i++) {
- actions[i].classList.add('show');
- await wait(450);
- }
- await wait(700);
- setProgress(6, 'completed');
- document.getElementById('ctaSection').classList.add('show');
- document.getElementById('ctaSection').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  // Reset
+  document.getElementById('hero').classList.add('hidden');
+  const dc = document.getElementById('demoContainer');
+  dc.style.display = 'block';
+  setTimeout(() => dc.style.opacity = '1', 50);
+  document.getElementById('progressBar').classList.add('active');
+  ['chat2Body','chat3Body'].forEach(id => document.getElementById(id).innerHTML = '');
+  document.getElementById('ariaPickup').classList.remove('show');
+  document.getElementById('phoneIcon').classList.add('ringing');
+  document.getElementById('callStatusText').textContent = 'Incoming call...';
+  document.getElementById('newCalEvent').classList.remove('appear');
+  document.getElementById('ctaSection').classList.remove('show');
+  document.getElementById('syncDone').classList.remove('show');
+  document.getElementById('syncFill').classList.remove('go');
+  document.querySelectorAll('.auto-action').forEach(a => a.classList.remove('show'));
+  // ── STEP 1: CALL ──
+  setProgress(1, 'current');
+  showStep('step1');
+  await wait(2200);
+  document.getElementById('phoneIcon').classList.remove('ringing');
+  document.getElementById('callStatusText').textContent = 'Connected — 0:01';
+  document.getElementById('ariaPickup').classList.add('show');
+  await wait(1600);
+  // ── STEP 2: CONVERSATION ──
+  setProgress(2, 'current');
+  showStep('step2');
+  const c2 = document.getElementById('chat2Body');
+  await typeMessage(c2, "Thank you for calling Demo Practice, this is Aria! How can I help you?", 'aria', 1600);
+  await typeMessage(c2, "Hi, my crown fell off. I need to come in as soon as possible.", 'patient', 1200);
+  await typeMessage(c2, "Oh no! Let's get you in right away. Can I get your name and insurance member ID so I can check your coverage?", 'aria', 1800);
+  await typeMessage(c2, "Michael Chen — Delta Dental, member ID DD-9988-77654.", 'patient', 1100);
+  await typeMessage(c2, "Got it, Michael. Give me one second to verify your Delta Dental coverage...", 'aria', 1400);
+  await wait(600);
+  // ── STEP 3: BOOKING ──
+  setProgress(3, 'current');
+  showStep('step3');
+  const c3 = document.getElementById('chat3Body');
+  await typeMessage(c3, "Good news! Your Delta Dental PPO is active. Your estimated out-of-pocket for the crown is $475. We have Monday, April 6th at 4:00 PM open — would that work?", 'aria', 2200);
+  await typeMessage(c3, "Monday at 4 PM works for me.", 'patient', 900);
+  await typeMessage(c3, "You're all set, Michael! Confirmed for Monday, April 6th at 4:00 PM. I'm adding this to the calendar and sending you a confirmation text right now.", 'aria', 1600);
+  await wait(800);
+  // ── STEP 4: SYNC ──
+  setProgress(4, 'current');
+  showStep('step4');
+  await wait(600);
+  document.getElementById('syncFill').classList.add('go');
+  await wait(2200);
+  document.getElementById('syncSpinner').style.display = 'none';
+  document.getElementById('syncDone').classList.add('show');
+  await wait(1400);
+  // ── STEP 5: CALENDAR ──
+  setProgress(5, 'current');
+  showStep('step5');
+  await wait(900);
+  // Scroll calendar to show 4 PM slot
+  const calScroll = document.getElementById('calScroll');
+  calScroll.scrollTo({ top: 200, behavior: 'smooth' });
+  await wait(700);
+  // Fire the new event animation
+  document.getElementById('newCalEvent').classList.add('appear');
+  await wait(1800);
+  // Automated actions
+  const actions = document.querySelectorAll('.auto-action');
+  for (let i = 0; i < actions.length; i++) {
+    actions[i].classList.add('show');
+    await wait(450);
+  }
+  await wait(700);
+  setProgress(6, 'completed');
+  document.getElementById('ctaSection').classList.add('show');
+  document.getElementById('ctaSection').scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 function replayDemo() {
- document.getElementById('ctaSection').classList.remove('show');
- startDemo();
+  document.getElementById('ctaSection').classList.remove('show');
+  startDemo();
 }
 </script>
 </main>
@@ -616,13 +616,13 @@ function replayDemo() {
 
 <script>
 (function(){
- var nav=document.getElementById('nav');
- if(nav) window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>20)});
- var t=document.getElementById('navToggle'), l=document.getElementById('navLinks');
- if(t&&l){
- t.addEventListener('click',function(){l.classList.toggle('open')});
- l.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){l.classList.remove('open')})});
- }
+  var nav=document.getElementById('nav');
+  if(nav) window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>20)});
+  var t=document.getElementById('navToggle'), l=document.getElementById('navLinks');
+  if(t&&l){
+    t.addEventListener('click',function(){l.classList.toggle('open')});
+    l.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){l.classList.remove('open')})});
+  }
 })();
 </script>
 <script src="/aria-guide.js" defer></script>

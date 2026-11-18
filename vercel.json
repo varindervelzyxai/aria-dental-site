@@ -120,13 +120,23 @@
       "permanent": false
     },
     {
-      "source": "We sign a Business Associate Agreement (BAA) with every practice.",
-      "destination": "We sign a Business Associate Agreement (BAA) with every practice.",
+      "source": "/hipaa-compliant-dental-ai",
+      "destination": "/privacy",
       "permanent": true
     },
     {
-      "source": "We sign a Business Associate Agreement (BAA) with every practice.",
-      "destination": "We sign a Business Associate Agreement (BAA) with every practice.",
+      "source": "/hipaa-compliant-dental-ai.html",
+      "destination": "/privacy",
+      "permanent": true
+    },
+    {
+      "source": "/blog/hipaa-compliant-dental-ai",
+      "destination": "/privacy",
+      "permanent": true
+    },
+    {
+      "source": "/hipaa-compliance-ai-dental-tools",
+      "destination": "/privacy",
       "permanent": true
     },
     {

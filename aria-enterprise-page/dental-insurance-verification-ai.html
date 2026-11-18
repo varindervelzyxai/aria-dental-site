@@ -108,10 +108,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KQS3692C4Q"></script>
 <script>
- window.dataLayer = window.dataLayer || [];
- function gtag(){dataLayer.push(arguments);}
- gtag('js', new Date());
- gtag('config', 'G-KQS3692C4Q');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-KQS3692C4Q');
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://www.ariadental.ai/#organization","name":"Aria Dental AI","alternateName":"Aria","legalName":"Aria by Velzyx AI","url":"https://www.ariadental.ai/","logo":{"@type":"ImageObject","url":"https://www.ariadental.ai/images/aria-logo.png","width":512,"height":512},"description":"AI receptionist for dental practices: answers calls, verifies insurance, books patients 24/7.","foundingDate":"2025-09-01","parentOrganization":{"@type":"Organization","name":"Aria by Velzyx AI","url":"https://velzyx.ai/"},"sameAs":["https://www.linkedin.com/company/aria-dental-ai","https://twitter.com/ariadentalai","https://www.instagram.com/ariadentalai"],"contactPoint":[{"@type":"ContactPoint","contactType":"sales","email":"hello@ariadental.ai","availableLanguage":["English","Spanish"]},{"@type":"ContactPoint","contactType":"customer support","email":"support@ariadental.ai","availableLanguage":["English","Spanish"]}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","@id":"https://www.ariadental.ai/#website","url":"https://www.ariadental.ai/","name":"Aria Dental AI","publisher":{"@id":"https://www.ariadental.ai/#organization"},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://www.ariadental.ai/search?q={search_term_string}"},"query-input":"required name=search_term_string"}}</script>
@@ -120,11 +120,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.ariadental.ai/"},{"@type":"ListItem","position":2,"name":"Insurance Verification AI","item":"https://www.ariadental.ai/dental-insurance-verification-ai"}]}</script>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
- (function(c,l,a,r,i,t,y){
- c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
- t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
- y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
- })(window, document, "clarity", "script", "wn8w0677vz");
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wn8w0677vz");
 </script>
 <!-- End Microsoft Clarity -->
 <script src="/analytics-events.js" defer></script>
@@ -212,7 +212,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div></section>
 
 
-<!-- PAYERS -->
+<!-- 3,400+ PAYERS -->
 <section class="section"><div class="container iv-prose">
 <h2 style="text-align:center"> Payers <span>Verified Instantly</span></h2>
 <p style="text-align:center">Aria connects to the largest dental insurance clearinghouse in the country. If a patient has dental coverage, Aria can verify it — live, during the call.</p>
@@ -482,40 +482,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script>
 /* LEAD MAGNET FORM HANDLER (Batch 3) */
 document.querySelectorAll('.lead-magnet-form').forEach(function(form){
- form.addEventListener('submit', function(e){
- e.preventDefault();
- var input = form.querySelector('input[type=email]');
- var err = form.querySelector('.lm-error');
- var ok = form.querySelector('.lm-success');
- var btn = form.querySelector('button');
- var asset = form.getAttribute('data-asset') || '';
- var email = (input.value || '').trim();
- var valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
- if (!valid){ err.style.display='block'; input.focus(); return; }
- err.style.display='none';
- var orig = btn.textContent; btn.textContent = 'Sending…'; btn.disabled = true;
- window.dataLayer = window.dataLayer || [];
- window.dataLayer.push({event:'lead_magnet_capture', asset:asset, email_domain: email.split('@')[1] || ''});
- fetch('https://api.web3forms.com/submit', {
- method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
- body: JSON.stringify({access_key:'c4d6ea77-d9c8-44a7-b3df-8de035aa3da9',subject:'Lead magnet request — '+asset,from_name:'Aria Lead Magnet',email:email,message:'Lead magnet asset requested: '+asset+'\nEmail: '+email})
- }).then(function(r){return r.json()}).then(function(){
- form.querySelectorAll('input,button,.lm-microcopy,.lm-priv').forEach(function(el){el.style.display='none'});
- ok.style.display='block';
- // Batch 8: open PDF in a new tab on success.
- var pdfMap = {
- 'buyers-guide':'/assets/leadmag/aria-buyers-guide.pdf',
- 'missed-call-worksheet':'/assets/leadmag/missed-call-cost-worksheet.pdf',
- 'verification-audit':'/assets/leadmag/insurance-verification-audit.pdf'
- };
- var url = pdfMap[asset];
- if (url) { window.open(url, '_blank', 'noopener'); }
- }).catch(function(){
- btn.textContent=orig; btn.disabled=false;
- err.textContent='Something went wrong. Email hello@ariadental.ai and we\'ll send it directly.';
- err.style.display='block';
- });
- });
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var input = form.querySelector('input[type=email]');
+    var err = form.querySelector('.lm-error');
+    var ok = form.querySelector('.lm-success');
+    var btn = form.querySelector('button');
+    var asset = form.getAttribute('data-asset') || '';
+    var email = (input.value || '').trim();
+    var valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    if (!valid){ err.style.display='block'; input.focus(); return; }
+    err.style.display='none';
+    var orig = btn.textContent; btn.textContent = 'Sending…'; btn.disabled = true;
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({event:'lead_magnet_capture', asset:asset, email_domain: email.split('@')[1] || ''});
+    fetch('https://api.web3forms.com/submit', {
+      method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body: JSON.stringify({access_key:'c4d6ea77-d9c8-44a7-b3df-8de035aa3da9',subject:'Lead magnet request — '+asset,from_name:'Aria Lead Magnet',email:email,message:'Lead magnet asset requested: '+asset+'\nEmail: '+email})
+    }).then(function(r){return r.json()}).then(function(){
+      form.querySelectorAll('input,button,.lm-microcopy,.lm-priv').forEach(function(el){el.style.display='none'});
+      ok.style.display='block';
+      // Batch 8: open PDF in a new tab on success.
+      var pdfMap = {
+        'buyers-guide':'/assets/leadmag/aria-buyers-guide.pdf',
+        'missed-call-worksheet':'/assets/leadmag/missed-call-cost-worksheet.pdf',
+        'verification-audit':'/assets/leadmag/insurance-verification-audit.pdf'
+      };
+      var url = pdfMap[asset];
+      if (url) { window.open(url, '_blank', 'noopener'); }
+    }).catch(function(){
+      btn.textContent=orig; btn.disabled=false;
+      err.textContent='Something went wrong. Email hello@ariadental.ai and we\'ll send it directly.';
+      err.style.display='block';
+    });
+  });
 });
 </script>
 

@@ -47,11 +47,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.ariadental.ai/"},{"@type":"ListItem","position":2,"name":"Contact","item":"https://www.ariadental.ai/contact"}]}</script>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
- (function(c,l,a,r,i,t,y){
- c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
- t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
- y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
- })(window, document, "clarity", "script", "wn8w0677vz");
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wn8w0677vz");
 </script>
 <!-- End Microsoft Clarity -->
 <script src="/analytics-events.js" defer></script>
@@ -127,48 +127,48 @@ var successDiv=document.getElementById('formSuccess');
 var errorDiv=document.getElementById('formError');
 
 form.addEventListener('submit', function(e) {
- e.preventDefault();
- submitBtn.disabled = true;
- submitBtn.textContent = 'Sending...';
- successDiv.style.display = 'none';
- errorDiv.style.display = 'none';
+  e.preventDefault();
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Sending...';
+  successDiv.style.display = 'none';
+  errorDiv.style.display = 'none';
 
- /* GA4: track CTA click immediately */
- gtag('event', 'cta_clicked', {
- event_category: 'engagement',
- event_label: 'demo_form_submit',
- value: 1
- });
+  /* GA4: track CTA click immediately */
+  gtag('event', 'cta_clicked', {
+    event_category: 'engagement',
+    event_label: 'demo_form_submit',
+    value: 1
+  });
 
- var formData = Object.fromEntries(new FormData(form));
+  var formData = Object.fromEntries(new FormData(form));
 
- fetch('https://api.web3forms.com/submit', {
- method: 'POST',
- headers: {'Content-Type':'application/json','Accept':'application/json'},
- body: JSON.stringify(formData)
- })
- .then(function(resp) { return resp.json(); })
- .then(function(data) {
- if (data.success) {
- /* GA4: fire demo_booked on successful submission */
- gtag('event', 'demo_booked', {
- event_category: 'conversion',
- event_label: formData.practice_name || 'unknown',
- value: 1
- });
- form.reset();
+  fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json','Accept':'application/json'},
+    body: JSON.stringify(formData)
+  })
+  .then(function(resp) { return resp.json(); })
+  .then(function(data) {
+    if (data.success) {
+      /* GA4: fire demo_booked on successful submission */
+      gtag('event', 'demo_booked', {
+        event_category: 'conversion',
+        event_label: formData.practice_name || 'unknown',
+        value: 1
+      });
+     form.reset();
 submitBtn.style.display = 'none';
 successDiv.style.display = 'block';
- } else {
- throw new Error('Submission failed');
- }
- })
- .catch(function(err) {
- console.error('Form error:', err);
- errorDiv.style.display = 'block';
- submitBtn.disabled = false;
- submitBtn.textContent = 'Send Request →';
- });
+    } else {
+      throw new Error('Submission failed');
+    }
+  })
+  .catch(function(err) {
+    console.error('Form error:', err);
+    errorDiv.style.display = 'block';
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Send Request →';
+  });
 });
 </script>
 
