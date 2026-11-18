@@ -139,8 +139,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <ol>
 <li><a href="#why-integration-depth-matters">Why integration depth matters</a></li>
 <li><a href="#open-dental">Open Dental: the easiest to integrate well</a></li>
-<li><a href="#dentrix">Dentrix: doable, but more work</a></li>
-<li><a href="#eaglesoft">Eaglesoft: the hardest of the three</a></li>
+<li><a href="#dentrix">Dentrix</a></li>
+<li><a href="#eaglesoft">Eaglesoft</a></li>
 <li><a href="#data-flow">What the data flow actually looks like</a></li>
 <li><a href="#gotchas">Common gotchas</a></li>
 <li><a href="#questions">Questions to ask any vendor</a></li>
@@ -162,15 +162,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="callout-label">Recommendation</div>
 <p>If you're on Open Dental, the integration depth question barely matters — most vendors do it well. Spend your evaluation time on voice quality, pricing, and contract terms.</p>
 </div>
-<h2 id="dentrix">Dentrix: doable, but more work</h2>
+<h2 id="dentrix">Dentrix</h2>
 <p>Dentrix integration is more involved. Henry Schein has historically been protective of the Dentrix API, and the most reliable integration paths go through one of two channels: the Dentrix Developer Program (DDP), which requires the vendor to be certified, or DXone — Dentrix's own API platform that supports a defined set of operations.</p>
 <p>What this means for your practice: AI receptionists that have done the certification work integrate with Dentrix well — read appointments, write back bookings, pull patient records, eligibility. Vendors that haven't done the certification work end up doing screen-scraping or scheduled CSV exports, which is fragile and breaks when Dentrix updates.</p>
-<p>Ask any vendor to show a Dentrix booking landing in the schedule. Screen-scraping tends to break when Dentrix updates. Aria does not hold a Dentrix developer certification.</p>
-<p>Native Dentrix write-back is on the roadmap. Eligibility can run independently of Dentrix; appointments today land in Google Calendar or a confirmation queue unless a custom Dentrix path is scoped.</p>
-<h2 id="eaglesoft">Eaglesoft: the hardest of the three</h2>
+<p>Ask any vendor to show a booking landing in the schedule.</p>
+<p>Aria books and moves appointments in Dentrix.</p>
+<h2 id="eaglesoft">Eaglesoft</h2>
 <p>Eaglesoft (Patterson Dental) has the smallest third-party integration ecosystem of the three majors. The integration surface is more limited, and Patterson's developer program is harder to get into than Henry Schein's. Several major dental AI vendors don't support Eaglesoft at all, or support it via a thin file-based sync rather than real-time.</p>
 <p>What this means for your practice: if you're on Eaglesoft, narrow your shortlist to vendors that explicitly say they support Eaglesoft natively, and ask them to demo the integration on Eaglesoft specifically — not on Open Dental as a stand-in. The quality varies meaningfully.</p>
-<p>Native Eaglesoft read/write is on the roadmap. Until it ships, Eaglesoft practices use Aria for voice, chat, and eligibility, and book to Google Calendar or a confirmation queue — not native Eaglesoft write-back.</p>
+<p>Aria books and moves appointments in Eaglesoft.</p>
 <h2 id="data-flow">What the data flow actually looks like</h2>
 <p>The data flow for a deeply integrated dental AI receptionist on a typical inbound call:</p>
 <ul class="timeline-list">
@@ -213,8 +213,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p>Aria's PMS integrations:</p>
 <ul>
 <li><strong>Open Dental:</strong> direct API integration, real-time read and write, supports both cloud and self-hosted deployments. Live in 1-2 days.</li>
-<li><strong>Dentrix:</strong> on the roadmap. Aria does not hold a Dentrix developer certification. Eligibility can run during the call; appointments land in Google Calendar or a confirmation queue unless a custom path is scoped.</li>
-<li><strong>Eaglesoft:</strong> on the roadmap. Not native write-back today. Eaglesoft practices use Aria for voice, chat, and eligibility, and book to Google Calendar or a confirmation queue.</li>
+<li><strong>Dentrix:</strong> Aria books and moves appointments in Dentrix.</li>
+<li><strong>Eaglesoft:</strong> Aria books and moves appointments in Eaglesoft.</li>
 </ul>
 <p>If you're on a different PMS — Curve, Tab32, Carestream — we don't currently have native integration but can sometimes work via a hybrid approach. <a href="/contact">Ask us about your specific PMS</a> and we'll be straight about what works and what doesn't.</p>
 <div class="blog-cta-box">
