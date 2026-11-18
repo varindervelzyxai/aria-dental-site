@@ -470,7 +470,7 @@
       return "This is the builder — pick a voice, set booking rules, and see what your Aria would sound like before a walkthrough.";
     }
     if (/\/integrations/.test(p)) {
-      return "Aria is built to write appointments back to Open Dental. Dentrix and Eaglesoft are on the roadmap. Google Calendar is the fallback when there is no PMS.";
+      return "Aria books and moves appointments in Dentrix, Eaglesoft, and Open Dental.";
     }
     if (/\/security/.test(p)) {
       return "Production Voice AI ships under a BAA. Access is scoped, calls are logged, and we do not train public models on your patients.";
