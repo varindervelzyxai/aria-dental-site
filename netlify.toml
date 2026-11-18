@@ -189,16 +189,40 @@
   status = 301
   force = true
 
-# Identical articles also published at the root. Canonical is the /blog/ URL.
+# Old compliance URLs now go to the privacy policy.
 [[redirects]]
   from = "/hipaa-compliant-dental-ai"
-  to = "/blog/hipaa-compliant-dental-ai"
+  to = "/privacy"
   status = 301
   force = true
 
 [[redirects]]
   from = "/hipaa-compliant-dental-ai.html"
-  to = "/blog/hipaa-compliant-dental-ai"
+  to = "/privacy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/hipaa-compliant-dental-ai"
+  to = "/privacy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/hipaa-compliant-dental-ai.html"
+  to = "/privacy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/hipaa-compliance-ai-dental-tools"
+  to = "/privacy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/hipaa-compliance-ai-dental-tools.html"
+  to = "/privacy"
   status = 301
   force = true
 
