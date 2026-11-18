@@ -99,20 +99,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="stylesheet" href="/assets/booking-viz.css">
 <link rel="stylesheet" href="/assets/insurance-viz.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://ariadental.ai/#organization","name":"Aria Dental AI","alternateName":"Aria","legalName":"Aria by Velzyx AI","url":"https://ariadental.ai/","logo":{"@type":"ImageObject","url":"https://ariadental.ai/images/aria-logo.png","width":512,"height":512},"description":"AI receptionist for dental practices.","foundingDate":"2025-09-01","parentOrganization":{"@type":"Organization","name":"Aria by Velzyx AI","url":"https://velzyx.ai/"},"sameAs":["https://www.linkedin.com/company/aria-dental-ai","https://twitter.com/ariadentalai","https://www.instagram.com/ariadentalai"]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","itemListElement":[
-{"@type":"MediaObject","position":1,"name":"Aria Demo 1: Insurance Verification","description":"Aria verifies dental insurance coverage live — annual maximum, deductible, every coverage tier, and procedure frequency — in 69 seconds.","contentUrl":"https://ariadental.ai/audio/demo-insurance-verification.mp3","encodingFormat":"audio/mpeg","duration":"PT1M9S","uploadDate":"2026-05-09"},
-{"@type":"MediaObject","position":2,"name":"Aria Demo 2: New Appointment - Patient Books Implant Consultation","description":"Product recording. Aria books a sample caller for an implant consultation. Not a customer call.","contentUrl":"https://ariadental.ai/audio/demo-book-self.mp3","encodingFormat":"audio/mpeg","duration":"PT1M0S","uploadDate":"2026-05-09"}
-]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","itemListElement":[{"@type":"MediaObject","position":1,"name":"Aria Demo 1: Insurance Verification","description":"Aria verifies dental insurance coverage live — annual maximum, deductible, every coverage tier, and procedure frequency — in 69 seconds.","contentUrl":"https://ariadental.ai/audio/demo-insurance-verification.mp3","encodingFormat":"audio/mpeg","duration":"PT1M9S","uploadDate":"2026-05-09"},{"@type":"MediaObject","position":2,"name":"Aria Demo 2: New Appointment - Patient Books Implant Consultation","description":"Product recording. Aria books a sample caller for an implant consultation. Not a customer call.","contentUrl":"https://ariadental.ai/audio/demo-book-self.mp3","encodingFormat":"audio/mpeg","duration":"PT1M0S","uploadDate":"2026-05-09"}]}</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KQS3692C4Q"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KQS3692C4Q');</script>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "wn8w0677vz");
+ (function(c,l,a,r,i,t,y){
+ c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+ t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+ })(window, document, "clarity", "script", "wn8w0677vz");
 </script>
 <!-- End Microsoft Clarity -->
 <script src="/analytics-events.js" defer></script>
@@ -155,216 +152,216 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="insurance-viz" id="insuranceViz" data-demo-target="insurance">
 
-  <!-- LEFT COLUMN: Aria's verification workspace -->
-  <div class="insurance-viz-col" role="group" aria-label="Aria&rsquo;s verification workspace">
-    <div class="insurance-viz-col-label">Aria&rsquo;s verification workspace</div>
+ <!-- LEFT COLUMN: Aria's verification workspace -->
+ <div class="insurance-viz-col" role="group" aria-label="Aria&rsquo;s verification workspace">
+ <div class="insurance-viz-col-label">Aria&rsquo;s verification workspace</div>
 
-    <!-- Card 1: Member lookup -->
-    <div class="iv-card iv-card-lookup" data-iv-card="lookup" aria-live="polite">
-      <div class="iv-card-head">
-        <span class="iv-card-icon" aria-hidden="true">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M3 21v-1a7 7 0 0 1 14 0v1"/></svg>
-        </span>
-        <div>
-          <div class="iv-card-title">Member lookup</div>
-          <div class="iv-card-sub">Resolving caller against carrier records</div>
-        </div>
-      </div>
-      <div class="iv-idcard">
-        <div class="iv-idcard-stripe" aria-hidden="true"></div>
-        <div class="iv-idcard-scan" aria-hidden="true"></div>
-        <div class="iv-idcard-head">
-          <span class="iv-idcard-brand">Member ID Card</span>
-          <span class="iv-idcard-logo">aria</span>
-        </div>
-        <div class="iv-idcard-body">
-          <div class="iv-idcard-avatar" aria-hidden="true">DR</div>
-          <div class="iv-idcard-fields">
-            <div class="iv-idcard-name" data-iv-id-field="name">Daniel Reyes</div>
-            <div class="iv-idcard-pills">
-              <span class="iv-idcard-pill" data-iv-id-field="dob"><span class="iv-pill-key">DOB</span><span class="iv-pill-val">10/17/1985</span></span>
-              <span class="iv-idcard-pill" data-iv-id-field="member"><span class="iv-pill-key">Member</span><span class="iv-pill-val">BT&middot;&middot;&middot;&middot;751</span></span>
-              <span class="iv-idcard-pill iv-pill-carrier" data-iv-id-field="carrier"><span class="iv-pill-key">Carrier</span><span class="iv-pill-val">BlueCross BlueShield</span></span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="iv-status">
-        <span class="iv-spinner" aria-hidden="true"></span>
-        <span class="iv-check" aria-hidden="true"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-        <span class="iv-status-text-idle">Standing by &mdash; waiting for caller info</span>
-        <span class="iv-status-text-active">Looking up member &middot; connecting to carrier&hellip;</span>
-        <span class="iv-status-text-done">Member matched &middot; carrier records pulled</span>
-      </div>
-    </div>
+ <!-- Card 1: Member lookup -->
+ <div class="iv-card iv-card-lookup" data-iv-card="lookup" aria-live="polite">
+ <div class="iv-card-head">
+ <span class="iv-card-icon" aria-hidden="true">
+ <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M3 21v-1a7 7 0 0 1 14 0v1"/></svg>
+ </span>
+ <div>
+ <div class="iv-card-title">Member lookup</div>
+ <div class="iv-card-sub">Resolving caller against carrier records</div>
+ </div>
+ </div>
+ <div class="iv-idcard">
+ <div class="iv-idcard-stripe" aria-hidden="true"></div>
+ <div class="iv-idcard-scan" aria-hidden="true"></div>
+ <div class="iv-idcard-head">
+ <span class="iv-idcard-brand">Member ID Card</span>
+ <span class="iv-idcard-logo">aria</span>
+ </div>
+ <div class="iv-idcard-body">
+ <div class="iv-idcard-avatar" aria-hidden="true">DR</div>
+ <div class="iv-idcard-fields">
+ <div class="iv-idcard-name" data-iv-id-field="name">Daniel Reyes</div>
+ <div class="iv-idcard-pills">
+ <span class="iv-idcard-pill" data-iv-id-field="dob"><span class="iv-pill-key">DOB</span><span class="iv-pill-val">10/17/1985</span></span>
+ <span class="iv-idcard-pill" data-iv-id-field="member"><span class="iv-pill-key">Member</span><span class="iv-pill-val">BT&middot;&middot;&middot;&middot;751</span></span>
+ <span class="iv-idcard-pill iv-pill-carrier" data-iv-id-field="carrier"><span class="iv-pill-key">Carrier</span><span class="iv-pill-val">BlueCross BlueShield</span></span>
+ </div>
+ </div>
+ </div>
+ </div>
+ <div class="iv-status">
+ <span class="iv-spinner" aria-hidden="true"></span>
+ <span class="iv-check" aria-hidden="true"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+ <span class="iv-status-text-idle">Standing by &mdash; waiting for caller info</span>
+ <span class="iv-status-text-active">Looking up member &middot; connecting to carrier&hellip;</span>
+ <span class="iv-status-text-done">Member matched &middot; carrier records pulled</span>
+ </div>
+ </div>
 
-    <!-- Card 2: Eligibility stamp -->
-    <div class="iv-card iv-card-verify" data-iv-card="verify" aria-live="polite">
-      <div class="iv-card-head">
-        <span class="iv-card-icon" aria-hidden="true">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 2 4 6v6c0 5 3.5 9.5 8 10 4.5-.5 8-5 8-10V6l-8-4z"/></svg>
-        </span>
-        <div>
-          <div class="iv-card-title">Eligibility</div>
-          <div class="iv-card-sub">Real-time 270/271 with carrier</div>
-        </div>
-      </div>
-      <div class="iv-stamp-frame">
-        <div class="iv-stamp" aria-hidden="true">Verified</div>
-        <div class="iv-stamp-sub">
-          <div class="iv-stamp-meta">
-            <span class="iv-stamp-meta-key">Plan</span>
-            <span class="iv-stamp-meta-val">BlueCross BlueShield PPO</span>
-            <span class="iv-stamp-meta-val muted">Plan year 2026 &middot; in-network</span>
-          </div>
-          <span class="iv-stamp-active-dot">Active</span>
-        </div>
-      </div>
-      <div class="iv-status">
-        <span class="iv-spinner" aria-hidden="true"></span>
-        <span class="iv-check" aria-hidden="true"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-        <span class="iv-status-text-idle">Awaiting member match</span>
-        <span class="iv-status-text-active">Submitting 270 eligibility request&hellip;</span>
-        <span class="iv-status-text-done">271 received &middot; coverage confirmed</span>
-      </div>
-    </div>
+ <!-- Card 2: Eligibility stamp -->
+ <div class="iv-card iv-card-verify" data-iv-card="verify" aria-live="polite">
+ <div class="iv-card-head">
+ <span class="iv-card-icon" aria-hidden="true">
+ <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 2 4 6v6c0 5 3.5 9.5 8 10 4.5-.5 8-5 8-10V6l-8-4z"/></svg>
+ </span>
+ <div>
+ <div class="iv-card-title">Eligibility</div>
+ <div class="iv-card-sub">Real-time 270/271 with carrier</div>
+ </div>
+ </div>
+ <div class="iv-stamp-frame">
+ <div class="iv-stamp" aria-hidden="true">Verified</div>
+ <div class="iv-stamp-sub">
+ <div class="iv-stamp-meta">
+ <span class="iv-stamp-meta-key">Plan</span>
+ <span class="iv-stamp-meta-val">BlueCross BlueShield PPO</span>
+ <span class="iv-stamp-meta-val muted">Plan year 2026 &middot; in-network</span>
+ </div>
+ <span class="iv-stamp-active-dot">Active</span>
+ </div>
+ </div>
+ <div class="iv-status">
+ <span class="iv-spinner" aria-hidden="true"></span>
+ <span class="iv-check" aria-hidden="true"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+ <span class="iv-status-text-idle">Awaiting member match</span>
+ <span class="iv-status-text-active">Submitting 270 eligibility request&hellip;</span>
+ <span class="iv-status-text-done">271 received &middot; coverage confirmed</span>
+ </div>
+ </div>
 
-    <!-- Card 3: Benefits dashboard -->
-    <div class="iv-card iv-card-benefits" data-iv-card="benefits" aria-live="polite">
-      <div class="iv-card-head">
-        <span class="iv-card-icon" aria-hidden="true">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>
-        </span>
-        <div>
-          <div class="iv-card-title">Benefits breakdown</div>
-          <div class="iv-card-sub">Annual max &middot; deductible &middot; coverage tiers</div>
-        </div>
-      </div>
-      <div class="iv-bd">
-        <div class="iv-bd-top">
-          <div class="iv-bd-stat" data-iv-stat="max">
-            <div class="iv-bd-stat-label">Annual maximum</div>
-            <div class="iv-bd-stat-num"><span class="iv-bd-stat-currency">$</span><span data-iv-num="max">0</span></div>
-            <div class="iv-bd-stat-foot"><span>Used <strong>$0</strong></span><span>Available <strong>$2,500</strong></span></div>
-            <div class="iv-bd-progress"><div class="iv-bd-progress-fill" data-iv-progress="max"></div></div>
-            <div class="iv-bd-spark" aria-hidden="true"><span>$</span><span>$</span><span>$</span><span>$</span><span>$</span><span>$</span></div>
-          </div>
-          <div class="iv-bd-stat" data-iv-stat="deductible">
-            <div class="iv-bd-stat-label">Deductible</div>
-            <div class="iv-bd-stat-num"><span class="iv-bd-stat-currency">$</span><span data-iv-num="deductible">0</span><span style="font-size:13px;color:var(--charcoal-50);font-weight:500;margin-left:4px;align-self:baseline">/$50</span></div>
-            <div class="iv-bd-stat-foot"><span>Met <strong>$0</strong></span><span>Remaining <strong>$50</strong></span></div>
-            <div class="iv-bd-progress"><div class="iv-bd-progress-fill" data-iv-progress="deductible"></div></div>
-          </div>
-        </div>
+ <!-- Card 3: Benefits dashboard -->
+ <div class="iv-card iv-card-benefits" data-iv-card="benefits" aria-live="polite">
+ <div class="iv-card-head">
+ <span class="iv-card-icon" aria-hidden="true">
+ <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>
+ </span>
+ <div>
+ <div class="iv-card-title">Benefits breakdown</div>
+ <div class="iv-card-sub">Annual max &middot; deductible &middot; coverage tiers</div>
+ </div>
+ </div>
+ <div class="iv-bd">
+ <div class="iv-bd-top">
+ <div class="iv-bd-stat" data-iv-stat="max">
+ <div class="iv-bd-stat-label">Annual maximum</div>
+ <div class="iv-bd-stat-num"><span class="iv-bd-stat-currency">$</span><span data-iv-num="max">0</span></div>
+ <div class="iv-bd-stat-foot"><span>Used <strong>$0</strong></span><span>Available <strong>$2,500</strong></span></div>
+ <div class="iv-bd-progress"><div class="iv-bd-progress-fill" data-iv-progress="max"></div></div>
+ <div class="iv-bd-spark" aria-hidden="true"><span>$</span><span>$</span><span>$</span><span>$</span><span>$</span><span>$</span></div>
+ </div>
+ <div class="iv-bd-stat" data-iv-stat="deductible">
+ <div class="iv-bd-stat-label">Deductible</div>
+ <div class="iv-bd-stat-num"><span class="iv-bd-stat-currency">$</span><span data-iv-num="deductible">0</span><span style="font-size:13px;color:var(--charcoal-50);font-weight:500;margin-left:4px;align-self:baseline">/$50</span></div>
+ <div class="iv-bd-stat-foot"><span>Met <strong>$0</strong></span><span>Remaining <strong>$50</strong></span></div>
+ <div class="iv-bd-progress"><div class="iv-bd-progress-fill" data-iv-progress="deductible"></div></div>
+ </div>
+ </div>
 
-        <div class="iv-bd-tiers" role="list" aria-label="Coverage tiers">
-          <div class="iv-bd-tier" data-iv-tier="preventive" data-tier="preventive" role="listitem">
-            <span class="iv-bd-tier-label">Preventive</span>
-            <span class="iv-bd-tier-track"><span class="iv-bd-tier-fill"></span></span>
-            <span class="iv-bd-tier-pct">100%</span>
-          </div>
-          <div class="iv-bd-tier" data-iv-tier="basic" data-tier="basic" role="listitem">
-            <span class="iv-bd-tier-label">Basic</span>
-            <span class="iv-bd-tier-track"><span class="iv-bd-tier-fill"></span></span>
-            <span class="iv-bd-tier-pct">80%</span>
-          </div>
-          <div class="iv-bd-tier" data-iv-tier="major" data-tier="major" role="listitem">
-            <span class="iv-bd-tier-label">Major</span>
-            <span class="iv-bd-tier-track"><span class="iv-bd-tier-fill"></span></span>
-            <span class="iv-bd-tier-pct">50%</span>
-          </div>
-        </div>
+ <div class="iv-bd-tiers" role="list" aria-label="Coverage tiers">
+ <div class="iv-bd-tier" data-iv-tier="preventive" data-tier="preventive" role="listitem">
+ <span class="iv-bd-tier-label">Preventive</span>
+ <span class="iv-bd-tier-track"><span class="iv-bd-tier-fill"></span></span>
+ <span class="iv-bd-tier-pct">100%</span>
+ </div>
+ <div class="iv-bd-tier" data-iv-tier="basic" data-tier="basic" role="listitem">
+ <span class="iv-bd-tier-label">Basic</span>
+ <span class="iv-bd-tier-track"><span class="iv-bd-tier-fill"></span></span>
+ <span class="iv-bd-tier-pct">80%</span>
+ </div>
+ <div class="iv-bd-tier" data-iv-tier="major" data-tier="major" role="listitem">
+ <span class="iv-bd-tier-label">Major</span>
+ <span class="iv-bd-tier-track"><span class="iv-bd-tier-fill"></span></span>
+ <span class="iv-bd-tier-pct">50%</span>
+ </div>
+ </div>
 
-        <div class="iv-bd-procs">
-          <div class="iv-bd-procs-title">Allowed procedures</div>
-          <div class="iv-bd-proc" data-iv-proc="cleanings">
-            <span class="iv-bd-proc-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-            <span class="iv-bd-proc-label"><strong>Cleanings</strong> &middot; 2 per year, 6 months apart</span>
-          </div>
-          <div class="iv-bd-proc" data-iv-proc="exams">
-            <span class="iv-bd-proc-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-            <span class="iv-bd-proc-label"><strong>Routine exams</strong> &middot; 2 per year</span>
-          </div>
-          <div class="iv-bd-proc" data-iv-proc="bitewings">
-            <span class="iv-bd-proc-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-            <span class="iv-bd-proc-label"><strong>Bitewing X-rays</strong> &middot; 1 set / year</span>
-            <span class="iv-bd-proc-xray" aria-hidden="true" title="X-ray covered"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3.5c-1.6 0-3 1.1-3 2.5 0 .8.4 1.4 1 2 .8.7 1.2 1.4 1.2 2.5 0 1.4-.6 2-1.2 2.8-.6.7-1 1.5-1 2.7 0 2.6 1.5 4.5 3 5.5"/><path d="M15 3.5c1.6 0 3 1.1 3 2.5 0 .8-.4 1.4-1 2-.8.7-1.2 1.4-1.2 2.5 0 1.4.6 2 1.2 2.8.6.7 1 1.5 1 2.7 0 2.6-1.5 4.5-3 5.5"/><path d="M9 8h6M9 12h6M9 16h6" stroke-dasharray="1.6 1.6"/></svg></span>
-          </div>
-          <div class="iv-bd-proc" data-iv-proc="panoramic">
-            <span class="iv-bd-proc-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-            <span class="iv-bd-proc-label"><strong>Panoramic X-ray</strong> &middot; every 3 years</span>
-            <span class="iv-bd-proc-xray" aria-hidden="true" title="X-ray covered"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12c0-3 4-6 9-6s9 3 9 6-4 6-9 6-9-3-9-6z"/><path d="M7 12v2.5M10 11.5v3M13 11.5v3M16 12v2.5" stroke-dasharray="1.4 1.4"/><circle cx="12" cy="11.5" r=".7"/></svg></span>
-          </div>
-        </div>
-      </div>
-      <div class="iv-status">
-        <span class="iv-spinner" aria-hidden="true"></span>
-        <span class="iv-check" aria-hidden="true"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-        <span class="iv-status-text-idle">Awaiting eligibility response</span>
-        <span class="iv-status-text-active">Parsing benefits &middot; coverage tiers&hellip;</span>
-        <span class="iv-status-text-done">Benefits parsed &middot; reading back to caller</span>
-      </div>
-    </div>
-  </div>
+ <div class="iv-bd-procs">
+ <div class="iv-bd-procs-title">Allowed procedures</div>
+ <div class="iv-bd-proc" data-iv-proc="cleanings">
+ <span class="iv-bd-proc-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+ <span class="iv-bd-proc-label"><strong>Cleanings</strong> &middot; 2 per year, 6 months apart</span>
+ </div>
+ <div class="iv-bd-proc" data-iv-proc="exams">
+ <span class="iv-bd-proc-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+ <span class="iv-bd-proc-label"><strong>Routine exams</strong> &middot; 2 per year</span>
+ </div>
+ <div class="iv-bd-proc" data-iv-proc="bitewings">
+ <span class="iv-bd-proc-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+ <span class="iv-bd-proc-label"><strong>Bitewing X-rays</strong> &middot; 1 set / year</span>
+ <span class="iv-bd-proc-xray" aria-hidden="true" title="X-ray covered"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3.5c-1.6 0-3 1.1-3 2.5 0 .8.4 1.4 1 2 .8.7 1.2 1.4 1.2 2.5 0 1.4-.6 2-1.2 2.8-.6.7-1 1.5-1 2.7 0 2.6 1.5 4.5 3 5.5"/><path d="M15 3.5c1.6 0 3 1.1 3 2.5 0 .8-.4 1.4-1 2-.8.7-1.2 1.4-1.2 2.5 0 1.4.6 2 1.2 2.8.6.7 1 1.5 1 2.7 0 2.6-1.5 4.5-3 5.5"/><path d="M9 8h6M9 12h6M9 16h6" stroke-dasharray="1.6 1.6"/></svg></span>
+ </div>
+ <div class="iv-bd-proc" data-iv-proc="panoramic">
+ <span class="iv-bd-proc-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+ <span class="iv-bd-proc-label"><strong>Panoramic X-ray</strong> &middot; every 3 years</span>
+ <span class="iv-bd-proc-xray" aria-hidden="true" title="X-ray covered"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12c0-3 4-6 9-6s9 3 9 6-4 6-9 6-9-3-9-6z"/><path d="M7 12v2.5M10 11.5v3M13 11.5v3M16 12v2.5" stroke-dasharray="1.4 1.4"/><circle cx="12" cy="11.5" r=".7"/></svg></span>
+ </div>
+ </div>
+ </div>
+ <div class="iv-status">
+ <span class="iv-spinner" aria-hidden="true"></span>
+ <span class="iv-check" aria-hidden="true"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+ <span class="iv-status-text-idle">Awaiting eligibility response</span>
+ <span class="iv-status-text-active">Parsing benefits &middot; coverage tiers&hellip;</span>
+ <span class="iv-status-text-done">Benefits parsed &middot; reading back to caller</span>
+ </div>
+ </div>
+ </div>
 
-  <!-- RIGHT COLUMN: Patient Benefits Summary doc -->
-  <div class="insurance-viz-col" role="group" aria-label="Patient Benefits Summary">
-    <div class="insurance-viz-col-label">Patient Benefits Summary</div>
-    <div class="iv-doc-wrap">
-      <div class="iv-doc">
-        <div class="iv-doc-letterhead">
-          <div class="iv-doc-mark">Smith Family <span>Dental</span></div>
-          <div class="iv-doc-tagline">Patient Benefits Summary &middot; Plan Year 2026</div>
-        </div>
+ <!-- RIGHT COLUMN: Patient Benefits Summary doc -->
+ <div class="insurance-viz-col" role="group" aria-label="Patient Benefits Summary">
+ <div class="insurance-viz-col-label">Patient Benefits Summary</div>
+ <div class="iv-doc-wrap">
+ <div class="iv-doc">
+ <div class="iv-doc-letterhead">
+ <div class="iv-doc-mark">Smith Family <span>Dental</span></div>
+ <div class="iv-doc-tagline">Patient Benefits Summary &middot; Plan Year 2026</div>
+ </div>
 
-        <div class="iv-doc-patient">
-          <div class="iv-doc-patient-avatar" aria-hidden="true">DR</div>
-          <div class="iv-doc-patient-info">
-            <div class="iv-doc-patient-name">Daniel Reyes</div>
-            <div class="iv-doc-patient-id">Member BT&middot;&middot;&middot;&middot;751 &middot; Self</div>
-          </div>
-          <span class="iv-doc-patient-badge" data-iv-doc-badge>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-            Insurance Verified
-          </span>
-        </div>
+ <div class="iv-doc-patient">
+ <div class="iv-doc-patient-avatar" aria-hidden="true">DR</div>
+ <div class="iv-doc-patient-info">
+ <div class="iv-doc-patient-name">Daniel Reyes</div>
+ <div class="iv-doc-patient-id">Member BT&middot;&middot;&middot;&middot;751 &middot; Self</div>
+ </div>
+ <span class="iv-doc-patient-badge" data-iv-doc-badge>
+ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+ Insurance Verified
+ </span>
+ </div>
 
-        <div class="iv-doc-section">
-          <div class="iv-doc-section-title">Identity</div>
-          <div class="iv-doc-row"><span class="iv-doc-key">Patient</span><span class="iv-doc-val" data-iv-doc="patient">Daniel Reyes</span></div>
-          <div class="iv-doc-row"><span class="iv-doc-key">Date of birth</span><span class="iv-doc-val" data-iv-doc="dob">Oct 17, 1985</span></div>
-          <div class="iv-doc-row"><span class="iv-doc-key">Carrier</span><span class="iv-doc-val" data-iv-doc="carrier">BlueCross BlueShield PPO</span></div>
-          <div class="iv-doc-row"><span class="iv-doc-key">Plan year</span><span class="iv-doc-val" data-iv-doc="planYear">2026</span></div>
-        </div>
+ <div class="iv-doc-section">
+ <div class="iv-doc-section-title">Identity</div>
+ <div class="iv-doc-row"><span class="iv-doc-key">Patient</span><span class="iv-doc-val" data-iv-doc="patient">Daniel Reyes</span></div>
+ <div class="iv-doc-row"><span class="iv-doc-key">Date of birth</span><span class="iv-doc-val" data-iv-doc="dob">Oct 17, 1985</span></div>
+ <div class="iv-doc-row"><span class="iv-doc-key">Carrier</span><span class="iv-doc-val" data-iv-doc="carrier">BlueCross BlueShield PPO</span></div>
+ <div class="iv-doc-row"><span class="iv-doc-key">Plan year</span><span class="iv-doc-val" data-iv-doc="planYear">2026</span></div>
+ </div>
 
-        <div class="iv-doc-section">
-          <div class="iv-doc-section-title">Plan limits</div>
-          <div class="iv-doc-row"><span class="iv-doc-key">Annual maximum</span><span class="iv-doc-val" data-iv-doc="max"><span class="iv-doc-val-em">$2,500</span></span></div>
-          <div class="iv-doc-row"><span class="iv-doc-key">Deductible</span><span class="iv-doc-val" data-iv-doc="deductible">$50 <span class="iv-doc-val-met">&middot; Met $0</span></span></div>
-        </div>
+ <div class="iv-doc-section">
+ <div class="iv-doc-section-title">Plan limits</div>
+ <div class="iv-doc-row"><span class="iv-doc-key">Annual maximum</span><span class="iv-doc-val" data-iv-doc="max"><span class="iv-doc-val-em">$2,500</span></span></div>
+ <div class="iv-doc-row"><span class="iv-doc-key">Deductible</span><span class="iv-doc-val" data-iv-doc="deductible">$50 <span class="iv-doc-val-met">&middot; Met $0</span></span></div>
+ </div>
 
-        <div class="iv-doc-section">
-          <div class="iv-doc-section-title">Coverage</div>
-          <div class="iv-doc-row"><span class="iv-doc-key">Preventive</span><span class="iv-doc-val" data-iv-doc="preventive"><span class="iv-doc-val-em">100%</span> &middot; no deductible</span></div>
-          <div class="iv-doc-row"><span class="iv-doc-key">Basic services</span><span class="iv-doc-val" data-iv-doc="basic">80% after deductible</span></div>
-          <div class="iv-doc-row"><span class="iv-doc-key">Major services</span><span class="iv-doc-val" data-iv-doc="major">50% after deductible</span></div>
-        </div>
+ <div class="iv-doc-section">
+ <div class="iv-doc-section-title">Coverage</div>
+ <div class="iv-doc-row"><span class="iv-doc-key">Preventive</span><span class="iv-doc-val" data-iv-doc="preventive"><span class="iv-doc-val-em">100%</span> &middot; no deductible</span></div>
+ <div class="iv-doc-row"><span class="iv-doc-key">Basic services</span><span class="iv-doc-val" data-iv-doc="basic">80% after deductible</span></div>
+ <div class="iv-doc-row"><span class="iv-doc-key">Major services</span><span class="iv-doc-val" data-iv-doc="major">50% after deductible</span></div>
+ </div>
 
-        <div class="iv-doc-section">
-          <div class="iv-doc-section-title">Frequency</div>
-          <div class="iv-doc-row"><span class="iv-doc-key">Cleanings</span><span class="iv-doc-val" data-iv-doc="cleanings">2 / year &middot; every 6 mo</span></div>
-          <div class="iv-doc-row"><span class="iv-doc-key">Routine exams</span><span class="iv-doc-val" data-iv-doc="exams">2 / year</span></div>
-          <div class="iv-doc-row"><span class="iv-doc-key">Bitewing X-rays</span><span class="iv-doc-val" data-iv-doc="bitewings">1 set / year</span></div>
-          <div class="iv-doc-row"><span class="iv-doc-key">Panoramic X-ray</span><span class="iv-doc-val" data-iv-doc="panoramic">Every 3 years</span></div>
-        </div>
+ <div class="iv-doc-section">
+ <div class="iv-doc-section-title">Frequency</div>
+ <div class="iv-doc-row"><span class="iv-doc-key">Cleanings</span><span class="iv-doc-val" data-iv-doc="cleanings">2 / year &middot; every 6 mo</span></div>
+ <div class="iv-doc-row"><span class="iv-doc-key">Routine exams</span><span class="iv-doc-val" data-iv-doc="exams">2 / year</span></div>
+ <div class="iv-doc-row"><span class="iv-doc-key">Bitewing X-rays</span><span class="iv-doc-val" data-iv-doc="bitewings">1 set / year</span></div>
+ <div class="iv-doc-row"><span class="iv-doc-key">Panoramic X-ray</span><span class="iv-doc-val" data-iv-doc="panoramic">Every 3 years</span></div>
+ </div>
 
-        <div class="iv-doc-foot">
-          <span class="iv-doc-foot-mark"><span class="iv-doc-foot-dot" aria-hidden="true"></span>Verified live with carrier</span>
-          <span class="iv-doc-foot-stamp" data-iv-doc-stamp>Generated by Aria &middot; 00:00</span>
-        </div>
-      </div>
-    </div>
-  </div>
+ <div class="iv-doc-foot">
+ <span class="iv-doc-foot-mark"><span class="iv-doc-foot-dot" aria-hidden="true"></span>Verified live with carrier</span>
+ <span class="iv-doc-foot-stamp" data-iv-doc-stamp>Generated by Aria &middot; 00:00</span>
+ </div>
+ </div>
+ </div>
+ </div>
 </div>
 
 <div class="demo-transcript">
@@ -403,179 +400,179 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <div class="booking-viz" id="bookingViz" data-demo-target="book-self">
-  <!-- Left column: Aria's workspace -->
-  <div class="booking-viz-col" role="group" aria-label="Aria's workspace">
-    <div class="booking-viz-col-label">Aria&rsquo;s workspace</div>
+ <!-- Left column: Aria's workspace -->
+ <div class="booking-viz-col" role="group" aria-label="Aria's workspace">
+ <div class="booking-viz-col-label">Aria&rsquo;s workspace</div>
 
-    <!-- Card 1: Calendar lookup -->
-    <div class="bv-card bv-card-calendar" data-bv-card="calendar" aria-live="polite">
-      <div class="bv-card-head">
-        <span class="bv-card-icon" aria-hidden="true">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        </span>
-        <div>
-          <div class="bv-card-title">Calendar lookup</div>
-          <div class="bv-card-sub">Dr. Smith &middot; This week</div>
-        </div>
-      </div>
-      <div class="bv-cal">
-        <div class="bv-cal-grid" role="presentation">
-          <div class="bv-cal-day"><span class="bv-cal-dow">Sun</span><span class="bv-cal-num">10</span></div>
-          <div class="bv-cal-day is-target" data-bv-cal-target><span class="bv-cal-dow">Mon</span><span class="bv-cal-num">11</span><span class="bv-cal-dot"></span></div>
-          <div class="bv-cal-day"><span class="bv-cal-dow">Tue</span><span class="bv-cal-num">12</span></div>
-          <div class="bv-cal-day"><span class="bv-cal-dow">Wed</span><span class="bv-cal-num">13</span></div>
-          <div class="bv-cal-day"><span class="bv-cal-dow">Thu</span><span class="bv-cal-num">14</span></div>
-          <div class="bv-cal-day"><span class="bv-cal-dow">Fri</span><span class="bv-cal-num">15</span></div>
-          <div class="bv-cal-day"><span class="bv-cal-dow">Sat</span><span class="bv-cal-num">16</span></div>
-          <div class="bv-cal-sweep" aria-hidden="true"></div>
-        </div>
-      </div>
-      <div class="bv-status">
-        <span class="bv-spinner" aria-hidden="true"></span>
-        <span class="bv-check" aria-hidden="true"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-        <span class="bv-status-text-idle">Standing by &mdash; waiting for caller&rsquo;s preferred time</span>
-        <span class="bv-status-text-active">Searching availability&hellip;</span>
-        <span class="bv-status-text-done">Available &mdash; Mon 11:00 AM with Dr. Smith</span>
-      </div>
-    </div>
+ <!-- Card 1: Calendar lookup -->
+ <div class="bv-card bv-card-calendar" data-bv-card="calendar" aria-live="polite">
+ <div class="bv-card-head">
+ <span class="bv-card-icon" aria-hidden="true">
+ <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+ </span>
+ <div>
+ <div class="bv-card-title">Calendar lookup</div>
+ <div class="bv-card-sub">Dr. Smith &middot; This week</div>
+ </div>
+ </div>
+ <div class="bv-cal">
+ <div class="bv-cal-grid" role="presentation">
+ <div class="bv-cal-day"><span class="bv-cal-dow">Sun</span><span class="bv-cal-num">10</span></div>
+ <div class="bv-cal-day is-target" data-bv-cal-target><span class="bv-cal-dow">Mon</span><span class="bv-cal-num">11</span><span class="bv-cal-dot"></span></div>
+ <div class="bv-cal-day"><span class="bv-cal-dow">Tue</span><span class="bv-cal-num">12</span></div>
+ <div class="bv-cal-day"><span class="bv-cal-dow">Wed</span><span class="bv-cal-num">13</span></div>
+ <div class="bv-cal-day"><span class="bv-cal-dow">Thu</span><span class="bv-cal-num">14</span></div>
+ <div class="bv-cal-day"><span class="bv-cal-dow">Fri</span><span class="bv-cal-num">15</span></div>
+ <div class="bv-cal-day"><span class="bv-cal-dow">Sat</span><span class="bv-cal-num">16</span></div>
+ <div class="bv-cal-sweep" aria-hidden="true"></div>
+ </div>
+ </div>
+ <div class="bv-status">
+ <span class="bv-spinner" aria-hidden="true"></span>
+ <span class="bv-check" aria-hidden="true"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+ <span class="bv-status-text-idle">Standing by &mdash; waiting for caller&rsquo;s preferred time</span>
+ <span class="bv-status-text-active">Searching availability&hellip;</span>
+ <span class="bv-status-text-done">Available &mdash; Mon 11:00 AM with Dr. Smith</span>
+ </div>
+ </div>
 
-    <!-- Card 2: PMS booking -->
-    <div class="bv-card bv-card-pms" data-bv-card="pms" aria-live="polite">
-      <div class="bv-card-head">
-        <span class="bv-card-icon" aria-hidden="true">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
-        </span>
-        <div>
-          <div class="bv-card-title">Practice management</div>
-          <div class="bv-card-sub">Writing appointment to schedule</div>
-        </div>
-      </div>
-      <div class="bv-pms-frame">
-        <div class="bv-pms-bar">
-          <div class="bv-pms-bar-left">
-            <div class="bv-pms-bar-dots"><span></span><span></span><span></span></div>
-            <span class="bv-pms-bar-title">Smith Family Dental &mdash; Schedule</span>
-          </div>
-          <div class="bv-pms-bar-right">New appointment</div>
-        </div>
-        <div class="bv-pms-body">
-          <div class="bv-pms-section-title">Appointment details</div>
-          <div class="bv-pms-row">
-            <span class="bv-pms-key">Patient</span>
-            <span class="bv-pms-val" data-bv-pms-field="patient">Mike Patterson</span>
-          </div>
-          <div class="bv-pms-row">
-            <span class="bv-pms-key">Provider</span>
-            <span class="bv-pms-val" data-bv-pms-field="provider">Dr. Smith</span>
-          </div>
-          <div class="bv-pms-row">
-            <span class="bv-pms-key">Type</span>
-            <span class="bv-pms-val" data-bv-pms-field="type">Implant Consultation</span>
-          </div>
-          <div class="bv-pms-row">
-            <span class="bv-pms-key">Date</span>
-            <span class="bv-pms-val" data-bv-pms-field="date">Monday, May 11, 2026</span>
-          </div>
-          <div class="bv-pms-row">
-            <span class="bv-pms-key">Time</span>
-            <span class="bv-pms-val" data-bv-pms-field="time">11:00 AM &middot; 60 min</span>
-          </div>
-          <div class="bv-pms-pill-wrap">
-            <span class="bv-pms-pill" data-bv-pms-pill>
-              <span class="bv-pms-pill-dot" aria-hidden="true"></span>
-              <span class="bv-pms-pill-label-idle">Drafting&hellip;</span>
-            </span>
-          </div>
-        </div>
-      </div>
-      <div class="bv-status">
-        <span class="bv-spinner" aria-hidden="true"></span>
-        <span class="bv-check" aria-hidden="true"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-        <span class="bv-status-text-idle">Awaiting confirmed slot</span>
-        <span class="bv-status-text-active">Writing to practice management&hellip;</span>
-        <span class="bv-status-text-done">Booked &mdash; appointment ID generated</span>
-      </div>
-    </div>
+ <!-- Card 2: PMS booking -->
+ <div class="bv-card bv-card-pms" data-bv-card="pms" aria-live="polite">
+ <div class="bv-card-head">
+ <span class="bv-card-icon" aria-hidden="true">
+ <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+ </span>
+ <div>
+ <div class="bv-card-title">Practice management</div>
+ <div class="bv-card-sub">Writing appointment to schedule</div>
+ </div>
+ </div>
+ <div class="bv-pms-frame">
+ <div class="bv-pms-bar">
+ <div class="bv-pms-bar-left">
+ <div class="bv-pms-bar-dots"><span></span><span></span><span></span></div>
+ <span class="bv-pms-bar-title">Smith Family Dental &mdash; Schedule</span>
+ </div>
+ <div class="bv-pms-bar-right">New appointment</div>
+ </div>
+ <div class="bv-pms-body">
+ <div class="bv-pms-section-title">Appointment details</div>
+ <div class="bv-pms-row">
+ <span class="bv-pms-key">Patient</span>
+ <span class="bv-pms-val" data-bv-pms-field="patient">Mike Patterson</span>
+ </div>
+ <div class="bv-pms-row">
+ <span class="bv-pms-key">Provider</span>
+ <span class="bv-pms-val" data-bv-pms-field="provider">Dr. Smith</span>
+ </div>
+ <div class="bv-pms-row">
+ <span class="bv-pms-key">Type</span>
+ <span class="bv-pms-val" data-bv-pms-field="type">Implant Consultation</span>
+ </div>
+ <div class="bv-pms-row">
+ <span class="bv-pms-key">Date</span>
+ <span class="bv-pms-val" data-bv-pms-field="date">Monday, May 11, 2026</span>
+ </div>
+ <div class="bv-pms-row">
+ <span class="bv-pms-key">Time</span>
+ <span class="bv-pms-val" data-bv-pms-field="time">11:00 AM &middot; 60 min</span>
+ </div>
+ <div class="bv-pms-pill-wrap">
+ <span class="bv-pms-pill" data-bv-pms-pill>
+ <span class="bv-pms-pill-dot" aria-hidden="true"></span>
+ <span class="bv-pms-pill-label-idle">Drafting&hellip;</span>
+ </span>
+ </div>
+ </div>
+ </div>
+ <div class="bv-status">
+ <span class="bv-spinner" aria-hidden="true"></span>
+ <span class="bv-check" aria-hidden="true"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+ <span class="bv-status-text-idle">Awaiting confirmed slot</span>
+ <span class="bv-status-text-active">Writing to practice management&hellip;</span>
+ <span class="bv-status-text-done">Booked &mdash; appointment ID generated</span>
+ </div>
+ </div>
 
-    <!-- Card 3: SMS dispatch -->
-    <div class="bv-card bv-card-sms" data-bv-card="sms" aria-live="polite">
-      <div class="bv-card-head">
-        <span class="bv-card-icon" aria-hidden="true">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        </span>
-        <div>
-          <div class="bv-card-title">SMS dispatch</div>
-          <div class="bv-card-sub">Confirmation to Mike</div>
-        </div>
-      </div>
-      <div class="bv-sms-meta">
-        <div class="bv-sms-meta-to">
-          <span class="bv-sms-to-icon" aria-hidden="true">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          </span>
-          <span>To <span class="bv-sms-meta-to-num">(&middot;&middot;&middot;) &middot;&middot;&middot;-5555</span></span>
-        </div>
-        <span class="bv-sms-meta-len">158 chars</span>
-      </div>
-      <div class="bv-sms-body">Hi Mike &mdash; your implant consultation is confirmed for Monday, May 11 at 11:00 AM with Dr. Smith. Reply STOP to opt out.</div>
-      <div class="bv-status">
-        <span class="bv-spinner" aria-hidden="true"></span>
-        <span class="bv-check" aria-hidden="true"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-        <span class="bv-status-text-idle">Standing by</span>
-        <span class="bv-status-text-active" data-bv-sms-status>Composing&hellip;</span>
-        <span class="bv-status-text-done">Sent &middot; delivered to (&middot;&middot;&middot;) &middot;&middot;&middot;-5555</span>
-      </div>
-    </div>
-  </div>
+ <!-- Card 3: SMS dispatch -->
+ <div class="bv-card bv-card-sms" data-bv-card="sms" aria-live="polite">
+ <div class="bv-card-head">
+ <span class="bv-card-icon" aria-hidden="true">
+ <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+ </span>
+ <div>
+ <div class="bv-card-title">SMS dispatch</div>
+ <div class="bv-card-sub">Confirmation to Mike</div>
+ </div>
+ </div>
+ <div class="bv-sms-meta">
+ <div class="bv-sms-meta-to">
+ <span class="bv-sms-to-icon" aria-hidden="true">
+ <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+ </span>
+ <span>To <span class="bv-sms-meta-to-num">(&middot;&middot;&middot;) &middot;&middot;&middot;-5555</span></span>
+ </div>
+ <span class="bv-sms-meta-len">158 chars</span>
+ </div>
+ <div class="bv-sms-body">Hi Mike &mdash; your implant consultation is confirmed for Monday, May 11 at 11:00 AM with Dr. Smith. Reply STOP to opt out.</div>
+ <div class="bv-status">
+ <span class="bv-spinner" aria-hidden="true"></span>
+ <span class="bv-check" aria-hidden="true"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+ <span class="bv-status-text-idle">Standing by</span>
+ <span class="bv-status-text-active" data-bv-sms-status>Composing&hellip;</span>
+ <span class="bv-status-text-done">Sent &middot; delivered to (&middot;&middot;&middot;) &middot;&middot;&middot;-5555</span>
+ </div>
+ </div>
+ </div>
 
-  <!-- Right column: Mike's phone -->
-  <div class="booking-viz-col" role="group" aria-label="Mike's phone">
-    <div class="booking-viz-col-label">Mike&rsquo;s phone</div>
-    <div class="booking-viz-phone-wrap">
-      <div class="bv-phone" aria-label="Generic smartphone showing active call screen">
-        <div class="bv-phone-screen">
-          <div class="bv-phone-notch" aria-hidden="true"><span class="bv-phone-notch-cam"></span></div>
-          <div class="bv-phone-status">
-            <span data-bv-phone-clock>10:58</span>
-            <span class="bv-phone-status-icons" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 17h2v3H2zM6 14h2v6H6zM10 11h2v9h-2zM14 8h2v12h-2zM18 5h2v15h-2z"/></svg>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
-              <svg viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="6" width="18" height="12" rx="2"/><rect x="21" y="10" width="1.5" height="4" rx="0.5"/></svg>
-            </span>
-          </div>
+ <!-- Right column: Mike's phone -->
+ <div class="booking-viz-col" role="group" aria-label="Mike's phone">
+ <div class="booking-viz-col-label">Mike&rsquo;s phone</div>
+ <div class="booking-viz-phone-wrap">
+ <div class="bv-phone" aria-label="Generic smartphone showing active call screen">
+ <div class="bv-phone-screen">
+ <div class="bv-phone-notch" aria-hidden="true"><span class="bv-phone-notch-cam"></span></div>
+ <div class="bv-phone-status">
+ <span data-bv-phone-clock>10:58</span>
+ <span class="bv-phone-status-icons" aria-hidden="true">
+ <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 17h2v3H2zM6 14h2v6H6zM10 11h2v9h-2zM14 8h2v12h-2zM18 5h2v15h-2z"/></svg>
+ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+ <svg viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="6" width="18" height="12" rx="2"/><rect x="21" y="10" width="1.5" height="4" rx="0.5"/></svg>
+ </span>
+ </div>
 
-          <!-- SMS notification banner -->
-          <div class="bv-notif" data-bv-notif aria-live="polite">
-            <span class="bv-notif-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-            </span>
-            <div class="bv-notif-body">
-              <div class="bv-notif-head">
-                <span class="bv-notif-app">Messages</span>
-                <span class="bv-notif-time">now</span>
-              </div>
-              <div class="bv-notif-title">Smith Family Dental</div>
-              <div class="bv-notif-msg">Hi Mike &mdash; your implant consultation is confirmed for Monday, May 11 at 11:00 AM with Dr. Smith. Reply STOP to opt out.</div>
-            </div>
-          </div>
+ <!-- SMS notification banner -->
+ <div class="bv-notif" data-bv-notif aria-live="polite">
+ <span class="bv-notif-icon" aria-hidden="true">
+ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+ </span>
+ <div class="bv-notif-body">
+ <div class="bv-notif-head">
+ <span class="bv-notif-app">Messages</span>
+ <span class="bv-notif-time">now</span>
+ </div>
+ <div class="bv-notif-title">Smith Family Dental</div>
+ <div class="bv-notif-msg">Hi Mike &mdash; your implant consultation is confirmed for Monday, May 11 at 11:00 AM with Dr. Smith. Reply STOP to opt out.</div>
+ </div>
+ </div>
 
-          <div class="bv-phone-screen-body">
-            <div class="bv-call-label">incoming call</div>
-            <div class="bv-call-avatar" aria-hidden="true">A</div>
-            <div class="bv-call-name">Smith Family Dental</div>
-            <div class="bv-call-sub">mobile &middot; Demo line</div>
-            <div class="bv-call-timer" data-bv-call-timer>00:00</div>
-            <div class="bv-call-actions" aria-hidden="true">
-              <span class="bv-call-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="1" y1="1" x2="23" y2="23"/><path d="M21 16.5c0 .38-.21.71-.53.88l-2.95 1.71c-.31.18-.69.16-.97-.07-.47-.4-1.13-.62-1.74-.93-1.5-.79-1.92-1.19-3.55-3-1.36-1.81-2.21-2.21-3-3.55-.31-.61-.53-1.27-.93-1.74-.23-.28-.25-.66-.07-.97l1.71-2.95c.17-.32.5-.53.88-.53"/></svg></span>
-              <span class="bv-call-btn bv-call-btn-end"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" transform="rotate(135 12 12)"/></svg></span>
-              <span class="bv-call-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></span>
-            </div>
-          </div>
-          <div class="bv-phone-home-bar" aria-hidden="true"></div>
-        </div>
-      </div>
-    </div>
-  </div>
+ <div class="bv-phone-screen-body">
+ <div class="bv-call-label">incoming call</div>
+ <div class="bv-call-avatar" aria-hidden="true">A</div>
+ <div class="bv-call-name">Smith Family Dental</div>
+ <div class="bv-call-sub">mobile &middot; Demo line</div>
+ <div class="bv-call-timer" data-bv-call-timer>00:00</div>
+ <div class="bv-call-actions" aria-hidden="true">
+ <span class="bv-call-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="1" y1="1" x2="23" y2="23"/><path d="M21 16.5c0 .38-.21.71-.53.88l-2.95 1.71c-.31.18-.69.16-.97-.07-.47-.4-1.13-.62-1.74-.93-1.5-.79-1.92-1.19-3.55-3-1.36-1.81-2.21-2.21-3-3.55-.31-.61-.53-1.27-.93-1.74-.23-.28-.25-.66-.07-.97l1.71-2.95c.17-.32.5-.53.88-.53"/></svg></span>
+ <span class="bv-call-btn bv-call-btn-end"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" transform="rotate(135 12 12)"/></svg></span>
+ <span class="bv-call-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></span>
+ </div>
+ </div>
+ <div class="bv-phone-home-bar" aria-hidden="true"></div>
+ </div>
+ </div>
+ </div>
+ </div>
 </div>
 
 <div class="demo-transcript">
@@ -698,7 +695,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="footer-col"><h5>Product</h5><a href="/platform">Platform</a><a href="/how-it-works">How It Works</a><a href="/compare">Compare</a><a href="/demos">Demos</a><a href="/platform#pricing">Pricing</a></div>
 <div class="footer-col"><h5>Resources</h5><a href="/blog">Blog</a><a href="/glossary">Glossary</a><a href="/who-we-help">Who We Help</a><a href="/for-office-managers">Office Managers</a><a href="/roi-calculator">ROI Calculator</a><a href="/voice-ai-dental-buyers-guide">Buyer&#39;s Guide</a><a href="/help">Help Center</a></div>
 <div class="footer-col"><h5>Company</h5><a href="/about">About</a><a href="/security">Security</a><a href="/contact">Contact</a><a href="/dubai">Expanding to the UAE</a><a href="/press">Press &amp; Media</a><a href="mailto:info@velzyx.ai">Careers</a></div>
-<div class="footer-col"><h5>Legal</h5><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/cookies">Cookie Policy</a><a href="/privacy#hipaa-notice">HIPAA Notice</a></div>
+<div class="footer-col"><h5>Legal</h5><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/cookies">Cookie Policy</a></div>
 </div><div class="footer-bottom"><span>&copy; 2026 Aria by Velzyx AI. All rights reserved.</span><span class="footer-social"><a href="https://www.instagram.com/ariadentalai" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a> &middot; <a href="https://twitter.com/ariadentalai" target="_blank" rel="noopener" aria-label="X (Twitter)">X</a> &middot; <a href="https://www.linkedin.com/company/aria-dental-ai" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a></span></div></div></footer>
 <script>
 (function(){
@@ -709,21 +706,21 @@ var t=document.getElementById('navToggle'),l=document.getElementById('navLinks')
 var tabs=document.querySelectorAll('.demos-tab');
 var panels=document.querySelectorAll('.demo-panel');
 tabs.forEach(function(t){
-  t.addEventListener('click',function(){
-    var key=t.dataset.demo;
-    tabs.forEach(function(x){x.classList.remove('active');x.setAttribute('aria-selected','false');});
-    panels.forEach(function(p){p.classList.remove('active');});
-    t.classList.add('active');t.setAttribute('aria-selected','true');
-    var panel=document.querySelector('[data-panel="'+key+'"]');
-    if(panel)panel.classList.add('active');
-    if(window.dataLayer)window.dataLayer.push({event:'demo_switched',demo_id:key});
-  });
+ t.addEventListener('click',function(){
+ var key=t.dataset.demo;
+ tabs.forEach(function(x){x.classList.remove('active');x.setAttribute('aria-selected','false');});
+ panels.forEach(function(p){p.classList.remove('active');});
+ t.classList.add('active');t.setAttribute('aria-selected','true');
+ var panel=document.querySelector('[data-panel="'+key+'"]');
+ if(panel)panel.classList.add('active');
+ if(window.dataLayer)window.dataLayer.push({event:'demo_switched',demo_id:key});
+ });
 });
 
 // audio events
 document.querySelectorAll('audio[data-demo]').forEach(function(a){
-  a.addEventListener('play',function(){if(window.dataLayer)window.dataLayer.push({event:'demo_play_started',demo_id:a.dataset.demo});});
-  a.addEventListener('ended',function(){if(window.dataLayer)window.dataLayer.push({event:'demo_completed',demo_id:a.dataset.demo});});
+ a.addEventListener('play',function(){if(window.dataLayer)window.dataLayer.push({event:'demo_play_started',demo_id:a.dataset.demo});});
+ a.addEventListener('ended',function(){if(window.dataLayer)window.dataLayer.push({event:'demo_completed',demo_id:a.dataset.demo});});
 });
 
 })();
