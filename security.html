@@ -172,13 +172,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <h2>Subprocessors</h2>
 <p>Aria uses a small set of vetted subprocessors. Each holds its own BAA with us where PHI may flow, and each holds compliance attestations relevant to its role.</p>
 <div class="def-list">
-<div class="row"><strong>Cloud hosting</strong><span>Enterprise cloud infrastructure across two US regions — primary application + database. We sign a Business Associate Agreement (BAA) with every practice. BAA in place.</span></div>
+<div class="row"><strong>Cloud hosting</strong><span>Enterprise cloud infrastructure across two US regions — primary application + database. BAA in place.</span></div>
 <div class="row"><strong>Voice runtime</strong><span>Proprietary voice orchestration layer for low-latency speech-to-speech conversation. PHI may flow during active calls. BAA in place with all underlying subprocessors.</span></div>
 <div class="row"><strong>Language model inference</strong><span>Enterprise BAA-covered language model providers for voice and chat. PHI flows through inference pipelines for active calls and chats only; no training on customer data.</span></div>
 <div class="row"><strong>SMS gateway</strong><span>SMS provider with a BAA for delivery of confirmations and reminders for visits already booked. 10DLC registered.</span></div>
 <div class="row"><strong>Payments</strong><span>Payment processor. We do not store card numbers; payment instruments are tokenized.</span></div>
-<div class="row"><strong>Insurance EDI</strong><span>Real-time X12 270/271 eligibility clearinghouse for dental <a href="/dental-insurance-verification-ai" style="color:var(--amber);font-weight:500">insurance verification</a>. We sign a Business Associate Agreement (BAA) with every practice.</span></div>
-<div class="row"><strong>Error monitoring</strong><span>Application error tracking. PHI scrubbed at the SDK level before transmission; no patient identifiers in error reports. We sign a Business Associate Agreement (BAA) with every practice.</span></div>
+<div class="row"><strong>Insurance EDI</strong><span>Real-time X12 270/271 eligibility clearinghouse for dental <a href="/dental-insurance-verification-ai" style="color:var(--amber);font-weight:500">insurance verification</a>.</span></div>
+<div class="row"><strong>Error monitoring</strong><span>Application error tracking. PHI scrubbed at the SDK level before transmission; no patient identifiers in error reports.</span></div>
 <div class="row"><strong>Analytics</strong><span>Google Analytics 4 (de-identified site usage), Microsoft Clarity (session replay with PHI masking), Google Tag Manager. None receive PHI; aggregate marketing telemetry only.</span></div>
 </div>
 <p style="margin-top:18px">Full subprocessor list with categories, purposes, and data types is available to customers and prospects under NDA — request from <a href="mailto:AriaDental@Velzyx.ai">AriaDental@Velzyx.ai</a>.</p>

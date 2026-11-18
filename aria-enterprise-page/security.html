@@ -185,13 +185,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <h2>Subprocessors</h2>
 <p>Aria uses a small set of vetted subprocessors. Each holds its own BAA with us where PHI may flow, and each holds compliance attestations relevant to its role.</p>
 <div class="def-list">
-<div class="row"><strong>Cloud hosting</strong><span>Amazon Web Services (AWS) and Google Cloud Platform (GCP) — primary application + database. We sign a Business Associate Agreement (BAA) with every practice. BAA in place.</span></div>
+<div class="row"><strong>Cloud hosting</strong><span>Amazon Web Services (AWS) and Google Cloud Platform (GCP) — primary application + database. BAA in place.</span></div>
 <div class="row"><strong>Voice runtime</strong><span>Retell AI — voice agent runtime, low-latency speech-to-speech. PHI may flow during active calls. BAA in place.</span></div>
 <div class="row"><strong>LLM inference</strong><span>OpenAI (GPT-4o for voice; Claude for chat via Anthropic). Both maintain enterprise BAAs for healthcare workloads. PHI flows through inference pipelines for active calls and chats only; no training on customer data.</span></div>
 <div class="row"><strong>SMS gateway</strong><span>Twilio — SMS delivery for confirmations and reminders for visits already booked. We sign a Business Associate Agreement (BAA) with every practice. 10DLC registered.</span></div>
 <div class="row"><strong>Payments</strong><span>We sign a Business Associate Agreement (BAA) with every practice. We do not store card numbers; tokenized via Stripe Customer objects.</span></div>
-<div class="row"><strong>Insurance EDI</strong><span>Stedi — X12 270/271 eligibility transactions for dental insurance verification. We sign a Business Associate Agreement (BAA) with every practice.</span></div>
-<div class="row"><strong>Error monitoring</strong><span>Sentry — application error tracking. PHI scrubbed at the SDK level before transmission; no patient identifiers in error reports. We sign a Business Associate Agreement (BAA) with every practice.</span></div>
+<div class="row"><strong>Insurance EDI</strong><span>Stedi — X12 270/271 eligibility transactions for dental insurance verification.</span></div>
+<div class="row"><strong>Error monitoring</strong><span>Sentry — application error tracking. PHI scrubbed at the SDK level before transmission; no patient identifiers in error reports.</span></div>
 <div class="row"><strong>Analytics</strong><span>Google Analytics 4 (de-identified site usage), Microsoft Clarity (session replay with PHI masking), Google Tag Manager. None receive PHI; aggregate marketing telemetry only.</span></div>
 </div>
 <p style="margin-top:18px">Full subprocessor list with categories, purposes, and data types is available to customers and prospects under NDA — request from <a href="mailto:security@ariadental.ai">security@ariadental.ai</a>.</p>
