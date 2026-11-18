@@ -11,8 +11,9 @@
     "Hey — this is a live demo of Aria, the Voice AI receptionist we build for dental practices. I can walk the platform, play voices, or hold a thirty-minute walkthrough. What brought you in?";
 
   var WIDGET_IDS = ["aria-wrap", "aria-bubble", "aria-badge", "aria-panel"];
-  var WIDGET_CLIENT = "velzyx-ai";
-  var WIDGET_SRC = "https://voice.velzyx.ai/aria-widget.js";
+  // The booking chat is the Velzyx Speech website chat (dashboard tenant "Aria Dental"); the key is its public embed key.
+  var WIDGET_SRC = "https://d3tqmc4uywr6a9.cloudfront.net/chat/v1/widget.js";
+  var WIDGET_KEY = "LuhXF3L1vBPhGDey3KqZzz8FaeIrbOtlbhfvDi6_tiI";
 
   function speechCtor() {
     var w = window;
@@ -771,6 +772,12 @@
 
   function openBookingWidget() {
     setShowWidget(true);
+    // The Velzyx Speech chat opens through its own API (it keeps its button in a closed shadow root).
+    if (window.VelzyxChat && typeof window.VelzyxChat.open === "function") {
+      window.VelzyxChat.open();
+      return;
+    }
+    try { document.dispatchEvent(new CustomEvent("velzyx-chat:open")); } catch (_) {}
     var tries = 0;
     var tick = function () {
       var bubble = document.getElementById("aria-bubble");
@@ -1428,11 +1435,11 @@
   function ensureWidget() {
     if (state.open) return;
     if (document.getElementById("aria-bubble") || document.getElementById("aria-wrap") || document.getElementById("aria-root")) return;
-    if (document.querySelector("script[src*='aria-widget.js']")) return;
-    if (window.AriaDentalWidgetBrand) window.AriaDentalWidgetBrand.install();
+    if (document.querySelector("script[src*='/chat/v1/widget.js']") || document.querySelector("script[src*='aria-widget.js']")) return;
     var s = document.createElement("script");
     s.src = WIDGET_SRC;
-    s.setAttribute("data-client", WIDGET_CLIENT);
+    s.async = true;
+    s.setAttribute("data-key", WIDGET_KEY);
     document.body.appendChild(s);
   }
 
