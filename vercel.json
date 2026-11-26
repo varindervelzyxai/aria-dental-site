@@ -19,8 +19,33 @@
       "permanent": true
     },
     {
-      "source": "/aria-vs-weave",
-      "destination": "/compare",
+      "source": "/aria-vs-dentina",
+      "destination": "/how-aria-compares",
+      "permanent": true
+    },
+    {
+      "source": "/aria-vs-dentina.html",
+      "destination": "/how-aria-compares",
+      "permanent": true
+    },
+    {
+      "source": "/aria-vs-newo",
+      "destination": "/how-aria-compares",
+      "permanent": true
+    },
+    {
+      "source": "/aria-vs-newo.html",
+      "destination": "/how-aria-compares",
+      "permanent": true
+    },
+    {
+      "source": "/aria-vs-rondah",
+      "destination": "/how-aria-compares",
+      "permanent": true
+    },
+    {
+      "source": "/aria-vs-rondah.html",
+      "destination": "/how-aria-compares",
       "permanent": true
     },
     {

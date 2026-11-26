@@ -275,6 +275,43 @@
   status = 301
   force = true
 
+# Retired comparison URLs. The HTML files are meta-refresh stubs that return 200.
+[[redirects]]
+  from = "/aria-vs-dentina"
+  to = "/how-aria-compares"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/aria-vs-dentina.html"
+  to = "/how-aria-compares"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/aria-vs-newo"
+  to = "/how-aria-compares"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/aria-vs-newo.html"
+  to = "/how-aria-compares"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/aria-vs-rondah"
+  to = "/how-aria-compares"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/aria-vs-rondah.html"
+  to = "/how-aria-compares"
+  status = 301
+  force = true
+
 [[headers]]
   for = "/*"
   [headers.values]
